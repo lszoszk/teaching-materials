@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eksperyment: art. 1105 k.c. · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--line:#4d4059;--muted:#ada290;--ok:#7fb069}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:17px/1.5 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+main{max-width:760px;margin:0 auto;padding:22px 16px 80px}
+h1{font-size:26px;line-height:1.25;margin:6px 0 4px}
+h1 span,.gld{color:var(--gold)}
+.sub{color:var(--muted);margin:0 0 18px}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:16px 18px;margin:14px 0}
+.lab{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+label{display:block;margin:12px 0 4px;color:var(--parch)}
+input,select,textarea{width:100%;background:#0f0b14;color:var(--paper);border:2px solid var(--line);padding:9px 10px;font:inherit;border-radius:0}
+textarea{min-height:150px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold)}
+button{font:inherit;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:10px 16px;box-shadow:4px 4px 0 #0008;font-weight:700}
+button.sec{background:var(--ink);color:var(--paper);border-color:var(--line)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.prompt{background:#0f0b14;border-left:6px solid var(--gold);padding:10px 12px;margin:8px 0;color:var(--paper);user-select:all}
+ol{padding-left:22px;margin:6px 0}
+li{margin:6px 0}
+.big{font-size:24px;font-weight:700;color:var(--gold)}
+.msg{margin-top:10px;min-height:1.4em}
+.err{color:var(--accent)}.good{color:var(--ok)}
+small,.muted{color:var(--muted)}
+[hidden]{display:none!important}
+details{margin-top:10px}summary{cursor:pointer;color:var(--gold)}
+</style>
+</head>
+<body>
+<main>
+<h1>Eksperyment: <span>art. 1105 k.c.</span></h1>
+<p class="sub">IHRL 2026/27 · jedno zadanie to jedna rozmowa z jednym modelem</p>
+
+<section class="box" id="start">
+<p class="lab">Start</p>
+<label for="kod">Kod zajęć (z ekranu)</label>
+<input id="kod" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="wpisz kod">
+<div class="row"><button id="losuj">Losuj zadanie</button></div>
+<p class="msg" id="m1"></p>
+<p class="muted" id="licznik"></p>
+</section>
+
+<section class="box" id="zadanie" hidden>
+<p class="lab">Twoje zadanie</p>
+<p>Model: <span class="big" id="zmodel"></span><br><small>Gdzie go znaleźć: <b id="zgdzie"></b></small></p>
+<ol>
+<li>Skopiuj polecenie:
+  <div class="prompt" id="ztresc"></div>
+  <div class="row"><button class="sec" id="kopiuj">Kopiuj polecenie</button></div></li>
+<li>Otwórz model. Otwórz <b>nową rozmowę</b>.</li>
+<li>Wklej polecenie. Wyślij je <b>jeden raz</b>.</li>
+<li>Nie poprawiaj i nie dopytuj. Wklej poniżej pierwszą odpowiedź.</li>
+</ol>
+
+<label for="nazwa">Dokładna nazwa modelu (z ekranu)</label>
+<input id="nazwa" autocomplete="off" placeholder="np. Bielik-11B-v2.6">
+<label for="wysz">Czy model szukał w sieci?</label>
+<select id="wysz"><option value="">— wybierz —</option><option>N</option><option>T</option><option>nie wiem</option></select>
+<label for="odp">Odpowiedź modelu (wklej całą)</label>
+<textarea id="odp" placeholder="wklej odpowiedź"></textarea>
+<label for="kat">Kategoria odpowiedzi</label>
+<select id="kat">
+<option value="">— wybierz —</option>
+<option value="A: przepis nie istnieje">A: model mówi, że przepis nie istnieje</option>
+<option value="B: podaje treść przepisu">B: model podaje treść przepisu</option>
+<option value="C: nie wie albo każe sprawdzić">C: model nie wie albo każe sprawdzić (bez treści)</option>
+<option value="D: inna odpowiedź">D: inna odpowiedź</option>
+</select>
+<label for="link">Kliknij link z odpowiedzi. Co jest pod linkiem?</label>
+<select id="link">
+<option value="">— wybierz —</option>
+<option>brak linku</option><option>link nie działa</option><option>działa, nie potwierdza</option><option>działa i potwierdza</option>
+</select>
+<label for="uw">Uwagi (nieobowiązkowe)</label>
+<input id="uw" autocomplete="off">
+<div class="row">
+<button id="wyslij">Wyślij wynik</button>
+<button class="sec" id="pomin">Nie mogę użyć tego modelu: losuj inny</button>
+</div>
+<p class="msg" id="m2"></p>
+</section>
+
+<section class="box" id="dziekuje" hidden>
+<p class="lab">Dziękuję</p>
+<p>Wynik zapisany. Możesz wylosować kolejne zadanie.</p>
+<div class="row"><button id="dalej">Losuj kolejne zadanie</button></div>
+</section>
+
+<p class="muted">Dane są anonimowe: bez imienia i adresu e-mail. Wpisujemy tylko to, co model odpowiedział na to jedno pytanie.
+Nie wpisuj danych osobowych.</p>
+<details><summary>Coś nie działa?</summary>
+<p class="muted">Jeśli wysyłanie się nie udaje, wynik zostaje w tej przeglądarce i wyślemy go ponownie. Możesz też pobrać plik z wynikami.</p>
+<div class="row"><button class="sec" id="json">Pobierz moje wyniki (JSON)</button><button class="sec" id="ponow">Wyślij zapisane ponownie</button></div>
+<p class="muted" id="m3"></p></details>
+</main>
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbx4vLoxLLAaSnVp7ynbgJxxKOQZt5YhKDPAnYnC6BRpdwsffDMVuE8Ep7_P109jF3o/exec';   // adres wdrożenia /exec
+const $ = id => document.getElementById(id);
+const LS = {get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch (e) { return d } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch (e) {} }};
+let cur = null, wykl = LS.get('wyklucz', []);
+$('kod').value = LS.get('kod', '');
+
+async function call(p) {
+  // przy dużym ruchu Google czasem odrzuca zapytanie: ponawiamy z losowym opóźnieniem
+  const body = JSON.stringify(Object.assign({kod: $('kod').value.trim()}, p));
+  let last;
+  for (let i = 0; i < 5; i++) {
+    try { const r = await fetch(API, {method: 'POST', body, redirect: 'follow'}); return await r.json(); }
+    catch (e) { last = e; await new Promise(res => setTimeout(res, 1200 + Math.random() * 2500)); }
+  }
+  throw last;
+}
+function say(id, t, cls) { const e = $(id); e.textContent = t; e.className = 'msg ' + (cls || ''); }
+async function losuj() {
+  if (!$('kod').value.trim()) return say('m1', 'Wpisz kod zajęć.', 'err');
+  LS.set('kod', $('kod').value.trim());
+  $('losuj').disabled = true; say('m1', 'Losuję…');
+  try {
+    const d = await call({t: 'losuj', wyklucz: wykl});
+    if (!d.ok) { say('m1', d.err === 'kod' ? 'Zły kod zajęć.' : 'Nie udało się. Spróbuj jeszcze raz.', 'err'); return; }
+    cur = d; say('m1', '');
+    $('zmodel').textContent = d.model; $('zgdzie').textContent = d.gdzie; $('ztresc').textContent = d.tresc;
+    ['nazwa', 'odp', 'uw'].forEach(i => $(i).value = ''); ['wysz', 'kat', 'link'].forEach(i => $(i).value = '');
+    say('m2', ''); $('zadanie').hidden = false; $('dziekuje').hidden = true; $('start').hidden = true;
+    $('zadanie').scrollIntoView();
+  } catch (e) { say('m1', 'Brak połączenia. Sprawdź internet i spróbuj jeszcze raz.', 'err'); }
+  finally { $('losuj').disabled = false; }
+}
+$('losuj').onclick = losuj;
+$('dalej').onclick = () => { $('dziekuje').hidden = true; losuj(); };
+$('kopiuj').onclick = async () => {
+  const t = $('ztresc').textContent;
+  try { await navigator.clipboard.writeText(t); $('kopiuj').textContent = 'Skopiowano ✓'; }
+  catch (e) { const r = document.createRange(); r.selectNodeContents($('ztresc')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); $('kopiuj').textContent = 'Zaznaczone: naciśnij Ctrl+C'; }
+};
+$('pomin').onclick = async () => {
+  if (!cur) return; wykl.push(cur.model); LS.set('wyklucz', wykl);
+  try { await call({t: 'pomin', id: cur.id}); } catch (e) {}
+  $('zadanie').hidden = true; losuj();
+};
+function zapisane() { return LS.get('kolejka', []); }
+async function wyslijRekord(rec) {
+  const d = await call(Object.assign({t: 'odp'}, rec));
+  if (!d.ok) throw new Error(d.err || 'blad');
+}
+$('wyslij').onclick = async () => {
+  if (!cur) return;
+  const rec = {id: cur.id, nazwa: $('nazwa').value.trim(), wyszukiwanie: $('wysz').value, odpowiedz: $('odp').value.trim(),
+               kategoria: $('kat').value, link: $('link').value, uwagi: $('uw').value.trim(), model: cur.model, polecenie: cur.polecenie};
+  if (!rec.nazwa || !rec.odpowiedz || !rec.kategoria || !rec.link || !rec.wyszukiwanie) return say('m2', 'Wypełnij wszystkie pola oprócz uwag.', 'err');
+  $('wyslij').disabled = true; say('m2', 'Wysyłam…');
+  const all = LS.get('wszystkie', []); all.push(Object.assign({czas: new Date().toISOString()}, rec)); LS.set('wszystkie', all);
+  try {
+    await wyslijRekord(rec);
+    say('m2', ''); $('zadanie').hidden = true; $('dziekuje').hidden = false; cur = null; licznik();
+  } catch (e) {
+    const q = zapisane(); q.push(rec); LS.set('kolejka', q);
+    say('m2', 'Nie udało się wysłać. Wynik jest zapisany w tej przeglądarce. Spróbuj ponownie za chwilę (przycisk „Coś nie działa?” na dole).', 'err');
+  } finally { $('wyslij').disabled = false; }
+};
+$('ponow').onclick = async () => {
+  const q = zapisane(), rest = []; let ok = 0;
+  for (const r of q) { try { await wyslijRekord(r); ok++ } catch (e) { rest.push(r) } }
+  LS.set('kolejka', rest); say('m3', `Wysłano: ${ok}. Zostało: ${rest.length}.`, rest.length ? 'err' : 'good');
+};
+$('json').onclick = () => {
+  const b = new Blob([JSON.stringify(LS.get('wszystkie', []), null, 1)], {type: 'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'moje_wyniki.json'; a.click();
+};
+async function licznik() {
+  try { const r = await fetch(API + '?a=stats'); const d = await r.json(); if (d.ok) $('licznik').textContent = `Wysłano już ${d.n} odpowiedzi.`; } catch (e) {}
+}
+licznik();
+</script>
+</body>
+</html>
