@@ -23,6 +23,7 @@ button{font:inherit;cursor:pointer;border:3px solid #150f1b;background:var(--gol
 button.sec{background:var(--ink);color:var(--paper);border-color:var(--line)}
 button:disabled{opacity:.5;cursor:default}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.szukaj{background:#0f0b14;border:2px solid var(--line);padding:10px 14px;margin:10px 0;overflow-wrap:anywhere}.szukaj ol{margin:4px 0;font-size:15px}.szukaj li{margin:2px 0}.szukaj .lab{margin:0 0 4px}.najpro{margin:0 0 6px;color:var(--gold);font-weight:700}
 .prompt{background:#0f0b14;border-left:6px solid var(--gold);padding:10px 12px;margin:8px 0;color:var(--paper);user-select:all}
 ol{padding-left:2.2em;margin:6px 0}   /* numery listy mieszczą się wewnątrz ramki */
 li{margin:6px 0}
@@ -51,12 +52,21 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--gold)}
 
 <section class="box" id="zadanie" hidden>
 <p class="lab">Twoje zadanie</p>
-<p>Model: <span class="big" id="zmodel"></span><br><small>Gdzie go znaleźć: <b id="zgdzie"></b></small></p>
+<p>Model: <span class="big" id="zmodel"></span></p>
+<div class="szukaj"><p class="lab">Gdzie znaleźć model</p>
+<p id="zpod" class="najpro" hidden></p>
+<ol>
+<li>Aplikacja, w której <b>już masz konto</b>.</li>
+<li><b>LMArena</b> (arena.ai).</li>
+<li><b>HuggingFace</b> (huggingface.co).</li>
+<li><b>OpenRouter</b> (openrouter.ai/chat).</li>
+<li>Strona producenta: <b id="zgdzie"></b></li>
+</ol></div>
 <ol>
 <li>Skopiuj polecenie:
   <div class="prompt" id="ztresc"></div>
   <div class="row"><button class="sec" id="kopiuj">Kopiuj polecenie</button></div></li>
-<li>Otwórz model. Otwórz <b>nową rozmowę</b>.</li>
+<li>Znajdź model (ramka wyżej). Otwórz <b>nową rozmowę</b>.</li>
 <li>Wklej polecenie. Wyślij je <b>jeden raz</b>.</li>
 <li>Nie poprawiaj i nie dopytuj. Wklej poniżej pierwszą odpowiedź.</li>
 </ol>
@@ -129,6 +139,7 @@ async function losuj() {
     if (!d.ok) { say('m1', d.err === 'kod' ? 'Zły kod zajęć.' : 'Nie udało się. Spróbuj jeszcze raz.', 'err'); return; }
     cur = d; say('m1', '');
     $('zmodel').textContent = d.model; $('zgdzie').textContent = d.gdzie; $('ztresc').textContent = d.tresc;
+    $('zpod').hidden = !d.podpowiedz; $('zpod').textContent = d.podpowiedz ? 'Najprościej: ' + d.podpowiedz : '';
     ['nazwa', 'odp', 'uw'].forEach(i => $(i).value = ''); ['wysz', 'kat', 'link'].forEach(i => $(i).value = '');
     say('m2', ''); $('zadanie').hidden = false; $('dziekuje').hidden = true; $('start').hidden = true;
     $('zadanie').scrollIntoView();
