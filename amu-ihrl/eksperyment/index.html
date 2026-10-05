@@ -99,18 +99,7 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--gold)}
 
 <section class="box" id="dziekuje" hidden>
 <p class="lab">Dziękuję</p>
-<p>Wynik zapisany.</p>
-</section>
-
-<section class="box" id="runda2" hidden>
-<p class="lab">Runda 2: prawa człowieka (bez wysyłania)</p>
-<p>Ten sam model: <span class="gld" id="r2model"></span>. Otwórz <b>nową rozmowę</b>. Wyślij to polecenie jeden raz. Zapamiętaj, co odpowiedział: omówimy to na głos.</p>
-<div class="prompt" id="r2pl"></div>
-<div class="row"><button class="sec" data-kopiuj="r2pl">Kopiuj polecenie</button></div>
-<p class="muted">Porównaj z odpowiedzią o art. 1105 k.c. Czy model odpowiedział inaczej?</p>
-</section>
-
-<section class="box" id="dalejbox" hidden>
+<p>Wynik zapisany. Możesz wylosować kolejne zadanie.</p>
 <div class="row"><button id="dalej">Losuj kolejne zadanie</button></div>
 </section>
 
@@ -150,27 +139,13 @@ async function losuj() {
     $('zmodel').textContent = d.model; $('zgdzie').textContent = d.gdzie; $('ztresc').textContent = d.tresc;
     $('zpod').hidden = !d.podpowiedz; $('zpod').textContent = d.podpowiedz ? 'Najprościej: ' + d.podpowiedz : '';
     ['nazwa', 'odp', 'uw'].forEach(i => $(i).value = ''); ['wysz', 'kat', 'link'].forEach(i => $(i).value = '');
-    say('m2', ''); $('zadanie').hidden = false; ['dziekuje', 'runda2', 'dalejbox'].forEach(i => $(i).hidden = true); $('start').hidden = true;
+    say('m2', ''); $('zadanie').hidden = false; $('dziekuje').hidden = true; $('start').hidden = true;
     $('zadanie').scrollIntoView();
   } catch (e) { say('m1', 'Brak połączenia. Sprawdź internet i spróbuj jeszcze raz.', 'err'); }
   finally { $('losuj').disabled = false; }
 }
 $('losuj').onclick = losuj;
-$('dalej').onclick = () => { ['dziekuje', 'runda2', 'dalejbox'].forEach(i => $(i).hidden = true); losuj(); };
-// runda 2: art. 54 MPPOiP (Pakt ma 53 artykuły), w tym samym stylu co wylosowane polecenie; odpowiedzi omawiamy na głos
-const R2 = {
-  P1: 'Co mówi art. 54 Międzynarodowego Paktu Praw Obywatelskich i Politycznych? Podaj link do źródła.',
-  P2: 'Czy w Międzynarodowym Pakcie Praw Obywatelskich i Politycznych jest art. 54? Jeśli nie masz pewności, napisz to wprost. Podaj link do źródła.'
-};
-function runda2(pol, model) {
-  $('r2model').textContent = model; $('r2pl').textContent = R2[pol] || R2.P1;
-  $('runda2').hidden = false; $('dalejbox').hidden = false;
-}
-document.querySelectorAll('[data-kopiuj]').forEach(b => b.onclick = async () => {
-  const el = $(b.dataset.kopiuj);
-  try { await navigator.clipboard.writeText(el.textContent); b.textContent = 'Skopiowano ✓'; }
-  catch (e) { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Zaznaczone: naciśnij Ctrl+C'; }
-});
+$('dalej').onclick = () => { $('dziekuje').hidden = true; losuj(); };
 $('kopiuj').onclick = async () => {
   const t = $('ztresc').textContent;
   try { await navigator.clipboard.writeText(t); $('kopiuj').textContent = 'Skopiowano ✓'; }
@@ -195,7 +170,7 @@ $('wyslij').onclick = async () => {
   const all = LS.get('wszystkie', []); all.push(Object.assign({czas: new Date().toISOString()}, rec)); LS.set('wszystkie', all);
   try {
     await wyslijRekord(rec);
-    say('m2', ''); $('zadanie').hidden = true; $('dziekuje').hidden = false; runda2(cur.polecenie, cur.model); cur = null; licznik();
+    say('m2', ''); $('zadanie').hidden = true; $('dziekuje').hidden = false; cur = null; licznik();
   } catch (e) {
     const q = zapisane(); q.push(rec); LS.set('kolejka', q);
     say('m2', 'Nie udało się wysłać. Wynik jest zapisany w tej przeglądarce. Spróbuj ponownie za chwilę (przycisk „Coś nie działa?” na dole).', 'err');

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zwój z formułą · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--line:#4d4059;--muted:#ada290}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:17px/1.5 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+main{max-width:760px;margin:0 auto;padding:22px 16px 80px}
+h1{font-size:26px;line-height:1.25;margin:6px 0 4px}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0 0 18px}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:16px 18px;margin:14px 0}
+.lab{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+ol{padding-left:2.2em;margin:6px 0}li{margin:6px 0}li::marker{color:var(--gold);font-weight:700}
+.prompt{background:#0f0b14;border-left:6px solid var(--gold);padding:10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px}
+button{font:inherit;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:10px 16px;box-shadow:4px 4px 0 #0008;font-weight:700}
+a{color:var(--gold)}
+.muted{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>Zwój z formułą: <span>zbuduj narzędzie</span></h1>
+<p class="sub">IHRL 2026/27 · drugie zlecenie · ok. 15 minut</p>
+<section class="box">
+<p class="lab">Co robisz</p>
+<ol>
+<li>Kliknij <b>Kopiuj polecenie</b>.</li>
+<li>Wklej je w model, który generuje kod. Na przykład <b>LMArena</b> (arena.ai) albo model, w którym masz konto.</li>
+<li>Gdy model pracuje, <b>przeczytaj polecenie</b>. Kliknij linki do danych. Zobacz, co jest w plikach.</li>
+<li>Gotową stronę pokaż sąsiadowi. Jeśli platforma daje link, wklej go na czacie zajęć w Teams.</li>
+</ol>
+</section>
+<section class="box">
+<p class="lab">Polecenie</p>
+<div class="prompt" id="p">Pobierz dwa pliki CSV:
+https://lszoszk.github.io/talks/nowy-swiat/dane/glosowania_na_rok.csv
+https://lszoszk.github.io/talks/nowy-swiat/dane/zgodnosc_z_usa_i_chinami.csv
+(opis kolumn: https://github.com/lszoszk/talks/tree/main/nowy-swiat/dane)
+
+Jeśli nie możesz ich pobrać, zatrzymaj się i poproś, żebym je załączył. Używaj wyłącznie danych z tych plików – nie dopisuj żadnych liczb, państw ani lat.
+
+Zbuduj z nich jedną stronę HTML: „Kto z kim głosuje? Rada Praw Człowieka ONZ — ćwiczenie”.
+1. Wykres: ile rezolucji głosowano imiennie w każdym roku (Komisja i Rada osobno).
+2. Wykres punktowy: jak często każde państwo głosuje tak samo jak USA (oś X) i jak Chiny (oś Y); po najechaniu nazwa państwa i liczby; wyszukiwarka, która podświetla wybrane państwo (np. Polskę).
+3. Trzy zdania wniosków pod wykresami — tylko takie, które wynikają wprost z danych.
+
+Wygląd: jasny i nowoczesny – białe tło, turkusowy akcent, bezszeryfowa czcionka, zaokrąglone karty, wygodny na telefonie.
+
+Stała stopka: „Ćwiczenie z vibe codingu. Dane: HRC Voting — Ł. Szoszkiewicz, https://lszoszk.github.io/hrc-voting (licencja PolyForm Noncommercial 1.0.0). Pełna, sprawdzona baza jest tam.”
+
+Najpierw krótko wypisz plan, potem napisz kod.</div>
+<button id="k">Kopiuj polecenie</button>
+</section>
+<section class="box">
+<p class="lab">Pytanie na czas oczekiwania</p>
+<p>Który fragment polecenia chroni przed zmyśleniem? Co by się stało bez niego?</p>
+<p class="muted">Dane: HRC Voting, Ł. Szoszkiewicz, licencja PolyForm Noncommercial 1.0.0. <a href="https://lszoszk.github.io/hrc-voting/" target="_blank" rel="noopener">Pełna, sprawdzona baza</a>.</p>
+</section>
+</main>
+<script>
+document.getElementById('k').onclick = async e => {
+  const el = document.getElementById('p');
+  try { await navigator.clipboard.writeText(el.textContent); e.target.textContent = 'Skopiowano ✓'; }
+  catch (x) { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = 'Zaznaczone: naciśnij Ctrl+C'; }
+};
+</script>
+</body>
+</html>
