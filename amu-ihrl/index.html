@@ -599,7 +599,25 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 .kurs .kback{font-family:var(--pixel);font-size:20px;color:var(--gold);border-bottom:2px solid var(--gold);align-self:flex-start;text-decoration:none}
 .kurs .kqr.kqr2 img{width:280px;height:280px}
 .kurs .kqr.kqr2 .klist li{font-size:23px}
-.kurs .kfind{margin:0;font-size:22px;line-height:1.4;color:var(--paper);border-left:6px solid var(--gold);padding:4px 0 4px 18px}.kurs .kfind .lab{display:block;margin-bottom:4px}
+
+/* ===== Zmiany po zajęciach organizacyjnych (5.10.2026): linki, zdjęcia przy filmie, przykład z quizu, dziennik ===== */
+.kurs .klist a,.kurs .kurl a{color:var(--gold);text-decoration:underline;text-underline-offset:4px}
+.kurs .kmedia{display:grid}
+.kurs .kmedia>figure{grid-area:1/1;transition:opacity .3s steps(3)}
+.kurs .kmedia .kph{text-align:center}
+.kurs .kmedia .kph img{height:330px;width:auto;max-width:100%;display:block;margin:0 auto;border:5px solid #150f1b;box-shadow:8px 8px 0 #0008}
+body:not([data-public="true"]) .kurs .kmedia>figure.on:has(~figure.on){opacity:0}
+body[data-public="true"] .kurs .kmedia .kph{display:none}
+.kurs .kgrid.kqz{grid-template-columns:.7fr 1.5fr}
+.kurs .kquiz{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+.kurs .kquiz .kq{font-size:22px;line-height:1.4;margin:0}
+.kurs .kquiz img{width:100%;display:block;border:4px solid #150f1b;background:#fff}
+.kurs .kopt{list-style:upper-alpha;margin:12px 0 0 1.6em;padding:0;font-size:23px;line-height:1.5;color:var(--paper)}
+.kurs .kgrid.kzas{grid-template-columns:1fr 1.15fr}
+.kurs .kcode{margin:0;font-family:var(--mono);font-size:21px;line-height:1.5;color:var(--parch);background:#0f0b14;border-left:6px solid var(--gold);padding:12px 16px;white-space:pre-wrap;font-variant-ligatures:none}
+.kurs.kfit .klist li{font-size:23px;line-height:1.3}
+.kurs.kfit .klist{gap:11px}
+.kurs.kfit h2{font-size:46px}
 
 </style>
 </head><body data-public="false" data-online><main id="viewport"><div id="stage"><div id="world" aria-hidden="true"></div>
@@ -627,14 +645,14 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <li><b>Kim jesteście?</b> Krótkie przedstawienie się</li>
 <li><b>Pierwsze zlecenie:</b> art. 1105 Kodeksu cywilnego i przegląd komputerów</li>
 <li><b>Cztery ścieżki zaliczenia</b> i kalendarz</li>
-<li><b>Zasady pracy z AI</b> i zestaw startowy</li>
+<li><b>Zasady pracy z AI</b></li>
 <li><b>Ankieta</b>: anonimowa, 5 minut</li>
 </ol>
 <span class="slide-number">03</span>
 </section>
 
-<section aria-label="Slajd 4: Kim jesteście?" class="slide kurs" data-title="Kim jesteście?" data-min="20" data-appendix="false">
-<div class="kicker">Przedstawcie się · 30 sekund na osobę</div>
+<section aria-label="Slajd 4: Kim jesteście?" class="slide kurs" data-title="Kim jesteście?" data-min="26" data-appendix="false">
+<div class="kicker">Przedstawcie się · 45 sekund na osobę</div>
 <h2>Kim <span class="gld">jesteście?</span></h2>
 <div class="kgrid c3">
 <div class="kbox"><div class="kbig">1</div><p><b>Imię</b></p></div>
@@ -653,8 +671,7 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <li>Kliknij <b>Losuj zadanie</b>. Strona poda model i polecenie.</li>
 <li>Skopiuj polecenie. Znajdź model. Nowa rozmowa. Wyślij jeden raz.</li>
 <li>Wklej odpowiedź. Wybierz kategorię i stan linku. Wyślij wynik.</li>
-</ol><p class="kurl">lszoszk.github.io/teaching-materials/amu-ihrl/eksperyment</p></div></div>
-<p class="kfind"><span class="lab">Gdzie znaleźć model (po kolei)</span>1. aplikacja, w której <b>już masz konto</b> · 2. jedna z trzech: <b>LMArena</b>, <b>HuggingFace</b> albo <b>OpenRouter</b> · 3. strona producenta</p>
+</ol><p class="kurl"><a href="https://lszoszk.github.io/teaching-materials/amu-ihrl/eksperyment/" target="_blank" rel="noopener">lszoszk.github.io/teaching-materials/amu-ihrl/eksperyment</a></p></div></div>
 <p class="klive frag" data-o="1" data-live="https://lszoszk.github.io/teaching-materials/amu-ihrl/eksperyment/wyniki.html" data-live-title="WYNIKI NA ŻYWO · ART. 1105">Wyniki na żywo ↗ <span>(W)</span></p>
 <p class="kans frag" data-o="2">Kodeks cywilny kończy się na <b>art. 1088</b>. Art. 1105 nie istnieje.</p>
 <span class="slide-number">05</span>
@@ -664,12 +681,12 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <div class="kicker">Zaliczenie · wybierz klasę postaci</div>
 <h2>Cztery ścieżki, <span class="gld">jedna mapa</span></h2>
 <div class="kgrid c4">
-<div class="kbox klass"><div class="ki" data-icon="waga"></div><div class="kn">PRAWNIK-PRAKTYK</div><p>Symulacja rozprawy przed ETPCz</p><small>pismo · rozprawa · wyrok</small></div>
+<div class="kbox klass"><div class="ki" data-icon="waga"></div><div class="kn">PRAWNIK-PRAKTYK*</div><p>Symulacja rozprawy przed ETPCz</p><small>pismo · rozprawa · wyrok</small></div>
 <div class="kbox klass"><div class="ki" data-icon="miecze"></div><div class="kn">PRAWNIK-VIBECODER</div><p>Aplikacja, której jeszcze nie ma, opublikowana online</p><small>zespół 2–3 · Codespaces</small></div>
-<div class="kbox klass"><div class="ki" data-icon="medalion"></div><div class="kn">PRAWNIK-BADACZ</div><p>Replikacja badania o modelach językowych w prawie</p><small>zespół 2–3 · protokół · raport</small></div>
+<div class="kbox klass"><div class="ki" data-icon="medalion"></div><div class="kn">PRAWNIK-BADACZ</div><p>Replikacja badania o modelach językowych w prawie</p><small>zespół 2–3 · protokół · raport · prezentacja</small></div>
 <div class="kbox klass"><div class="ki" data-icon="mapa"></div><div class="kn">KEEP IT SIMPLE</div><p>Quiz na ostatnich zajęciach</p><small>20 pytań · bez AI</small></div>
 </div>
-<p class="qualifier">Wybór do 26.10. Po tym terminie nie można zmienić tylko rozprawy: ani z niej odejść, ani do niej dołączyć. Rozprawa: od 9 do 12 osób.</p>
+<p class="qualifier">* Wybór do 26.10. Po tym terminie nie można zmienić tylko rozprawy: ani z niej odejść, ani do niej dołączyć. Rozprawa: od 9 do 12 osób.</p>
 <span class="slide-number">06</span>
 </section>
 
@@ -678,14 +695,14 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <h2>Took v Palantir <span class="gld">przed Trybunałem w Strasburgu</span></h2>
 <div class="kgrid c2">
 <div class="kbox"><div class="lab">Co robisz</div><ul class="klist">
-<li>Rola: <b>skarżący, rząd albo skład</b>.</li>
+<li>Rola: <b>skarżący, rząd albo skład orzekający</b>. W grupie 3–4 osoby.</li>
 <li>Skarga i odpowiedź rządu na piśmie, rozprawa, wyrok składu.</li>
 <li>Sprawa: rozpoznawanie twarzy po demonstracji; art. 6, 8, 11, 13 i 15 EKPC.</li>
 </ul></div>
 <div class="kbox"><div class="lab">Na start</div><ul class="klist">
-<li>Kazus PL/EN i wyjaśnienia (Teams).</li>
-<li><i>Glukhin przeciwko Rosji</i> (2023).</li>
-<li>Przewodnik ETPCz po dopuszczalności skarg.</li>
+<li>Kazus PL/EN (MS Teams).</li>
+<li>Termin nadsyłania pytań: połowa 9.11.</li>
+<li>Zasady jak w <a href="https://helgapedersenmoot.elsa.org/participation/competition-materials/" target="_blank" rel="noopener">Helga Pedersen Moot Court</a>. Jedyna zmiana: pismo ma 15 stron, nie 20.</li>
 <li>AI: research, tłumaczenie, korekta tak. <b>Gotowy tekst pism nie.</b></li>
 </ul></div>
 </div>
@@ -693,7 +710,7 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <span class="slide-number">07</span>
 </section>
 
-<section aria-label="Slajd 8: Ścieżka: prawnik-vibecoder" class="slide kurs" data-title="Ścieżka: prawnik-vibecoder" data-min="4" data-appendix="false">
+<section aria-label="Slajd 8: Ścieżka: prawnik-vibecoder" class="slide kurs kfit" data-title="Ścieżka: prawnik-vibecoder" data-min="4" data-appendix="false">
 <div class="kicker">Ścieżka 2 · prawnik-vibecoder</div>
 <h2>Aplikacja, <span class="gld">której jeszcze nie ma</span></h2>
 <div class="kgrid kvc">
@@ -701,45 +718,51 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <li>Zespół 2–3 osób. Budujecie z AI w <b>Codespaces</b> i publikujecie online.</li>
 <li>Oddajecie: aplikację, repo, testy, listę tego, <b>czego nie robi</b>, demo 5 min.</li>
 <li>Wzór: <b>HRC Voting</b> albo <b>baza typu Charlotina</b> (temat uzgodniony ze mną).</li>
-<li>Jawna licencja danych, bez danych osobowych, <b>bez kluczy API w kodzie</b>.</li>
+<li>Możliwość uzyskania klucza API po uzgodnieniu z prowadzącym (OpenRouter).</li>
 </ul></div>
-<div class="kvid-col"><figure class="kvid frag" data-o="1"><video data-bg src="assets/vibecoding_3x.mp4" poster="assets/vibecoding_3x_poster.webp" muted loop playsinline preload="auto"></video><figcaption>Tak powstało HRC Voting: polecenie → kod → narzędzie · przyspieszone</figcaption></figure>
-<p class="klive frag" data-o="2" data-live="https://lszoszk.github.io/hrc-voting/">HRC Voting na żywo ↗ <span>(W)</span></p></div>
+<div class="kvid-col"><div class="kmedia">
+<figure class="kvid kph frag" data-o="1"><img src="assets/aiforgood_2026.webp" alt="Łukasz Szoszkiewicz przed banerem Ready for AI? na AI for Good Global Summit w Genewie, lipiec 2026"><figcaption>AI for Good Global Summit, Genewa, lipiec 2026</figcaption></figure>
+<figure class="kvid frag" data-o="2"><video data-bg src="assets/vibecoding_3x.mp4" poster="assets/vibecoding_3x_poster.webp" muted loop playsinline preload="auto"></video><figcaption>Tak powstało HRC Voting: polecenie → kod → narzędzie · przyspieszone</figcaption></figure>
+<figure class="kvid kph frag" data-o="3"><img src="assets/genewa_2026.webp" alt="Łukasz Szoszkiewicz na stoisku Geneva Human Rights Hub pokazuje na monitorze mapę z HRC Voting"><figcaption>Geneva Human Rights Hub, lipiec 2026 · fot. Domenico Zipoli</figcaption></figure>
 </div>
-<p class="kalso frag" data-o="3"><span class="lab">Nie tylko ja</span>Repsol (Hiszpania): <b class="gld">FT 2026: Most innovative in-house legal team in Europe</b>. Ok. 200 osób w dziale prawnym, każda ma 100 godzin rocznie na naukę programowania i AI.</p>
+<p class="klive frag" data-o="4" data-live="https://lszoszk.github.io/hrc-voting/">HRC Voting na żywo ↗ <span>(W)</span></p></div>
+</div>
+<p class="kalso frag" data-o="5"><span class="lab">Nie tylko ja</span>Repsol (Hiszpania): <b class="gld">FT 2026: Most innovative in-house legal team in Europe</b>. Ok. 200 osób w dziale prawnym, każda ma 100 godzin rocznie na naukę programowania i AI.</p>
 <footer class="src"><a href="https://www.ft.com/content/7bf86647-32f0-4f0c-b46b-2f4d690fa51e" target="_blank" rel="noopener">Y. Lambert, „AI shakes up in-house legal teams’ work practices”, Financial Times (25.09.2026)</a><a href="https://lszoszk.github.io/hrc-voting/" target="_blank" rel="noopener">HRC Voting — Ł. Szoszkiewicz (2026)</a></footer>
 <span class="slide-number">08</span>
 </section>
 
-<section aria-label="Slajd 9: Ścieżka: prawnik-badacz" class="slide kurs" data-title="Ścieżka: prawnik-badacz" data-min="3" data-appendix="false">
+<section aria-label="Slajd 9: Ścieżka: prawnik-badacz" class="slide kurs kfit" data-title="Ścieżka: prawnik-badacz" data-min="3" data-appendix="false">
 <div class="kicker">Ścieżka 3 · prawnik-badacz</div>
-<h2>Czy wynik <span class="gld">się powtórzy?</span></h2>
+<h2>Czy modele nadają się <span class="gld">do analizy dokumentów z zakresu praw człowieka?</span></h2>
 <div class="kgrid c2">
 <div class="kbox"><div class="lab">Co robisz</div><ul class="klist">
-<li>Zespół 2–3 osób powtarza badanie i sprawdza, co się utrzymało.</li>
-<li>Najpierw protokół z planem analizy, potem kod lub notatnik, dane, raport (do 8 stron), prezentacja 10 min.</li>
-<li>Wynik negatywny też jest wynikiem: <b>oceniam rygor, nie rezultat.</b></li>
+<li>Zespół 2–3 osób powtarza (i/lub modyfikuje) badanie i sprawdza, co się utrzymało.</li>
+<li>Najpierw protokół z planem analizy, potem kod lub notatnik, dane, pisemne podsumowanie (do 8 stron), prezentacja + Q&amp;A 15 minut.</li>
+<li>Wynik negatywny też jest wynikiem: <b>oceniam proces, nie rezultat.</b> Wykorzystujecie AI. Przynajmniej 20% podsumowania to analiza błędów AI: jak je wykryliście i naprawiliście.</li>
 </ul></div>
 <div class="kbox"><div class="lab">Do wyboru</div><ul class="klist">
-<li><b>A.</b> Karp i in. (2026): modele zdają egzamin na członka KIO. Test wiedzy na nowszych modelach.</li>
-<li><b>B.</b> Thais i in. (2026): HumRightsBench. Własne scenariusze w schemacie IRAP i zgodność ocen.</li>
+<li><b>A.</b> Thais i in. (2026): HumRightsBench. Własne scenariusze w schemacie IRAP i zgodność ocen.</li>
+<li><b>B.</b> Karp i in. (2026): modele zdają egzamin na członka KIO. Test wiedzy na nowszych modelach.</li>
 </ul></div>
 </div>
-<footer class="src"><a href="https://doi.org/10.1007/s10506-026-09505-w" target="_blank" rel="noopener">Karp i in., LLM-as-a-judge is bad…, Artificial Intelligence and Law (2026)</a><a href="https://arxiv.org/abs/2608.10268" target="_blank" rel="noopener">Thais i in., Toward Human Rights Benchmarking for LLMs, arXiv 2608.10268 (2026), preprint</a></footer>
+<footer class="src"><a href="https://arxiv.org/abs/2608.10268" target="_blank" rel="noopener">Thais i in., Toward Human Rights Benchmarking for LLMs, arXiv 2608.10268 (2026), preprint</a><a href="https://doi.org/10.1007/s10506-026-09505-w" target="_blank" rel="noopener">Karp i in., LLM-as-a-judge is bad…, Artificial Intelligence and Law (2026)</a></footer>
 <span class="slide-number">09</span>
 </section>
 
 <section aria-label="Slajd 10: Ścieżka: keep it simple" class="slide kurs" data-title="Ścieżka: keep it simple" data-min="2" data-appendix="false">
 <div class="kicker">Ścieżka 4 · keep it simple</div>
 <h2>Quiz <span class="gld">na ostatnich zajęciach</span></h2>
-<div class="kgrid c2">
+<div class="kgrid c2 kqz">
 <div class="kbox"><div class="lab">Jak</div><ul class="klist">
 <li>20 pytań, na sali, bez AI.</li>
 <li>Zakres: zajęcia i mapa.</li>
-<li>Co najmniej połowa pytań na zastosowanie, nie pamięć.</li>
+<li>Około połowy pytań na zastosowanie, nie pamięć.</li>
 <li>Ocena: quiz 80%, dziennik 20%.</li>
 </ul></div>
-<div class="kbox"><div class="lab">Przykład</div><p class="kq">System rozpoznawania twarzy ma czułość 95% i swoistość 85%. Wśród miliona pasażerów jest 50 poszukiwanych. Mniej więcej ilu niewinnych zostanie zatrzymanych?</p></div>
+<div class="kbox"><div class="lab">Przykład z quizu</div><div class="kquiz"><div><p class="kq">Spójrz na obraz po prawej stronie. Przedstawia on sytuację, w której trend wydaje się obowiązywać w zbiorze danych, ale odwraca się lub znika, gdy podzielimy zbiór danych na podzbiory. Jak nazywamy taką sytuację?</p>
+<ol class="kopt"><li>Paradoks Simpsona</li><li>Paradoks Moravcsa</li><li>Prawo Loomisa</li><li>Błąd prokuratora</li></ol></div>
+<img src="assets/quiz_simpson.webp" alt="Dwa wykresy punktowe: w każdej z dwóch grup trend rosnący, po połączeniu grup trend malejący"></div></div>
 </div>
 <span class="slide-number">10</span>
 </section>
@@ -756,8 +779,8 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 </ul></div>
 <div class="kbox"><div class="lab">Terminy</div><ul class="klist">
 <li><b>26.10</b>: wybór ścieżki</li>
-<li><b>Grudzień</b>: pierwszy etap (pismo, repo, protokół)</li>
-<li><b>Po feriach</b>: drugi etap</li>
+<li><b>Koniec listopada</b>: skarga / tematyka eksperymentu / aplikacji</li>
+<li><b>Do przerwy zimowej</b>: odpowiedź na skargę / plan analizy / analiza wykonalności</li>
 <li><b>Styczeń</b>: rozprawa, demo, prezentacje, quiz</li>
 </ul></div>
 </div>
@@ -767,28 +790,26 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <section aria-label="Slajd 12: Zasady pracy z AI" class="slide kurs" data-title="Zasady pracy z AI" data-min="3" data-appendix="false">
 <div class="kicker">Zasady · praca z AI</div>
 <h2>AI wolno. <span class="gld">Podpisujesz się Ty.</span></h2>
-<ul class="klist kplan">
+<div class="kgrid kzas">
+<div class="kbox"><div class="lab">Zasady</div><ul class="klist">
 <li><b>Ujawniasz użycie AI</b>: do czego i jakim narzędziem.</li>
 <li><b>Zmyślone źródło w pracy</b> oznacza zero punktów za tę pracę.</li>
-<li><b>Dziennik weryfikacji</b>: trzy wpisy w semestrze. Co AI powiedziała, jak to sprawdziłeś, czy się zgadzało.</li>
-<li><b>Na zajęciach</b>: najpierw bez AI, potem z AI, potem porównanie.</li>
-</ul>
+<li><b>Kazusy rozwiązujemy</b> bez AI, potem z AI, potem porównanie.</li>
+</ul></div>
+<div class="kbox"><div class="lab">Dziennik weryfikacji · 3 wpisy w semestrze</div>
+<p>Plik <b>DZIENNIK.md</b> w Twoim prywatnym repo na GitHubie, z dostępem dla mnie. Jeden wpis = jeden commit: data zapisuje się sama.</p>
+<pre class="kcode">## 16.11.2026 · art. 5 AI Act
+Model:        nazwa, wersja, data
+Polecenie:    wklejone w całości
+AI twierdzi:  jedno zdanie, cytat
+Sprawdzenie:  gdzie i jak (link)
+Wynik:        zgadza się / częściowo / błąd
+Wniosek:      co zrobię inaczej</pre></div>
+</div>
 <span class="slide-number">12</span>
 </section>
 
-<section aria-label="Slajd 13: Zestaw startowy" class="slide kurs" data-title="Zestaw startowy" data-min="10" data-appendix="false">
-<div class="kicker">Dla chętnych · zestaw startowy</div>
-<h2>Od przeglądarki <span class="gld">do własnego repo</span></h2>
-<div class="kgrid c3">
-<div class="kbox"><div class="kbig">1</div><div class="lab">Google Colab</div><p>Notatnik w przeglądarce. Nic nie instalujesz.</p></div>
-<div class="kbox"><div class="kbig">2</div><div class="lab">GitHub Codespaces</div><p>VS Code w przeglądarce, z gitem i Pythonem. Działa na komputerach w sali.</p></div>
-<div class="kbox"><div class="kbig">3</div><div class="lab">Własny laptop</div><p>git, VS Code, Python. Do pracy z kodem polecam własny sprzęt.</p></div>
-</div>
-<p class="qualifier">Klucze API dla chętnych grup: osobny klucz z limitem, w pliku <b>.env</b>, który jest w <b>.gitignore</b>. Klucz w publicznym repo to klucz dla całego świata.</p>
-<span class="slide-number">13</span>
-</section>
-
-<section aria-label="Slajd 14: Ankieta" class="slide kurs" data-title="Ankieta" data-min="8" data-appendix="false">
+<section aria-label="Slajd 13: Ankieta" class="slide kurs" data-title="Ankieta" data-min="8" data-appendix="false">
 <div class="kicker">Na koniec · ankieta</div>
 <h2>Pięć minut, <span class="gld">bez imion</span></h2>
 <div class="kqr"><img src="assets/qr_ankieta.webp" alt="Kod QR do anonimowej ankiety w Microsoft Forms">
@@ -798,7 +819,11 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <li><b>Zadanie, przy którym AI Wam nie pomogła:</b> za Waszą zgodą spróbuję zlecić realizację wybranych zadań agentom AI</li>
 <li>Bez danych osobowych</li>
 </ul><p class="kurl">forms.cloud.microsoft/e/AyfWAJFn0x</p></div></div>
-<span class="slide-number">14</span>
+<span class="slide-number">13</span>
+</section>
+
+<section aria-label="Slajd 14: Mapa → Sąd" class="slide map-slide" data-stop="2" data-title="Mapa → Sąd" data-title-odyseja="Mapa → Areopag" data-min="0.3" data-appendix="false">
+
 </section>
 
 <section aria-label="Slajd 15: Legenda mapy" class="slide legend-slide" data-title="Legenda mapy" data-min="1" data-appendix="false">
@@ -1204,11 +1229,7 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <span class="slide-number">16</span>
 </section>
 
-<section aria-label="Slajd 17: Mapa → Sąd" class="slide map-slide" data-stop="2" data-title="Mapa → Sąd" data-title-odyseja="Mapa → Areopag" data-min="0.3" data-appendix="false">
-
-</section>
-
-<section aria-label="Slajd 18: Sąd: USA, Pakistan, Polska" class="slide courts-slide" data-title="Sąd: USA, Pakistan, Polska" data-title-odyseja="Areopag: USA, Pakistan, Polska" data-min="2.5" data-appendix="false">
+<section aria-label="Slajd 17: Sąd: USA, Pakistan, Polska" class="slide courts-slide" data-title="Sąd: USA, Pakistan, Polska" data-title-odyseja="Areopag: USA, Pakistan, Polska" data-min="2.5" data-appendix="false">
 <div class="kicker" data-u-odyseja="Areopag · od herezji do praktyki">Sąd · od herezji do praktyki</div>
 <div class="nq-wrap"><p class="nq">„Oto propozycja, którą — jak podejrzewam — wielu odruchowo potępi jako <span class="gld">herezję</span> […]. Ci, którzy — tak jak ja — uważają, że »zwykłe znaczenie« jest podstawową regułą interpretacji tekstów prawnych, powinni <b class="hes">rozważyć — podkreślam: rozważyć</b> — czy i w jaki sposób modele językowe oparte na sztucznej inteligencji, takie jak ChatGPT […], <b class="hes">mogłyby — mogłyby</b> — znaleźć zastosowanie w analizie interpretacyjnej. <span class="gld">Tak oto pomyślałem to, co nie do pomyślenia, i powiedziałem to, czego nie należy mówić.</span>”</p><p class="nq-src"><b class="yr">USA · 2024</b> sędzia Kevin Newsom, federalny sąd apelacyjny, zdanie zbieżne · tłum. własne, skrócone</p><details class="orig"><summary>oryginał (EN)</summary><p>“Here’s the proposal, which I suspect many will reflexively condemn as heresy, but which I promise to unpack if given the chance: Those, like me, who believe that ‘ordinary meaning’ is the foundational rule for the evaluation of legal texts should consider—consider—whether and how AI-powered large language models like OpenAI’s ChatGPT, Google’s Gemini, and Anthropic’s Claude might—might—inform the interpretive analysis. There, having thought the unthinkable, I’ve said the unsayable.”</p></details></div>
 <div class="courts">
@@ -1216,24 +1237,24 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <div class="court frag"><div class="cn">POLSKA <span class="yr">2026</span></div><p class="scale">Asystent urzędnika ma w najbliższych tygodniach trafić do <b>Prokuratorii Generalnej RP</b></p><div class="br-stat"><div class="big">PLLuM</div><p>polski model: wyszukiwanie i analiza prawa, streszczenia, anonimizacja; do końca roku także samorządy, m.in. Poznań</p></div></div>
 </div>
 <footer class="src"><a href="https://media.ca11.uscourts.gov/opinions/pub/files/202212581.pdf" target="_blank" rel="noopener">Snell v. United Specialty Ins. Co., 11th Cir. (28.05.2024), zdanie zbieżne sędziego Newsoma</a><a href="https://cepr.org/publications/dp21783" target="_blank" rel="noopener">Mehmood, Goessmann i Ash, Courts of Tomorrow, CEPR DP21783 (2026)</a><a href="https://documents.un.org/api/symbol/access?s=A/80/169&amp;l=en&amp;t=pdf" target="_blank" rel="noopener">Specjalna Sprawozdawczyni ONZ, A/80/169 (2025)</a><a href="https://www.rp.pl/administracja-panstwowa/art45166711-asystent-prawny-coraz-blizej-urzedow" target="_blank" rel="noopener">„Asystent prawny coraz bliżej urzędów”, Rzeczpospolita (29.09.2026)</a><a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai" target="_blank" rel="noopener">Bell i Legg, The Giving of Reasons, Bond Law Review 38(2) (2026)</a></footer>
-<span class="slide-number">18</span>
+<span class="slide-number">17</span>
 </section>
 
-<section aria-label="Slajd 19: Mapa → Gildia prawników" class="slide map-slide" data-stop="3" data-title="Mapa → Gildia prawników" data-title-odyseja="Mapa → Gildia prawników" data-min="0.3" data-appendix="false">
+<section aria-label="Slajd 18: Mapa → Gildia prawników" class="slide map-slide" data-stop="3" data-title="Mapa → Gildia prawników" data-title-odyseja="Mapa → Gildia prawników" data-min="0.3" data-appendix="false">
 
 </section>
 
-<section aria-label="Slajd 20: Narysuj mi prawnika i urzędnika w pracy" class="slide ai-slide" data-title="Narysuj mi prawnika i urzędnika w pracy" data-min="2" data-appendix="false">
+<section aria-label="Slajd 19: Narysuj mi prawnika i urzędnika w pracy" class="slide ai-slide" data-title="Narysuj mi prawnika i urzędnika w pracy" data-min="2" data-appendix="false">
 <div class="kicker">Gildia prawników · jak AI widzi prawnika i urzędnika</div>
 <div class="ai-grid">
 <div class="ai-col"><div class="prompt">„Narysuj mi prawnika w pracy”</div><div class="ai-pics2 frag"><figure><img src="assets/ai_prawnik_gemini.jpg" alt="Obraz wygenerowany przez Gemini: mężczyzna w garniturze przy biurku pisze na dokumentach, za oknem Warszawa z Pałacem Kultury, na biurku tabliczka Adwokat Piotr Kowalski"><figcaption>GOOGLE · GEMINI</figcaption></figure><figure><img src="assets/ai_prawnik_openai.jpg" alt="Obraz wygenerowany przez model OpenAI w Codexie: mężczyzna w garniturze przy biurku podpisuje dokumenty, za nim półki z książkami i waga"><figcaption>OPENAI · CODEX</figcaption></figure></div></div>
 <div class="ai-col"><div class="prompt">„Narysuj mi urzędnika w pracy”</div><div class="ai-pics2 frag"><figure><img src="assets/ai_urzednik_gemini.jpg" alt="Obraz wygenerowany przez Gemini: kobieta w granatowej marynarce przy biurku w jasnym urzędzie czyta dokument, na biurku segregatory Sprawy obywatelskie i Wnioski"><figcaption>GOOGLE · GEMINI</figcaption></figure><figure><img src="assets/ai_urzednik_ideogram.jpg" alt="Obraz wygenerowany przez Ideogram 4.0: urzędnik przy biurku w Urzędzie Miejskim, monitor kineskopowy, pieczątki, stosy teczek, okienko i petenci czekający na krzesłach"><figcaption>IDEOGRAM 4.0</figcaption></figure></div></div>
 <div class="ai-col greek frag" data-only="odyseja"><div class="prompt">„Narysuj mi prawnika w starożytnej Grecji”</div><div class="ai-pics2"><figure><img src="assets/ai_grecja_chatgpt.webp" alt="Obraz wygenerowany przez ChatGPT: mężczyzna w białej todze przemawia do tłumu na schodach, w tle Akropol z Partenonem"><figcaption>OPENAI · CHATGPT</figcaption></figure><figure><img src="assets/ai_grecja_gemini.webp" alt="Obraz wygenerowany przez Gemini: mówca w ciemnym płaszczu ze zwojem przemawia z podwyższenia do tłumu na agorze, w tle Akropol"><figcaption>GOOGLE · GEMINI</figcaption></figure></div></div>
 </div>
-<span class="slide-number">20</span>
+<span class="slide-number">19</span>
 </section>
 
-<section aria-label="Slajd 21: Na co przeznacza czas prawnik w pracy?" class="slide time-slide" data-title="Na co przeznacza czas prawnik w pracy?" data-min="2.5" data-appendix="false">
+<section aria-label="Slajd 20: Na co przeznacza czas prawnik w pracy?" class="slide time-slide" data-title="Na co przeznacza czas prawnik w pracy?" data-min="2.5" data-appendix="false">
 <div class="kicker">Gildia prawników · czas pracy, badanie brytyjskie</div>
 <h2>Na co przeznacza czas <span class="gld">prawnik w pracy?</span></h2>
 <div class="bars">
@@ -1250,21 +1271,21 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 <p class="dk-q frag"><b>Czy prawnicy będą zbędni, czy ich praca się zmieni?</b></p>
 <p class="dk frag" aria-hidden="true"></p>
 <footer class="src"><a href="https://letr.org.uk/the-report/chapter-2/what-is-valued-and-required-by-the-legal-services-sector/index.html" target="_blank" rel="noopener">Legal Education and Training Review (2013), tab. 2.6</a><a href="https://www.iadclaw.org/assets/1/7/10.1-_Remus_Levy.pdf" target="_blank" rel="noopener">Remus i Levy, Can Robots Be Lawyers? (2017)</a><a href="https://www.ft.com/content/7bf86647-32f0-4f0c-b46b-2f4d690fa51e" target="_blank" rel="noopener">FT, ranking Innovative Lawyers (25.09.2026), tłum. własne</a><a href="https://www.oneusefulthing.org/p/the-dot-and-the-swarm" target="_blank" rel="noopener">Mollick, The Dot and the Swarm (1.10.2026)</a></footer>
-<span class="slide-number">21</span>
+<span class="slide-number">20</span>
 </section>
 
-<section aria-label="Slajd 22: Cel pracy i zadania" class="slide" data-title="Cel pracy i zadania" data-min="3.5" data-appendix="false">
+<section aria-label="Slajd 21: Cel pracy i zadania" class="slide" data-title="Cel pracy i zadania" data-min="3.5" data-appendix="false">
 <div class="kicker">Gildia prawników · mniej czasu na zadania, więcej na cel</div><h2>Cel pracy i zadania</h2>
 <div class="video-layout"><div class="vidwrap"><video data-subs="[[0.0, 1.6, &quot;Używamy tu Cursora na każdym kroku.&quot;], [1.6, 2.8, &quot;Korzysta z niego każdy inżynier.&quot;], [2.8, 4.92, &quot;A zatrudniamy dziś niesamowicie dużo ludzi.&quot;], [4.92, 7.12, &quot;Tu chodzi właśnie o cel i zadanie.&quot;], [7.12, 12.72, &quot;Celem inżyniera oprogramowania jest rozwiązywać znane problemy&quot;], [12.72, 16.6, &quot;i znajdować nowe problemy do rozwiązania.&quot;], [17.5, 19.9, &quot;Programowanie to jedno z zadań.&quot;], [20.2, 23.32, &quot;Więc jeśli celem nie jest programowanie…&quot;], [23.32, 26.72, &quot;jeśli Twoim celem dosłownie jest programowanie: ktoś mówi, co zrobić, a Ty to kodujesz,&quot;], [26.72, 28.92, &quot;to cóż, może zastąpi Cię AI.&quot;], [28.92, 33.6, &quot;Ale celem większości naszych inżynierów jest rozwiązywanie problemów.&quot;], [33.6, 38.24, &quot;A okazuje się, że w firmie mamy mnóstwo problemów, także jeszcze nieodkrytych.&quot;], [38.24, 43.44, &quot;Im więcej mają czasu na szukanie nieodkrytych problemów, tym lepiej dla firmy.&quot;], [43.44, 47.4, &quot;Nic nie ucieszyłoby mnie bardziej, niż gdyby żaden z nich w ogóle nie programował.&quot;], [47.4, 49.92, &quot;Tylko rozwiązywali problemy. Rozumiecie, o co mi chodzi?&quot;], [49.92, 56.5, &quot;Dlatego uważam, że ten podział, cel kontra zadanie, warto stosować wszędzie.&quot;]]" controls playsinline preload="metadata" poster="assets/huang_poster.jpg" src="assets/huang_purpose_vs_task.mp4"></video><a class="video-fallback" href="assets/huang_purpose_vs_task.mp4" target="_blank" rel="noopener">otwórz klip osobno ↗</a><div class="vidcap">No Priors · 8 stycznia 2026 · 57 s · napisy: tłum. własne</div></div><div class="video-text"><p class="vq frag"><b>1</b><span>Co jest odpowiednikiem „pisania kodu” w pracy prawnika albo urzędnika?</span></p><p class="vq frag"><b>2</b><span>A co jest <span class="gld">celem</span> tej pracy?</span></p></div></div>
 <footer class="src"><a href="https://www.youtube.com/watch?v=k-xtmISBCNE&amp;t=543s" target="_blank" rel="noopener">Jensen Huang, No Priors, 8.01.2026 (od 9:03)</a></footer>
-<span class="slide-number">22</span>
+<span class="slide-number">21</span>
 </section>
 
-<section aria-label="Slajd 23: Mapa → Kuźnia" class="slide map-slide" data-stop="4" data-title="Mapa → Kuźnia" data-title-odyseja="Mapa → Wyspa Feaków" data-min="0.3" data-appendix="false">
+<section aria-label="Slajd 22: Mapa → Kuźnia" class="slide map-slide" data-stop="4" data-title="Mapa → Kuźnia" data-title-odyseja="Mapa → Wyspa Feaków" data-min="0.3" data-appendix="false">
 
 </section>
 
-<section aria-label="Slajd 24: Kuźnia: jedna osoba, cały warsztat" class="slide forge-slide" data-title="Kuźnia: jedna osoba, cały warsztat" data-title-odyseja="Wyspa Feaków: jedna osoba, cały warsztat" data-min="3" data-appendix="false">
+<section aria-label="Slajd 23: Kuźnia: jedna osoba, cały warsztat" class="slide forge-slide" data-title="Kuźnia: jedna osoba, cały warsztat" data-title-odyseja="Wyspa Feaków: jedna osoba, cały warsztat" data-min="3" data-appendix="false">
 <div class="kicker" data-u-odyseja="Wyspa Feaków · jedna osoba, cały warsztat">Kuźnia · jedna osoba, cały warsztat</div>
 <h2>Nowe zadanie: <span class="gld">narzędzie, które rozwiąże problem.</span></h2>
 <p class="forge-sub">Kiedyś: informatyk i prawnik. Dziś: pierwsza wersja w jeden wieczór.</p>
@@ -1278,15 +1299,15 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 </div>
 <p class="also frag" data-o="6"><span class="lab">Nie tylko ja</span>Repsol (Hiszpania) — <b class="gld">FT 2026: Most innovative in-house legal team in Europe</b>. Ok. 200 osób w dziale prawnym, każda ma 100 godzin rocznie na naukę programowania i AI.</p>
 <footer class="src"><a href="https://documents.un.org/api/symbol/access?s=A/HRC/RES/47/23&amp;l=en&amp;t=pdf" target="_blank" rel="noopener">Rada Praw Człowieka ONZ, rezolucja 47/23 (2021)</a><a href="https://lszoszk.github.io/hrc-voting/" target="_blank" rel="noopener">HRC Voting — Ł. Szoszkiewicz</a><a href="https://www.nber.org/papers/w33641" target="_blank" rel="noopener">Dell'Acqua i in., The Cybernetic Teammate, NBER WP 33641 (2025)</a><a href="https://www.ft.com/content/7bf86647-32f0-4f0c-b46b-2f4d690fa51e" target="_blank" rel="noopener">FT, „AI shakes up in-house legal teams’ work practices” (25.09.2026)</a></footer>
-<span class="slide-number">24</span>
+<span class="slide-number">23</span>
 </section>
 
 
-<section aria-label="Slajd 25: Mapa → Pracownia alchemika" class="slide map-slide" data-stop="5" data-title="Mapa → Pracownia alchemika" data-title-odyseja="Mapa → Skały Syren" data-min="0.3" data-appendix="false">
+<section aria-label="Slajd 24: Mapa → Pracownia alchemika" class="slide map-slide" data-stop="5" data-title="Mapa → Pracownia alchemika" data-title-odyseja="Mapa → Skały Syren" data-min="0.3" data-appendix="false">
 
 </section>
 
-<section aria-label="Slajd 26: Pracownia alchemika: jak powstaje eliksir" class="slide potion-slide" data-title="Pracownia alchemika: jak powstaje eliksir" data-title-odyseja="Skały Syren: co brzmi pewnie" data-min="2.5" data-appendix="false">
+<section aria-label="Slajd 25: Pracownia alchemika: jak powstaje eliksir" class="slide potion-slide" data-title="Pracownia alchemika: jak powstaje eliksir" data-title-odyseja="Skały Syren: co brzmi pewnie" data-min="2.5" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · to, co brzmi pewnie, trzeba sprawdzić">Pracownia alchemika · jak powstaje eliksir</div>
 <h2>Przygotowanie tanieje.<br><span class="gld">Decyzja i ocena zostają przy Was.</span></h2>
 <div class="tl">
@@ -1301,10 +1322,10 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 </div>
 <p class="jevons frag"><span class="jl"><b data-u-odyseja="Syreny śpiewają pewnie.">Po kolorze nie poznasz.</b> Pełnomocnik powołał trzy postanowienia NSA. Sygnatury prawdziwe, ale „…żadne nie odzwierciedla realnego stanowiska” sądu (I FZ 104/26).</span><span class="jl"><b>Nie tylko u nas.</b> Baza Charlotina: ponad 2000 takich spraw na świecie, z Polski dwie.</span></p>
 <footer class="src"><a href="https://orzeczenia.nsa.gov.pl/doc/7696DAE25D" target="_blank" rel="noopener">NSA, I FZ 104/26 (CBOSA)</a><a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai" target="_blank" rel="noopener">Bell i Legg, Bond Law Review 38(2) (2026)</a><a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">D. Charlotin, AI Hallucination Cases</a></footer>
-<span class="slide-number">26</span>
+<span class="slide-number">25</span>
 </section>
 
-<section aria-label="Slajd 27: Pracownia alchemika: rzecznicy patentowi" class="slide patent-slide" data-title="Pracownia alchemika: rzecznicy patentowi" data-title-odyseja="Skały Syren: rzecznicy patentowi" data-min="3" data-appendix="false">
+<section aria-label="Slajd 26: Pracownia alchemika: rzecznicy patentowi" class="slide patent-slide" data-title="Pracownia alchemika: rzecznicy patentowi" data-title-odyseja="Skały Syren: rzecznicy patentowi" data-min="3" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · rzecznicy patentowi · eksperyment 2026">Pracownia alchemika · rzecznicy patentowi · eksperyment 2026</div>
 <h2>AI pomaga każdemu.<br><span class="gld">Uczy tych, którzy mają podstawy.</span></h2>
 <p class="task">133 rzeczników patentowych z USA, 3 miesiące z asystentem AI lub bez niego, na koniec test bez AI.</p>
@@ -1314,15 +1335,15 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 </div>
 <p class="quote frag">Na studiach — bez skrótów. W pracy — z AI.<small>Tylko ćwicząc sami, nauczycie się, na co zwracać uwagę, co sprawdzać i co można oddać narzędziu.</small></p>
 <footer class="src"><a href="https://www.nber.org/papers/w35720" target="_blank" rel="noopener">Autor i in., Does AI Assistance Enhance or Erode Expertise?, NBER WP 35720 (IX 2026), praca robocza</a></footer>
-<span class="slide-number">27</span>
+<span class="slide-number">26</span>
 </section>
 
 
-<section aria-label="Slajd 28: Mapa → Port" class="slide map-slide" data-stop="6" data-title="Mapa → Port" data-title-odyseja="Mapa → Itaka" data-min="0.3" data-appendix="false">
+<section aria-label="Slajd 27: Mapa → Port" class="slide map-slide" data-stop="6" data-title="Mapa → Port" data-title-odyseja="Mapa → Itaka" data-min="0.3" data-appendix="false">
 
 </section>
 
-<section aria-label="Slajd 29: Port: nieznane wody" class="slide map-slide ending" data-stop="6" data-final data-title="Port: nieznane wody" data-title-odyseja="Itaka: próba łuku" data-min="1.5" data-appendix="false">
+<section aria-label="Slajd 28: Port: nieznane wody" class="slide map-slide ending" data-stop="6" data-final data-title="Port: nieznane wody" data-title-odyseja="Itaka: próba łuku" data-min="1.5" data-appendix="false">
 <div class="over farewell">
 <div class="kicker" data-u-odyseja="Itaka · próba łuku">Port</div>
 <h2 data-u-odyseja="Studia to przygotowanie<br><span class=&quot;gld&quot;>do próby toporów.</span>">Wypływacie<br><span class="gld">na nieznane wody.</span></h2>
@@ -1332,6 +1353,18 @@ body[data-public="true"] .ai-grid:has(.greek:not([hidden])) .ai-pics2 img{height
 </div>
 <div class="qr-take"><div class="qt-k">ZABIERZ MAPĘ</div><img src="assets/qr_dziennik.webp" alt="Kod QR do strony z materiałami z wykładu Nowy Świat"><p class="qt-lab">podsumowanie i źródła na telefon</p></div>
 
+</section>
+
+<section aria-label="Slajd 29: Zestaw startowy" class="slide kurs" data-id="zestaw" data-hidden data-title="Zestaw startowy" data-min="0" data-appendix="true">
+<div class="kicker">Dla chętnych · zestaw startowy</div>
+<h2>Od przeglądarki <span class="gld">do własnego repo</span></h2>
+<div class="kgrid c3">
+<div class="kbox"><div class="kbig">1</div><div class="lab">Google Colab</div><p>Notatnik w przeglądarce. Nic nie instalujesz.</p></div>
+<div class="kbox"><div class="kbig">2</div><div class="lab">GitHub Codespaces</div><p>VS Code w przeglądarce, z gitem i Pythonem. Działa na komputerach w sali.</p></div>
+<div class="kbox"><div class="kbig">3</div><div class="lab">Własny laptop</div><p>git, VS Code, Python. Do pracy z kodem polecam własny sprzęt.</p></div>
+</div>
+<p class="qualifier">Klucze API dla chętnych grup: osobny klucz z limitem, w pliku <b>.env</b>, który jest w <b>.gitignore</b>. Klucz w publicznym repo to klucz dla całego świata.</p>
+<span class="slide-number">29</span>
 </section>
 
 <!--AWARIA_START-->
