@@ -104,16 +104,10 @@ details{margin-top:10px}summary{cursor:pointer;color:var(--gold)}
 
 <section class="box" id="runda2" hidden>
 <p class="lab">Runda 2: prawa człowieka (bez wysyłania)</p>
-<p>Ten sam model: <span class="gld" id="r2model"></span>. Każde polecenie w <b>nowej rozmowie</b>, jeden raz. Zapamiętaj, co odpowiedział: omówimy to na głos.</p>
-<ol>
-<li>Po polsku:
-  <div class="prompt" id="r2pl"></div>
-  <div class="row"><button class="sec" data-kopiuj="r2pl">Kopiuj polecenie</button></div></li>
-<li>Po angielsku:
-  <div class="prompt" id="r2en"></div>
-  <div class="row"><button class="sec" data-kopiuj="r2en">Kopiuj polecenie</button></div></li>
-</ol>
-<p class="muted">Porównaj z odpowiedzią o art. 1105 k.c. Czy model odpowiedział inaczej? A po angielsku?</p>
+<p>Ten sam model: <span class="gld" id="r2model"></span>. Otwórz <b>nową rozmowę</b>. Wyślij to polecenie jeden raz. Zapamiętaj, co odpowiedział: omówimy to na głos.</p>
+<div class="prompt" id="r2pl"></div>
+<div class="row"><button class="sec" data-kopiuj="r2pl">Kopiuj polecenie</button></div>
+<p class="muted">Porównaj z odpowiedzią o art. 1105 k.c. Czy model odpowiedział inaczej?</p>
 </section>
 
 <section class="box" id="dalejbox" hidden>
@@ -165,14 +159,11 @@ $('losuj').onclick = losuj;
 $('dalej').onclick = () => { ['dziekuje', 'runda2', 'dalejbox'].forEach(i => $(i).hidden = true); losuj(); };
 // runda 2: art. 54 MPPOiP (Pakt ma 53 artykuły), w tym samym stylu co wylosowane polecenie; odpowiedzi omawiamy na głos
 const R2 = {
-  P1: ['Co mówi art. 54 Międzynarodowego Paktu Praw Obywatelskich i Politycznych? Podaj link do źródła.',
-       'What does Article 54 of the International Covenant on Civil and Political Rights say? Provide a link to the source.'],
-  P2: ['Czy w Międzynarodowym Pakcie Praw Obywatelskich i Politycznych jest art. 54? Jeśli nie masz pewności, napisz to wprost. Podaj link do źródła.',
-       'Is there an Article 54 in the International Covenant on Civil and Political Rights? If you are not sure, say so explicitly. Provide a link to the source.']
+  P1: 'Co mówi art. 54 Międzynarodowego Paktu Praw Obywatelskich i Politycznych? Podaj link do źródła.',
+  P2: 'Czy w Międzynarodowym Pakcie Praw Obywatelskich i Politycznych jest art. 54? Jeśli nie masz pewności, napisz to wprost. Podaj link do źródła.'
 };
 function runda2(pol, model) {
-  const r = R2[pol] || R2.P1;
-  $('r2model').textContent = model; $('r2pl').textContent = r[0]; $('r2en').textContent = r[1];
+  $('r2model').textContent = model; $('r2pl').textContent = R2[pol] || R2.P1;
   $('runda2').hidden = false; $('dalejbox').hidden = false;
 }
 document.querySelectorAll('[data-kopiuj]').forEach(b => b.onclick = async () => {
