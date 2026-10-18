@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ludzkie embeddingi: symulacja · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<script>/* tryb jasny (mapa przekazuje ?jasny=1) */if(new URLSearchParams(location.search).get('jasny')==='1')document.documentElement.classList.add('jasny')</script>
+<style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}</style>
+<style>
+:root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--blue:#6fb7c9;--line:#4d4059;--muted:#ada290;--ok:#7fb069}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:19px/1.4 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+main{max-width:1560px;margin:0 auto;padding:14px 22px 10px}
+header{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:0 0 10px}
+h1{font-size:26px;line-height:1.2;margin:0}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 430px;gap:16px;align-items:start}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:12px 16px;margin:0 0 14px}
+.lab{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+svg{display:block;width:100%;height:auto;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}
+.w rect{fill:#2a2135;stroke:#4d4059;stroke-width:2}
+.w text{fill:var(--paper);font:600 20px "IBM Plex Mono",ui-monospace,Menlo,monospace;text-anchor:middle;dominant-baseline:central}
+.w.on rect{fill:#3a2d1e;stroke:var(--gold);stroke-width:3}
+.w.ctx rect{stroke:var(--blue);stroke-width:3;stroke-dasharray:6 4}
+.g .w.g-prawo rect{stroke:var(--gold)}.g .w.g-wiel rect{stroke:var(--accent)}.g .w.g-cod rect{stroke:var(--blue)}
+.trail{fill:none;stroke:#6a5a88;stroke-width:2;opacity:.55}
+.ghost rect{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:5 5}.ghost text{fill:var(--muted);font:20px "IBM Plex Mono",monospace;text-anchor:middle;dominant-baseline:central}
+.zd{font-size:24px;line-height:1.4;min-height:3.2em;margin:0}
+.zd mark{background:none;color:var(--gold);font-weight:700;border-bottom:3px solid var(--gold)}
+.stan{font-size:16px;color:var(--muted);margin:6px 0 0}
+button{font:inherit;font-size:16px;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:7px 12px;box-shadow:4px 4px 0 #0008;font-weight:700}
+button.sec{background:var(--ink);color:var(--paper);border-color:var(--line)}
+button:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.muted{color:var(--muted)}small{font-size:15px;line-height:1.35}
+p.muted{margin:8px 0 0}
+kbd{font:inherit;font-size:14px;border:2px solid var(--line);padding:0 5px}
+ol{margin:4px 0 0;padding-left:22px}ol li{font-size:16px;margin:3px 0}
+</style>
+</head>
+<body>
+<main id="main">
+<header><h1>Ludzkie embeddingi: <span>symulacja</span></h1><p class="sub">To samo ćwiczenie co z kartkami: 18 słów, te same zdania, ta sama reguła.</p></header>
+<div class="grid">
+<div class="box" style="padding:10px">
+<svg id="sv" viewBox="0 0 1000 620" role="img" aria-label="Mapa 18 słów, które przesuwają się po każdym zdaniu"></svg>
+</div>
+<div>
+<section class="box">
+<p class="lab" id="runda">Runda 1 · korpus prawniczy</p>
+<p class="zd" id="zd">Kliknij „Dalej”, żeby przeczytać pierwsze zdanie.</p>
+<p class="stan" id="stan"></p>
+<div class="row"><button id="dalej">Dalej <kbd>→</kbd></button><button class="sec" id="wstecz">Wstecz <kbd>←</kbd></button><button class="sec" id="reset">Od nowa</button></div>
+<div class="row"><button class="sec" id="r1">Runda 1</button><button class="sec" id="r2">Runda 2</button><button class="sec" id="r3">Runda 3</button></div>
+<div class="row"><button class="sec" id="slady">Ślady <kbd>T</kbd></button><button class="sec" id="grupy">Pokaż grupy <kbd>G</kbd></button></div>
+</section>
+<section class="box">
+<p class="lab">Zasady</p>
+<ol>
+<li>Pierwsze kliknięcie: zdanie. Zgadnijcie, kto się ruszy.</li>
+<li>Drugie: słowa z tego zdania robią <b>krok do siebie</b>, a kto stoi blisko, a nie był w zdaniu, robi pół kroku w tył.</li>
+<li>Runda 3: trening skończony. Rusza się tylko sędzia, na chwilę.</li>
+</ol>
+<p class="muted"><small>Miejsce na mapie = wektor (dwie liczby). Prawdziwy model ma setki wymiarów, ale zasada jest ta sama: słowa z podobnym towarzystwem lądują blisko.</small></p>
+</section>
+</div>
+</div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const sv = $('sv'), NS = 'http://www.w3.org/2000/svg';
+// wzorce słów jak w buduj_slowa.py (granice słów zgodne z polskimi literami)
+const B = '(?<!\\p{L})', E = '(?!\\p{L})';
+const PAT = {'sąd':'sąd(u|em|zie|y)?','wyrok':'wyrok(u|iem)?','skarga':'skarg(a|ę|i)','kodeks':'kodeks\\p{L}*','apelacja':'apelacj\\p{L}*',
+ 'umowa':'umow\\p{L}*','Trybunał':'trybunał\\p{L}*','sędzia':'sędzi\\p{L}*','kara':'kar(a|ę|y|ą|ny|nego|nym|umowną)','prawo':'praw(o|a|em)',
+ 'zamek':'zam(ek|ku|ka|kiem)','zdanie':'zdani\\p{L}*','mecz':'mecz\\p{L}*','gol':'gol','boisko':'boisk\\p{L}*','kibic':'kibic\\p{L}*',
+ 'drzwi':'drzwi\\p{L}*','klucz':'klucz\\p{L}*'};
+const RX = Object.fromEntries(Object.entries(PAT).map(([w, p]) => [w, new RegExp(B + '(' + p + ')' + E, 'giu')]));
+const KONTEKST = [{zd: 'Sędzia podyktował karnego po faulu na boisku.', do: 'boisko'}, {zd: 'Sędzia oddalił skargę.', do: 'skarga'}];
+let SLOWA = [], GR = {}, KORPUS = {prawo: [], internet: []}, KROKI = [];
+let pos = {}, start = {}, slady = {}, krok = -1, faza = 0, hist = [], pokazSlady = false;
+const ALFA = .55, BETA = 70, ZASIEG = 260; // krok do środka zdania; odsunięcie słów spoza zdania (px) w promieniu ZASIEG
+const SZ = w => Math.max(96, w.length * 14 + 34); // szerokość kafelka
+
+function seed(i) { let x = Math.sin(i * 999.7) * 10000; return x - Math.floor(x); }
+function startowe() {   // siatka 6 × 3 z drobnym przesunięciem, kolejność wymieszana (jak ludzie ustawieni losowo)
+  const kol = 6, rz = 3, order = SLOWA.map((w, i) => [seed(i + 3), w]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+  order.forEach((w, i) => { const c = i % kol, r = Math.floor(i / kol);
+    start[w] = [110 + c * 156 + (seed(i + 11) - .5) * 50, 120 + r * 190 + (seed(i + 29) - .5) * 60]; });
+}
+function kroki() {
+  KROKI = [];
+  KORPUS.prawo.forEach((z, i) => KROKI.push({runda: 1, nr: i + 1, z, kto: kto(z)}));
+  KORPUS.internet.forEach((z, i) => KROKI.push({runda: 2, nr: i + 1, z, kto: kto(z)}));
+  KONTEKST.forEach((k, i) => KROKI.push({runda: 3, nr: i + 1, z: k.zd, kto: ['sędzia'], do: k.do}));
+}
+function kto(z) { return SLOWA.filter(w => RX[w].test(z) && !(RX[w].lastIndex = 0)); }
+function oznacz(z) { let h = z.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'})[c]);
+  for (const w of SLOWA) h = h.replace(RX[w], m => '<mark>' + m + '</mark>'); return h; }
+function rozsun(nowe, stale) {  // kilka przejść: kafelki stoją obok siebie, ale nie na sobie (jak ludzie)
+  for (let it = 0; it < 40; it++) for (let i = 0; i < SLOWA.length; i++) for (let j = i + 1; j < SLOWA.length; j++) {
+    const a = SLOWA[i], b = SLOWA[j], pa = nowe[a], pb = nowe[b], dx = pb[0] - pa[0], dy = pb[1] - pa[1];
+    const ox = (SZ(a) + SZ(b)) / 2 + 8 - Math.abs(dx), oy = 52 - Math.abs(dy);
+    if (ox > 0 && oy > 0) { const sx = dx >= 0 ? 1 : -1, sy = dy >= 0 ? 1 : -1;
+      const [mx, my] = ox / 1.8 < oy ? [sx * ox / 2, 0] : [0, sy * oy / 2];   // rozsuń wzdłuż mniejszego nakładania
+      if (!stale.has(a)) { pa[0] -= mx; pa[1] -= my; } if (!stale.has(b)) { pb[0] += mx; pb[1] += my; } } }
+  for (const w of SLOWA) { nowe[w][0] = Math.min(940, Math.max(60, nowe[w][0])); nowe[w][1] = Math.min(580, Math.max(40, nowe[w][1])); }
+}
+function krokTreningu(s) {   // słowa ze zdania idą w stronę wspólnego środka; słowa spoza zdania, które stoją blisko, trochę się odsuwają
+  const c = [0, 1].map(d => s.reduce((a, w) => a + pos[w][d], 0) / s.length), w_ = new Set(s);
+  const nowe = Object.fromEntries(SLOWA.map(w => [w, pos[w].slice()]));
+  s.forEach(w => { nowe[w][0] += ALFA * (c[0] - pos[w][0]); nowe[w][1] += ALFA * (c[1] - pos[w][1]); });
+  SLOWA.forEach(w => { if (w_.has(w)) return; const dx = pos[w][0] - c[0], dy = pos[w][1] - c[1], d = Math.hypot(dx, dy) || 1;
+    if (d < ZASIEG) { const f = BETA * (1 - d / ZASIEG); nowe[w][0] += dx / d * f; nowe[w][1] += dy / d * f; } });
+  rozsun(nowe, new Set()); return nowe;
+}
+function wykonaj(k) { if (k.kto.length < 2) return; animuj(krokTreningu(k.kto)); }
+let raf = 0;
+function animuj(cel, ms = 650) {
+  cancelAnimationFrame(raf); const od = Object.fromEntries(SLOWA.map(w => [w, pos[w].slice()])), t0 = performance.now();
+  const f = now => { const t = Math.min(1, (now - t0) / ms), e = t < .5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
+    SLOWA.forEach(w => pos[w] = [od[w][0] + (cel[w][0] - od[w][0]) * e, od[w][1] + (cel[w][1] - od[w][1]) * e]); rysuj();
+    if (t < 1) raf = requestAnimationFrame(f); else SLOWA.forEach(w => slady[w].push(cel[w].slice())); };
+  raf = requestAnimationFrame(f);
+}
+let ghost = null;
+function rysuj() {
+  const k = KROKI[krok], aktywni = new Set(k && faza >= 1 ? k.kto : []);
+  let h = '';
+  if (pokazSlady) SLOWA.forEach(w => { if (slady[w].length > 1) h += `<polyline class="trail" points="${slady[w].map(p => p.join(',')).join(' ')}"/>`; });
+  if (ghost) h += `<g class="ghost"><rect x="${ghost[0] - 62}" y="${ghost[1] - 22}" width="124" height="44" rx="2"/><text x="${ghost[0]}" y="${ghost[1]}">sędzia</text></g>`;
+  if (k && k.runda === 3 && faza === 2) { const a = pos['sędzia'], b = pos[k.do]; h += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#6fb7c9" stroke-width="3" stroke-dasharray="8 6"/>`; }
+  [...SLOWA].sort((a, b) => (aktywni.has(a) || a === 'sędzia' && k && k.runda === 3) - (aktywni.has(b) || b === 'sędzia' && k && k.runda === 3)).forEach(w => { const [x, y] = pos[w], wd = SZ(w);
+    const cls = 'w g-' + GR[w] + (aktywni.has(w) ? ' on' : '') + (k && k.runda === 3 && faza >= 1 && w === k.do ? ' ctx' : '');
+    h += `<g class="${cls}"><rect x="${x - wd / 2}" y="${y - 22}" width="${wd}" height="44" rx="2"/><text x="${x}" y="${y}">${w}</text></g>`; });
+  sv.innerHTML = h;
+}
+function opis() {
+  const k = KROKI[krok];
+  if (!k) { $('runda').textContent = 'Runda 1 · korpus prawniczy'; $('zd').textContent = 'Kliknij „Dalej”, żeby przeczytać pierwsze zdanie.'; $('stan').textContent = ''; return; }
+  const n = KROKI.filter(x => x.runda === k.runda).length;
+  $('runda').textContent = ['', 'Runda 1 · korpus prawniczy', 'Runda 2 · dochodzi internet', 'Runda 3 · po treningu: kontekst'][k.runda] + ` · zdanie ${k.nr}/${n}`;
+  $('zd').innerHTML = oznacz(k.z);
+  $('stan').textContent = k.runda === 3
+    ? (faza === 1 ? 'Kto się ruszy? (Tylko sędzia, w stronę słowa z tego zdania.)' : faza === 2 ? 'Sędzia podszedł na chwilę. Kliknij: wraca na swoje miejsce.' : 'Sędzia wrócił. Trening się nie zmienił.')
+    : (faza === 1 ? (k.kto.length > 1 ? 'Kto się ruszy? Zgadnijcie, potem „Dalej”.' : 'Tylko jedno słowo z listy: nikt nie ma do kogo podejść.') : 'Słowa ze zdania zrobiły krok do siebie.');
+}
+function zapamietaj() { hist.push({krok, faza, pos: JSON.parse(JSON.stringify(pos)), slady: JSON.parse(JSON.stringify(slady)), ghost}); }
+function dalej() {
+  if (krok >= KROKI.length - 1 && (faza === 2 && KROKI[krok].runda !== 3 || faza === 3)) return;
+  zapamietaj();
+  const k = KROKI[krok];
+  if (!k || (k.runda !== 3 && faza === 2) || (k.runda === 3 && faza === 3)) { krok++; faza = 1; ghost = null; rysuj(); opis(); return; }
+  if (k.runda !== 3 && faza === 1) { faza = 2; wykonaj(k); opis(); return; }
+  if (k.runda === 3 && faza === 1) { faza = 2; ghost = pos['sędzia'].slice(); const cel = Object.fromEntries(SLOWA.map(w => [w, pos[w].slice()]));
+    const b = pos[k.do], dx = ghost[0] - b[0], dy = ghost[1] - b[1], d = Math.hypot(dx, dy) || 1, r = (SZ('sędzia') + SZ(k.do)) / 2 + 12;
+    cel['sędzia'] = Math.abs(dy / d) > .35 ? [b[0] + dx / d * 40, b[1] + Math.sign(dy) * 56] : [b[0] + Math.sign(dx) * r, b[1] + dy / d * 20]; animuj(cel); opis(); return; }
+  if (k.runda === 3 && faza === 2) { faza = 3; const cel = Object.fromEntries(SLOWA.map(w => [w, pos[w].slice()])); cel['sędzia'] = ghost.slice(); ghost = null; animuj(cel); opis(); return; }
+}
+function wstecz() { const h = hist.pop(); if (!h) return; cancelAnimationFrame(raf); ({krok, faza, ghost} = h); pos = h.pos; slady = h.slady; rysuj(); opis(); }
+function reset() { cancelAnimationFrame(raf); hist = []; krok = -1; faza = 0; ghost = null; SLOWA.forEach(w => { pos[w] = start[w].slice(); slady[w] = [start[w].slice()]; }); rysuj(); opis(); }
+function doRundy(r) {   // przewiń szybko (bez animacji) do początku rundy r
+  reset(); const cel = KROKI.findIndex(k => k.runda === r);
+  for (let i = 0; i < cel; i++) { const k = KROKI[i]; if (k.runda === 3) continue; const s = k.kto; if (s.length < 2) continue;
+    pos = krokTreningu(s); SLOWA.forEach(w => slady[w].push(pos[w].slice())); }
+  krok = cel - 1; faza = cel > 0 ? (KROKI[cel - 1].runda === 3 ? 3 : 2) : 0; rysuj(); opis();
+}
+$('dalej').onclick = dalej; $('wstecz').onclick = wstecz; $('reset').onclick = reset;
+$('r1').onclick = () => doRundy(1); $('r2').onclick = () => doRundy(2); $('r3').onclick = () => doRundy(3);
+$('slady').onclick = () => { pokazSlady = !pokazSlady; rysuj(); };
+$('grupy').onclick = () => { sv.classList.toggle('g'); $('grupy').textContent = sv.classList.contains('g') ? 'Ukryj grupy' : 'Pokaż grupy'; };
+document.addEventListener('keydown', e => { if (e.target.tagName === 'INPUT') return; const k = e.key.toLowerCase();
+  if (k === 'arrowright' || k === ' ' || k === 'pagedown') { e.preventDefault(); dalej(); } else if (k === 'arrowleft' || k === 'pageup') { e.preventDefault(); wstecz(); }
+  else if (k === 't') $('slady').click(); else if (k === 'g') $('grupy').click(); else if (k === 'r') reset(); else if ('123'.includes(k)) doRundy(+k); });
+// zmieść na ekranie bez przewijania
+(function () { const m = $('main'); function fit() { m.style.zoom = 1; const z = Math.max(.6, Math.min(1, innerHeight / (m.scrollHeight + 4))); m.style.zoom = z < 1 ? z.toFixed(3) : ''; }
+  let q = 0; const later = () => { cancelAnimationFrame(q); q = requestAnimationFrame(fit); };
+  addEventListener('resize', later); addEventListener('load', fit); new MutationObserver(later).observe($('runda').parentNode, {childList: true, subtree: true, characterData: true}); setTimeout(fit, 50); })();
+fetch('../rag/slowa_mapa.json').then(r => r.json()).then(M => {
+  SLOWA = M.slowa.map(s => s.w); M.slowa.forEach(s => GR[s.w] = s.g); KORPUS = M.korpus;
+  startowe(); kroki(); reset();
+}).catch(e => { $('zd').textContent = 'Nie udało się wczytać zdań (' + e.message + '). Otwórz stronę przez serwer albo online.'; });
+</script>
+</body>
+</html>

@@ -755,6 +755,8 @@ html.jasny .slide:not(.map-slide) .src a{opacity:1}
 .kurs.kzal .kbox p{font-size:19px;line-height:1.35;margin:0 0 6px}
 .kurs.kzal .kbox .kpm{font-size:16px;color:var(--muted);margin:0}
 .kurs.kzal .kpm .pl{color:#7fb069;font-weight:700}.kurs.kzal .kpm .mi{color:#d67653;font-weight:700;margin-left:10px}
+.kurs .klive.kzap{font-size:18px;margin:4px 0 0}
+.kurs.kuw .klist li{font-size:20px;line-height:1.34}
 
 </style>
 </head><body data-public="false" data-online><main id="viewport"><div id="stage"><div id="world" aria-hidden="true"></div>
@@ -1109,6 +1111,7 @@ Wniosek:      co zrobię inaczej</pre></div>
 <li>Kto <b>nie ruszył się</b> w rundzie 1?</li>
 </ul></div>
 </div>
+<span data-live="https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/embeddingi/" data-live-title="LUDZKIE EMBEDDINGI · SYMULACJA" hidden></span>
 <p class="kalso frag" data-o="3"><span class="lab">Uwaga</span>Prawdziwy model ma setki wymiarów, nie dwa. Ale zasada ta sama: słowa z podobnym towarzystwem lądują blisko.</p>
 <span class="slide-number">22</span>
 </section>
@@ -2236,7 +2239,7 @@ function state(){const m=window.MAPA?MAPA.state():{};return {type:'pixel-law-sta
 function sync(){if(presenterWindow&&!presenterWindow.closed)presenterWindow.postMessage(state(),location.origin==='null'?'*':location.origin)}
 /* strona na zywo (np. HRC Voting): nakladka w scenie; bez internetu pokazuje zrzut */
 function liveEl(){return slides[current]&&slides[current].querySelector('[data-live]')}
-function liveUrl(el){const u=el.dataset.live;return document.documentElement.classList.contains('jasny')&&u.includes('/demo/')?u+(u.includes('?')?'&':'?')+'jasny=1':u}
+function liveUrl(el){let u=el.dataset.live;if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname))u=u.replace('https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/','/kurs/demo/');return document.documentElement.classList.contains('jasny')&&u.includes('/demo/')?u+(u.includes('?')?'&':'?')+'jasny=1':u}
 const isYT=u=>/youtube(-nocookie)?\.com\/embed\//.test(u);
 function livePreload(){const el=liveEl(),f=$('live')&&$('live').querySelector('iframe');if(el&&f&&!f.getAttribute('src')&&navigator.onLine&&!isYT(el.dataset.live)){f.referrerPolicy='no-referrer';f.src=liveUrl(el)}}
 function liveOpen(el=liveEl()){const L=$('live');if(!el||!L)return;const f=L.querySelector('iframe');const u=isYT(el.dataset.live)?el.dataset.live+(el.dataset.live.includes('?')?'&':'?')+'autoplay=1':liveUrl(el);if(navigator.onLine&&f.getAttribute('src')!==u){f.referrerPolicy=isYT(u)?'strict-origin-when-cross-origin':'no-referrer';f.src=u}const hrc=!el.dataset.liveTitle;$('liveTitle').textContent=el.dataset.liveTitle||'HRC VOTING · NA ŻYWO';$('liveImg').style.display=hrc?'':'none';$('liveOff').textContent=hrc?'Brak internetu — to zrzut widoku Blocs.':'Brak internetu — otwórz stronę na swoim komputerze.';L.classList.toggle('offline',!navigator.onLine);toggle('live')}
