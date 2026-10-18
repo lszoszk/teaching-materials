@@ -697,6 +697,28 @@ html.jasny .slide:not(.map-slide) :is(img,video,picture,.hv,canvas){filter:inver
 html.jasny #stage:has(.slide.active:not(.map-slide)) #chap .cn{color:#2a2232}
 html.jasny .slide:not(.map-slide) .src a{opacity:1}
 #jasnyBtn{font-size:18px}
+/* ===== 19.10: zera i jedynki, ćwiczenie embeddingów, mapa słów, prawo o danych ===== */
+.kurs.kbits .kgrid.c3{gap:18px}.kurs.kbits .kbox{padding:14px 16px;gap:8px;align-items:stretch}
+.kurs .bt-in{font:inherit;font-size:24px;padding:6px 10px;background:#0f0b14;color:var(--paper);border:2px solid var(--line);width:100%}
+.kurs .bt-out{display:flex;flex-direction:column;gap:4px;min-height:200px}
+.kurs .bt-r{display:grid;grid-template-columns:34px 1fr;gap:10px;font-size:18px;color:var(--parch);align-items:baseline}
+.kurs .bt-r b{font-size:22px;color:var(--gold)}.kurs .bt-r span{font-family:var(--pixel);font-size:14px;letter-spacing:1px}
+.kurs .bt-r.bt-2 span{color:var(--accent)}
+.kurs.kbits small{font-size:15px;color:var(--muted);line-height:1.35}
+.kurs canvas.px{width:300px;height:300px;align-self:center;image-rendering:pixelated;border:3px solid #150f1b;background:#120e17;cursor:crosshair}
+.kurs .px-z{width:100%;accent-color:var(--gold)}
+.kurs.kbits .kans{font-size:24px}
+.kurs.kcw .kgrid.c3{gap:18px}.kurs.kcw .kplan li{font-size:22px;padding-left:50px}.kurs.kcw .kplan li:before{width:30px;height:30px;line-height:30px;font-size:16px}
+.kurs.kcw .klist li{font-size:21px}.kurs.kcw .kalso{font-size:19px}
+.kurs .kgrid.kemap{gap:20px}.kurs .kemap figure{margin:0;padding:12px 14px}
+.kurs svg.emap{width:100%;height:auto;display:block}
+.kurs svg.emap .ew{font-family:var(--mono);font-size:19px;font-weight:600}
+.kurs svg.emap .emiss{font-size:15px;fill:var(--muted)}
+.kurs svg.emap .earr{stroke:#d67653;stroke-width:2;stroke-dasharray:5 4;opacity:.8}
+.kurs svg.emap .eghost{fill:none;stroke:#d67653;stroke-width:2;opacity:.7}
+.kurs.kdane .klist li{font-size:20px;line-height:1.35}.kurs.kdane .kbox{padding:16px 18px}.kurs.kdane .kalso{font-size:19px}
+.kurs svg.emap{width:auto;max-width:100%;height:340px;margin:0 auto}
+.kurs svg.emap .elead{stroke:#6d6177;stroke-width:1}
 
 </style>
 </head><body data-public="false" data-online><main id="viewport"><div id="stage"><div id="world" aria-hidden="true"></div>
@@ -1455,6 +1477,7 @@ Wniosek:      co zrobię inaczej</pre></div>
 <ol class="klist kplan">
 <li><b>Ankieta</b> (5 minut) i wyniki</li>
 <li><b>Czym jest AI:</b> trzy definicje, cztery sposoby uczenia</li>
+<li><b>Ćwiczenie:</b> zera i jedynki, ludzkie embeddingi, prawo o danych</li>
 <li><b>Model językowy:</b> demo „następne słowo”</li>
 <li><b>Gdy prawdopodobieństwo trafia do sądu:</b> Charlotin, NSA, Westlaw</li>
 <li><b>RAG:</b> najpierw wyszukaj, potem odpowiedz (wyroki ETPC)</li>
@@ -1496,7 +1519,93 @@ Wniosek:      co zrobię inaczej</pre></div>
 <span class="slide-number">32</span>
 </section>
 
-<section aria-label="Slajd 33: Pracownia alchemika: jak działa model językowy" class="slide kurs kllm" data-title="Pracownia alchemika: jak działa model językowy" data-title-odyseja="Skały Syren: jak działa model językowy" data-min="12" data-appendix="false">
+<section aria-label="Slajd 33: Pracownia alchemika: wszystko to zera i jedynki" class="slide kurs kbits" data-title="Pracownia alchemika: wszystko to zera i jedynki" data-title-odyseja="Skały Syren: wszystko to zera i jedynki" data-min="5" data-appendix="false">
+<div class="kicker" data-u-odyseja="Skały Syren · z czego zbudowana jest pieśń">Pracownia alchemika · z czego zbudowany jest eliksir</div>
+<h2>Dla komputera wszystko to <span class="gld">zera i jedynki</span></h2>
+<div class="kgrid c3">
+<div class="kbox"><div class="lab">Tekst</div><input class="bt-in" type="text" value="Sąd" maxlength="10" spellcheck="false"><div class="bt-out"></div><small>Każda litera to liczba, a liczba to bity. Polska litera zajmuje dwa bajty.</small></div>
+<div class="kbox"><div class="lab">Obraz</div><canvas class="px" width="300" height="300" data-src="assets/bohater_odyseja.webp" data-fx="0.5" data-fy="0.2"></canvas><input class="px-z" type="range" min="1" max="40" value="1"><small class="px-i">Przesuń suwak, najedź na piksel.</small></div>
+<div class="kbox"><div class="lab">Klatka filmu</div><canvas class="px" width="300" height="300" data-src="assets/vibecoding_3x_poster.webp" data-fx="0.55" data-fy="0.3"></canvas><input class="px-z" type="range" min="1" max="40" value="1"><small class="px-i">Film to ok. 30 takich obrazów na sekundę.</small></div>
+</div>
+<p class="kans frag" data-o="1">Model zamienia każdy z tych rodzajów danych w <b>wektor liczb (embedding)</b>: tekst w tokeny, obraz w kawałki. Wszystko trafia do jednej przestrzeni. Teraz Wy będziecie tymi wektorami.</p>
+<script>(()=>{const sec=document.currentScript.closest('section');
+ const inp=sec.querySelector('.bt-in'),out=sec.querySelector('.bt-out'),enc=new TextEncoder();
+ const b8=n=>n.toString(2).padStart(8,'0');
+ const draw=()=>{out.textContent='';[...inp.value].slice(0,10).forEach(ch=>{const by=[...enc.encode(ch)];const r=document.createElement('div');r.className='bt-r'+(by.length>1?' bt-2':'');
+  r.innerHTML=`<b>${ch===' '?'␣':ch.replace(/[<&]/g,'')}</b><span>${by.map(b8).join(' ')}</span>`;out.append(r)})};
+ inp.addEventListener('input',draw);draw();
+ sec.querySelectorAll('canvas.px').forEach(cv=>{const z=cv.nextElementSibling,info=z.nextElementSibling,img=new Image(),ctx=cv.getContext('2d');let off=null,data=null,view=null;
+  img.onload=()=>{off=document.createElement('canvas');off.width=img.naturalWidth;off.height=img.naturalHeight;const o=off.getContext('2d');o.drawImage(img,0,0);try{data=o.getImageData(0,0,off.width,off.height).data}catch(e){data=null}render()};
+  const render=()=>{if(!off)return;const k=+z.value,W=off.width,H=off.height,side=Math.max(W,H)/k,cx=W*(+cv.dataset.fx),cy=H*(+cv.dataset.fy);
+   const sx=Math.max(0,Math.min(W-Math.min(side,W),cx-side/2)),sy=Math.max(0,Math.min(H-Math.min(side,H),cy-side/2)),sw=Math.min(side,W),sh=Math.min(side,H);
+   view={sx,sy,sw,sh};ctx.imageSmoothingEnabled=k<3;ctx.fillStyle='#120e17';ctx.fillRect(0,0,300,300);const s=Math.min(300/sw,300/sh);ctx.drawImage(off,sx,sy,sw,sh,(300-sw*s)/2,(300-sh*s)/2,sw*s,sh*s);view.s=s;view.ox=(300-sw*s)/2;view.oy=(300-sh*s)/2;
+   if(k>=12){ctx.strokeStyle='rgba(0,0,0,.35)';ctx.lineWidth=1;for(let x=Math.ceil(sx);x<sx+sw;x++){const X=view.ox+(x-sx)*s;ctx.beginPath();ctx.moveTo(X,view.oy);ctx.lineTo(X,view.oy+sh*s);ctx.stroke()}for(let y=Math.ceil(sy);y<sy+sh;y++){const Y=view.oy+(y-sy)*s;ctx.beginPath();ctx.moveTo(view.ox,Y);ctx.lineTo(view.ox+sw*s,Y);ctx.stroke()}}};
+  z.addEventListener('input',render);
+  cv.addEventListener('mousemove',e=>{if(!view||!data)return;const r=cv.getBoundingClientRect(),mx=(e.clientX-r.left)/r.width*300,my=(e.clientY-r.top)/r.height*300;
+   const x=Math.floor(view.sx+(mx-view.ox)/view.s),y=Math.floor(view.sy+(my-view.oy)/view.s);if(x<0||y<0||x>=off.width||y>=off.height)return;const i=(y*off.width+x)*4,[R,G,B]=[data[i],data[i+1],data[i+2]];
+   info.innerHTML=`piksel (${x}, ${y}): <b style="color:rgb(${R},${G},${B})">■</b> R ${R} · G ${G} · B ${B}<br>${b8(R)} ${b8(G)} ${b8(B)}`});
+  img.src=cv.dataset.src})})();</script>
+<span class="slide-number">33</span>
+</section>
+
+<section aria-label="Slajd 34: Pracownia alchemika: ćwiczenie, ludzkie embeddingi" class="slide kurs kcw" data-title="Pracownia alchemika: ćwiczenie, ludzkie embeddingi" data-title-odyseja="Skały Syren: ćwiczenie, ludzkie embeddingi" data-min="15" data-appendix="false">
+<div class="kicker" data-u-odyseja="Skały Syren · ćwiczenie">Pracownia alchemika · ćwiczenie</div>
+<h2>Wy jesteście <span class="gld">wektorami</span></h2>
+<div class="kgrid c3">
+<div class="kbox"><div class="lab">Zasady</div><ol class="klist kplan">
+<li>Każdy dostaje kartkę ze słowem.</li>
+<li>Czytam zdanie z korpusu.</li>
+<li>Słowa z tego zdania robią <b>krok do siebie</b>. Reszta stoi.</li>
+<li>Miejsce w sali = wektor (dwie liczby).</li>
+</ol></div>
+<div class="kbox"><div class="lab">Trening</div><ul class="klist">
+<li><b>Runda 1:</b> korpus prawniczy (8 zdań).</li>
+<li class="frag" data-o="1"><b>Runda 2:</b> dochodzi internet (8 zdań). Uwaga na słowa złote i czerwone.</li>
+<li class="frag" data-o="2"><b>Runda 3:</b> jedno zdanie, jeden kontekst. Kto się przesuwa?</li>
+</ul></div>
+<div class="kbox"><div class="lab">Obserwujcie</div><ul class="klist">
+<li>Kto jest <b>rozdarty</b> między grupami?</li>
+<li>Kto <b>nie ruszył się</b> w rundzie 1?</li>
+<li>Kto zawsze stoi <b>z kimś</b>?</li>
+</ul></div>
+</div>
+<p class="kalso frag" data-o="3"><span class="lab">Uwaga</span>Prawdziwy model ma setki wymiarów, nie dwa (model w demie RAG: 384). Ale zasada ta sama: słowa z podobnym towarzystwem lądują blisko.</p>
+<span class="slide-number">34</span>
+</section>
+
+<section aria-label="Slajd 35: Pracownia alchemika: wasz układ i prawdziwy model" class="slide kurs" data-title="Pracownia alchemika: wasz układ i prawdziwy model" data-title-odyseja="Skały Syren: wasz układ i prawdziwy model" data-min="4" data-appendix="false">
+<div class="kicker" data-u-odyseja="Skały Syren · to samo w modelu">Pracownia alchemika · to samo w modelu</div>
+<h2>Wasz układ <span class="gld">i prawdziwy model</span></h2>
+<div class="kgrid c2 kemap">
+<figure class="kbox"><div class="lab">Runda 1 · tylko korpus prawniczy (8 zdań)</div><svg viewBox="0 0 640 420" class="emap" role="img"><rect x="1" y="1" width="638" height="418" fill="#120e17" stroke="#4d4059" stroke-width="2"/><rect x="80" y="214" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="98" y="226" text-anchor="start" class="ew" fill="#e0b950">sąd</text><rect x="109" y="306" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><line x1="115" y1="312" x2="127" y2="291" class="elead"/><text x="127" y="296" text-anchor="start" class="ew" fill="#e0b950">wyrok</text><rect x="53" y="239" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="71" y="251" text-anchor="start" class="ew" fill="#e0b950">skarga</text><rect x="185" y="191" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="203" y="203" text-anchor="start" class="ew" fill="#e0b950">kodeks · kara</text><rect x="44" y="246" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><line x1="50" y1="252" x2="90" y2="195" class="elead"/><text x="90" y="200" text-anchor="start" class="ew" fill="#e0b950">apelacja</text><rect x="167" y="146" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="185" y="158" text-anchor="start" class="ew" fill="#e0b950">umowa</text><rect x="85" y="297" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><line x1="91" y1="303" x2="103" y2="344" class="elead"/><text x="103" y="349" text-anchor="start" class="ew" fill="#e0b950">Trybunał</text><rect x="140" y="306" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><text x="158" y="318" text-anchor="start" class="ew" fill="#d67653">sędzia</text><rect x="49" y="201" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><line x1="55" y1="207" x2="67" y2="168" class="elead"/><text x="67" y="173" text-anchor="start" class="ew" fill="#d67653">prawo</text><rect x="176" y="120" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><text x="194" y="132" text-anchor="start" class="ew" fill="#d67653">zamek</text><rect x="106" y="297" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><line x1="112" y1="303" x2="100" y2="282" class="elead"/><text x="100" y="287" text-anchor="end" class="ew" fill="#d67653">zdanie</text><rect x="230" y="101" width="12" height="12" fill="#6fb7c9" stroke="#150f1b" stroke-width="2"/><line x1="236" y1="107" x2="248" y2="86" class="elead"/><text x="248" y="91" text-anchor="start" class="ew" fill="#6fb7c9">drzwi · klucz</text><text x="624" y="406" text-anchor="end" class="emiss">brak w danych: mecz, gol, boisko, kibic</text></svg></figure>
+<figure class="kbox frag" data-o="1"><div class="lab">Runda 2 · dochodzi internet (+8 zdań)</div><svg viewBox="0 0 640 420" class="emap" role="img"><rect x="1" y="1" width="638" height="418" fill="#120e17" stroke="#4d4059" stroke-width="2"/><line x1="146" y1="312" x2="181" y2="332" class="earr"/><circle cx="146" cy="312" r="4" class="eghost"/><line x1="191" y1="197" x2="275" y2="324" class="earr"/><circle cx="191" cy="197" r="4" class="eghost"/><line x1="55" y1="207" x2="159" y2="141" class="earr"/><circle cx="55" cy="207" r="4" class="eghost"/><line x1="182" y1="126" x2="353" y2="40" class="earr"/><circle cx="182" cy="126" r="4" class="eghost"/><line x1="112" y1="303" x2="167" y2="280" class="earr"/><circle cx="112" cy="303" r="4" class="eghost"/><rect x="80" y="214" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="98" y="226" text-anchor="start" class="ew" fill="#e0b950">sąd</text><rect x="109" y="306" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="127" y="318" text-anchor="start" class="ew" fill="#e0b950">wyrok</text><rect x="53" y="239" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="71" y="251" text-anchor="start" class="ew" fill="#e0b950">skarga</text><rect x="185" y="191" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="203" y="203" text-anchor="start" class="ew" fill="#e0b950">kodeks</text><rect x="44" y="246" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><line x1="50" y1="252" x2="62" y2="275" class="elead"/><text x="62" y="280" text-anchor="start" class="ew" fill="#e0b950">apelacja</text><rect x="167" y="146" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><text x="185" y="158" text-anchor="start" class="ew" fill="#e0b950">umowa</text><rect x="85" y="297" width="12" height="12" fill="#e0b950" stroke="#150f1b" stroke-width="2"/><line x1="91" y1="303" x2="103" y2="362" class="elead"/><text x="103" y="367" text-anchor="start" class="ew" fill="#e0b950">Trybunał</text><rect x="175" y="326" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><text x="193" y="338" text-anchor="start" class="ew" fill="#d67653">sędzia</text><rect x="268" y="318" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><text x="286" y="330" text-anchor="start" class="ew" fill="#d67653">kara</text><rect x="152" y="135" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><text x="146" y="147" text-anchor="end" class="ew" fill="#d67653">prawo</text><rect x="347" y="34" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><text x="365" y="46" text-anchor="start" class="ew" fill="#d67653">zamek</text><rect x="161" y="274" width="12" height="12" fill="#d67653" stroke="#150f1b" stroke-width="2"/><text x="179" y="286" text-anchor="start" class="ew" fill="#d67653">zdanie</text><rect x="384" y="354" width="12" height="12" fill="#6fb7c9" stroke="#150f1b" stroke-width="2"/><text x="402" y="366" text-anchor="start" class="ew" fill="#6fb7c9">mecz</text><rect x="430" y="332" width="12" height="12" fill="#6fb7c9" stroke="#150f1b" stroke-width="2"/><text x="424" y="344" text-anchor="end" class="ew" fill="#6fb7c9">gol</text><rect x="473" y="343" width="12" height="12" fill="#6fb7c9" stroke="#150f1b" stroke-width="2"/><text x="491" y="355" text-anchor="start" class="ew" fill="#6fb7c9">boisko</text><rect x="484" y="258" width="12" height="12" fill="#6fb7c9" stroke="#150f1b" stroke-width="2"/><text x="502" y="270" text-anchor="start" class="ew" fill="#6fb7c9">kibic</text><rect x="347" y="61" width="12" height="12" fill="#6fb7c9" stroke="#150f1b" stroke-width="2"/><text x="365" y="73" text-anchor="start" class="ew" fill="#6fb7c9">drzwi · klucz</text></svg></figure>
+</div>
+<p class="kans frag" data-o="2">Dane decydują, co jest blisko. Słowa wieloznaczne lądują <b>pomiędzy</b>. Słowa, których nie ma w danych, dla modelu nie istnieją.</p>
+<footer class="src"><a href="https://huggingface.co/Xenova/paraphrase-multilingual-MiniLM-L12-v2" target="_blank" rel="noopener">Model: paraphrase-multilingual-MiniLM-L12-v2 (sentence-transformers), wektory zdań z ćwiczenia, rzut na płaszczyznę (PCA), 18.10.2026</a></footer>
+<span class="slide-number">35</span>
+</section>
+
+<section aria-label="Slajd 36: Pracownia alchemika: prawo o danych treningowych" class="slide kurs kdane" data-title="Pracownia alchemika: prawo o danych treningowych" data-title-odyseja="Skały Syren: prawo o danych treningowych" data-min="6" data-appendix="false">
+<div class="kicker" data-u-odyseja="Skały Syren · kto odpowiada za ładunek">Pracownia alchemika · kto odpowiada za składniki</div>
+<h2>Prawo o <span class="gld">danych treningowych</span></h2>
+<div class="kgrid c2">
+<div class="kbox"><div class="lab">AI Act (UE) 2024/1689</div><ul class="klist">
+<li><b>Art. 10 ust. 3</b> (systemy wysokiego ryzyka): zbiory danych „muszą być adekwatne, wystarczająco reprezentatywne oraz w jak największym stopniu wolne od błędów i kompletne”.</li>
+<li><b>Art. 10 ust. 2 lit. f–g:</b> badanie danych pod kątem stronniczości, która może „prowadzić do dyskryminacji”, i środki jej ograniczania.</li>
+<li><b>Art. 53 ust. 1 lit. c–d</b> (modele ogólnego przeznaczenia): polityka praw autorskich i publiczne „streszczenie na temat treści wykorzystanych do trenowania”.</li>
+</ul></div>
+<div class="kbox"><div class="lab">Konwencja ramowa Rady Europy (CETS 225)</div><ul class="klist">
+<li><b>Art. 10:</b> równość, w tym płci, i zakaz dyskryminacji w całym „cyklu życia” systemu AI, a także środki na rzecz „fair, just and equitable outcomes”.</li>
+<li><b>Art. 11:</b> ochrona prywatności i danych osobowych.</li>
+<li><b>Art. 12:</b> niezawodność, w tym „adequate quality” systemu.</li>
+</ul></div>
+</div>
+<p class="kalso frag" data-o="1"><span class="lab">Pytanie do Was</span>Kto sprawdzi, czy korpus był „reprezentatywny”? Streszczenie danych to nie same dane. Czy to wystarczy, żeby ktoś mógł zaskarżyć dyskryminację?</p>
+<footer class="src"><a href="https://eur-lex.europa.eu/legal-content/PL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">Rozporządzenie (UE) 2024/1689 (AI Act), art. 10 ust. 2–3, art. 53 ust. 1</a><a href="https://rm.coe.int/1680afae3c" target="_blank" rel="noopener">Konwencja ramowa Rady Europy o AI (CETS 225), art. 10–12</a></footer>
+<span class="slide-number">36</span>
+</section>
+
+<section aria-label="Slajd 37: Pracownia alchemika: jak działa model językowy" class="slide kurs kllm" data-title="Pracownia alchemika: jak działa model językowy" data-title-odyseja="Skały Syren: jak działa model językowy" data-min="12" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · pieśń, słowo po słowie">Pracownia alchemika · eliksir, kropla po kropli</div>
 <h2>Model językowy <span class="gld">zgaduje następne słowo</span></h2>
 <div class="kgrid c2">
@@ -1513,10 +1622,10 @@ Wniosek:      co zrobię inaczej</pre></div>
 <p class="kans frag" data-o="1">Model nie sprawdza faktów. Wybiera to, co <b>zwykle</b> pada po takim tekście. Stąd pewny ton i zmyślone przepisy.</p>
 <p class="kalso frag" data-o="2"><span class="lab">Tokeny i prawa</span>To samo zdanie: po angielsku 8 tokenów na 8 słów, po polsku 22 tokeny na 6 słów. Polski kosztuje więcej i model gorzej go zna. Język też jest sprawą równości.</p>
 <footer class="src"><a href="https://huggingface.co/Xenova/gpt2" target="_blank" rel="noopener">GPT-2, wersja ONNX dla przeglądarki (Xenova/gpt2), transformers.js</a><a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Transformer Explainer (Georgia Tech), pełna wizualizacja wnętrza GPT-2</a></footer>
-<span class="slide-number">33</span>
+<span class="slide-number">37</span>
 </section>
 
-<section aria-label="Slajd 34: Pracownia alchemika: gdy prawdopodobieństwo trafia do sądu" class="slide kurs" data-title="Pracownia alchemika: gdy prawdopodobieństwo trafia do sądu" data-title-odyseja="Skały Syren: gdy prawdopodobieństwo trafia do sądu" data-min="8" data-appendix="false">
+<section aria-label="Slajd 38: Pracownia alchemika: gdy prawdopodobieństwo trafia do sądu" class="slide kurs" data-title="Pracownia alchemika: gdy prawdopodobieństwo trafia do sądu" data-title-odyseja="Skały Syren: gdy prawdopodobieństwo trafia do sądu" data-min="8" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · wraki pod skałami">Pracownia alchemika · zepsute eliksiry</div>
 <h2>Gdy prawdopodobieństwo <span class="gld">trafia do sądu</span></h2>
 <div class="kgrid c2">
@@ -1532,10 +1641,10 @@ Wniosek:      co zrobię inaczej</pre></div>
 </div>
 <p class="kans frag" data-o="2">Statystyka nie zna odpowiedzi „nie wiem”. <b>RAG</b> to próba dania jej źródła.</p>
 <footer class="src"><a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">D. Charlotin, AI Hallucination Cases (CSV z 23.09.2026)</a><a href="https://orzeczenia.nsa.gov.pl/doc/7696DAE25D" target="_blank" rel="noopener">NSA, postanowienie z 23.06.2026, I FZ 104/26 (CBOSA)</a><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jels.12413" target="_blank" rel="noopener">Magesh i in., Hallucination-Free?, Journal of Empirical Legal Studies 22 (2025)</a><a href="https://academic.oup.com/jla/article/16/1/64/7699227" target="_blank" rel="noopener">Dahl i in., Large Legal Fictions, Journal of Legal Analysis 16 (2024)</a></footer>
-<span class="slide-number">34</span>
+<span class="slide-number">38</span>
 </section>
 
-<section aria-label="Slajd 35: Pracownia alchemika: RAG krok po kroku" class="slide kurs krag" data-title="Pracownia alchemika: RAG krok po kroku" data-title-odyseja="Skały Syren: RAG krok po kroku" data-min="12" data-appendix="false">
+<section aria-label="Slajd 39: Pracownia alchemika: RAG krok po kroku" class="slide kurs krag" data-title="Pracownia alchemika: RAG krok po kroku" data-title-odyseja="Skały Syren: RAG krok po kroku" data-min="12" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · najpierw sprawdź mapę, potem płyń">Pracownia alchemika · najpierw receptura, potem eliksir</div>
 <h2>RAG: <span class="gld">najpierw wyszukaj, potem odpowiedz</span></h2>
 <div class="rag5">
@@ -1547,10 +1656,10 @@ Wniosek:      co zrobię inaczej</pre></div>
 </div>
 <p class="klive" data-live="https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/rag/" data-live-title="RAG · WYROKI ETPC">Demo: RAG na wyrokach ETPC ↗ <span>(W)</span></p>
 <footer class="src"><a href="https://hudoc.echr.coe.int/?i=001-225655" target="_blank" rel="noopener">ETPC, Glukhin v. Russia, no. 11519/20, §§ 69, 72, 89, 4 July 2023 (HUDOC)</a><a href="https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/rag/" target="_blank" rel="noopener">Demo RAG: 12 wyroków ETPC (część „Merits”), HUDOC przez HUDOC Researcher, 18.10.2026</a></footer>
-<span class="slide-number">35</span>
+<span class="slide-number">39</span>
 </section>
 
-<section aria-label="Slajd 36: Pracownia alchemika: czy model się uczy z rozmowy?" class="slide kurs" data-title="Pracownia alchemika: czy model się uczy z rozmowy?" data-title-odyseja="Skały Syren: czy model się uczy z rozmowy?" data-min="5" data-appendix="false">
+<section aria-label="Slajd 40: Pracownia alchemika: czy model się uczy z rozmowy?" class="slide kurs" data-title="Pracownia alchemika: czy model się uczy z rozmowy?" data-title-odyseja="Skały Syren: czy model się uczy z rozmowy?" data-min="5" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · co zostaje po rejsie">Pracownia alchemika · co zostaje w kotle</div>
 <h2>Czy RAG zmienia model? <span class="gld">Nie.</span></h2>
 <div class="kgrid kwag">
@@ -1564,10 +1673,10 @@ Wniosek:      co zrobię inaczej</pre></div>
 </div>
 <p class="kalso frag" data-o="1"><span class="lab">Prawa człowieka</span>Kto wybiera bazę dokumentów, ten wybiera, co model „wie”. Pominięty wyrok nie istnieje dla odpowiedzi.</p>
 <p class="kans frag" data-o="2">RAG zmniejsza zmyślenia, ale ich nie usuwa. <b>Ocena zostaje przy Was.</b></p>
-<span class="slide-number">36</span>
+<span class="slide-number">40</span>
 </section>
 
-<section aria-label="Slajd 37: Pracownia alchemika: jak powstaje eliksir" class="slide potion-slide" data-title="Pracownia alchemika: jak powstaje eliksir" data-title-odyseja="Skały Syren: co brzmi pewnie" data-min="2.5" data-appendix="false">
+<section aria-label="Slajd 41: Pracownia alchemika: jak powstaje eliksir" class="slide potion-slide" data-title="Pracownia alchemika: jak powstaje eliksir" data-title-odyseja="Skały Syren: co brzmi pewnie" data-min="2.5" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · to, co brzmi pewnie, trzeba sprawdzić">Pracownia alchemika · jak powstaje eliksir</div>
 <h2>Przygotowanie tanieje.<br><span class="gld">Decyzja i ocena zostają przy Was.</span></h2>
 <div class="tl">
@@ -1582,10 +1691,10 @@ Wniosek:      co zrobię inaczej</pre></div>
 </div>
 <p class="jevons frag"><span class="jl"><b data-u-odyseja="Syreny śpiewają pewnie.">Po kolorze nie poznasz.</b> Pełnomocnik powołał trzy postanowienia NSA. Sygnatury prawdziwe, ale „…żadne nie odzwierciedla realnego stanowiska” sądu (I FZ 104/26).</span><span class="jl"><b>Nie tylko u nas.</b> Baza Charlotina: ponad 2000 takich spraw na świecie, z Polski dwie.</span></p>
 <footer class="src"><a href="https://orzeczenia.nsa.gov.pl/doc/7696DAE25D" target="_blank" rel="noopener">NSA, I FZ 104/26 (CBOSA)</a><a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai" target="_blank" rel="noopener">Bell i Legg, Bond Law Review 38(2) (2026)</a><a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">D. Charlotin, AI Hallucination Cases</a></footer>
-<span class="slide-number">37</span>
+<span class="slide-number">41</span>
 </section>
 
-<section aria-label="Slajd 38: Pracownia alchemika: rzecznicy patentowi" class="slide patent-slide" data-title="Pracownia alchemika: rzecznicy patentowi" data-title-odyseja="Skały Syren: rzecznicy patentowi" data-min="3" data-appendix="false">
+<section aria-label="Slajd 42: Pracownia alchemika: rzecznicy patentowi" class="slide patent-slide" data-title="Pracownia alchemika: rzecznicy patentowi" data-title-odyseja="Skały Syren: rzecznicy patentowi" data-min="3" data-appendix="false">
 <div class="kicker" data-u-odyseja="Skały Syren · rzecznicy patentowi · eksperyment 2026">Pracownia alchemika · rzecznicy patentowi · eksperyment 2026</div>
 <h2>AI pomaga każdemu.<br><span class="gld">Uczy tych, którzy mają podstawy.</span></h2>
 <p class="task">133 rzeczników patentowych z USA, 3 miesiące z asystentem AI lub bez niego, na koniec test bez AI.</p>
@@ -1595,15 +1704,15 @@ Wniosek:      co zrobię inaczej</pre></div>
 </div>
 <p class="quote frag">Na studiach — bez skrótów. W pracy — z AI.<small>Tylko ćwicząc sami, nauczycie się, na co zwracać uwagę, co sprawdzać i co można oddać narzędziu.</small></p>
 <footer class="src"><a href="https://www.nber.org/papers/w35720" target="_blank" rel="noopener">Autor i in., Does AI Assistance Enhance or Erode Expertise?, NBER WP 35720 (IX 2026), praca robocza</a></footer>
-<span class="slide-number">38</span>
+<span class="slide-number">42</span>
 </section>
 
 
-<section aria-label="Slajd 39: Mapa → Port" class="slide map-slide" data-stop="6" data-title="Mapa → Port" data-title-odyseja="Mapa → Itaka" data-min="0.3" data-appendix="false">
+<section aria-label="Slajd 43: Mapa → Port" class="slide map-slide" data-stop="6" data-title="Mapa → Port" data-title-odyseja="Mapa → Itaka" data-min="0.3" data-appendix="false">
 
 </section>
 
-<section aria-label="Slajd 40: Port: nieznane wody" class="slide map-slide ending" data-stop="6" data-final data-title="Port: nieznane wody" data-title-odyseja="Itaka: próba łuku" data-min="1.5" data-appendix="false">
+<section aria-label="Slajd 44: Port: nieznane wody" class="slide map-slide ending" data-stop="6" data-final data-title="Port: nieznane wody" data-title-odyseja="Itaka: próba łuku" data-min="1.5" data-appendix="false">
 <div class="over farewell">
 <div class="kicker" data-u-odyseja="Itaka · próba łuku">Port</div>
 <h2 data-u-odyseja="Studia to przygotowanie<br><span class=&quot;gld&quot;>do próby toporów.</span>">Wypływacie<br><span class="gld">na nieznane wody.</span></h2>
@@ -1615,7 +1724,7 @@ Wniosek:      co zrobię inaczej</pre></div>
 
 </section>
 
-<section aria-label="Slajd 41: Zestaw startowy" class="slide kurs" data-id="zestaw" data-hidden data-title="Zestaw startowy" data-min="0" data-appendix="true">
+<section aria-label="Slajd 45: Zestaw startowy" class="slide kurs" data-id="zestaw" data-hidden data-title="Zestaw startowy" data-min="0" data-appendix="true">
 <div class="kicker">Dla chętnych · zestaw startowy</div>
 <h2>Od przeglądarki <span class="gld">do własnego repo</span></h2>
 <div class="kgrid c3">
@@ -1624,14 +1733,14 @@ Wniosek:      co zrobię inaczej</pre></div>
 <div class="kbox"><div class="kbig">3</div><div class="lab">Własny laptop</div><p>git, VS Code, Python. Do pracy z kodem polecam własny sprzęt.</p></div>
 </div>
 <p class="qualifier">Klucze API dla chętnych grup: osobny klucz z limitem, w pliku <b>.env</b>, który jest w <b>.gitignore</b>. Klucz w publicznym repo to klucz dla całego świata.</p>
-<span class="slide-number">41</span>
+<span class="slide-number">45</span>
 </section>
 
 <!--AWARIA_START-->
 
 <!--AWARIA_END-->
 
-<section aria-label="Slajd 43: Źródła" class="slide bibliography" data-title="Źródła" data-min="0" data-appendix="true"><div class="kicker">Po wykładzie</div><h2>Źródła</h2><div class="source-list"><a href="https://doi.org/10.1287/orsc.2025.21838" target="_blank" rel="noopener">Dell'Acqua i in., Navigating the Jagged Technological Frontier, Organization Science (2026)</a><a href="https://letr.org.uk/the-report/chapter-2/what-is-valued-and-required-by-the-legal-services-sector/index.html" target="_blank" rel="noopener">Legal Education and Training Review (2013), rozdz. 2, tab. 2.6</a><a href="https://www.iadclaw.org/assets/1/7/10.1-_Remus_Levy.pdf" target="_blank" rel="noopener">Remus i Levy, Can Robots Be Lawyers?, 30 Geo. J. Legal Ethics 501 (2017)</a><a href="https://www.youtube.com/watch?v=k-xtmISBCNE&amp;t=543s" target="_blank" rel="noopener">Jensen Huang, No Priors, 8.01.2026 (od 9:03)</a><a href="https://media.ca11.uscourts.gov/opinions/pub/files/202212581.pdf" target="_blank" rel="noopener">Snell v. United Specialty Insurance Co., 11th Cir. (28.05.2024), zdanie zbieżne sędziego Kevina Newsoma</a><a href="https://cepr.org/publications/dp21783" target="_blank" rel="noopener">Mehmood, Goessmann i Ash, Courts of Tomorrow, CEPR DP21783 (2026), praca robocza</a><a href="https://www.rp.pl/administracja-panstwowa/art45166711-asystent-prawny-coraz-blizej-urzedow" target="_blank" rel="noopener">N. Nowotnik, „Asystent prawny coraz bliżej urzędów”, Rzeczpospolita (29.09.2026)</a><a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai" target="_blank" rel="noopener">Bell i Legg, The Giving of Reasons: Judgment Writing, Judicial Reasoning, and GenAI, Bond Law Review 38(2) (2026)</a><a href="https://www.oneusefulthing.org/p/the-dot-and-the-swarm" target="_blank" rel="noopener">Mollick, The Dot and the Swarm, One Useful Thing (1.10.2026)</a><a href="https://documents.un.org/api/symbol/access?s=A/80/169&amp;l=en&amp;t=pdf" target="_blank" rel="noopener">Specjalna Sprawozdawczyni ONZ ds. niezależności sędziów i prawników, A/80/169 (2025)</a><a href="https://www.nber.org/papers/w35720" target="_blank" rel="noopener">Autor i in., Does AI Assistance Enhance or Erode Expertise?, NBER WP 35720 (IX 2026), praca robocza</a><a href="https://www.vals.ai/industry-reports/vlair-2-27-25" target="_blank" rel="noopener">Vals AI, Vals Legal AI Report (VLAIR), 27.02.2025 — raport branżowy</a><a href="https://www.nber.org/papers/w33777" target="_blank" rel="noopener">Humlum i Vestergaard, Large Language Models, Small Labor Market Effects, NBER WP 33777 (2025)</a><a href="https://link.springer.com/article/10.1007/s10506-026-09505-w" target="_blank" rel="noopener">Karp i in., LLM-as-a-Judge is Bad…, Artificial Intelligence and Law (2026)</a><a href="https://arxiv.org/abs/2606.21155" target="_blank" rel="noopener">Liu, Stammbach, Henderson, tekst przed recenzją (2026)</a><a href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19600300168" target="_blank" rel="noopener">Kodeks postępowania administracyjnego, art. 107 § 1 pkt 8</a><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jels.12413" target="_blank" rel="noopener">Magesh i in., Hallucination-Free?, Journal of Empirical Legal Studies 22 (2025)</a><a href="https://academic.oup.com/jla/article/16/1/64/7699227" target="_blank" rel="noopener">Dahl i in., Large Legal Fictions, Journal of Legal Analysis 16 (2024)</a><a href="https://www.prawo.pl/prawnicy-sady/nsa-radca-prawny-przywolal-orzeczenia-zmyslone-przez-ai,1553132.html" target="_blank" rel="noopener">NSA, I OSK 590/26 (31.08.2026)</a><a href="https://orzeczenia.nsa.gov.pl/doc/7696DAE25D" target="_blank" rel="noopener">NSA, postanowienie z 23.06.2026, I FZ 104/26</a><a href="https://www.nber.org/papers/w33641" target="_blank" rel="noopener">Dell'Acqua i in., The Cybernetic Teammate, NBER WP 33641 (2025); Organization Science 37(4) (2026)</a><a href="https://documents.un.org/api/symbol/access?s=A/HRC/RES/47/23&amp;l=en&amp;t=pdf" target="_blank" rel="noopener">Rada Praw Człowieka ONZ, rezolucja 47/23 (13.07.2021)</a><a href="https://lszoszk.github.io/hrc-voting/" target="_blank" rel="noopener">HRC Voting — Ł. Szoszkiewicz (2026)</a><a href="https://nyulawreview.org/forum/2026/08/ai-legal-labor-and-the-jevons-paradox/" target="_blank" rel="noopener">Chang, AI, Legal Labor, and the Jevons Paradox, NYU Law Review Forum (4.08.2026)</a><a href="https://arxiv.org/abs/2608.16603" target="_blank" rel="noopener">Schmitz, Hammond i Chan, Characterizing Agentic Flooding of Government Services, AIES 2026 (preprint)</a><a href="https://www.ft.com/content/7bf86647-32f0-4f0c-b46b-2f4d690fa51e" target="_blank" rel="noopener">Y. Lambert, „AI shakes up in-house legal teams’ work practices”, Financial Times (25.09.2026), raport FT Innovative Lawyers Europe</a><a href="https://wolnelektury.pl/katalog/lektura/platon-fajdros.html" target="_blank" rel="noopener">Platon, Fajdros, przeł. W. Witwicki (Wolne Lektury, domena publiczna)</a><a href="https://www.youtube.com/watch?v=c-_OVgQ5q7k" target="_blank" rel="noopener">Synchron, film „Rodney uses The Force to feed his dog” (2025)</a><a href="https://doi.org/10.1038/s44319-025-00505-6" target="_blank" rel="noopener">Szoszkiewicz i Yuste, Mental privacy, EMBO Reports 26 (2025)</a><a href="https://www.youtube.com/watch?v=OAwat51S_Sk" target="_blank" rel="noopener">Ethan Mollick (kanał), The Bitter Lesson, YouTube (2.10.2026, 3:08)</a><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">OECD, Recommendation of the Council on Artificial Intelligence: definicja „AI system” (zmiana z 8.11.2023)</a><a href="https://rm.coe.int/1680afae3c" target="_blank" rel="noopener">Konwencja ramowa Rady Europy o sztucznej inteligencji i prawach człowieka, demokracji i państwie prawnym (CETS 225), art. 2</a><a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Cho i in., Transformer Explainer (Georgia Tech, AAAI 2025; kod MIT)</a><a href="https://hudoc.echr.coe.int/?i=001-225655" target="_blank" rel="noopener">ETPC, Glukhin v. Russia, no. 11519/20, 4 July 2023</a><a href="https://www.mj.niedersachsen.de/startseite/kunstliche_intelligenz_und_automation_in_der_justiz/kunstliche-intelligenz-und-automation-in-der-justiz-246705.html" target="_blank" rel="noopener">Niedersächsisches Justizministerium, Künstliche Intelligenz und Automation in der Justiz (dostęp 12.10.2026)</a><a href="https://www.lto.de/recht/nachrichten/n/verbraucherrechte-fluggastrechte-klagewelle-kuenstliche-intelligenz-amtsgerichte-frauke-frankfurt-wusterhausen" target="_blank" rel="noopener">LTO, Flut an Fluggastrechte-Klagen: KI soll Brandenburger Gericht unterstützen (4.10.2023)</a><a href="https://www.baden-wuerttemberg.de/de/service/presse/pressemitteilung/pid/neues-ki-werkzeug-fuer-effiziente-justizverfahren" target="_blank" rel="noopener">Ministerium der Justiz und für Migration Baden-Württemberg, Neues KI-Werkzeug für effiziente Justizverfahren (24.04.2026)</a><a href="https://dserver.bundestag.de/btd/21/059/2105985.pdf" target="_blank" rel="noopener">Bundestag, Drucksache 21/5985: odpowiedź rządu federalnego o AI w justycji (18.05.2026)</a><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">Rozporządzenie (UE) 2024/1689 (AI Act), art. 6 ust. 3 i zał. III pkt 8 lit. a</a><a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">Damien Charlotin, AI Hallucination Cases Database</a><span>Ilustracje map i bohaterów (Wiedźmin, Odyseja): wygenerowane w Codexie (OpenAI) na potrzeby wykładu, 25–27.09.2026. Obrazy „prawnik w pracy”: OpenAI (Codex) i Google Gemini, 23.09.2026. Obrazy „prawnik w starożytnej Grecji” (Odyseja): OpenAI (ChatGPT) i Google Gemini, 29.09.2026. Zdjęcie ze stoiska w Genewie (VII 2026): Domenico Zipoli. Muzyka: L. Göransson, „The Odyssey” (2026) — fragment „The Trial of the Bow / Vengeance” na końcu; motyw główny gra tylko na sali.</span></div><span class="slide-number">43</span></section>
+<section aria-label="Slajd 47: Źródła" class="slide bibliography" data-title="Źródła" data-min="0" data-appendix="true"><div class="kicker">Po wykładzie</div><h2>Źródła</h2><div class="source-list"><a href="https://doi.org/10.1287/orsc.2025.21838" target="_blank" rel="noopener">Dell'Acqua i in., Navigating the Jagged Technological Frontier, Organization Science (2026)</a><a href="https://letr.org.uk/the-report/chapter-2/what-is-valued-and-required-by-the-legal-services-sector/index.html" target="_blank" rel="noopener">Legal Education and Training Review (2013), rozdz. 2, tab. 2.6</a><a href="https://www.iadclaw.org/assets/1/7/10.1-_Remus_Levy.pdf" target="_blank" rel="noopener">Remus i Levy, Can Robots Be Lawyers?, 30 Geo. J. Legal Ethics 501 (2017)</a><a href="https://www.youtube.com/watch?v=k-xtmISBCNE&amp;t=543s" target="_blank" rel="noopener">Jensen Huang, No Priors, 8.01.2026 (od 9:03)</a><a href="https://media.ca11.uscourts.gov/opinions/pub/files/202212581.pdf" target="_blank" rel="noopener">Snell v. United Specialty Insurance Co., 11th Cir. (28.05.2024), zdanie zbieżne sędziego Kevina Newsoma</a><a href="https://cepr.org/publications/dp21783" target="_blank" rel="noopener">Mehmood, Goessmann i Ash, Courts of Tomorrow, CEPR DP21783 (2026), praca robocza</a><a href="https://www.rp.pl/administracja-panstwowa/art45166711-asystent-prawny-coraz-blizej-urzedow" target="_blank" rel="noopener">N. Nowotnik, „Asystent prawny coraz bliżej urzędów”, Rzeczpospolita (29.09.2026)</a><a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai" target="_blank" rel="noopener">Bell i Legg, The Giving of Reasons: Judgment Writing, Judicial Reasoning, and GenAI, Bond Law Review 38(2) (2026)</a><a href="https://www.oneusefulthing.org/p/the-dot-and-the-swarm" target="_blank" rel="noopener">Mollick, The Dot and the Swarm, One Useful Thing (1.10.2026)</a><a href="https://documents.un.org/api/symbol/access?s=A/80/169&amp;l=en&amp;t=pdf" target="_blank" rel="noopener">Specjalna Sprawozdawczyni ONZ ds. niezależności sędziów i prawników, A/80/169 (2025)</a><a href="https://www.nber.org/papers/w35720" target="_blank" rel="noopener">Autor i in., Does AI Assistance Enhance or Erode Expertise?, NBER WP 35720 (IX 2026), praca robocza</a><a href="https://www.vals.ai/industry-reports/vlair-2-27-25" target="_blank" rel="noopener">Vals AI, Vals Legal AI Report (VLAIR), 27.02.2025 — raport branżowy</a><a href="https://www.nber.org/papers/w33777" target="_blank" rel="noopener">Humlum i Vestergaard, Large Language Models, Small Labor Market Effects, NBER WP 33777 (2025)</a><a href="https://link.springer.com/article/10.1007/s10506-026-09505-w" target="_blank" rel="noopener">Karp i in., LLM-as-a-Judge is Bad…, Artificial Intelligence and Law (2026)</a><a href="https://arxiv.org/abs/2606.21155" target="_blank" rel="noopener">Liu, Stammbach, Henderson, tekst przed recenzją (2026)</a><a href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19600300168" target="_blank" rel="noopener">Kodeks postępowania administracyjnego, art. 107 § 1 pkt 8</a><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jels.12413" target="_blank" rel="noopener">Magesh i in., Hallucination-Free?, Journal of Empirical Legal Studies 22 (2025)</a><a href="https://academic.oup.com/jla/article/16/1/64/7699227" target="_blank" rel="noopener">Dahl i in., Large Legal Fictions, Journal of Legal Analysis 16 (2024)</a><a href="https://www.prawo.pl/prawnicy-sady/nsa-radca-prawny-przywolal-orzeczenia-zmyslone-przez-ai,1553132.html" target="_blank" rel="noopener">NSA, I OSK 590/26 (31.08.2026)</a><a href="https://orzeczenia.nsa.gov.pl/doc/7696DAE25D" target="_blank" rel="noopener">NSA, postanowienie z 23.06.2026, I FZ 104/26</a><a href="https://www.nber.org/papers/w33641" target="_blank" rel="noopener">Dell'Acqua i in., The Cybernetic Teammate, NBER WP 33641 (2025); Organization Science 37(4) (2026)</a><a href="https://documents.un.org/api/symbol/access?s=A/HRC/RES/47/23&amp;l=en&amp;t=pdf" target="_blank" rel="noopener">Rada Praw Człowieka ONZ, rezolucja 47/23 (13.07.2021)</a><a href="https://lszoszk.github.io/hrc-voting/" target="_blank" rel="noopener">HRC Voting — Ł. Szoszkiewicz (2026)</a><a href="https://nyulawreview.org/forum/2026/08/ai-legal-labor-and-the-jevons-paradox/" target="_blank" rel="noopener">Chang, AI, Legal Labor, and the Jevons Paradox, NYU Law Review Forum (4.08.2026)</a><a href="https://arxiv.org/abs/2608.16603" target="_blank" rel="noopener">Schmitz, Hammond i Chan, Characterizing Agentic Flooding of Government Services, AIES 2026 (preprint)</a><a href="https://www.ft.com/content/7bf86647-32f0-4f0c-b46b-2f4d690fa51e" target="_blank" rel="noopener">Y. Lambert, „AI shakes up in-house legal teams’ work practices”, Financial Times (25.09.2026), raport FT Innovative Lawyers Europe</a><a href="https://wolnelektury.pl/katalog/lektura/platon-fajdros.html" target="_blank" rel="noopener">Platon, Fajdros, przeł. W. Witwicki (Wolne Lektury, domena publiczna)</a><a href="https://www.youtube.com/watch?v=c-_OVgQ5q7k" target="_blank" rel="noopener">Synchron, film „Rodney uses The Force to feed his dog” (2025)</a><a href="https://doi.org/10.1038/s44319-025-00505-6" target="_blank" rel="noopener">Szoszkiewicz i Yuste, Mental privacy, EMBO Reports 26 (2025)</a><a href="https://www.youtube.com/watch?v=OAwat51S_Sk" target="_blank" rel="noopener">Ethan Mollick (kanał), The Bitter Lesson, YouTube (2.10.2026, 3:08)</a><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">OECD, Recommendation of the Council on Artificial Intelligence: definicja „AI system” (zmiana z 8.11.2023)</a><a href="https://rm.coe.int/1680afae3c" target="_blank" rel="noopener">Konwencja ramowa Rady Europy o sztucznej inteligencji i prawach człowieka, demokracji i państwie prawnym (CETS 225), art. 2</a><a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Cho i in., Transformer Explainer (Georgia Tech, AAAI 2025; kod MIT)</a><a href="https://hudoc.echr.coe.int/?i=001-225655" target="_blank" rel="noopener">ETPC, Glukhin v. Russia, no. 11519/20, 4 July 2023</a><a href="https://www.mj.niedersachsen.de/startseite/kunstliche_intelligenz_und_automation_in_der_justiz/kunstliche-intelligenz-und-automation-in-der-justiz-246705.html" target="_blank" rel="noopener">Niedersächsisches Justizministerium, Künstliche Intelligenz und Automation in der Justiz (dostęp 12.10.2026)</a><a href="https://www.lto.de/recht/nachrichten/n/verbraucherrechte-fluggastrechte-klagewelle-kuenstliche-intelligenz-amtsgerichte-frauke-frankfurt-wusterhausen" target="_blank" rel="noopener">LTO, Flut an Fluggastrechte-Klagen: KI soll Brandenburger Gericht unterstützen (4.10.2023)</a><a href="https://www.baden-wuerttemberg.de/de/service/presse/pressemitteilung/pid/neues-ki-werkzeug-fuer-effiziente-justizverfahren" target="_blank" rel="noopener">Ministerium der Justiz und für Migration Baden-Württemberg, Neues KI-Werkzeug für effiziente Justizverfahren (24.04.2026)</a><a href="https://dserver.bundestag.de/btd/21/059/2105985.pdf" target="_blank" rel="noopener">Bundestag, Drucksache 21/5985: odpowiedź rządu federalnego o AI w justycji (18.05.2026)</a><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">Rozporządzenie (UE) 2024/1689 (AI Act), art. 6 ust. 3 i zał. III pkt 8 lit. a</a><a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">Damien Charlotin, AI Hallucination Cases Database</a><span>Ilustracje map i bohaterów (Wiedźmin, Odyseja): wygenerowane w Codexie (OpenAI) na potrzeby wykładu, 25–27.09.2026. Obrazy „prawnik w pracy”: OpenAI (Codex) i Google Gemini, 23.09.2026. Obrazy „prawnik w starożytnej Grecji” (Odyseja): OpenAI (ChatGPT) i Google Gemini, 29.09.2026. Zdjęcie ze stoiska w Genewie (VII 2026): Domenico Zipoli. Muzyka: L. Göransson, „The Odyssey” (2026) — fragment „The Trial of the Bow / Vengeance” na końcu; motyw główny gra tylko na sali.</span></div><span class="slide-number">47</span></section>
 <div id="chap" hidden></div><div id="calib" aria-hidden="true"><div class="grid"></div><div class="square"></div><div class="circle"></div><div class="ci">KALIBRACJA TELEBIMU · proporcje ściany: <b id="calibValue">1,78 : 1</b><br>← → zmienia · Shift: większy krok · 0: bez korekty · K lub Esc: zamknij<br>Koło na ścianie ma być okrągłe.</div></div><aside class="overlay" id="live" aria-label="Strona na żywo"><div class="lv-bar"><span id="liveTitle">HRC VOTING · NA ŻYWO</span><button data-close>✕ Wróć do slajdu</button></div><iframe title="Strona na żywo" referrerpolicy="no-referrer" allow="clipboard-write"></iframe><p class="lv-off"><span id="liveOff">Brak internetu — to zrzut widoku Blocs.</span><img id="liveImg" src="assets/hrc_voting_blocs.webp" alt="Zrzut widoku Blocs w HRC Voting: mapa zgodności głosowań państw"></p></aside></div></main><aside id="presenterNotes"></aside><div id="progress"></div><div id="blackout"></div>
 <nav class="hud" aria-label="Sterowanie prezentacją"><button data-action="prev" title="Wstecz">‹</button><button id="counter" data-overlay="overview"></button><button data-action="next" title="Dalej">›</button><button id="szukajBtn" title="Szukaj slajdu (/)">⌕</button><button id="jasnyBtn" title="Jasne slajdy (J)">☀</button><button data-overlay="sources" title="Źródła (S)" aria-label="Źródła"><svg viewBox="0 0 12 12" width="14" height="14" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="2" width="5" height="9"/><rect x="7" y="2" width="5" height="9"/><rect x="5" y="3" width="2" height="8"/><rect x="1" y="1" width="3" height="1"/><rect x="8" y="1" width="3" height="1"/></svg></button><button id="fullscreenButton" title="Pełny ekran (F)">⛶</button><button data-overlay="help">?</button></nav>
 <aside class="overlay" id="overview"><button data-close class="close">Zamknij</button><h2>Slajdy</h2><div id="jumpList"></div></aside><aside class="overlay" id="szukaj" aria-label="Szukaj slajdu"><input id="szukajIn" type="text" placeholder="Szukaj slajdu: tytuł, nagłówek, treść…" autocomplete="off" spellcheck="false"><div id="szukajOut"></div></aside>
