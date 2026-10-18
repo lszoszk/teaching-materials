@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Następne słowo: GPT-2 w przeglądarce · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--line:#4d4059;--muted:#ada290;--ok:#7fb069}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:20px/1.45 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+main{max-width:1500px;margin:0 auto;padding:22px 28px 40px}
+h1{font-size:30px;line-height:1.2;margin:0 0 4px}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0 0 14px;font-size:18px}
+.grid{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;align-items:start}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:16px 18px;margin:0 0 18px}
+.lab{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+textarea{width:100%;min-height:96px;resize:vertical;background:#0f0b14;color:var(--paper);border:2px solid var(--line);padding:10px 12px;font:inherit;font-size:22px;border-radius:0}
+textarea:focus{outline:2px solid var(--gold)}
+button{font:inherit;font-size:18px;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:8px 14px;box-shadow:4px 4px 0 #0008;font-weight:700}
+button.sec{background:var(--ink);color:var(--paper);border-color:var(--line)}
+button:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.ex{font-size:16px;padding:6px 10px}
+.toks{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.tok{padding:3px 6px;border:2px solid #150f1b;color:#150f1b;font-size:19px;white-space:pre}
+.cnt{font-size:18px;color:var(--parch);margin-top:8px}.cnt b{color:var(--gold)}
+.bar{display:grid;grid-template-columns:210px 1fr 86px;gap:12px;align-items:center;margin:6px 0;cursor:pointer;padding:2px 4px}
+.bar:hover{background:#2a2135}
+.bar .w{font-size:21px;white-space:pre;overflow:hidden;text-overflow:ellipsis}
+.bar .t{height:24px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}
+.bar .t i{display:block;height:100%;background:var(--gold);box-shadow:3px 3px 0 #0008}
+.bar .p{text-align:right;font-size:20px;color:var(--paper)}
+input[type=range]{width:260px;accent-color:var(--gold)}
+.status{font-size:17px;color:var(--muted);min-height:1.4em}
+.prog{height:12px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;margin-top:6px}.prog i{display:block;height:100%;width:0;background:var(--ok)}
+.gen{white-space:pre-wrap;font-size:22px;background:#0f0b14;border-left:6px solid var(--gold);padding:10px 12px;min-height:60px}
+.gen span{color:var(--gold)}
+.muted{color:var(--muted)}small{font-size:16px}
+a{color:var(--gold)}
+</style>
+</head>
+<body>
+<main>
+<h1>Następne słowo: <span>jak „myśli” model językowy</span></h1>
+<p class="sub">GPT-2 (OpenAI, 2019, 124 mln parametrów) liczy się w Twojej przeglądarce. Tekst nie opuszcza komputera. Model rozumie tylko angielski.</p>
+<div class="grid">
+<div>
+<section class="box">
+<p class="lab">1 · Napisz początek zdania (po angielsku)</p>
+<textarea id="txt" spellcheck="false">The European Court of Human Rights held that</textarea>
+<div class="row">
+<button class="sec ex" data-ex="The European Court of Human Rights held that">ETPC</button>
+<button class="sec ex" data-ex="Article 1105 of the Polish Civil Code provides that">art. 1105 k.c.</button>
+<button class="sec ex" data-ex="Facial recognition technology is">rozpoznawanie twarzy</button>
+<button class="sec ex" data-ex="Europejski Trybunał Praw Człowieka orzekł, że">po polsku</button>
+</div>
+</section>
+<section class="box">
+<p class="lab">2 · Tak model widzi tekst: tokeny</p>
+<div class="toks" id="toks"></div>
+<p class="cnt" id="cnt"></p>
+<p class="muted"><small>Model nie czyta słów, tylko tokeny: kawałki słów. Polskie litery rozpadają się na bajty (dziwne znaki), więc polskie zdanie to dużo więcej tokenów.</small></p>
+</section>
+<section class="box">
+<p class="lab">4 · Niech model pisze dalej</p>
+<div class="row"><button id="gen10">Dopisz 12 tokenów</button><button class="sec" id="reset">Wróć do początku</button></div>
+<div class="gen" id="gen" style="margin-top:12px"></div>
+<p class="muted"><small>Kliknij jeszcze raz: przy tej samej temperaturze wynik często jest inny. Model losuje z rozkładu.</small></p>
+</section>
+</div>
+<div>
+<section class="box">
+<p class="lab">3 · Prawdopodobieństwo następnego tokenu (top 10)</p>
+<div class="row" style="margin-top:0"><label for="temp">Temperatura <b id="tv">1.0</b></label><input id="temp" type="range" min="0.2" max="1.6" step="0.1" value="1.0"></div>
+<div id="bars" style="margin-top:10px"></div>
+<p class="muted"><small>Kliknij pasek, aby dopisać ten token. Niska temperatura: model wybiera prawie zawsze to samo. Wysoka: więcej przypadku.</small></p>
+<p class="status" id="st">Ładowanie modelu…</p><div class="prog"><i id="pg"></i></div>
+</section>
+<section class="box">
+<p class="lab">Co z tego wynika</p>
+<p style="margin:0">Model nie sprawdza faktów. Wybiera tokeny, które <b>zwykle</b> padają po takim tekście. Stąd odpowiedzi pewne w tonie, a czasem zmyślone, np. treść nieistniejącego art. 1105 k.c.</p>
+</section>
+</div>
+</div>
+<p class="muted"><small>Model: <a href="https://huggingface.co/Xenova/gpt2" target="_blank" rel="noopener">Xenova/gpt2</a> (ONNX, ok. 130 MB, pobierany raz) przez <a href="https://github.com/huggingface/transformers.js" target="_blank" rel="noopener">transformers.js</a>. Pełna wizualizacja wnętrza modelu: <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Transformer Explainer</a>. IHRL 2026/27, Ł. Szoszkiewicz.</small></p>
+</main>
+<script type="module">
+import {AutoTokenizer, AutoModelForCausalLM, Tensor, env} from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5';
+env.allowLocalModels = false;
+const $ = id => document.getElementById(id);
+const MODEL = 'Xenova/gpt2';
+const COLORS = ['#e0b950','#d67653','#7fb069','#b4a6c4','#6fb7c9','#e3a3c7','#c9b37f'];
+let tok = null, model = null, busy = false, start = $('txt').value;
+const files = {};
+function prog(p) {
+  if (p.status === 'progress' && p.total) { files[p.file] = [p.loaded, p.total];
+    const [l, t] = Object.values(files).reduce((a, [x, y]) => [a[0] + x, a[1] + y], [0, 0]);
+    $('pg').style.width = (100 * l / t).toFixed(1) + '%'; $('st').textContent = `Pobieranie modelu: ${(l / 1e6).toFixed(0)} z ${(t / 1e6).toFixed(0)} MB (tylko za pierwszym razem)`; }
+}
+// tokeny: GPT-2 koduje bajty jako znaki („Ġ” = spacja); pokazujemy surowe kawałki, bo tak model je „widzi”
+function pieces(text) { const ids = tok.encode(text, {add_special_tokens: false}); return {ids, toks: tok.model.convert_ids_to_tokens(ids)}; }
+const vis = s => s.replace(/Ġ/g, '␣').replace(/Ċ/g, '↵');
+function showTokens() {
+  if (!tok) return;
+  const {toks} = pieces($('txt').value);
+  const box = $('toks'); box.textContent = '';
+  toks.forEach((t, i) => { const s = document.createElement('span'); s.className = 'tok'; s.style.background = COLORS[i % COLORS.length]; s.textContent = vis(t); box.append(s); });
+  const words = $('txt').value.trim().split(/\s+/).filter(Boolean).length;
+  $('cnt').innerHTML = `<b>${toks.length}</b> tokenów na <b>${words}</b> słów (${(toks.length / Math.max(words, 1)).toFixed(1)} tokenu na słowo)`;
+}
+async function nextDist(text) {
+  const ids = tok.encode(text, {add_special_tokens: false}).slice(-200);
+  const input_ids = new Tensor('int64', BigInt64Array.from(ids.map(BigInt)), [1, ids.length]);
+  const attention_mask = new Tensor('int64', BigInt64Array.from(ids.map(() => 1n)), [1, ids.length]);
+  const out = await model({input_ids, attention_mask});
+  const V = out.logits.dims[2], L = out.logits.dims[1], data = out.logits.data, off = (L - 1) * V;
+  return Float32Array.from(data.subarray(off, off + V));
+}
+function softmax(logits, T) {
+  let m = -Infinity; for (const x of logits) if (x > m) m = x;
+  const p = new Float32Array(logits.length); let s = 0;
+  for (let i = 0; i < logits.length; i++) { p[i] = Math.exp((logits[i] - m) / T); s += p[i]; }
+  for (let i = 0; i < p.length; i++) p[i] /= s; return p;
+}
+function topk(p, k) { const idx = []; for (let i = 0; i < p.length; i++) { if (idx.length < k) { idx.push(i); idx.sort((a, b) => p[b] - p[a]); } else if (p[i] > p[idx[k - 1]]) { idx[k - 1] = i; idx.sort((a, b) => p[b] - p[a]); } } return idx; }
+let lastLogits = null;
+async function refresh() {
+  showTokens();
+  if (!model || busy) return; busy = true;
+  try {
+    $('st').textContent = 'Liczę…';
+    lastLogits = await nextDist($('txt').value);
+    drawBars(); $('st').textContent = 'Gotowe. Kliknij pasek albo zmień tekst.';
+  } catch (e) { $('st').textContent = 'Błąd: ' + e.message; console.error(e); }
+  busy = false;
+}
+function drawBars() {
+  if (!lastLogits) return;
+  const T = +$('temp').value, p = softmax(lastLogits, T), top = topk(p, 10), mx = p[top[0]];
+  const box = $('bars'); box.textContent = '';
+  top.forEach(i => {
+    const d = document.createElement('div'); d.className = 'bar'; d.title = 'Dopisz ten token';
+    const w = document.createElement('span'); w.className = 'w'; w.textContent = vis(tok.model.convert_ids_to_tokens([i])[0]);
+    const t = document.createElement('span'); t.className = 't'; const fill = document.createElement('i'); fill.style.width = (100 * p[i] / mx).toFixed(1) + '%'; t.append(fill);
+    const pc = document.createElement('span'); pc.className = 'p'; pc.textContent = (100 * p[i]).toFixed(1) + '%';
+    d.append(w, t, pc); d.onclick = () => { $('txt').value += tok.decode([i]); refresh(); }; box.append(d);
+  });
+}
+function sample(p) { let r = Math.random(), c = 0; for (let i = 0; i < p.length; i++) { c += p[i]; if (r <= c) return i; } return p.length - 1; }
+$('gen10').onclick = async () => {
+  if (!model || busy) return; busy = true; $('gen10').disabled = true;
+  const base = $('txt').value; let text = base; const g = $('gen'); g.textContent = base;
+  const add = document.createElement('span'); g.append(add);
+  try {
+    for (let k = 0; k < 12; k++) {
+      const p = softmax(await nextDist(text), +$('temp').value);
+      // losujemy tylko spośród 40 najbardziej prawdopodobnych tokenów (jak większość czatbotów)
+      const top = topk(p, 40), sub = new Float32Array(top.map(i => p[i])), s = sub.reduce((a, b) => a + b, 0);
+      const pick = top[sample(sub.map(x => x / s))];
+      const piece = tok.decode([pick]); text += piece; add.textContent += piece;
+    }
+  } catch (e) { $('st').textContent = 'Błąd: ' + e.message; }
+  busy = false; $('gen10').disabled = false;
+};
+$('reset').onclick = () => { $('txt').value = start; $('gen').textContent = ''; refresh(); };
+document.querySelectorAll('[data-ex]').forEach(b => b.onclick = () => { $('txt').value = start = b.dataset.ex; $('gen').textContent = ''; refresh(); });
+let deb; $('txt').addEventListener('input', () => { clearTimeout(deb); showTokens(); deb = setTimeout(refresh, 450); });
+$('temp').addEventListener('input', () => { $('tv').textContent = (+$('temp').value).toFixed(1); drawBars(); });
+try {
+  tok = await AutoTokenizer.from_pretrained(MODEL); showTokens();
+  model = await AutoModelForCausalLM.from_pretrained(MODEL, {dtype: 'q8', model_file_name: 'decoder_model_merged', progress_callback: prog});
+  $('pg').style.width = '100%'; await refresh();
+} catch (e) { $('st').textContent = 'Nie udało się wczytać modelu: ' + e.message + '. Sprawdź internet i odśwież stronę.'; console.error(e); }
+</script>
+</body>
+</html>

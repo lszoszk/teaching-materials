@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RAG na orzeczeniach ETPC · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--line:#4d4059;--muted:#ada290;--ok:#7fb069;--blue:#6fb7c9;--vio:#b4a6c4}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:19px/1.45 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+main{max-width:1520px;margin:0 auto;padding:20px 26px 40px}
+h1{font-size:29px;line-height:1.2;margin:0 0 4px}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0 0 12px;font-size:17px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 16px}
+.step{border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048;padding:8px 10px;background:var(--ink);color:var(--muted);font-size:16px;line-height:1.3}
+.step b{display:block;font-size:18px;color:var(--paper)}
+.step.on{box-shadow:inset 0 0 0 2px var(--gold);color:var(--parch)}.step.on b{color:var(--gold)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:14px 16px;margin:0 0 16px}
+.lab{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+textarea{width:100%;min-height:78px;resize:vertical;background:#0f0b14;color:var(--paper);border:2px solid var(--line);padding:8px 10px;font:inherit;font-size:20px;border-radius:0}
+textarea:focus{outline:2px solid var(--gold)}
+button{font:inherit;font-size:17px;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:7px 13px;box-shadow:4px 4px 0 #0008;font-weight:700}
+button.sec{background:var(--ink);color:var(--paper);border-color:var(--line)}
+button:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.ex{font-size:15px;padding:5px 9px}
+.mode label{margin-right:14px;cursor:pointer}.mode input{accent-color:var(--gold)}
+.hit{border-left:6px solid var(--line);background:#0f0b14;padding:8px 10px;margin:8px 0;font-size:16px;line-height:1.4}
+.hit.sel{border-left-color:var(--gold)}
+.hit .h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:16px;margin-bottom:4px}
+.hit .h b{color:var(--gold)}.hit .h a{color:var(--blue)}.hit .sc{color:var(--muted);font-size:14px;margin-left:auto}
+.hit mark{background:#e0b95033;color:var(--gold);padding:0 2px}
+.hit .t{max-height:7.2em;overflow:hidden}
+.hit input{accent-color:var(--gold);transform:scale(1.2)}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:15px;background:#0f0b14;padding:10px 12px;margin:0;max-height:420px;overflow:auto}
+.ctx-s{color:var(--vio)}.ctx-f{color:var(--ok)}.ctx-q{color:var(--blue)}
+.status{font-size:16px;color:var(--muted);min-height:1.3em;margin:8px 0 0}
+.prog{height:10px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;margin-top:6px;display:none}.prog i{display:block;height:100%;width:0;background:var(--ok)}
+.muted{color:var(--muted)}small{font-size:15px}
+a{color:var(--gold)}
+ol{margin:4px 0;padding-left:1.6em}li{margin:4px 0}
+</style>
+</head>
+<body>
+<main>
+<h1>RAG: <span>najpierw wyszukaj, potem odpowiedz</span></h1>
+<p class="sub">Retrieval-Augmented Generation na 1147 paragrafach z 12 wyroków ETPC o nadzorze, danych i technologii. Wyszukiwanie działa w Twojej przeglądarce.</p>
+<div class="steps">
+<div class="step on" id="s1"><b>① Pytanie</b>wpisujesz pytanie prawnicze</div>
+<div class="step" id="s2"><b>② Wyszukiwanie</b>system przeszukuje bazę wyroków</div>
+<div class="step" id="s3"><b>③ Fragmenty</b>wybierasz najtrafniejsze paragrafy</div>
+<div class="step" id="s4"><b>④ Kontekst</b>instrukcja + fragmenty + pytanie</div>
+<div class="step" id="s5"><b>⑤ Odpowiedź</b>model odpowiada z przypisami</div>
+</div>
+<div class="grid">
+<div>
+<section class="box">
+<p class="lab">① Pytanie (po angielsku: wyroki są po angielsku)</p>
+<textarea id="q" spellcheck="false">Does the use of facial recognition technology against a peaceful protester violate Article 8?</textarea>
+<div class="row">
+<button class="sec ex" data-ex="Does the use of facial recognition technology against a peaceful protester violate Article 8?">rozpoznawanie twarzy</button>
+<button class="sec ex" data-ex="Can the police keep the DNA profile and fingerprints of a person who was never convicted?">DNA niewinnych</button>
+<button class="sec ex" data-ex="May an employer monitor an employee's private messages sent from a work account?">monitoring w pracy</button>
+<button class="sec ex" data-ex="Is a politician liable for hateful comments posted by others on his Facebook wall?">komentarze na Facebooku</button>
+</div>
+<div class="row mode"><span class="muted">Szukaj po:</span>
+<label><input type="radio" name="m" value="bm25" checked> słowach (BM25)</label>
+<label><input type="radio" name="m" value="sem"> znaczeniu (model 23 MB)</label>
+<button id="go">② Szukaj</button></div>
+<p class="status" id="st"></p><div class="prog" id="pgw"><i id="pg"></i></div>
+</section>
+<section class="box">
+<p class="lab">③ Znalezione fragmenty (zaznaczone trafią do kontekstu)</p>
+<div id="hits"><p class="muted">Kliknij „Szukaj”.</p></div>
+</section>
+</div>
+<div>
+<section class="box">
+<p class="lab">④ Kontekst dla modelu (to, co wklejasz)</p>
+<pre id="ctx"></pre>
+<div class="row"><button id="cp">Kopiuj prompt z fragmentami</button><button class="sec" id="cq">Kopiuj samo pytanie</button></div>
+<p class="status" id="cs"></p>
+</section>
+<section class="box">
+<p class="lab">⑤ Odpowiedź: zrób to sam</p>
+<ol>
+<li>Wklej prompt z fragmentami w <b>LMArena</b> (arena.ai) albo w model, w którym masz konto. Nowa rozmowa.</li>
+<li>W drugiej nowej rozmowie wklej <b>samo pytanie</b>, bez fragmentów.</li>
+<li>Porównaj: skąd model wziął każde zdanie? Kliknij przypis [n] i sprawdź paragraf w HUDOC.</li>
+</ol>
+<p class="muted" style="margin:6px 0 0"><small>Wagi modelu się nie zmieniają: fragmenty są tylko w tej jednej rozmowie. Kto wybiera bazę dokumentów, ten wybiera, co model „wie”.</small></p>
+</section>
+</div>
+</div>
+<p class="muted"><small id="info"></small></p>
+</main>
+<script type="module">
+const $ = id => document.getElementById(id);
+const K = await (await fetch('korpus.json')).json();
+const P = K.paragrafy, S = K.sprawy;
+$('info').innerHTML = `Korpus: ${S.length} wyroków ETPC (część „Merits”), ${P.length} paragrafów, źródło: HUDOC, pobrano ${K.zbudowano} przez HUDOC Researcher. Sprawy: ` +
+  S.map(s => `<a href="${s.hudoc}" target="_blank" rel="noopener">${s.name}</a>`).join(', ') + '. Wyszukiwanie słów: BM25; znaczenia: all-MiniLM-L6-v2 przez transformers.js. IHRL 2026/27, Ł. Szoszkiewicz.';
+const cite = (p, n) => `${S[p.c].name}, no. ${S[p.c].app}, § ${p.p}, ${S[p.c].date}`;
+const esc = s => s.replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+// ---------- BM25 ----------
+const STOP = new Set('a an the and or of to in on at by for from with without is are was were be been being it its this that these those as not no do does did can could may might must should would will shall has have had he she they them his her their there which who whom whose what when where why how than then also any all such other into under over about against between during before after under per'.split(' '));
+const stem = w => w.length > 4 && w.endsWith('ies') ? w.slice(0, -3) + 'y' : w.length > 3 && w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w;
+const toks = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').match(/[a-z0-9]+/g)?.filter(w => !STOP.has(w)).map(stem) || [];
+const DOC = P.map(p => { const t = toks(p.t), tf = new Map(); t.forEach(w => tf.set(w, (tf.get(w) || 0) + 1)); return {tf, len: t.length}; });
+const N = DOC.length, avg = DOC.reduce((a, d) => a + d.len, 0) / N, DF = new Map();
+DOC.forEach(d => d.tf.forEach((_, w) => DF.set(w, (DF.get(w) || 0) + 1)));
+function bm25(q) {
+  const qt = [...new Set(toks(q))], k1 = 1.2, b = .75;
+  return DOC.map((d, i) => { let s = 0; for (const w of qt) { const f = d.tf.get(w); if (!f) continue; const idf = Math.log(1 + (N - DF.get(w) + .5) / (DF.get(w) + .5)); s += idf * f * (k1 + 1) / (f + k1 * (1 - b + b * d.len / avg)); } return {i, s, terms: qt.filter(w => d.tf.has(w))}; })
+    .filter(r => r.s > 0).sort((a, b) => b.s - a.s);
+}
+// ---------- znaczenie (wektory policzone wcześniej tym samym modelem) ----------
+let fe = null, VEC = null;
+async function semInit() {
+  if (fe) return;
+  $('pgw').style.display = 'block'; $('st').textContent = 'Wczytuję model znaczeń (23 MB, tylko za pierwszym razem)…';
+  const W = await (await fetch('wektory.json')).json();
+  const raw = atob(W.b64); VEC = new Int8Array(raw.length); for (let i = 0; i < raw.length; i++) VEC[i] = (raw.charCodeAt(i) << 24) >> 24;
+  const {pipeline} = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5');
+  const files = {};
+  fe = await pipeline('feature-extraction', W.model, {dtype: W.dtype, progress_callback: p => { if (p.status === 'progress' && p.total) { files[p.file] = [p.loaded, p.total]; const [l, t] = Object.values(files).reduce((a, [x, y]) => [a[0] + x, a[1] + y], [0, 0]); $('pg').style.width = (100 * l / t).toFixed(0) + '%'; } }});
+  $('pg').style.width = '100%';
+}
+async function sem(q) {
+  await semInit();
+  const e = (await fe(q, {pooling: 'mean', normalize: true})).data, D = e.length;
+  const r = []; for (let i = 0; i < P.length; i++) { let s = 0; for (let d = 0; d < D; d++) s += e[d] * VEC[i * D + d]; r.push({i, s: s / 127, terms: []}); }
+  return r.sort((a, b) => b.s - a.s);
+}
+// ---------- widok ----------
+let HITS = [], mode = 'bm25';
+function hl(text, terms) {
+  if (!terms.length) return esc(text);
+  const re = new RegExp('\\b(' + terms.map(t => t.replace(/[^a-z0-9]/g, '')).join('|') + ')[a-z]*', 'gi');
+  return esc(text).replace(re, m => `<mark>${m}</mark>`);
+}
+function step(n) { for (let i = 1; i <= 5; i++) $('s' + i).classList.toggle('on', i <= n); }
+function drawHits() {
+  const box = $('hits'); box.textContent = '';
+  if (!HITS.length) { box.innerHTML = '<p class="muted">Nic nie znaleziono. Spróbuj innych słów albo wyszukiwania po znaczeniu.</p>'; return; }
+  HITS.forEach((h, n) => {
+    const p = P[h.i], d = document.createElement('div'); d.className = 'hit' + (h.on ? ' sel' : '');
+    d.innerHTML = `<div class="h"><input type="checkbox" ${h.on ? 'checked' : ''} aria-label="Dodaj do kontekstu"><b>[${n + 1}]</b><span>${esc(cite(p))}</span><a href="${S[p.c].hudoc}" target="_blank" rel="noopener">HUDOC ↗</a><span class="sc">${mode === 'bm25' ? 'wynik BM25 ' + h.s.toFixed(1) + (h.terms.length ? ' · słowa: ' + h.terms.join(', ') : '') : 'podobieństwo ' + h.s.toFixed(2)}</span></div><div class="t">${hl(p.t, h.terms)}</div>`;
+    d.querySelector('input').onchange = e => { h.on = e.target.checked; d.classList.toggle('sel', h.on); drawCtx(); };
+    box.append(d);
+  });
+}
+const SYS = 'Jesteś asystentem prawnika. Odpowiedz po polsku na pytanie WYŁĄCZNIE na podstawie fragmentów wyroków Europejskiego Trybunału Praw Człowieka podanych niżej. Każde zdanie poprzyj przypisem w nawiasie kwadratowym, np. [1]. Jeśli fragmenty nie wystarczają do odpowiedzi, napisz: „Brak podstaw w podanych fragmentach”. Nie dodawaj innych orzeczeń, przepisów ani faktów.';
+function prompt() {
+  const sel = HITS.filter(h => h.on);
+  const fr = sel.map(h => { const n = HITS.indexOf(h) + 1, p = P[h.i]; return `[${n}] ${cite(p)}\n"${p.t}"`; }).join('\n\n');
+  return {sys: SYS, fr, q: $('q').value.trim()};
+}
+function drawCtx() {
+  const {sys, fr, q} = prompt();
+  $('ctx').innerHTML = `<span class="ctx-s">INSTRUKCJA:\n${esc(sys)}</span>\n\n<span class="ctx-f">FRAGMENTY:\n${esc(fr || '(brak zaznaczonych fragmentów)')}</span>\n\n<span class="ctx-q">PYTANIE:\n${esc(q)}</span>`;
+}
+const text = () => { const {sys, fr, q} = prompt(); return `INSTRUKCJA:\n${sys}\n\nFRAGMENTY:\n${fr}\n\nPYTANIE:\n${q}`; };
+async function copy(t, msg) {
+  try { await navigator.clipboard.writeText(t); }
+  catch (e) { const a = document.createElement('textarea'); a.value = t; document.body.append(a); a.select(); document.execCommand('copy'); a.remove(); }
+  $('cs').textContent = msg; step(5);
+}
+$('cp').onclick = () => copy(text(), 'Skopiowano prompt z fragmentami. Wklej go w nowej rozmowie z modelem.');
+$('cq').onclick = () => copy($('q').value.trim(), 'Skopiowano samo pytanie (bez fragmentów). Wklej je w drugiej nowej rozmowie.');
+async function go() {
+  const q = $('q').value.trim(); if (!q) return;
+  mode = document.querySelector('input[name=m]:checked').value; $('go').disabled = true; step(2);
+  try {
+    const t0 = performance.now();
+    const r = mode === 'bm25' ? bm25(q) : await sem(q);
+    HITS = r.slice(0, 5).map((h, n) => ({...h, on: n < 3}));
+    $('st').textContent = `${mode === 'bm25' ? 'Słowa kluczowe' : 'Znaczenie'}: przeszukano ${P.length} paragrafów w ${Math.round(performance.now() - t0)} ms. Pokazuję 5 najlepszych, 3 pierwsze trafią do kontekstu.`;
+    drawHits(); drawCtx(); step(4);
+  } catch (e) { $('st').textContent = 'Błąd: ' + e.message; console.error(e); }
+  $('go').disabled = false;
+}
+$('go').onclick = go;
+document.querySelectorAll('[data-ex]').forEach(b => b.onclick = () => { $('q').value = b.dataset.ex; go(); });
+$('q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); go(); } });
+$('q').addEventListener('input', () => { step(1); drawCtx(); });
+drawCtx(); go();
+</script>
+</body>
+</html>
