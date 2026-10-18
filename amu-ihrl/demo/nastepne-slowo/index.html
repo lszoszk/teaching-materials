@@ -11,42 +11,44 @@
 <style>
 :root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--line:#4d4059;--muted:#ada290;--ok:#7fb069}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--paper);font:20px/1.45 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
-main{max-width:1500px;margin:0 auto;padding:22px 28px 40px}
-h1{font-size:30px;line-height:1.2;margin:0 0 4px}h1 span{color:var(--gold)}
-.sub{color:var(--muted);margin:0 0 14px;font-size:18px}
-.grid{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;align-items:start}
-.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:16px 18px;margin:0 0 18px}
-.lab{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
-textarea{width:100%;min-height:96px;resize:vertical;background:#0f0b14;color:var(--paper);border:2px solid var(--line);padding:10px 12px;font:inherit;font-size:22px;border-radius:0}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:19px/1.4 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+main{max-width:1560px;margin:0 auto;padding:14px 22px 10px;transform-origin:top center}
+header{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:0 0 10px}
+h1{font-size:26px;line-height:1.2;margin:0}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1.05fr 1fr;gap:16px;align-items:start}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:12px 16px;margin:0 0 14px}
+.lab{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+textarea{width:100%;height:84px;resize:vertical;background:#0f0b14;color:var(--paper);border:2px solid var(--line);padding:8px 10px;font:inherit;font-size:21px;border-radius:0}
 textarea:focus{outline:2px solid var(--gold)}
-button{font:inherit;font-size:18px;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:8px 14px;box-shadow:4px 4px 0 #0008;font-weight:700}
+button{font:inherit;font-size:17px;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:7px 12px;box-shadow:4px 4px 0 #0008;font-weight:700}
 button.sec{background:var(--ink);color:var(--paper);border-color:var(--line)}
 button:disabled{opacity:.45;cursor:default}
-.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;align-items:center}
-.ex{font-size:16px;padding:6px 10px}
-.toks{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
-.tok{padding:3px 6px;border:2px solid #150f1b;color:#150f1b;font-size:19px;white-space:pre}
-.cnt{font-size:18px;color:var(--parch);margin-top:8px}.cnt b{color:var(--gold)}
-.bar{display:grid;grid-template-columns:210px 1fr 86px;gap:12px;align-items:center;margin:6px 0;cursor:pointer;padding:2px 4px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.ex{font-size:15px;padding:5px 9px}
+.toks{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.tok{padding:2px 6px;border:2px solid #150f1b;color:#150f1b;font-size:18px;white-space:pre}
+.cnt{font-size:17px;color:var(--parch);margin:8px 0 0}.cnt b{color:var(--gold)}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;margin:3px 0;cursor:pointer;padding:1px 4px}
 .bar:hover{background:#2a2135}
-.bar .w{font-size:21px;white-space:pre;overflow:hidden;text-overflow:ellipsis}
-.bar .t{height:24px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}
+.bar .w{font-size:20px;white-space:pre;overflow:hidden;text-overflow:ellipsis}
+.bar .t{height:22px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}
 .bar .t i{display:block;height:100%;background:var(--gold);box-shadow:3px 3px 0 #0008}
-.bar .p{text-align:right;font-size:20px;color:var(--paper)}
-input[type=range]{width:260px;accent-color:var(--gold)}
-.status{font-size:17px;color:var(--muted);min-height:1.4em}
-.prog{height:12px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;margin-top:6px}.prog i{display:block;height:100%;width:0;background:var(--ok)}
-.gen{white-space:pre-wrap;font-size:22px;background:#0f0b14;border-left:6px solid var(--gold);padding:10px 12px;min-height:60px}
+.bar .p{text-align:right;font-size:18px;color:var(--paper)}
+input[type=range]{flex:1;min-width:140px;accent-color:var(--gold)}
+.status{font-size:15px;color:var(--muted);min-height:1.4em;margin:6px 0 0}
+.prog{height:10px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;margin-top:4px}.prog i{display:block;height:100%;width:0;background:var(--ok)}
+.gen{white-space:pre-wrap;font-size:20px;background:#0f0b14;border-left:6px solid var(--gold);padding:8px 10px;min-height:150px;margin-top:10px}
 .gen span{color:var(--gold)}
-.muted{color:var(--muted)}small{font-size:16px}
+.muted{color:var(--muted)}small{font-size:15px;line-height:1.35}
+p.muted{margin:8px 0 0}
 a{color:var(--gold)}
+.foot{margin:2px 0 0}
 </style>
 </head>
 <body>
-<main>
-<h1>Następne słowo: <span>jak „myśli” model językowy</span></h1>
-<p class="sub">GPT-2 (OpenAI, 2019, 124 mln parametrów) liczy się w Twojej przeglądarce. Tekst nie opuszcza komputera. Model rozumie tylko angielski.</p>
+<main id="main">
+<header><h1>Następne słowo: <span>jak „myśli” model językowy</span></h1><p class="sub">GPT-2 (OpenAI, 2019, 124 mln parametrów) liczy się w Twojej przeglądarce. Tekst nie opuszcza komputera. Model zna tylko angielski.</p></header>
 <div class="grid">
 <div>
 <section class="box">
@@ -65,20 +67,22 @@ a{color:var(--gold)}
 <p class="cnt" id="cnt"></p>
 <p class="muted"><small>Model nie czyta słów, tylko tokeny: kawałki słów. Polskie litery rozpadają się na bajty (dziwne znaki), więc polskie zdanie to dużo więcej tokenów.</small></p>
 </section>
-<section class="box">
-<p class="lab">4 · Niech model pisze dalej</p>
-<div class="row"><button id="gen10">Dopisz 12 tokenów</button><button class="sec" id="reset">Wróć do początku</button></div>
-<div class="gen" id="gen" style="margin-top:12px"></div>
-<p class="muted"><small>Kliknij jeszcze raz: przy tej samej temperaturze wynik często jest inny. Model losuje z rozkładu.</small></p>
-</section>
 </div>
 <div>
 <section class="box">
 <p class="lab">3 · Prawdopodobieństwo następnego tokenu (top 10)</p>
 <div class="row" style="margin-top:0"><label for="temp">Temperatura <b id="tv">1.0</b></label><input id="temp" type="range" min="0.2" max="1.6" step="0.1" value="1.0"></div>
-<div id="bars" style="margin-top:10px"></div>
+<div id="bars" style="margin-top:8px"></div>
 <p class="muted"><small>Kliknij pasek, aby dopisać ten token. Niska temperatura: model wybiera prawie zawsze to samo. Wysoka: więcej przypadku.</small></p>
 <p class="status" id="st">Ładowanie modelu…</p><div class="prog"><i id="pg"></i></div>
+</section>
+</div>
+<div>
+<section class="box">
+<p class="lab">4 · Niech model pisze dalej</p>
+<div class="row" style="margin-top:0"><button id="gen10">Dopisz 12 tokenów</button><button class="sec" id="reset">Wróć do początku</button></div>
+<div class="gen" id="gen"></div>
+<p class="muted"><small>Kliknij jeszcze raz: przy tej samej temperaturze wynik często jest inny. Model losuje z rozkładu.</small></p>
 </section>
 <section class="box">
 <p class="lab">Co z tego wynika</p>
@@ -86,8 +90,13 @@ a{color:var(--gold)}
 </section>
 </div>
 </div>
-<p class="muted"><small>Model: <a href="https://huggingface.co/Xenova/gpt2" target="_blank" rel="noopener">Xenova/gpt2</a> (ONNX, ok. 130 MB, pobierany raz) przez <a href="https://github.com/huggingface/transformers.js" target="_blank" rel="noopener">transformers.js</a>. Pełna wizualizacja wnętrza modelu: <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Transformer Explainer</a>. IHRL 2026/27, Ł. Szoszkiewicz.</small></p>
+<p class="muted foot"><small>Model: <a href="https://huggingface.co/Xenova/gpt2" target="_blank" rel="noopener">Xenova/gpt2</a> (ONNX, ok. 130 MB, pobierany raz) przez <a href="https://github.com/huggingface/transformers.js" target="_blank" rel="noopener">transformers.js</a>. Pełna wizualizacja wnętrza modelu: <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Transformer Explainer</a>. IHRL 2026/27, Ł. Szoszkiewicz.</small></p>
 </main>
+<script>
+/* zmieść na ekranie bez przewijania: jeśli treść jest wyższa niż okno, pomniejsz całość (najwyżej do 70%) */
+(function(){const m=document.getElementById('main');function fit(){m.style.zoom=1;const h=m.scrollHeight+4,H=window.innerHeight;const z=Math.max(.7,Math.min(1,H/h));m.style.zoom=z<1?z.toFixed(3):''}
+let q=0;const later=()=>{cancelAnimationFrame(q);q=requestAnimationFrame(fit)};window.addEventListener('resize',later);new MutationObserver(later).observe(m,{childList:true,subtree:true,characterData:true});window.addEventListener('load',fit);fit()})();
+</script>
 <script type="module">
 import {AutoTokenizer, AutoModelForCausalLM, Tensor, env} from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5';
 env.allowLocalModels = false;
