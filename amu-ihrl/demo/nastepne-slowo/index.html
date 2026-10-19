@@ -73,6 +73,7 @@ a{color:var(--gold)}
 <p class="lab">3 · Prawdopodobieństwo następnego tokenu (top 10)</p>
 <div class="row" style="margin-top:0"><label for="temp">Temperatura <b id="tv">1.0</b></label><input id="temp" type="range" min="0.2" max="1.6" step="0.1" value="1.0"></div>
 <div id="bars" style="margin-top:8px"></div>
+<p class="status" id="rozlew" style="color:var(--accent)"></p>
 <p class="muted"><small>Kliknij pasek, aby dopisać ten token. Niska temperatura: model wybiera prawie zawsze to samo. Wysoka: więcej przypadku.</small></p>
 <p class="status" id="st">Ładowanie modelu…</p><div class="prog"><i id="pg"></i></div>
 </section>
@@ -121,8 +122,9 @@ function showTokens() {
   const words = $('txt').value.trim().split(/\s+/).filter(Boolean).length;
   $('cnt').innerHTML = `<b>${toks.length}</b> tokenów na <b>${words}</b> słów (${(toks.length / Math.max(words, 1)).toFixed(1)} tokenu na słowo)`;
 }
-async function nextDist(text) {
-  const ids = tok.encode(text, {add_special_tokens: false}).slice(-200);
+async function nextDist(text) { return nextDistIds(tok.encode(text, {add_special_tokens: false})); }
+async function nextDistIds(all) {
+  const ids = all.slice(-200);
   const input_ids = new Tensor('int64', BigInt64Array.from(ids.map(BigInt)), [1, ids.length]);
   const attention_mask = new Tensor('int64', BigInt64Array.from(ids.map(() => 1n)), [1, ids.length]);
   const out = await model({input_ids, attention_mask});
@@ -150,6 +152,8 @@ async function refresh() {
 function drawBars() {
   if (!lastLogits) return;
   const T = +$('temp').value, p = softmax(lastLogits, T), top = topk(p, 10), mx = p[top[0]];
+  const suma = top.reduce((a, i) => a + p[i], 0);
+  $('rozlew').textContent = T >= 1.2 ? `Wysoka temperatura: dziesięć pierwszych tokenów ma razem tylko ${(100 * suma).toFixed(0)}%. Reszta rozlewa się na tysiące rzadkich tokenów, dlatego tekst robi się dziwny.` : '';
   const box = $('bars'); box.textContent = '';
   top.forEach(i => {
     const d = document.createElement('div'); d.className = 'bar'; d.title = 'Dopisz ten token';
@@ -165,12 +169,14 @@ $('gen10').onclick = async () => {
   const base = $('txt').value; let text = base; const g = $('gen'); g.textContent = base;
   const add = document.createElement('span'); g.append(add);
   try {
+    const ids = tok.encode(base, {add_special_tokens: false}), pref = tok.decode(ids).length;
     for (let k = 0; k < 12; k++) {
-      const p = softmax(await nextDist(text), +$('temp').value);
+      const p = softmax(await nextDistIds(ids), +$('temp').value);
       // losujemy tylko spośród 40 najbardziej prawdopodobnych tokenów (jak większość czatbotów)
       const top = topk(p, 40), sub = new Float32Array(top.map(i => p[i])), s = sub.reduce((a, b) => a + b, 0);
-      const pick = top[sample(sub.map(x => x / s))];
-      const piece = tok.decode([pick]); text += piece; add.textContent += piece;
+      ids.push(top[sample(sub.map(x => x / s))]);
+      // całość dekodujemy naraz: pojedynczy token bywa połową litery (bajt), osobno dałby „�”
+      add.textContent = tok.decode(ids).slice(pref);
     }
   } catch (e) { $('st').textContent = 'Błąd: ' + e.message; }
   busy = false; $('gen10').disabled = false;
