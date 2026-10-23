@@ -30,24 +30,24 @@ button.on{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:
 button kbd{font:inherit;font-size:13px;opacity:.7;margin-left:4px}
 #brak{position:absolute;left:200px;right:200px;top:300px;font-size:22px;display:none}
 /* widoki i kartki flipchartu */
-.widok{position:absolute;inset:0;display:none;transform-origin:50% 6%;transition:transform .42s ease-in,opacity .42s ease-in}
+.widok{position:absolute;inset:0;display:none}
 .widok.on{display:block}
-.widok.out{transform:perspective(1800px) rotateX(64deg) translateY(-40px);opacity:0}
+/* kartki wjeżdżają gotowe: z prawej przy przejściu dalej, z lewej przy powrocie (--od i --do ustawia pokaz()) */
+@keyframes wjazd{from{transform:translateX(var(--od,1800px)) rotate(var(--rot,0deg))}to{transform:rotate(var(--rot,0deg))}}
+@keyframes wyjazd{to{transform:translateX(var(--do,-1800px)) rotate(var(--rot,0deg))}}
+.widok.on>*{animation:wjazd .55s cubic-bezier(.2,.75,.25,1) both}
+.widok.on>.arkusz+.arkusz,.widok.on>.arkusz+.arkusz~.noga{animation-delay:.08s}
+.widok.out>*{animation:wyjazd .3s ease-in both}
+@media (prefers-reduced-motion:reduce){.widok>*{animation:none!important}}
 .arkusz{position:absolute;background:var(--paper);color:var(--ink);padding:26px 34px 20px;transform:rotate(var(--rot,0deg));
  background-image:linear-gradient(#2453a80d 1px,transparent 1px),linear-gradient(90deg,#2453a80d 1px,transparent 1px);background-size:34px 34px;
  box-shadow:0 1px 0 #0001,0 0 0 1px #00000014,12px 16px 0 #0007}
 .arkusz::before{content:'';position:absolute;left:-14px;right:-14px;top:-20px;height:26px;background:linear-gradient(#55525e,#36343d);border-radius:7px;box-shadow:0 4px 0 #0006}
 .arkusz::after{content:'';position:absolute;left:10px;right:10px;top:-2px;height:12px;background:radial-gradient(circle,#c9c7cf 4px,#0000 5px) 0 0/38px 12px repeat-x}
-.noga{position:absolute;width:12px;background:linear-gradient(90deg,#4a4652,#2e2c34);border-radius:4px;transform-origin:50% 0}
+.noga{position:absolute;width:12px;background:linear-gradient(90deg,#4a4652,#2e2c34);border-radius:4px;transform-origin:50% 0;transform:rotate(var(--rot,0deg))}
 .hw{font-family:'Caveat',cursive}.br{font-family:'Caveat Brush','Caveat',cursive;font-weight:400}
 .niebieski{color:var(--blue)}.czerwony{color:var(--red)}.zielony{color:var(--green)}.pomaranczowy{color:var(--orange)}.szary{color:#9a978f}
-.pis .w{display:inline-block;clip-path:inset(-30% 104% -30% -8%)}
 .kr{fill:none;stroke-linecap:round;stroke-linejoin:round}
-.koniec .pis .w{clip-path:none!important}.koniec .kr{stroke-dashoffset:0!important}.koniec .kartka{opacity:1!important;transform:rotate(var(--r))!important}
-/* pisak: czubek w punkcie (0,0) elementu */
-.pen{position:absolute;left:0;top:0;width:0;height:0;z-index:40;pointer-events:none;opacity:0;transition:opacity .25s}
-.pen.on{opacity:1}
-.pen svg{position:absolute;left:-6px;top:-86px;filter:drop-shadow(5px 7px 2px #0005)}
 /* widok 1: dwie tabele jak na tablicy w sali */
 .tyt{font-size:80px;line-height:.9}
 .podkr{display:block;margin:2px 0 4px}
@@ -72,7 +72,7 @@ button kbd{font:inherit;font-size:13px;opacity:.7;margin-left:4px}
 .przyp{position:absolute;left:470px;top:26px;width:960px;font-size:25px;line-height:1.12}
 /* widok 3: karteczki na ścianie */
 .siatka{position:absolute;left:52px;top:84px;display:grid;grid-template-columns:repeat(5,282px);grid-auto-rows:236px;gap:18px 22px}
-.kartka{position:relative;padding:12px 14px 10px;color:var(--ink);font-family:'Caveat',cursive;transform:rotate(var(--r));box-shadow:0 1px 0 #0002,6px 9px 0 #0006;overflow:hidden;opacity:0}
+.kartka{position:relative;padding:12px 14px 10px;color:var(--ink);font-family:'Caveat',cursive;transform:rotate(var(--r));box-shadow:0 1px 0 #0002,6px 9px 0 #0006;overflow:hidden}
 .kartka.zolta{background:#ffe57a}.kartka.rozowa{background:#ffa3b8}.kartka.niebieska{background:#a8d5ff}.kartka.zielona{background:#b9e8a9}
 .kartka::before{content:'';position:absolute;left:96px;top:-6px;width:90px;height:20px;background:#ffffff8c;transform:rotate(-2deg)}
 .kartka .kg{display:flex;align-items:center;gap:8px;font-size:21px;color:#4d4a55}
@@ -85,41 +85,38 @@ button kbd{font:inherit;font-size:13px;opacity:.7;margin-left:4px}
 .lista li{display:grid;grid-template-columns:54px 1fr;font-size:38px;line-height:1.08;margin:0 0 16px}
 .lista li .nr{font-family:'Caveat Brush',cursive;color:var(--red);font-size:44px}
 .drobne{font-size:27px;line-height:1.1}
-/* telefon pionowo: kartki jedna pod drugą na 640 px, bez pisaka */
+/* telefon pionowo: kartki jedna pod drugą na 640 px, bez wjazdu */
 html.tel main{width:640px;height:auto;position:static;padding:70px 10px 90px}
 html.tel,html.tel body{height:auto;overflow:auto}
 html.tel header{position:static;margin:0 0 18px}
 html.tel nav{position:fixed;left:0;right:0;bottom:0;padding:8px;background:var(--wall);flex-wrap:wrap;zoom:var(--tz)}
 html.tel .widok{position:static}
 html.tel .arkusz,html.tel .siatka{position:relative;left:auto!important;top:auto!important;width:auto!important;height:auto!important;margin:34px 6px 30px}
-html.tel .noga,html.tel .pen{display:none}
+html.tel .noga{display:none}html.tel .widok>*{animation:none!important}
 html.tel .arkusz{zoom:.86}html.tel .tab{zoom:.42}
 html.tel .siatka{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
 html.tel .notka{position:static;margin-top:8px}
 </style>
-</head>
+<script src="../../../statystyki.js" defer></script></head>
 <body>
 <main id="main">
 <header><h1>Tablica z naszego testu: <span>bez RAG i z RAG</span></h1><p class="sub" id="sub"></p></header>
 <p id="brak">Nie udało się wczytać <code>dane.json</code>. Otwórz stronę przez serwer (mapa na localhost), nie z pliku.</p>
 <div id="widoki"></div>
-<div class="pen" id="penA"></div><div class="pen" id="penB"></div>
 <nav id="nav">
  <button data-v="0">Tablica<kbd>1</kbd></button><button data-v="1">Kto pisał<kbd>2</kbd></button><button data-v="2">Co się nie zgadzało<kbd>3</kbd></button><button data-v="3">Wnioski<kbd>4</kbd></button>
- <span class="sp"></span><button id="odNowa" title="Napisz jeszcze raz (R)">↻ od nowa<kbd>R</kbd></button><button id="odRazu" title="Pokaż od razu (spacja)">od razu<kbd>spacja</kbd></button>
 </nav>
 </main>
 <script>
 const $=id=>document.getElementById(id);
-const ZN=19, KR=46, PAUZA=35;   // ms na znak, na kreskę, przerwa po elemencie
 const KOL={'✓':'var(--green)','≈':'var(--orange)','✗':'var(--red)','∅':'var(--blue)'};
 const IK={'✓':'M12 56 C22 62 30 72 38 84 C52 52 68 32 90 12',
  '≈':'M10 40 C24 24 36 52 50 38 S76 26 90 36 M10 66 C24 50 36 78 50 64 S76 52 90 62',
  '✗':'M18 16 C40 40 62 64 86 88 M86 14 C62 38 40 62 16 88',
  '∅':'M50 12 C78 12 90 32 88 52 C86 76 66 90 46 88 C24 86 10 68 12 48 C14 26 30 12 52 13 M20 84 L82 16'};
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let S=1, bieg=0, szybko=false, widok=-1, D=null, V=[];
-// powtarzalny „los”: przy każdym pisaniu kreski wyglądają tak samo
+let S=1, bieg=0, widok=-1, D=null, V=[];
+// powtarzalny „los”: przy każdym wczytaniu kreski wyglądają tak samo
 function los(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 const ikona=(z,px,sw=11)=>`<svg class="ik" viewBox="0 0 100 100" width="${px}" height="${px}"><path class="kr" d="${IK[z]}" style="stroke:${KOL[z]};stroke-width:${sw}"/></svg>`;
 function kreski(n,kolor,rnd){
@@ -146,8 +143,8 @@ function v1(){const r=los(7),odm=D.odmowy.length;
   return `<div class="arkusz" style="left:96px;top:96px;width:672px;height:700px;--rot:-.5deg">${arkuszTabeli('bez_rag','BEZ RAG','samo pytanie do czatbota',r)}</div>
   <div class="arkusz" style="left:836px;top:96px;width:672px;height:700px;--rot:.45deg">${arkuszTabeli('z_rag','Z RAG','pytanie + 3 fragmenty z dema',r)}
    <div class="notka czerwony" style="left:372px;top:600px;width:290px">${pis(`+ ${odm} × „Brak podstaw w podanych fragmentach”`,'hw')}</div></div>
-  <i class="noga" style="left:170px;top:796px;height:66px;transform:rotate(12deg)"></i><i class="noga" style="left:686px;top:796px;height:66px;transform:rotate(-12deg)"></i>
-  <i class="noga" style="left:910px;top:796px;height:66px;transform:rotate(12deg)"></i><i class="noga" style="left:1426px;top:796px;height:66px;transform:rotate(-12deg)"></i>`}
+  <i class="noga" style="left:170px;top:796px;height:66px;--rot:12deg"></i><i class="noga" style="left:686px;top:796px;height:66px;--rot:-12deg"></i>
+  <i class="noga" style="left:910px;top:796px;height:66px;--rot:12deg"></i><i class="noga" style="left:1426px;top:796px;height:66px;--rot:-12deg"></i>`}
 function v2(){const r=los(11);
   const liczba=(n,z)=>pis(n?n:'–','br '+(n?{'✓':'zielony','≈':'pomaranczowy','✗':'czerwony','∅':'niebieski'}[z]:'szary'));
   let h=`<div class="tab" id="tab2"><div></div>${['bez_rag','z_rag'].map((t,i)=>`<div class="gr">${pis(i?'Z RAG':'BEZ RAG','br')}</div><div></div>`).join('')}<div class="c">${pis('„brak<br>podstaw”','hw niebieski')}</div><div class="c">${pis('czas','hw niebieski')}</div>
@@ -180,66 +177,31 @@ const SUB=['23.10 · 3 pytania z dema · pierwsze 3 odesłania z każdej odpowie
   'żółte ≈ · różowe ✗ · niebieskie: „brak podstaw” · zielona: lekcja',
   'porównajcie z waszą tablicą'];
 
-/* ---------- pisanie ---------- */
-function slowa(el){const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),ns=[];while(tw.nextNode())ns.push(tw.currentNode);
-  for(const t of ns){if(!t.textContent.trim())continue;const f=document.createDocumentFragment();
-    for(const c of t.textContent.split(/(\s+)/))if(c){if(/^\s+$/.test(c))f.append(c);else{const s=document.createElement('span');s.className='w';s.textContent=c;f.append(s)}}
-    t.replaceWith(f)}}
-function tween(ms,fn,run){return new Promise(res=>{if(szybko||RM||run!==bieg){if(run===bieg)fn(1);return res()}const t0=performance.now();
-  const f=now=>{if(run!==bieg)return res();if(szybko){fn(1);return res()}const p=Math.min(1,(now-t0)/ms);fn(p);p<1?requestAnimationFrame(f):res()};requestAnimationFrame(f)})}
-function naScenie(x,y){const m=$('main').getBoundingClientRect();return [(x-m.left)/S,(y-m.top)/S]}
-function pisak(p,x,y,kol){if(document.documentElement.classList.contains('tel'))return;p.style.transform=`translate(${x}px,${y}px)`;if(kol)p.style.setProperty('--tusz',kol);p.classList.add('on')}
-async function napisz(el,p,run){
-  if(el.classList.contains('pis')){for(const w of el.querySelectorAll('.w')){const r=w.getBoundingClientRect(),[x,y]=naScenie(r.left,r.top),wd=r.width/S,ht=r.height/S,kol=getComputedStyle(w).color;
-      await tween(Math.max(55,w.textContent.length*ZN),t=>{w.style.clipPath=`inset(-30% ${(1-t)*108-4}% -30% -8%)`;pisak(p,x+wd*t,y+ht*.8,kol)},run)}}
-  else if(el.classList.contains('kartka')){await tween(150,t=>{el.style.opacity=Math.min(1,t*2);el.style.transform=`rotate(var(--r)) scale(${1.25-.25*t})`},run)}
-  else{const L=el.getTotalLength(),kol=getComputedStyle(el).stroke,ms=+(el.dataset.ms||(el.closest('.kreski')?KR:Math.min(520,L*2.4)));
-    // pozycja punktu ścieżki z prostokąta <svg> (getScreenCTM w Safari pomija skalowanie strony)
-    const sv=el.ownerSVGElement,r=sv.getBoundingClientRect(),vb=sv.viewBox.baseVal,vw=vb&&vb.width?vb.width:sv.width.baseVal.value,vh=vb&&vb.height?vb.height:sv.height.baseVal.value,vx=vb&&vb.width?vb.x:0,vy=vb&&vb.height?vb.y:0;
-    await tween(ms,t=>{el.style.strokeDashoffset=L*(1-t);const a=el.getPointAtLength(L*t),[x,y]=naScenie(r.left+(a.x-vx)*r.width/vw,r.top+(a.y-vy)*r.height/vh);pisak(p,x,y,kol)},run)}
-  await tween(el.closest&&el.closest('.kreski')?18:PAUZA,()=>{},run)}
-async function kolejka(lista,p,run){for(const el of lista){if(run!==bieg)return;await napisz(el,p,run)}p.classList.remove('on')}
-function przygotuj(v){v.classList.remove('koniec');
-  v.querySelectorAll('.w').forEach(w=>w.style.clipPath='');
-  v.querySelectorAll('.kr').forEach(k=>{if(k.closest('.kartka'))return;const L=k.getTotalLength();k.style.strokeDasharray=L+' '+(L+2);k.style.strokeDashoffset=L});
-  v.querySelectorAll('.kartka').forEach(k=>{k.style.opacity=0;k.style.transform=''})}
-const elementy=root=>[...root.querySelectorAll('.pis,.kr,.kartka')].filter(e=>!(e.classList.contains('kr')&&e.closest('.kartka')));
-async function start(){const run=++bieg,v=V[widok];szybko=false;przygotuj(v);
-  await new Promise(r=>setTimeout(r,250));if(run!==bieg)return;
-  const ark=[...v.querySelectorAll(':scope>.arkusz')];
-  // dwie kartki na tablicy: dwie osoby piszą naraz (jak w sali: dwa miejsca przy tablicy)
-  const kol=widok===0?ark.map(a=>elementy(a)):[elementy(v)];
-  await Promise.all(kol.map((l,i)=>kolejka(l,i?$('penB'):$('penA'),run)));
-  if(run===bieg)v.classList.add('koniec')}
-function odRazu(){szybko=true;const v=V[widok];if(v)v.classList.add('koniec');$('penA').classList.remove('on');$('penB').classList.remove('on')}
-function pokaz(n){if(n<0||n>3||!D)return;const stary=V[widok];document.querySelectorAll('#nav [data-v]').forEach(b=>b.classList.toggle('on',+b.dataset.v===n));$('sub').textContent=SUB[n];
-  const wej=()=>{if(stary){stary.classList.remove('on','out')}widok=n;V[n].classList.add('on');fitKartki();start()};
-  bieg++;$('penA').classList.remove('on');$('penB').classList.remove('on');
-  if(stary&&stary!==V[n]&&!RM){stary.classList.add('out');setTimeout(wej,430)}else wej()}
+/* ---------- przełączanie kartek ---------- */
+function pokaz(n){if(n<0||n>3||!D||n===widok)return;const stary=V[widok],dalej=n>widok,w=$('widoki'),run=++bieg;
+  document.querySelectorAll('#nav [data-v]').forEach(b=>b.classList.toggle('on',+b.dataset.v===n));$('sub').textContent=SUB[n];
+  w.style.setProperty('--od',dalej?'1800px':'-1800px');w.style.setProperty('--do',dalej?'-1800px':'1800px');
+  const wej=()=>{if(run!==bieg)return;if(stary)stary.classList.remove('on','out');widok=n;V[n].classList.add('on');fitKartki()};
+  if(stary&&!RM&&!document.documentElement.classList.contains('tel')){stary.classList.add('out');setTimeout(wej,280)}else wej()}
 // karteczki: mniejsza czcionka, jeśli tekst się nie mieści
 function fitKartki(){document.querySelectorAll('.widok.on .kartka').forEach(k=>{let fs=24;k.style.setProperty('--fs',fs+'px');while(k.scrollHeight>k.clientHeight+1&&fs>15){fs--;k.style.setProperty('--fs',fs+'px')}})}
 function linie2(){const t=$('tab2'),s=$('linie2');if(!t||!s)return;const T=t.getBoundingClientRect(),c=[...t.children],r=los(3);
   const hd=c.filter(e=>e.classList.contains('hd')),rw=c.filter(e=>e.classList.contains('nm'));if(!hd.length||!rw.length)return;
   const yg=(c.find(e=>e.classList.contains('gr')).getBoundingClientRect().top-T.top)/S,y=(hd[0].getBoundingClientRect().bottom-T.top)/S+4,yb=(rw.at(-1).getBoundingClientRect().bottom-T.top)/S,W=T.width/S;
   const xs=[310,562,824],j=()=>+(r()*4-2).toFixed(1);
-  s.innerHTML=`<path class="kr" d="M0 ${y} Q${W/2} ${y+j()} ${W-10} ${y+j()}" style="stroke:var(--ink);stroke-width:4"/>`+xs.map(x=>`<path class="kr" d="M${x} ${yg} Q${x+j()} ${(y+yb)/2} ${x+j()} ${yb}" style="stroke:#8c8a94;stroke-width:3"/>`).join('');
-  // linie rysujemy najpierw: przenieś je na początek kolejności
-  t.prepend(s)}
+  s.innerHTML=`<path class="kr" d="M0 ${y} Q${W/2} ${y+j()} ${W-10} ${y+j()}" style="stroke:var(--ink);stroke-width:4"/>`+xs.map(x=>`<path class="kr" d="M${x} ${yg} Q${x+j()} ${(y+yb)/2} ${x+j()} ${yb}" style="stroke:#8c8a94;stroke-width:3"/>`).join('')}
 
 /* ---------- skala i start ---------- */
 function fit(){const tel=innerWidth<760&&innerHeight>innerWidth,d=document.documentElement,m=$('main');d.classList.toggle('tel',tel);
   if(tel){m.style.transform='';m.style.zoom=(innerWidth/640).toFixed(3);d.style.setProperty('--tz',1);S=1;return}
   m.style.zoom='';S=Math.min(innerWidth/1600,innerHeight/900);m.style.transform=`translate(${(innerWidth-1600*S)/2}px,${(innerHeight-900*S)/2}px) scale(${S})`}
-addEventListener('resize',()=>{fit();odRazu()});fit();
-$('penA').innerHTML=$('penB').innerHTML=`<svg width="96" height="96" viewBox="0 0 96 96"><g transform="translate(6 86) rotate(-47)"><path d="M0 0 L15 -5 L15 5 Z" fill="var(--tusz,#24222c)"/><rect x="14" y="-7" width="11" height="14" fill="#cfccd4"/><rect x="24" y="-10" width="64" height="20" rx="4" fill="#f6f5f2" stroke="#8d8a94" stroke-width="1.5"/><rect x="40" y="-10" width="24" height="20" fill="var(--tusz,#24222c)" opacity=".9"/><rect x="86" y="-11.5" width="22" height="23" rx="6" fill="var(--tusz,#24222c)"/></g></svg>`;
+addEventListener('resize',fit);fit();
 document.querySelectorAll('#nav [data-v]').forEach(b=>b.onclick=()=>pokaz(+b.dataset.v));
-$('odNowa').onclick=()=>{if(V[widok]){bieg++;start()}};$('odRazu').onclick=odRazu;
 addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const k=e.key.toLowerCase();
-  if(/^[1-4]$/.test(k))pokaz(+k-1);else if(k==='arrowright')pokaz(Math.min(3,widok+1));else if(k==='arrowleft')pokaz(Math.max(0,widok-1));
-  else if(k==='r'&&V[widok]){bieg++;start()}else if(k===' '){e.preventDefault();odRazu()}else return;e.preventDefault()});
+  if(/^[1-4]$/.test(k))pokaz(+k-1);else if(k==='arrowright')pokaz(Math.min(3,widok+1));else if(k==='arrowleft')pokaz(Math.max(0,widok-1));else return;e.preventDefault()});
 Promise.all([fetch('dane.json',{cache:'no-cache'}).then(r=>r.json()),document.fonts.ready]).then(([d])=>{D=d;
   $('widoki').innerHTML=[v1(),v2(),v3(),v4()].map((h,i)=>`<section class="widok" id="v${i+1}">${h}</section>`).join('');
-  V=[...document.querySelectorAll('.widok')];V.forEach(v=>v.querySelectorAll('.pis').forEach(slowa));
+  V=[...document.querySelectorAll('.widok')];
   V[1].classList.add('on');linie2();V[1].classList.remove('on');
   pokaz(0)}).catch(e=>{console.error(e);$('brak').style.display='block'});
 </script>
