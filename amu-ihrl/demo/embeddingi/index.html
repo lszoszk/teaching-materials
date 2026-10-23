@@ -6,8 +6,9 @@
 <title>Ludzkie embeddingi: symulacja · IHRL 2026/27</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
-<script>/* tryb jasny (mapa przekazuje ?jasny=1) */if(new URLSearchParams(location.search).get('jasny')==='1')document.documentElement.classList.add('jasny')</script>
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab()};addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
 <style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
 <style>
 :root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--blue:#6fb7c9;--line:#4d4059;--muted:#ada290;--ok:#7fb069}
 *{box-sizing:border-box}
@@ -33,6 +34,7 @@ svg{display:block;width:100%;height:auto;background:#0f0b14;box-shadow:inset 0 0
 button{font:inherit;font-size:16px;cursor:pointer;border:3px solid #150f1b;background:var(--gold);color:#150f1b;padding:7px 12px;box-shadow:4px 4px 0 #0008;font-weight:700}
 button.sec{background:var(--ink);color:var(--paper);border-color:var(--line)}
 button:disabled{opacity:.45;cursor:default}
+.wiecej summary{cursor:pointer;color:var(--muted);font-size:15px;margin-top:10px}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
 .muted{color:var(--muted)}small{font-size:15px;line-height:1.35}
 p.muted{margin:8px 0 0}
@@ -52,9 +54,10 @@ ol{margin:4px 0 0;padding-left:22px}ol li{font-size:16px;margin:3px 0}
 <p class="lab" id="runda">Runda 1 · korpus prawniczy</p>
 <p class="zd" id="zd">Kliknij „Dalej”, żeby przeczytać pierwsze zdanie.</p>
 <p class="stan" id="stan"></p>
-<div class="row"><button id="dalej">Dalej <kbd>→</kbd></button><button class="sec" id="wstecz">Wstecz <kbd>←</kbd></button><button class="sec" id="reset">Od nowa</button></div>
-<div class="row"><button class="sec" id="r1">Runda 1</button><button class="sec" id="r2">Runda 2</button><button class="sec" id="r3">Runda 3</button></div>
-<div class="row"><button class="sec" id="slady">Ślady <kbd>T</kbd></button><button class="sec" id="grupy">Pokaż grupy <kbd>G</kbd></button></div>
+<div class="row"><button id="dalej">Dalej <kbd>→</kbd></button><button class="sec" id="wstecz">Wstecz <kbd>←</kbd></button></div>
+<details class="wiecej"><summary>Więcej</summary>
+<div class="row"><button class="sec" id="r1">Runda 1</button><button class="sec" id="r2">Runda 2</button><button class="sec" id="r3">Runda 3</button><button class="sec" id="reset">Od nowa <kbd>R</kbd></button></div>
+<div class="row"><button class="sec" id="slady">Ślady <kbd>T</kbd></button><button class="sec" id="grupy">Pokaż grupy <kbd>G</kbd></button></div></details>
 </section>
 <section class="box">
 <p class="lab">Zasady</p>

@@ -6,8 +6,9 @@
 <title>Następne słowo: GPT-2 w przeglądarce · IHRL 2026/27</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
-<script>/* tryb jasny (mapa przekazuje ?jasny=1) */if(new URLSearchParams(location.search).get('jasny')==='1')document.documentElement.classList.add('jasny')</script>
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab()};addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
 <style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}html.jasny img{filter:invert(1) hue-rotate(180deg)}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
 <style>
 :root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--line:#4d4059;--muted:#ada290;--ok:#7fb069}
 *{box-sizing:border-box}
@@ -81,7 +82,7 @@ a{color:var(--gold)}
 <div>
 <section class="box">
 <p class="lab">4 · Niech model pisze dalej</p>
-<div class="row" style="margin-top:0"><button id="gen10">Dopisz 12 tokenów</button><button class="sec" id="reset">Wróć do początku</button></div>
+<div class="row" style="margin-top:0"><button id="gen10">Dopisz 12 tokenów</button><button class="sec" id="reset" hidden>Wróć do początku</button></div>
 <div class="gen" id="gen"></div>
 <p class="muted"><small>Kliknij jeszcze raz: przy tej samej temperaturze wynik często jest inny. Model losuje z rozkładu.</small></p>
 </section>
@@ -140,6 +141,7 @@ function softmax(logits, T) {
 function topk(p, k) { const idx = []; for (let i = 0; i < p.length; i++) { if (idx.length < k) { idx.push(i); idx.sort((a, b) => p[b] - p[a]); } else if (p[i] > p[idx[k - 1]]) { idx[k - 1] = i; idx.sort((a, b) => p[b] - p[a]); } } return idx; }
 let lastLogits = null;
 async function refresh() {
+  $('reset').hidden = $('txt').value === start;
   showTokens();
   if (!model || busy) return; busy = true;
   try {

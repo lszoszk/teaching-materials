@@ -6,8 +6,9 @@
 <title>RAG na orzeczeniach ETPC · IHRL 2026/27</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
-<script>/* tryb jasny (mapa przekazuje ?jasny=1) */if(new URLSearchParams(location.search).get('jasny')==='1')document.documentElement.classList.add('jasny')</script>
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab()};addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
 <style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}html.jasny img{filter:invert(1) hue-rotate(180deg)}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
 <style>
 :root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--line:#4d4059;--muted:#ada290;--ok:#7fb069;--blue:#6fb7c9;--vio:#b4a6c4}
 *{box-sizing:border-box}
@@ -35,7 +36,6 @@ button:disabled{opacity:.45;cursor:default}
 .hit .h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:16px;margin-bottom:4px}
 .hit .h b{color:var(--gold)}.hit .h a{color:var(--blue)}.hit .sc{color:var(--muted);font-size:14px;margin-left:auto}
 .hit mark{background:#e0b95033;color:var(--gold);padding:0 2px}
-.hit .t{max-height:7.2em;overflow:hidden}
 .hit input{accent-color:var(--gold);transform:scale(1.2)}
 pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:15px;background:#0f0b14;padding:10px 12px;margin:0;max-height:420px;overflow:auto}
 .ctx-s{color:var(--vio)}.ctx-f{color:var(--ok)}.ctx-q{color:var(--blue)}
@@ -43,13 +43,15 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:15px;back
 .prog{height:10px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;margin-top:6px;display:none}.prog i{display:block;height:100%;width:0;background:var(--ok)}
 .muted{color:var(--muted)}small{font-size:15px}
 a{color:var(--gold)}
+.adv{margin-top:10px;font-size:16px;color:var(--muted)}.adv summary{cursor:pointer}.adv .row{margin-top:6px}
+@media (max-width:820px){main{padding:14px 16px 30px}.grid{grid-template-columns:1fr}.steps{display:none}.hit .sc{display:none}h1{font-size:23px}pre{max-height:150px}.sub{display:none}}
 ol{margin:4px 0;padding-left:1.6em}li{margin:4px 0}
 </style>
 </head>
 <body>
 <main>
 <h1>RAG: <span>najpierw wyszukaj, potem odpowiedz</span></h1>
-<p class="sub">Retrieval-Augmented Generation na 1147 paragrafach z 12 wyroków ETPC o nadzorze, danych i technologii. Wyszukiwanie działa w Twojej przeglądarce.</p>
+<p class="sub">Retrieval-Augmented Generation na <span id="ile">919 paragrafach z 23 wyroków</span> ETPC o nadzorze, danych i technologii. Wyszukiwanie działa w Twojej przeglądarce.</p>
 <div class="steps">
 <div class="step on" id="s1"><b>① Pytanie</b>wpisujesz pytanie prawnicze</div>
 <div class="step" id="s2"><b>② Wyszukiwanie</b>system przeszukuje bazę wyroków</div>
@@ -64,14 +66,14 @@ ol{margin:4px 0;padding-left:1.6em}li{margin:4px 0}
 <textarea id="q" spellcheck="false">Does the use of facial recognition technology against a peaceful protester violate Article 8?</textarea>
 <div class="row">
 <button class="sec ex" data-ex="Does the use of facial recognition technology against a peaceful protester violate Article 8?">rozpoznawanie twarzy</button>
-<button class="sec ex" data-ex="Can the police keep the DNA profile and fingerprints of a person who was never convicted?">DNA niewinnych</button>
-<button class="sec ex" data-ex="May an employer monitor an employee's private messages sent from a work account?">monitoring w pracy</button>
-<button class="sec ex" data-ex="Is a politician liable for hateful comments posted by others on his Facebook wall?">komentarze na Facebooku</button>
+<button class="sec ex" data-ex="Is the retention of DNA profiles and fingerprints of persons who were suspected but not convicted compatible with Article 8?">DNA niewinnych</button>
+<button class="sec ex" data-ex="Did the domestic courts adequately protect an employee whose employer monitored his messages without prior notice?">monitoring w pracy</button>
+<button class="sec ex" data-ex="Was the criminal conviction of a politician for failing to delete hateful comments by third parties on his Facebook wall compatible with Article 10?">komentarze na Facebooku</button>
 </div>
-<div class="row mode"><span class="muted">Szukaj po:</span>
-<label><input type="radio" name="m" value="bm25" checked> słowach (BM25)</label>
-<label><input type="radio" name="m" value="sem"> znaczeniu (model 23 MB)</label>
-<button id="go">② Szukaj</button></div>
+<div class="row"><button id="go">② Szukaj</button><span class="muted">albo Enter</span></div>
+<details class="adv"><summary>Więcej: szukaj po znaczeniu</summary><div class="row mode">
+<label><input type="radio" name="m" value="bm25" checked> po słowach (BM25)</label>
+<label><input type="radio" name="m" value="sem"> po znaczeniu (model 23 MB)</label></div></details>
 <p class="status" id="st"></p><div class="prog" id="pgw"><i id="pg"></i></div>
 </section>
 <section class="box">
@@ -83,15 +85,15 @@ ol{margin:4px 0;padding-left:1.6em}li{margin:4px 0}
 <section class="box">
 <p class="lab">④ Kontekst dla modelu (to, co wklejasz)</p>
 <pre id="ctx"></pre>
-<div class="row"><button id="cp">Kopiuj prompt z fragmentami</button><button class="sec" id="cq">Kopiuj samo pytanie</button></div>
+<div class="row"><button id="cq">1 · Kopiuj samo pytanie</button><button class="sec" id="cp">2 · Kopiuj prompt z fragmentami</button></div>
 <p class="status" id="cs"></p>
 </section>
 <section class="box">
 <p class="lab">⑤ Odpowiedź: zrób to sam</p>
 <ol>
-<li>Wklej prompt z fragmentami w <b>LMArena</b> (arena.ai) albo w model, w którym masz konto. Nowa rozmowa.</li>
-<li>W drugiej nowej rozmowie wklej <b>samo pytanie</b>, bez fragmentów.</li>
-<li>Porównaj: skąd model wziął każde zdanie? Kliknij przypis [n] i sprawdź paragraf w HUDOC.</li>
+<li><b>Rozmowa 1:</b> wklej samo pytanie w nowej rozmowie z czatbotem.</li>
+<li><b>Rozmowa 2:</b> wklej prompt z fragmentami w drugiej nowej rozmowie.</li>
+<li>Każdy wyrok i paragraf sprawdź w <b>HUDOC</b>: ✓ istnieje i mówi to · ≈ mówi co innego · ✗ nie istnieje.</li>
 </ol>
 <p class="muted" style="margin:6px 0 0"><small>Wagi modelu się nie zmieniają: fragmenty są tylko w tej jednej rozmowie. Kto wybiera bazę dokumentów, ten wybiera, co model „wie”.</small></p>
 </section>
@@ -101,9 +103,10 @@ ol{margin:4px 0;padding-left:1.6em}li{margin:4px 0}
 </main>
 <script type="module">
 const $ = id => document.getElementById(id);
-const K = await (await fetch('korpus.json')).json();
+const K = await (await fetch('korpus.json', {cache: 'no-cache'})).json();
 const P = K.paragrafy, S = K.sprawy;
-$('info').innerHTML = `Korpus: ${S.length} wyroków ETPC (część „Merits”), ${P.length} paragrafów, źródło: HUDOC, pobrano ${K.zbudowano} przez HUDOC Researcher. Sprawy: ` +
+$('ile').textContent = `${P.length} paragrafach z ${S.length} wyroków`;
+$('info').innerHTML = `Korpus: ${S.length} wyroków ETPC (ocena Trybunału, bez stanowisk stron), ${P.length} paragrafów, źródło: HUDOC, pobrano ${K.zbudowano} przez HUDOC Researcher. Sprawy: ` +
   S.map(s => `<a href="${s.hudoc}" target="_blank" rel="noopener">${s.name}</a>`).join(', ') + '. Wyszukiwanie słów: BM25; znaczenia: all-MiniLM-L6-v2 przez transformers.js. IHRL 2026/27, Ł. Szoszkiewicz.';
 const cite = (p, n) => `${S[p.c].name}, no. ${S[p.c].app}, § ${p.p}, ${S[p.c].date}`;
 const esc = s => s.replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
@@ -124,7 +127,7 @@ let fe = null, VEC = null;
 async function semInit() {
   if (fe) return;
   $('pgw').style.display = 'block'; $('st').textContent = 'Wczytuję model znaczeń (23 MB, tylko za pierwszym razem)…';
-  const W = await (await fetch('wektory.json')).json();
+  const W = await (await fetch('wektory.json', {cache: 'no-cache'})).json();
   const raw = atob(W.b64); VEC = new Int8Array(raw.length); for (let i = 0; i < raw.length; i++) VEC[i] = (raw.charCodeAt(i) << 24) >> 24;
   const {pipeline} = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5');
   const files = {};
@@ -150,7 +153,7 @@ function drawHits() {
   if (!HITS.length) { box.innerHTML = '<p class="muted">Nic nie znaleziono. Spróbuj innych słów albo wyszukiwania po znaczeniu.</p>'; return; }
   HITS.forEach((h, n) => {
     const p = P[h.i], d = document.createElement('div'); d.className = 'hit' + (h.on ? ' sel' : '');
-    d.innerHTML = `<div class="h"><input type="checkbox" ${h.on ? 'checked' : ''} aria-label="Dodaj do kontekstu"><b>[${n + 1}]</b><span>${esc(cite(p))}</span><a href="${S[p.c].hudoc}" target="_blank" rel="noopener">HUDOC ↗</a><span class="sc">${mode === 'bm25' ? 'wynik BM25 ' + h.s.toFixed(1) + (h.terms.length ? ' · słowa: ' + h.terms.join(', ') : '') : 'podobieństwo ' + h.s.toFixed(2)}</span></div><div class="t">${hl(p.t, h.terms)}</div>`;
+    d.innerHTML = `<div class="h"><input type="checkbox" ${h.on ? 'checked' : ''} aria-label="Dodaj do kontekstu"><b>[${n + 1}]</b><span>${esc(cite(p))}</span><a href="${S[p.c].hudoc}" target="_blank" rel="noopener">HUDOC ↗</a><span class="sc">${mode === 'bm25' ? 'wynik BM25 ' + h.s.toFixed(1) + (h.terms.length ? ' · słowa: ' + h.terms.join(', ') : '') : 'podobieństwo ' + h.s.toFixed(2)}${mode === 'bm25' && h.wiecej ? ' · w tym wyroku pasuje jeszcze ' + h.wiecej + ' §' : ''}</span></div><div class="t">${hl(p.t, h.terms)}</div>`;
     d.querySelector('input').onchange = e => { h.on = e.target.checked; d.classList.toggle('sel', h.on); drawCtx(); };
     box.append(d);
   });
@@ -171,16 +174,18 @@ async function copy(t, msg) {
   catch (e) { const a = document.createElement('textarea'); a.value = t; document.body.append(a); a.select(); document.execCommand('copy'); a.remove(); }
   $('cs').textContent = msg; step(5);
 }
-$('cp').onclick = () => copy(text(), 'Skopiowano prompt z fragmentami. Wklej go w nowej rozmowie z modelem.');
-$('cq').onclick = () => copy($('q').value.trim(), 'Skopiowano samo pytanie (bez fragmentów). Wklej je w drugiej nowej rozmowie.');
+$('cq').onclick = () => { copy($('q').value.trim(), 'Skopiowano samo pytanie. Wklej je w nowej rozmowie. Potem przycisk 2.'); $('cq').classList.add('sec'); $('cp').classList.remove('sec'); };
+$('cp').onclick = () => copy(text(), 'Skopiowano prompt z fragmentami. Wklej go w drugiej nowej rozmowie.');
 async function go() {
   const q = $('q').value.trim(); if (!q) return;
   mode = document.querySelector('input[name=m]:checked').value; $('go').disabled = true; step(2);
   try {
     const t0 = performance.now();
     const r = mode === 'bm25' ? bm25(q) : await sem(q);
-    HITS = r.slice(0, 5).map((h, n) => ({...h, on: n < 3}));
-    $('st').textContent = `${mode === 'bm25' ? 'Słowa kluczowe' : 'Znaczenie'}: przeszukano ${P.length} paragrafów w ${Math.round(performance.now() - t0)} ms. Pokazuję 5 najlepszych, 3 pierwsze trafią do kontekstu.`;
+    // najlepszy paragraf z każdego wyroku (jak wyszukiwarka, która grupuje wyniki po stronach); reszta trafień z wyroku jako licznik
+    const naj = new Map(); for (const h of r) { const c = P[h.i].c; if (naj.has(c)) naj.get(c).wiecej++; else naj.set(c, {...h, wiecej: 0}); }
+    HITS = [...naj.values()].slice(0, 5).map((h, n) => ({...h, on: n < 3}));
+    $('st').textContent = `${mode === 'bm25' ? 'Słowa kluczowe' : 'Znaczenie'}: przeszukano ${P.length} paragrafów w ${Math.round(performance.now() - t0)} ms. Pokazuję 5 wyroków, z każdego najlepszy paragraf; 3 pierwsze trafią do kontekstu.`;
     drawHits(); drawCtx(); step(4);
   } catch (e) { $('st').textContent = 'Błąd: ' + e.message; console.error(e); }
   $('go').disabled = false;
