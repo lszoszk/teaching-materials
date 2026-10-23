@@ -2783,7 +2783,8 @@ const escH=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&q
 const clean=s=>s.replace(/\s+/g,' ').trim();
 let sIdx=null,sSel=0;
 /* jasne slajdy na słaby projektor: J, ☀ albo ?jasny=1 (?jasny=0 wyłącza); wybór pamiętany w tej przeglądarce */
-function setLight(on){document.documentElement.classList.toggle('jasny',on);const b=$('jasnyBtn');if(b){b.textContent=on?'☾':'☀';b.title=on?'Ciemne slajdy (J)':'Jasne slajdy (J)'}try{localStorage.setItem('mapa-jasny',on?'1':'0')}catch(e){}}
+function setLight(on){document.documentElement.classList.toggle('jasny',on);const b=$('jasnyBtn');if(b){b.textContent=on?'☾':'☀';b.title=on?'Ciemne slajdy (J)':'Jasne slajdy (J)'}try{localStorage.setItem('mapa-jasny',on?'1':'0')}catch(e){}/* demo w oknie W przełącza się razem z prezentacją */const lf=document.querySelector('#live iframe');try{if(lf&&lf.contentWindow)lf.contentWindow.postMessage({demoJasny:on},location.origin)}catch(e){}}
+/* i odwrotnie: przełącznik w demie (okno W) przełącza prezentację */window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data&&typeof e.data.demoJasny==='boolean'&&e.data.demoJasny!==document.documentElement.classList.contains('jasny'))setLight(e.data.demoJasny)});
 {const q=new URLSearchParams(location.search).get('jasny');let on=false;try{on=localStorage.getItem('mapa-jasny')==='1'}catch(e){}if(q!==null)on=q!=='0';setLight(on)}
 function searchIndex(){return slides.map((s,i)=>{const lock=lockOf(i),hid=s.hasAttribute('data-hidden');if(!lecturer&&(lock||hid))return null;
  const vis=el=>!el.closest('[hidden]')&&!el.closest('.notes');
