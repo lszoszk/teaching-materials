@@ -18,11 +18,13 @@ h1{font-size:27px;line-height:1.2;margin:0 0 6px}h1 span{color:var(--gold)}
 .q{border-left:6px solid var(--gold);padding:4px 0 4px 16px;margin:10px 0;font-style:italic;color:var(--parch)}
 .box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:12px 16px;margin:0 0 14px}
 .lab{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
-.jak ol{margin:4px 0;padding-left:1.4em}.jak li{margin:3px 0}
-details summary{cursor:pointer;color:var(--gold)}details pre{white-space:pre-wrap;font:inherit;font-size:14px;color:var(--parch);background:#0f0b14;padding:10px;margin:8px 0 0}
+.jak .krok{margin:0;font-size:18px}.jak #st{margin:4px 0 0}
+.jak ol{margin:8px 0;padding-left:1.4em;font-size:14px;color:var(--parch)}.jak li{margin:3px 0}.jak a{color:var(--gold)}
+details summary{cursor:pointer;color:var(--gold);font-size:14px;margin-top:6px}details pre{white-space:pre-wrap;font:inherit;font-size:14px;color:var(--parch);background:#0f0b14;padding:10px;margin:8px 0 0}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0 8px}.kpi div{background:#16111d;box-shadow:inset 0 0 0 2px #3a3048;padding:5px 8px}
+.kpi dt{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}.kpi dd{margin:0;font-size:22px;font-weight:700;color:var(--gold);line-height:1.2}.kpi small{display:block;font-size:11px;color:var(--muted);line-height:1.3}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
 .col h2{font-size:19px;margin:0 0 4px}.col h2 small{font-weight:400;color:var(--muted);font-size:13px}
-.links{font-size:13px;color:var(--muted);margin:0 0 8px}.links a{color:var(--gold)}
 .pismo{background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;padding:6px 16px 12px;max-height:72vh;overflow:auto;font-size:15px;line-height:1.55;color:var(--parch)}
 .pismo h2,.pismo h3,.pismo h4{font-size:16px;color:var(--paper);margin:14px 0 6px}.pismo p,.pismo li{margin:6px 0}.pismo table{border-collapse:collapse;font-size:13px}.pismo td,.pismo th{border:1px solid #3a3048;padding:3px 6px;vertical-align:top}.pismo hr{border:0;border-top:1px solid #3a3048}.pismo blockquote{margin:8px 0;padding:2px 12px;border-left:4px solid #6a5a88;color:var(--muted);font-size:14px}
 ::highlight(zg-p){background-color:#7fb06955;color:#f3ead6}
@@ -44,24 +46,24 @@ details summary{cursor:pointer;color:var(--gold)}details pre{white-space:pre-wra
 .bar .p{border-color:var(--ok)}.bar .h{border-color:var(--bad)}
 .leg{font-size:13px;color:var(--muted)}.leg i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin:0 4px 0 10px}
 #st{font-size:13px;color:var(--muted)}
-.wer{font-size:14px}.wer .wi{border-left:5px solid #555;padding:6px 10px;margin:6px 0;background:#16111d;cursor:pointer}
+.wer{font-size:14px}#wer .leg{display:none}#wer.on .leg{display:block}.wer .wi{border-left:5px solid #555;padding:6px 10px;margin:6px 0;background:#16111d;cursor:pointer}
 .wer .wi.P{border-color:var(--ok)}.wer .wi.S{border-color:var(--amber)}.wer .wi.H{border-color:var(--bad)}
 .wer .wi b{color:var(--paper)}.wer .wi a{color:var(--gold)}.wer .v{font-weight:700}
 .btn.big{font-size:15px;padding:6px 12px;border-color:var(--gold)}
-@media (max-width:900px){.cols{grid-template-columns:1fr}.pismo{max-height:60vh}}
+@media (max-width:900px){.cols{grid-template-columns:1fr}.pismo{max-height:60vh}.kpi{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <main>
 <h1>Czy AI napisze skargę <span>do Trybunału w Strasburgu?</span></h1>
-<p class="sub">IHRL 2026/27 · odpowiedź na pytanie z biletu wyjścia · ten sam prompt, dwa modele, bez internetu i bez narzędzi</p>
 <p class="q">„Czy jest możliwe wykonanie przez AI idealnej pracy prawnika: wyszukać przepisy, dokonać wykładni, napisać pismo i znaleźć istniejące orzecznictwo?”</p>
-<div class="box jak"><p class="lab">Jak grać</p><ol>
-<li>Czytaj pisma. <b>Zaznacz</b> fragment (np. sygnaturę wyroku z paragrafem) i zgłoś go jako <b>prawdę</b> albo <b>halucynację</b>.</li>
-<li>Głosuj na zgłoszenia innych. Po 3 głosach i przewadze 2:1 fragment robi się <span style="color:var(--ok)">zielony</span> albo <span style="color:var(--bad)">czerwony</span>; spór zostaje <span style="color:var(--amber)">żółty</span>.</li>
-<li>Sprawdzaj w źródłach: <a href="https://hudoc.echr.coe.int/" target="_blank" rel="noopener" style="color:var(--gold)">HUDOC</a>, <a href="https://isap.sejm.gov.pl/" target="_blank" rel="noopener" style="color:var(--gold)">ISAP</a>. Na końcu prowadzący odsłoni swoją weryfikację.</li>
-</ol><p id="st"></p></div>
-<details class="box"><summary>Prompt (taki sam dla obu modeli)</summary><pre>Jesteś prawnikiem specjalizującym się w prawach człowieka. Przygotuj projekt skargi do Europejskiego Trybunału Praw Człowieka.
+<div class="box jak"><p class="krok"><b>Zaznacz</b> fragment pisma i oznacz go: <b>✓ prawda</b> albo <b>✗ halucynacja</b>. Głosuj na zgłoszenia innych.</p><p id="st"></p>
+<details><summary>Zasady, prompt i surowe odpowiedzi</summary>
+<ol><li>Po 3 głosach i przewadze 2:1 fragment robi się <span style="color:var(--ok)">zielony</span> albo <span style="color:var(--bad)">czerwony</span>; spór zostaje <span style="color:var(--amber)">żółty</span>.</li>
+<li>Sprawdzaj w źródłach: <a href="https://hudoc.echr.coe.int/" target="_blank" rel="noopener">HUDOC</a>, <a href="https://isap.sejm.gov.pl/" target="_blank" rel="noopener">ISAP</a>. Na końcu prowadzący odsłoni swoją weryfikację.</li>
+<li>Surowe odpowiedzi: Gemini <a href="gemini_flash_lite.html" target="_blank">tekst</a> · <a href="gemini_raw.html" target="_blank">odpowiedź API</a>; Claude <a href="fable_plan.html" target="_blank">plan Fable</a> · <a href="fable_opus.html" target="_blank">pismo Opusa</a>.</li>
+<li>Liczby nad pismami. Czas i tokeny: Gemini według OpenRouter (0 tokenów rozumowania); Claude według zapisu sesji Claude Code, tokeny razem z ukrytym rozumowaniem („myśleniem”), dlatego jest ich dużo więcej niż słów. Strona = 1800 znaków. Orzeczenia = różne powołane sprawy, bez sprawdzania, czy istnieją.</li></ol>
+<pre>Jesteś prawnikiem specjalizującym się w prawach człowieka. Przygotuj projekt skargi do Europejskiego Trybunału Praw Człowieka.
 
 Stan faktyczny (fikcyjny):
 Skarżąca, obywatelka Polski, od 2022 r. koordynuje lokalne protesty klimatyczne w Krakowie. W marcu 2024 r. funkcjonariusze policji, przesłuchując ją jako świadka w innej sprawie, przytaczali treść jej prywatnych wiadomości z komunikatora. Skarżąca podejrzewa, że była objęta kontrolą operacyjną albo że pozyskiwano jej dane telekomunikacyjne. W 2025 r. zwróciła się do prokuratury i do sądu z wnioskiem o informację, czy stosowano wobec niej takie środki. Otrzymała odpowiedź, że przepisy nie przewidują udzielenia takiej informacji. Zażalenie oddalono postanowieniem sądu okręgowego z 1 września 2026 r., od którego nie przysługuje dalszy środek.
@@ -75,10 +77,10 @@ Napisz projekt skargi do ETPC. Uwzględnij:
 5. żądania.
 
 Pisz po polsku. Nie wymyślaj źródeł. Jeśli czegoś nie jesteś pewien, zaznacz to.
-</pre></details>
+</pre></details></div>
 <div class="cols">
 <section class="col" data-w="gemini"><h2>Gemini 3.5 Flash-Lite <small>darmowy plan Gemini · przez OpenRouter, 23.10.2026</small></h2>
-<p class="links">Surowe odpowiedzi: <a href="gemini_flash_lite.html" target="_blank">tekst</a> · <a href="gemini_raw.html" target="_blank">odpowiedź API</a></p>
+<dl class="kpi"><div><dt>czas</dt><dd>11 s</dd><small>jedno zapytanie</small></div><div><dt>tokeny</dt><dd>3 051</dd><small>bez „myślenia”</small></div><div><dt>długość</dt><dd>1 200 słów</dd><small>ok. 5 stron</small></div><div><dt>orzeczenia</dt><dd>7</dd><small>ETPC</small></div></dl>
 <div class="pismo" id="p-gemini"><p><b>STRASBURG</b></p>
 <p><b>FORMULARZ SKARGI</b> <i>(Projekt sporządzony przez radcy prawnego / adwokata specjalizującego się w ochronie praw człowieka)</i></p>
 <hr>
@@ -116,7 +118,7 @@ Pisz po polsku. Nie wymyślaj źródeł. Jeśli czegoś nie jesteś pewien, zazn
 <p><i>(Podpis pełnomocnika)</i> <b>[Imię i Nazwisko Prawnika]</b> Radca Prawny / Adwokat</p></div>
 <div class="zg"><p class="lab"><span>Zgłoszenia</span><span class="cnt"></span></p><div class="list"></div></div></section>
 <section class="col" data-w="claude"><h2>Fable 5.1 (plan) + Opus 5.5 (pismo) <small>Anthropic · lokalnie, 23.10.2026</small></h2>
-<p class="links">Surowe odpowiedzi: <a href="fable_plan.html" target="_blank">plan Fable</a> · <a href="fable_opus.html" target="_blank">pismo Opusa</a></p>
+<dl class="kpi"><div><dt>czas</dt><dd>24 min</dd><small>plan 13:46 + pismo 10:38</small></div><div><dt>tokeny</dt><dd>135 tys.</dd><small>z „myśleniem”</small></div><div><dt>długość</dt><dd>8 000 słów</dd><small>ok. 31 stron (+ plan 18)</small></div><div><dt>orzeczenia</dt><dd>40</dd><small>ETPC (+ 6 TSUE, 3 TK/SN)</small></div></dl>
 <div class="pismo" id="p-claude"><h2>SKARGA DO EUROPEJSKIEGO TRYBUNAŁU PRAW CZŁOWIEKA</h2>
 <h3>[Imię i nazwisko Skarżącej] przeciwko Polsce</h3>
 <p><i>Projekt, wersja robocza z [data]</i></p>
@@ -373,8 +375,8 @@ function rysujWer(){const out=$('#werOut');out.innerHTML='';const H={'w-P':[],'w
    d.onclick=e=>{if(e.target.tagName==='A')return;if(r){CSS.highlights&&CSS.highlights.set('w-pick',new Highlight(r));r.startContainer.parentElement.scrollIntoView({block:'center',behavior:'smooth'})}};col.append(d)});
   brak.forEach(x=>{const d=document.createElement('div');d.className='wi H';d.innerHTML=`<span class="v">Brakuje</span> <span class="u"></span>${x.zrodlo?` <a href="${x.zrodlo}" target="_blank" rel="noopener">źródło ↗</a>`:''}`;d.querySelector('.u').textContent=x.tekst;col.append(d)})});
  if(window.CSS&&CSS.highlights)Object.entries(H).forEach(([k,v])=>CSS.highlights.set(k,new Highlight(...v)))}
-$('#werBtn').onclick=async()=>{if(wer){wer=null;$('#werOut').innerHTML='';['w-P','w-S','w-H','w-pick'].forEach(k=>CSS.highlights&&CSS.highlights.delete(k));$('#werBtn').textContent='Odsłoń weryfikację';return}
- try{const r=await fetch('weryfikacja.json',{cache:'no-store'});if(!r.ok)throw 0;wer=await r.json();$('#werBtn').textContent='Schowaj weryfikację';rysujWer()}catch(e){$('#werOut').textContent='Weryfikacja pojawi się po zajęciach.'}};
+$('#werBtn').onclick=async()=>{if(wer){wer=null;$('#wer').classList.remove('on');$('#werOut').innerHTML='';['w-P','w-S','w-H','w-pick'].forEach(k=>CSS.highlights&&CSS.highlights.delete(k));$('#werBtn').textContent='Odsłoń weryfikację';return}
+ try{const r=await fetch('weryfikacja.json',{cache:'no-store'});if(!r.ok)throw 0;wer=await r.json();$('#wer').classList.add('on');$('#werBtn').textContent='Schowaj weryfikację';rysujWer()}catch(e){$('#werOut').textContent='Weryfikacja pojawi się po zajęciach.'}};
 if(!API)st('Panel głosów jest wyłączony (brak adresu serwera). Zgłoszenia zapiszą się tylko u Ciebie.');
 rysuj();odswiez();setInterval(odswiez,5000);
 </script>
