@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tablica z testu RAG (23.10) · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J; w oknie W zgrany z prezentacją (postMessage w obie strony) */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab();if(parent!==window)try{parent.postMessage({demoJasny:on},location.origin)}catch(e){}};addEventListener('message',e=>{if(e.origin===location.origin&&e.data&&typeof e.data.demoJasny==='boolean'&&e.data.demoJasny!==on)set(e.data.demoJasny)});addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>
+/* Caveat i Caveat Brush (SIL OFL), pobrane z Google Fonts: działa bez internetu */
+@font-face{font-family:'Caveat';font-weight:400 700;font-display:block;src:url(fonts/caveat-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Caveat';font-weight:400 700;font-display:block;src:url(fonts/caveat-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Caveat Brush';font-display:block;src:url(fonts/caveatbrush-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Caveat Brush';font-display:block;src:url(fonts/caveatbrush-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+/* kartki są białe w obu trybach (bez odwracania kolorów jak w innych demach); zmienia się tylko ściana */
+:root{--wall:#1d1822;--wall2:#2a2333;--ui:#efe6d2;--gold:#e0b950;--muted:#ada290;--line:#4d4059;--btn:#1b1622;--paper:#fbfaf5;--ink:#24222c;--blue:#2453a8;--red:#c8322b;--green:#2c7c38;--orange:#d9781a}
+html.jasny{--wall:#e4ddd0;--wall2:#efe9de;--ui:#2a2230;--muted:#6c6355;--line:#b3a894;--btn:#f3ead6}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--wall);color:var(--ui);font:19px/1.4 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;overflow:hidden}
+main{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;background:radial-gradient(ellipse at 50% 38%,var(--wall2),var(--wall) 72%)}
+header{position:absolute;left:26px;top:14px;right:330px;display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+h1{font-size:24px;line-height:1.2;margin:0}h1 span{color:var(--gold)}html.jasny h1 span{color:#8a5d00}html.jasny .arkusz{box-shadow:0 1px 0 #0001,0 0 0 1px #00000014,12px 16px 0 #0003}html.jasny .kartka{box-shadow:0 1px 0 #0002,6px 9px 0 #0003}
+.sub{color:var(--muted);margin:0;font-size:15px}
+nav{position:absolute;left:26px;right:26px;bottom:12px;display:flex;gap:8px;align-items:center}
+nav .sp{flex:1}
+button{font:inherit;font-size:16px;cursor:pointer;border:3px solid var(--line);background:var(--btn);color:var(--ui);padding:6px 11px;box-shadow:3px 3px 0 #0008}
+button.on{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700}
+button kbd{font:inherit;font-size:13px;opacity:.7;margin-left:4px}
+#brak{position:absolute;left:200px;right:200px;top:300px;font-size:22px;display:none}
+/* widoki i kartki flipchartu */
+.widok{position:absolute;inset:0;display:none;transform-origin:50% 6%;transition:transform .42s ease-in,opacity .42s ease-in}
+.widok.on{display:block}
+.widok.out{transform:perspective(1800px) rotateX(64deg) translateY(-40px);opacity:0}
+.arkusz{position:absolute;background:var(--paper);color:var(--ink);padding:26px 34px 20px;transform:rotate(var(--rot,0deg));
+ background-image:linear-gradient(#2453a80d 1px,transparent 1px),linear-gradient(90deg,#2453a80d 1px,transparent 1px);background-size:34px 34px;
+ box-shadow:0 1px 0 #0001,0 0 0 1px #00000014,12px 16px 0 #0007}
+.arkusz::before{content:'';position:absolute;left:-14px;right:-14px;top:-20px;height:26px;background:linear-gradient(#55525e,#36343d);border-radius:7px;box-shadow:0 4px 0 #0006}
+.arkusz::after{content:'';position:absolute;left:10px;right:10px;top:-2px;height:12px;background:radial-gradient(circle,#c9c7cf 4px,#0000 5px) 0 0/38px 12px repeat-x}
+.noga{position:absolute;width:12px;background:linear-gradient(90deg,#4a4652,#2e2c34);border-radius:4px;transform-origin:50% 0}
+.hw{font-family:'Caveat',cursive}.br{font-family:'Caveat Brush','Caveat',cursive;font-weight:400}
+.niebieski{color:var(--blue)}.czerwony{color:var(--red)}.zielony{color:var(--green)}.pomaranczowy{color:var(--orange)}.szary{color:#9a978f}
+.pis .w{display:inline-block;clip-path:inset(-30% 104% -30% -8%)}
+.kr{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.koniec .pis .w{clip-path:none!important}.koniec .kr{stroke-dashoffset:0!important}.koniec .kartka{opacity:1!important;transform:rotate(var(--r))!important}
+/* pisak: czubek w punkcie (0,0) elementu */
+.pen{position:absolute;left:0;top:0;width:0;height:0;z-index:40;pointer-events:none;opacity:0;transition:opacity .25s}
+.pen.on{opacity:1}
+.pen svg{position:absolute;left:-6px;top:-86px;filter:drop-shadow(5px 7px 2px #0005)}
+/* widok 1: dwie tabele jak na tablicy w sali */
+.tyt{font-size:80px;line-height:.9}
+.podkr{display:block;margin:2px 0 4px}
+.pod{font-size:34px;line-height:1.05;margin:0 0 6px}
+.kol3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.kol{display:flex;flex-direction:column;align-items:flex-start}
+.kreskiBox{height:256px;margin:2px 0 0}
+.licz{position:relative;width:130px;height:76px}
+.licz svg{position:absolute;inset:0}
+.licz .pis{position:absolute;left:0;right:0;top:4px;text-align:center;font-size:52px;line-height:1.2}
+.stopka{font-size:34px;line-height:1.1;margin-top:10px}
+.wynik{display:flex;align-items:center;gap:8px;font-size:58px;line-height:1;margin-top:6px}
+.notka{position:absolute;font-size:31px;line-height:1.05;transform:rotate(-3deg)}
+/* widok 2: tabela modeli */
+.tab{display:grid;grid-template-columns:320px repeat(3,74px) 40px repeat(3,74px) 40px 190px 150px;align-items:center;row-gap:2px;position:relative}
+.tab .c{font-size:40px;line-height:1.05;text-align:center}
+.tab .nm{font-size:33px;line-height:1}.tab .nm small{display:block;font-family:'Caveat',cursive;font-size:22px;color:var(--blue)}
+.tab .gr{font-size:34px;text-align:center;grid-column:span 3}
+.tab .hd{display:flex;justify-content:center}
+.tab .rw{height:66px;display:flex;flex-direction:column;justify-content:center}
+.tab .rw.c{flex-direction:row;align-items:center;justify-content:center}
+.przyp{position:absolute;left:470px;top:26px;width:960px;font-size:25px;line-height:1.12}
+/* widok 3: karteczki na ścianie */
+.siatka{position:absolute;left:52px;top:84px;display:grid;grid-template-columns:repeat(5,282px);grid-auto-rows:236px;gap:18px 22px}
+.kartka{position:relative;padding:12px 14px 10px;color:var(--ink);font-family:'Caveat',cursive;transform:rotate(var(--r));box-shadow:0 1px 0 #0002,6px 9px 0 #0006;overflow:hidden;opacity:0}
+.kartka.zolta{background:#ffe57a}.kartka.rozowa{background:#ffa3b8}.kartka.niebieska{background:#a8d5ff}.kartka.zielona{background:#b9e8a9}
+.kartka::before{content:'';position:absolute;left:96px;top:-6px;width:90px;height:20px;background:#ffffff8c;transform:rotate(-2deg)}
+.kartka .kg{display:flex;align-items:center;gap:8px;font-size:21px;color:#4d4a55}
+.kartka b{display:block;font-size:27px;line-height:1.05;margin:2px 0 3px}
+.kartka .co{margin:0 0 4px;font-size:var(--fs,24px);line-height:1.04}
+.kartka .dl{margin:0;font-size:calc(var(--fs,24px) - 1px);line-height:1.04;color:var(--blue)}
+.kartka .dalej{color:var(--red);font-weight:700}
+/* widok 4: wnioski */
+.lista{margin:6px 0 0;padding:0;list-style:none}
+.lista li{display:grid;grid-template-columns:54px 1fr;font-size:38px;line-height:1.08;margin:0 0 16px}
+.lista li .nr{font-family:'Caveat Brush',cursive;color:var(--red);font-size:44px}
+.drobne{font-size:27px;line-height:1.1}
+/* telefon pionowo: kartki jedna pod drugą na 640 px, bez pisaka */
+html.tel main{width:640px;height:auto;position:static;padding:70px 10px 90px}
+html.tel,html.tel body{height:auto;overflow:auto}
+html.tel header{position:static;margin:0 0 18px}
+html.tel nav{position:fixed;left:0;right:0;bottom:0;padding:8px;background:var(--wall);flex-wrap:wrap;zoom:var(--tz)}
+html.tel .widok{position:static}
+html.tel .arkusz,html.tel .siatka{position:relative;left:auto!important;top:auto!important;width:auto!important;height:auto!important;margin:34px 6px 30px}
+html.tel .noga,html.tel .pen{display:none}
+html.tel .arkusz{zoom:.86}html.tel .tab{zoom:.42}
+html.tel .siatka{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+html.tel .notka{position:static;margin-top:8px}
+</style>
+</head>
+<body>
+<main id="main">
+<header><h1>Tablica z naszego testu: <span>bez RAG i z RAG</span></h1><p class="sub" id="sub"></p></header>
+<p id="brak">Nie udało się wczytać <code>dane.json</code>. Otwórz stronę przez serwer (mapa na localhost), nie z pliku.</p>
+<div id="widoki"></div>
+<div class="pen" id="penA"></div><div class="pen" id="penB"></div>
+<nav id="nav">
+ <button data-v="0">Tablica<kbd>1</kbd></button><button data-v="1">Kto pisał<kbd>2</kbd></button><button data-v="2">Co się nie zgadzało<kbd>3</kbd></button><button data-v="3">Wnioski<kbd>4</kbd></button>
+ <span class="sp"></span><button id="odNowa" title="Napisz jeszcze raz (R)">↻ od nowa<kbd>R</kbd></button><button id="odRazu" title="Pokaż od razu (spacja)">od razu<kbd>spacja</kbd></button>
+</nav>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const ZN=19, KR=46, PAUZA=35;   // ms na znak, na kreskę, przerwa po elemencie
+const KOL={'✓':'var(--green)','≈':'var(--orange)','✗':'var(--red)','∅':'var(--blue)'};
+const IK={'✓':'M12 56 C22 62 30 72 38 84 C52 52 68 32 90 12',
+ '≈':'M10 40 C24 24 36 52 50 38 S76 26 90 36 M10 66 C24 50 36 78 50 64 S76 52 90 62',
+ '✗':'M18 16 C40 40 62 64 86 88 M86 14 C62 38 40 62 16 88',
+ '∅':'M50 12 C78 12 90 32 88 52 C86 76 66 90 46 88 C24 86 10 68 12 48 C14 26 30 12 52 13 M20 84 L82 16'};
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let S=1, bieg=0, szybko=false, widok=-1, D=null, V=[];
+// powtarzalny „los”: przy każdym pisaniu kreski wyglądają tak samo
+function los(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const ikona=(z,px,sw=11)=>`<svg class="ik" viewBox="0 0 100 100" width="${px}" height="${px}"><path class="kr" d="${IK[z]}" style="stroke:${KOL[z]};stroke-width:${sw}"/></svg>`;
+function kreski(n,kolor,rnd){
+  const W=196,gw=84,rh=64,rows=Math.max(1,Math.ceil(Math.ceil(n/5)/2)),d=[];
+  for(let i=0;i<n;i++){const g=Math.floor(i/5),k=i%5,x0=(g%2)*(gw+18)+6,y0=Math.floor(g/2)*rh+6;
+    if(k<4){const x=x0+12+k*17+rnd()*3-1.5;d.push(`M${x.toFixed(1)} ${(y0+3+rnd()*5).toFixed(1)} Q${(x+rnd()*5-2.5).toFixed(1)} ${y0+27} ${(x+rnd()*4-2).toFixed(1)} ${(y0+49+rnd()*4).toFixed(1)}`)}
+    else d.push(`M${x0} ${(y0+41+rnd()*5).toFixed(1)} Q${x0+38} ${y0+28} ${(x0+80+rnd()*4).toFixed(1)} ${(y0+8+rnd()*5).toFixed(1)}`)}
+  return `<svg class="kreski" width="${W}" height="${rows*rh}" viewBox="0 0 ${W} ${rows*rh}">${d.map(p=>`<path class="kr" d="${p}" style="stroke:${kolor};stroke-width:5.5"/>`).join('')}</svg>`}
+function kolko(w,h,rnd){const cx=w/2,cy=h/2,rx=w/2-8,ry=h/2-7,N=40,a0=-2.4,p=[];
+  for(let i=0;i<=N;i++){const a=a0+i/N*(Math.PI*2+.55),f=1+(rnd()-.5)*.05+i/N*.07;p.push(`${(cx+Math.cos(a)*rx*f).toFixed(1)} ${(cy+Math.sin(a)*ry*f).toFixed(1)}`)}
+  return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}"><path class="kr" d="M${p.join(' L')}" style="stroke:var(--red);stroke-width:4"/></svg>`}
+function fala(w,kolor,rnd){let d=`M4 9`;for(let x=4;x<w-30;x+=36)d+=` Q${x+18} ${(1+rnd()*4).toFixed(1)} ${x+36} ${(8+rnd()*3).toFixed(1)}`;return `<svg class="podkr" width="${w}" height="16" viewBox="0 0 ${w} 16"><path class="kr" d="${d}" style="stroke:${kolor};stroke-width:5"/></svg>`}
+const pis=(txt,kl='')=>`<div class="pis ${kl}">${txt}</div>`;
+const proc=(a,b)=>Math.round(100*a/b);
+const pl=n=>String(n).replace('.',',');
+
+/* ---------- widoki ---------- */
+function arkuszTabeli(tryb,tyt,pod,rnd){
+  const s=D.suma[tryb],odp=D.odpowiedzi[tryb],n=s['✓']+s['≈']+s['✗'];
+  const kol=Object.keys(s).map(z=>`<div class="kol">${ikona(z,58)}<div class="kreskiBox">${kreski(s[z],KOL[z],rnd)}</div><div class="licz">${pis(s[z],'br')}${kolko(130,76,rnd)}</div></div>`).join('');
+  return `${pis(tyt,'br tyt')}${fala(330,'var(--red)',rnd)}${pis(pod,'hw pod niebieski')}<div class="kol3">${kol}</div>
+   ${pis(`${odp} odpowiedzi · ${n} odesłań`,'hw stopka')}<div class="wynik">${pis(proc(s['✓'],n)+' %','br zielony')}${ikona('✓',54,12)}</div>`}
+function v1(){const r=los(7),odm=D.odmowy.length;
+  return `<div class="arkusz" style="left:96px;top:96px;width:672px;height:700px;--rot:-.5deg">${arkuszTabeli('bez_rag','BEZ RAG','samo pytanie do czatbota',r)}</div>
+  <div class="arkusz" style="left:836px;top:96px;width:672px;height:700px;--rot:.45deg">${arkuszTabeli('z_rag','Z RAG','pytanie + 3 fragmenty z dema',r)}
+   <div class="notka czerwony" style="left:372px;top:600px;width:290px">${pis(`+ ${odm} × „Brak podstaw w podanych fragmentach”`,'hw')}</div></div>
+  <i class="noga" style="left:170px;top:796px;height:66px;transform:rotate(12deg)"></i><i class="noga" style="left:686px;top:796px;height:66px;transform:rotate(-12deg)"></i>
+  <i class="noga" style="left:910px;top:796px;height:66px;transform:rotate(12deg)"></i><i class="noga" style="left:1426px;top:796px;height:66px;transform:rotate(-12deg)"></i>`}
+function v2(){const r=los(11);
+  const liczba=(n,z)=>pis(n?n:'–','br '+(n?{'✓':'zielony','≈':'pomaranczowy','✗':'czerwony','∅':'niebieski'}[z]:'szary'));
+  let h=`<div class="tab" id="tab2"><div></div>${['bez_rag','z_rag'].map((t,i)=>`<div class="gr">${pis(i?'Z RAG':'BEZ RAG','br')}</div><div></div>`).join('')}<div class="c">${pis('„brak<br>podstaw”','hw niebieski')}</div><div class="c">${pis('czas','hw niebieski')}</div>
+   <div></div>${['bez_rag','z_rag'].map(()=>['✓','≈','✗'].map(z=>`<div class="hd">${ikona(z,40,13)}</div>`).join('')+'<div></div>').join('')}<div></div><div></div>`;
+  for(const m of D.modele){
+    const czas=m.czas_sr?m.czas_sr+' s':m.id==='Arena'?'do 60 s':'–';
+    h+=`<div class="rw nm">${pis(m.nazwa+(m.bez_orzeczen?'*':'')+`<small>${m.skad}</small>`,'br')}</div>`+
+      ['bez_rag','z_rag'].map(t=>['✓','≈','✗'].map(z=>`<div class="rw c">${liczba(m[t][z],z)}</div>`).join('')+'<div></div>').join('')+
+      `<div class="rw c">${liczba(m.odmowy,'∅')}</div><div class="rw c">${pis(czas,'hw')}</div>`}
+  h+=`<svg id="linie2" style="position:absolute;left:0;top:0;overflow:visible" width="10" height="10"></svg></div>`;
+  return `<div class="arkusz" style="left:60px;top:92px;width:1480px;height:744px;--rot:-.25deg">${pis('Kto pisał','br tyt')}${fala(300,'var(--blue)',r)}${h}
+   ${pis(`Arena (tryb Battle): w każdej rozmowie losowa para modeli; nazw nie znamy, bo nie głosowaliśmy.<br>Duck.ai: tylko pytanie o twarze, bez RAG sam szukał w sieci. Czas: średnio przez OpenRouter, 6 zapytań na model.<br>Koszt całego testu: ${pl(D.koszt_openrouter)} $. * Llama przy monitoringu bez RAG nie podała żadnego wyroku.`,'hw przyp niebieski')}</div>`}
+function v3(){
+  const pyt={twarze:'twarze',dna:'DNA',dna_stare:'DNA, 1. wersja pytania',monitoring:'monitoring'},tr=t=>t==='z_rag'?'z RAG':'bez RAG',k=[],rot=[-2.2,1.6,-1,2.4,-1.8,1.1,-2.6,1.9,-.8,2.2,-1.4,2.8,-2,1.3,-.6];
+  const bl=[...D.bledy].sort((a,b)=>(b.znak==='✗')-(a.znak==='✗')||(!!a.dalej)-(!!b.dalej)||(a.tryb>b.tryb)-(a.tryb<b.tryb));
+  for(const b of bl)k.push(`<div class="kartka ${b.znak==='✗'?'rozowa':'zolta'}"><div class="kg">${ikona(b.znak,30,12)}<span>${tr(b.tryb)} · ${pyt[b.q]}</span></div><b>${b.nazwa}</b><p class="co">${b.co}</p><p class="dl">${b.dlaczego}${b.dalej?' <span class="dalej">(dalej niż 3. odesłanie)</span>':''}</p></div>`);
+  for(const o of D.odmowy)k.push(`<div class="kartka niebieska"><div class="kg">${ikona('∅',30,10)}<span>z RAG · ${pyt[o.q]}</span></div><b>${o.nazwa}</b><p class="co">${o.tekst}</p></div>`);
+  for(const o of D.poza_tabela)k.push(`<div class="kartka zielona"><div class="kg">${ikona('✓',30,12)}<span>${tr(o.tryb)} · ${pyt[o.q]} · poza tabelą</span></div><b>${o.model}</b><p class="co">${o.odmowa}</p></div>`);
+  return `<div class="siatka">${k.map((x,i)=>x.replace('class="kartka','style="--r:'+rot[i%rot.length]+'deg" class="kartka')).join('')}</div>`}
+function v4(){const r=los(5),b=D.suma.bez_rag,z=D.suma.z_rag,nb=b['✓']+b['≈']+b['✗'],nz=z['✓']+z['≈']+z['✗'];
+  const L=[`<b class="zielony">Bez RAG ${proc(b['✓'],nb)} % odesłań ✓.</b> Głośne sprawy modele znają. Mylą szczegóły: wynik głosowania, rok, fakty. Raz zmyślenie: <span class="czerwony">Z. and Others v. Finland (2013)</span>.`,
+    `<b class="zielony">Z RAG ${proc(z['✓'],nz)} % ✓.</b> Błąd zmienia formę: <span class="niebieski">${D.odmowy.length} × „brak podstaw”</span> i jedno złe tłumaczenie („indiscriminate” → „niedyskryminacyjne”).`,
+    `Dwa modele bez RAG pominęły Glukhina. Llama przy monitoringu nie podała żadnego wyroku.`,
+    `Błąd bywa dalej niż 3. odesłanie (Dragan Petrović). Sprawdzaj <u>paragraf</u>, nie tylko nazwę sprawy.`];
+  return `<div class="arkusz" style="left:150px;top:92px;width:1300px;height:744px;--rot:.3deg">${pis('Co z tego wynika','br tyt')}${fala(420,'var(--green)',r)}
+   <ol class="lista">${L.map((t,i)=>`<li>${pis(i+1+'.','nr')}${pis(t,'hw')}</li>`).join('')}</ol>
+   ${pis(`Mała próba: ${D.odpowiedzi.bez_rag} + ${D.odpowiedzi.z_rag} odpowiedzi, ${D.data}. Oceniał jeden sprawdzający (Claude), w HUDOC i bazie wyroków ETPC.`,'hw drobne niebieski')}</div>`}
+const SUB=['23.10 · 3 pytania z dema · pierwsze 3 odesłania z każdej odpowiedzi',
+  'liczba odesłań: zgodne · inne niż w odpowiedzi · nieistniejące',
+  'żółte ≈ · różowe ✗ · niebieskie: „brak podstaw” · zielona: lekcja',
+  'porównajcie z waszą tablicą'];
+
+/* ---------- pisanie ---------- */
+function slowa(el){const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),ns=[];while(tw.nextNode())ns.push(tw.currentNode);
+  for(const t of ns){if(!t.textContent.trim())continue;const f=document.createDocumentFragment();
+    for(const c of t.textContent.split(/(\s+)/))if(c){if(/^\s+$/.test(c))f.append(c);else{const s=document.createElement('span');s.className='w';s.textContent=c;f.append(s)}}
+    t.replaceWith(f)}}
+function tween(ms,fn,run){return new Promise(res=>{if(szybko||RM||run!==bieg){if(run===bieg)fn(1);return res()}const t0=performance.now();
+  const f=now=>{if(run!==bieg)return res();if(szybko){fn(1);return res()}const p=Math.min(1,(now-t0)/ms);fn(p);p<1?requestAnimationFrame(f):res()};requestAnimationFrame(f)})}
+function naScenie(x,y){const m=$('main').getBoundingClientRect();return [(x-m.left)/S,(y-m.top)/S]}
+function pisak(p,x,y,kol){if(document.documentElement.classList.contains('tel'))return;p.style.transform=`translate(${x}px,${y}px)`;if(kol)p.style.setProperty('--tusz',kol);p.classList.add('on')}
+async function napisz(el,p,run){
+  if(el.classList.contains('pis')){for(const w of el.querySelectorAll('.w')){const r=w.getBoundingClientRect(),[x,y]=naScenie(r.left,r.top),wd=r.width/S,ht=r.height/S,kol=getComputedStyle(w).color;
+      await tween(Math.max(55,w.textContent.length*ZN),t=>{w.style.clipPath=`inset(-30% ${(1-t)*108-4}% -30% -8%)`;pisak(p,x+wd*t,y+ht*.8,kol)},run)}}
+  else if(el.classList.contains('kartka')){await tween(150,t=>{el.style.opacity=Math.min(1,t*2);el.style.transform=`rotate(var(--r)) scale(${1.25-.25*t})`},run)}
+  else{const L=el.getTotalLength(),kol=getComputedStyle(el).stroke,ms=+(el.dataset.ms||(el.closest('.kreski')?KR:Math.min(520,L*2.4)));
+    // pozycja punktu ścieżki z prostokąta <svg> (getScreenCTM w Safari pomija skalowanie strony)
+    const sv=el.ownerSVGElement,r=sv.getBoundingClientRect(),vb=sv.viewBox.baseVal,vw=vb&&vb.width?vb.width:sv.width.baseVal.value,vh=vb&&vb.height?vb.height:sv.height.baseVal.value,vx=vb&&vb.width?vb.x:0,vy=vb&&vb.height?vb.y:0;
+    await tween(ms,t=>{el.style.strokeDashoffset=L*(1-t);const a=el.getPointAtLength(L*t),[x,y]=naScenie(r.left+(a.x-vx)*r.width/vw,r.top+(a.y-vy)*r.height/vh);pisak(p,x,y,kol)},run)}
+  await tween(el.closest&&el.closest('.kreski')?18:PAUZA,()=>{},run)}
+async function kolejka(lista,p,run){for(const el of lista){if(run!==bieg)return;await napisz(el,p,run)}p.classList.remove('on')}
+function przygotuj(v){v.classList.remove('koniec');
+  v.querySelectorAll('.w').forEach(w=>w.style.clipPath='');
+  v.querySelectorAll('.kr').forEach(k=>{if(k.closest('.kartka'))return;const L=k.getTotalLength();k.style.strokeDasharray=L+' '+(L+2);k.style.strokeDashoffset=L});
+  v.querySelectorAll('.kartka').forEach(k=>{k.style.opacity=0;k.style.transform=''})}
+const elementy=root=>[...root.querySelectorAll('.pis,.kr,.kartka')].filter(e=>!(e.classList.contains('kr')&&e.closest('.kartka')));
+async function start(){const run=++bieg,v=V[widok];szybko=false;przygotuj(v);
+  await new Promise(r=>setTimeout(r,250));if(run!==bieg)return;
+  const ark=[...v.querySelectorAll(':scope>.arkusz')];
+  // dwie kartki na tablicy: dwie osoby piszą naraz (jak w sali: dwa miejsca przy tablicy)
+  const kol=widok===0?ark.map(a=>elementy(a)):[elementy(v)];
+  await Promise.all(kol.map((l,i)=>kolejka(l,i?$('penB'):$('penA'),run)));
+  if(run===bieg)v.classList.add('koniec')}
+function odRazu(){szybko=true;const v=V[widok];if(v)v.classList.add('koniec');$('penA').classList.remove('on');$('penB').classList.remove('on')}
+function pokaz(n){if(n<0||n>3||!D)return;const stary=V[widok];document.querySelectorAll('#nav [data-v]').forEach(b=>b.classList.toggle('on',+b.dataset.v===n));$('sub').textContent=SUB[n];
+  const wej=()=>{if(stary){stary.classList.remove('on','out')}widok=n;V[n].classList.add('on');fitKartki();start()};
+  bieg++;$('penA').classList.remove('on');$('penB').classList.remove('on');
+  if(stary&&stary!==V[n]&&!RM){stary.classList.add('out');setTimeout(wej,430)}else wej()}
+// karteczki: mniejsza czcionka, jeśli tekst się nie mieści
+function fitKartki(){document.querySelectorAll('.widok.on .kartka').forEach(k=>{let fs=24;k.style.setProperty('--fs',fs+'px');while(k.scrollHeight>k.clientHeight+1&&fs>15){fs--;k.style.setProperty('--fs',fs+'px')}})}
+function linie2(){const t=$('tab2'),s=$('linie2');if(!t||!s)return;const T=t.getBoundingClientRect(),c=[...t.children],r=los(3);
+  const hd=c.filter(e=>e.classList.contains('hd')),rw=c.filter(e=>e.classList.contains('nm'));if(!hd.length||!rw.length)return;
+  const yg=(c.find(e=>e.classList.contains('gr')).getBoundingClientRect().top-T.top)/S,y=(hd[0].getBoundingClientRect().bottom-T.top)/S+4,yb=(rw.at(-1).getBoundingClientRect().bottom-T.top)/S,W=T.width/S;
+  const xs=[310,562,824],j=()=>+(r()*4-2).toFixed(1);
+  s.innerHTML=`<path class="kr" d="M0 ${y} Q${W/2} ${y+j()} ${W-10} ${y+j()}" style="stroke:var(--ink);stroke-width:4"/>`+xs.map(x=>`<path class="kr" d="M${x} ${yg} Q${x+j()} ${(y+yb)/2} ${x+j()} ${yb}" style="stroke:#8c8a94;stroke-width:3"/>`).join('');
+  // linie rysujemy najpierw: przenieś je na początek kolejności
+  t.prepend(s)}
+
+/* ---------- skala i start ---------- */
+function fit(){const tel=innerWidth<760&&innerHeight>innerWidth,d=document.documentElement,m=$('main');d.classList.toggle('tel',tel);
+  if(tel){m.style.transform='';m.style.zoom=(innerWidth/640).toFixed(3);d.style.setProperty('--tz',1);S=1;return}
+  m.style.zoom='';S=Math.min(innerWidth/1600,innerHeight/900);m.style.transform=`translate(${(innerWidth-1600*S)/2}px,${(innerHeight-900*S)/2}px) scale(${S})`}
+addEventListener('resize',()=>{fit();odRazu()});fit();
+$('penA').innerHTML=$('penB').innerHTML=`<svg width="96" height="96" viewBox="0 0 96 96"><g transform="translate(6 86) rotate(-47)"><path d="M0 0 L15 -5 L15 5 Z" fill="var(--tusz,#24222c)"/><rect x="14" y="-7" width="11" height="14" fill="#cfccd4"/><rect x="24" y="-10" width="64" height="20" rx="4" fill="#f6f5f2" stroke="#8d8a94" stroke-width="1.5"/><rect x="40" y="-10" width="24" height="20" fill="var(--tusz,#24222c)" opacity=".9"/><rect x="86" y="-11.5" width="22" height="23" rx="6" fill="var(--tusz,#24222c)"/></g></svg>`;
+document.querySelectorAll('#nav [data-v]').forEach(b=>b.onclick=()=>pokaz(+b.dataset.v));
+$('odNowa').onclick=()=>{if(V[widok]){bieg++;start()}};$('odRazu').onclick=odRazu;
+addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const k=e.key.toLowerCase();
+  if(/^[1-4]$/.test(k))pokaz(+k-1);else if(k==='arrowright')pokaz(Math.min(3,widok+1));else if(k==='arrowleft')pokaz(Math.max(0,widok-1));
+  else if(k==='r'&&V[widok]){bieg++;start()}else if(k===' '){e.preventDefault();odRazu()}else return;e.preventDefault()});
+Promise.all([fetch('dane.json',{cache:'no-cache'}).then(r=>r.json()),document.fonts.ready]).then(([d])=>{D=d;
+  $('widoki').innerHTML=[v1(),v2(),v3(),v4()].map((h,i)=>`<section class="widok" id="v${i+1}">${h}</section>`).join('');
+  V=[...document.querySelectorAll('.widok')];V.forEach(v=>v.querySelectorAll('.pis').forEach(slowa));
+  V[1].classList.add('on');linie2();V[1].classList.remove('on');
+  pokaz(0)}).catch(e=>{console.error(e);$('brak').style.display='block'});
+</script>
+</body>
+</html>

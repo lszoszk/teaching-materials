@@ -1,0 +1,316 @@
+{
+ "data": "23.10.2026",
+ "pytania": {
+  "twarze": "twarze (Glukhin)",
+  "dna": "DNA (S. and Marper)",
+  "monitoring": "monitoring (Bărbulescu)"
+ },
+ "suma": {
+  "bez_rag": {
+   "✓": 31,
+   "≈": 7,
+   "✗": 1
+  },
+  "z_rag": {
+   "✓": 36,
+   "≈": 1,
+   "✗": 0
+  }
+ },
+ "odpowiedzi": {
+  "bez_rag": 22,
+  "z_rag": 22
+ },
+ "modele": [
+  {
+   "id": "openai/gpt-6.1-sol",
+   "nazwa": "GPT-6.1 Sol",
+   "skad": "OpenAI · OpenRouter",
+   "bez_rag": {
+    "✓": 3,
+    "≈": 0,
+    "✗": 0
+   },
+   "z_rag": {
+    "✓": 5,
+    "≈": 0,
+    "✗": 0
+   },
+   "odmowy": 0,
+   "bez_orzeczen": 0,
+   "odp": 6,
+   "koszt": 0.0271,
+   "czas_sr": 10,
+   "znaki_bez_rag": 1544,
+   "znaki_z_rag": 612
+  },
+  {
+   "id": "google/gemini-3.8-flash",
+   "nazwa": "Gemini 3.8 Flash",
+   "skad": "Google · OpenRouter",
+   "bez_rag": {
+    "✓": 6,
+    "≈": 1,
+    "✗": 0
+   },
+   "z_rag": {
+    "✓": 2,
+    "≈": 0,
+    "✗": 0
+   },
+   "odmowy": 2,
+   "bez_orzeczen": 0,
+   "odp": 6,
+   "koszt": 0.0355,
+   "czas_sr": 15,
+   "znaki_bez_rag": 4338,
+   "znaki_z_rag": 256
+  },
+  {
+   "id": "deepseek/deepseek-v4.1-flash",
+   "nazwa": "DeepSeek V4.1 Flash",
+   "skad": "DeepSeek · OpenRouter",
+   "bez_rag": {
+    "✓": 3,
+    "≈": 1,
+    "✗": 0
+   },
+   "z_rag": {
+    "✓": 6,
+    "≈": 0,
+    "✗": 0
+   },
+   "odmowy": 1,
+   "bez_orzeczen": 0,
+   "odp": 6,
+   "koszt": 0.0079,
+   "czas_sr": 17,
+   "znaki_bez_rag": 1580,
+   "znaki_z_rag": 599
+  },
+  {
+   "id": "mistralai/mistral-large-4-0",
+   "nazwa": "Mistral Large 4",
+   "skad": "Mistral · OpenRouter",
+   "bez_rag": {
+    "✓": 4,
+    "≈": 3,
+    "✗": 0
+   },
+   "z_rag": {
+    "✓": 2,
+    "≈": 1,
+    "✗": 0
+   },
+   "odmowy": 1,
+   "bez_orzeczen": 0,
+   "odp": 6,
+   "koszt": 0.0792,
+   "czas_sr": 24,
+   "znaki_bez_rag": 3831,
+   "znaki_z_rag": 319
+  },
+  {
+   "id": "meta-llama/llama-4-maverick",
+   "nazwa": "Llama 4 Maverick",
+   "skad": "Meta · OpenRouter",
+   "bez_rag": {
+    "✓": 3,
+    "≈": 0,
+    "✗": 0
+   },
+   "z_rag": {
+    "✓": 7,
+    "≈": 0,
+    "✗": 0
+   },
+   "odmowy": 0,
+   "bez_orzeczen": 1,
+   "odp": 6,
+   "koszt": 0.0018,
+   "czas_sr": 46,
+   "znaki_bez_rag": 2785,
+   "znaki_z_rag": 657
+  },
+  {
+   "id": "Arena",
+   "nazwa": "Arena: 2 anonimowe",
+   "skad": "tryb Battle, nazw nie znamy",
+   "bez_rag": {
+    "✓": 11,
+    "≈": 2,
+    "✗": 1
+   },
+   "z_rag": {
+    "✓": 12,
+    "≈": 0,
+    "✗": 0
+   },
+   "odmowy": 0,
+   "bez_orzeczen": 0,
+   "odp": 12
+  },
+  {
+   "id": "Duck.ai",
+   "nazwa": "GPT-6 Luna",
+   "skad": "Duck.ai, tylko twarze",
+   "bez_rag": {
+    "✓": 1,
+    "≈": 0,
+    "✗": 0
+   },
+   "z_rag": {
+    "✓": 2,
+    "≈": 0,
+    "✗": 0
+   },
+   "odmowy": 0,
+   "bez_orzeczen": 0,
+   "odp": 2
+  }
+ ],
+ "bledy": [
+  {
+   "znak": "≈",
+   "co": "Bărbulescu v. Romania [GC] (2017)",
+   "dlaczego": "„10 głosami do 7”: w wyroku 11 do 6",
+   "model": "google/gemini-3.8-flash",
+   "tryb": "bez_rag",
+   "q": "monitoring",
+   "nazwa": "Gemini 3.8 Flash"
+  },
+  {
+   "znak": "≈",
+   "co": "Glukhin v. Russia (4.07.2023)",
+   "dlaczego": "„niezgodne z prawem”: Trybunał miał tylko „poważne wątpliwości” (§ 83); naruszenie, bo ingerencja nie była konieczna (§ 90)",
+   "model": "deepseek/deepseek-v4.1-flash",
+   "tryb": "bez_rag",
+   "q": "twarze",
+   "nazwa": "DeepSeek V4.1 Flash"
+  },
+  {
+   "znak": "≈",
+   "co": "Catt v. UK (2019)",
+   "dlaczego": "w Catt nie było biometrii ani zdjęć: policja notowała jego udział w demonstracjach",
+   "model": "mistralai/mistral-large-4-0",
+   "tryb": "bez_rag",
+   "q": "twarze",
+   "nazwa": "Mistral Large 4"
+  },
+  {
+   "znak": "≈",
+   "co": "Catt v. UK „(2022)”",
+   "dlaczego": "wyrok jest z 24.01.2019",
+   "model": "mistralai/mistral-large-4-0",
+   "tryb": "bez_rag",
+   "q": "dna",
+   "nazwa": "Mistral Large 4"
+  },
+  {
+   "znak": "≈",
+   "co": "Bărbulescu v. Romania [GC], 5.09.2017",
+   "dlaczego": "„w tym Trybunał Konstytucyjny”: orzekały sąd okręgowy i apelacyjny w Bukareszcie",
+   "model": "mistralai/mistral-large-4-0",
+   "tryb": "bez_rag",
+   "q": "monitoring",
+   "nazwa": "Mistral Large 4"
+  },
+  {
+   "znak": "≈",
+   "co": "[1] S. and Marper § 125",
+   "dlaczego": "„indiscriminate” przetłumaczone jako „niedyskryminacyjne”: odwrotny sens",
+   "model": "mistralai/mistral-large-4-0",
+   "tryb": "z_rag",
+   "q": "dna",
+   "nazwa": "Mistral Large 4"
+  },
+  {
+   "znak": "≈",
+   "co": "Glukhin v. Russia (2023)",
+   "dlaczego": "§ 90 uogólniony: Trybunał mówi o skarżącym, nie o każdej pokojowej demonstracji",
+   "model": "Arena A",
+   "tryb": "bez_rag",
+   "q": "twarze",
+   "nazwa": "Arena, model A"
+  },
+  {
+   "znak": "≈",
+   "co": "Catt v. UK (2019)",
+   "dlaczego": "„zdjęcia 91-latka”: w wyroku nie ma zdjęć; skarżący urodził się w 1925 r.",
+   "model": "Arena A",
+   "tryb": "bez_rag",
+   "q": "twarze",
+   "nazwa": "Arena, model A"
+  },
+  {
+   "znak": "≈",
+   "co": "Dragan Petrović v. Serbia (2020) jako system, który „przetrwał kontrolę”",
+   "dlaczego": "w tej sprawie Trybunał stwierdził naruszenie art. 8",
+   "model": "Arena B",
+   "tryb": "bez_rag",
+   "q": "dna",
+   "dalej": true,
+   "nazwa": "Arena, model B"
+  },
+  {
+   "znak": "✗",
+   "co": "Z. and Others v. Finland (ECHR, 2013) o monitoringu e-maili",
+   "dlaczego": "takiego wyroku nie ma; wyrok o tej nazwie jest z 16.12.2025 i dotyczy życia rodzinnego",
+   "model": "Arena A",
+   "tryb": "bez_rag",
+   "q": "monitoring",
+   "nazwa": "Arena, model A"
+  }
+ ],
+ "odmowy": [
+  {
+   "model": "google/gemini-3.8-flash",
+   "q": "twarze",
+   "tekst": "„Brak podstaw w podanych fragmentach.”",
+   "nazwa": "Gemini 3.8 Flash"
+  },
+  {
+   "model": "google/gemini-3.8-flash",
+   "q": "monitoring",
+   "tekst": "„Brak podstaw w podanych fragmentach.”, choć § 133 Bărbulescu odpowiada wprost",
+   "nazwa": "Gemini 3.8 Flash"
+  },
+  {
+   "model": "deepseek/deepseek-v4.1-flash",
+   "q": "twarze",
+   "tekst": "„Brak podstaw”, bo fragment [1] nie mówi, że skarżący był pokojowym demonstrantem (słusznie: § 89 tego nie mówi)",
+   "nazwa": "DeepSeek V4.1 Flash"
+  },
+  {
+   "model": "mistralai/mistral-large-4-0",
+   "q": "twarze",
+   "tekst": "„Brak podstaw w podanych fragmentach.” (za pierwszym razem: 4000 tokenów rozumowania i pusta odpowiedź)",
+   "nazwa": "Mistral Large 4"
+  }
+ ],
+ "poza_tabela": [
+  {
+   "model": "Arena A i B",
+   "q": "dna_stare",
+   "tryb": "z_rag",
+   "odeslania": [
+    [
+     "[1] S. and Marper § 106",
+     "✓"
+    ],
+    [
+     "[2] Gaughran § 84",
+     "✓"
+    ],
+    [
+     "[3] Trajkovski § 47",
+     "✓"
+    ]
+   ],
+   "odmowa": "oba modele: „Brak podstaw w podanych fragmentach”. Wyszukiwarka dała § 106 (zakres badania) zamiast konkluzji, więc odmowa była uczciwa. Po tym przeformułowaliśmy pytanie."
+  }
+ ],
+ "koszt_openrouter": 0.15,
+ "zapytan_openrouter": 30,
+ "odpowiedzi_arena_duck": 16
+}
