@@ -44,6 +44,16 @@ button kbd{font:inherit;font-size:13px;opacity:.7;margin-left:4px}
 #why{position:absolute;left:90px;right:90px;top:200px;z-index:30;display:none;background:var(--ink);border:4px solid var(--gold);box-shadow:8px 8px 0 #000a;padding:22px 28px;font-size:24px;line-height:1.45}
 #why.on{display:block}#why b{color:var(--gold)}#why small{display:block;margin-top:12px;color:var(--muted);font-size:15px}
 </style>
+<style>
+/* telefon pionowo: układ na 640 px w jednej kolumnie, powiększony do szerokości ekranu; strona przewija się w pionie */
+html.tel main{max-width:none;width:640px;margin:0;padding:76px 12px 24px}
+html.tel .grid{grid-template-columns:1fr}
+html.tel header{flex-wrap:wrap}
+html.tel,html.tel body{height:auto;overflow:auto}
+html.tel main{position:static;height:auto;transform:none}
+html.tel #st{zoom:.565}
+html.tel #why{zoom:1.77;left:0;right:0;top:0}
+</style>
 </head>
 <body>
 <main>
@@ -103,7 +113,7 @@ function test(rep){const p=D.sup[rep];let i=0,ok=0;$('#wynik').textContent='';
   T[i].querySelector('.pr').textContent=(pies?'pies':'muffin')+' '+pct+'%';T[i].classList.add(good?'ok':'bad');i++},600)}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(b)go(b.dataset.m)});
 document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const k=e.key.toLowerCase(),M={'arrowright':'next',' ':'next','arrowleft':'prev','0':'start','1':'pix2','2':'pix3','r':'again','3':'emb2','4':'emb3','5':'sup','k':'testpix','t':'testemb','p':'prawda','d':'dlaczego'};if(M[k]){e.preventDefault();go(M[k])}});
-function fit(){const s=Math.min(innerWidth/1600,innerHeight/900),m=$('main');m.style.transform=`translate(${(innerWidth-1600*s)/2}px,${(innerHeight-900*s)/2}px) scale(${s})`}
+function fit(){const tel=innerWidth<760&&innerHeight>innerWidth;document.documentElement.classList.toggle('tel',tel);if(tel){const mm=$('main');mm.style.transform='';mm.style.zoom=(innerWidth/640).toFixed(3);return}$('main').style.zoom='';const s=Math.min(innerWidth/1600,innerHeight/900),m=$('main');m.style.transform=`translate(${(innerWidth-1600*s)/2}px,${(innerHeight-900*s)/2}px) scale(${s})`}
 $('#why').innerHTML=OP.dlaczego+'<small>Kliknij „Dlaczego te dwie metody?” albo D, żeby zamknąć.</small>';
 addEventListener('resize',fit);fit();show('start');
 </script>

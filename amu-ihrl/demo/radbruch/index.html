@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Radbruch Says · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>
+html,body{margin:0;height:100%;background:#000;color:#efe6d2;font:15px/1.4 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center}
+video{display:block;width:100%;max-height:calc(100vh - 34px);background:#000}
+video::cue{font:500 1em/1.3 "IBM Plex Mono",ui-monospace,Menlo,monospace;background:rgba(0,0,0,.65)}
+p{margin:8px 12px;color:#ada290;font-size:13px;text-align:center}p a{color:#e0b950}
+</style>
+</head>
+<body>
+<video id="v" controls playsinline preload="metadata" poster="poster.jpg" src="radbruch-says-720p.mp4">
+<track kind="subtitles" srclang="pl" label="polski" src="napisy-pl.vtt" default>
+</video>
+<p>Radbruch Says: Between Justice and Legal Certainty · Ł. Szoszkiewicz · obraz: HTML z Claude Fable 5.1 i Opus 5.5, muzyka: ElevenLabs Music · <a href="https://lszoszk.github.io/teaching-materials/radbruch-says/" target="_blank" rel="noopener">tekst i źródła ↗</a></p>
+<script>/* w oknie W z prezentacji film rusza od razu (jeśli przeglądarka pozwoli; inaczej przycisk ▶) */if(parent!==window){const v=document.getElementById('v');v.play().catch(()=>{})}</script>
+</body>
+</html>

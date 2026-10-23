@@ -46,6 +46,12 @@ p.muted{margin:8px 0 0}
 a{color:var(--gold)}
 .foot{margin:2px 0 0}
 </style>
+<style>
+/* telefon pionowo: układ na 640 px w jednej kolumnie, powiększony do szerokości ekranu; strona przewija się w pionie */
+html.tel main{max-width:none;width:640px;margin:0;padding:76px 12px 24px}
+html.tel .grid{grid-template-columns:1fr}
+html.tel header{flex-wrap:wrap}
+</style>
 </head>
 <body>
 <main id="main">
@@ -96,7 +102,7 @@ a{color:var(--gold)}
 </main>
 <script>
 /* zmieść na ekranie bez przewijania: jeśli treść jest wyższa niż okno, pomniejsz całość (najwyżej do 70%) */
-(function(){const m=document.getElementById('main');function fit(){m.style.zoom=1;const h=m.scrollHeight+4,H=window.innerHeight;const z=Math.max(.7,Math.min(1,H/h));m.style.zoom=z<1?z.toFixed(3):''}
+(function(){const m=document.getElementById('main');function fit(){const tel=innerWidth<760&&innerHeight>innerWidth;document.documentElement.classList.toggle('tel',tel);if(tel){m.style.zoom=(innerWidth/640).toFixed(3);return}m.style.zoom=1;const h=m.scrollHeight+4,H=window.innerHeight;const z=Math.max(.7,Math.min(1,H/h));m.style.zoom=z<1?z.toFixed(3):''}
 let q=0;const later=()=>{cancelAnimationFrame(q);q=requestAnimationFrame(fit)};window.addEventListener('resize',later);new MutationObserver(later).observe(m,{childList:true,subtree:true,characterData:true});window.addEventListener('load',fit);fit()})();
 </script>
 <script type="module">

@@ -41,6 +41,12 @@ p.muted{margin:8px 0 0}
 kbd{font:inherit;font-size:14px;border:2px solid var(--line);padding:0 5px}
 ol{margin:4px 0 0;padding-left:22px}ol li{font-size:16px;margin:3px 0}
 </style>
+<style>
+/* telefon pionowo: układ na 640 px w jednej kolumnie, powiększony do szerokości ekranu; strona przewija się w pionie */
+html.tel main{max-width:none;width:640px;margin:0;padding:76px 12px 24px}
+html.tel .grid{grid-template-columns:1fr}
+html.tel header{flex-wrap:wrap}
+</style>
 </head>
 <body>
 <main id="main">
@@ -178,7 +184,7 @@ document.addEventListener('keydown', e => { if (e.target.tagName === 'INPUT') re
   if (k === 'arrowright' || k === ' ' || k === 'pagedown') { e.preventDefault(); dalej(); } else if (k === 'arrowleft' || k === 'pageup') { e.preventDefault(); wstecz(); }
   else if (k === 't') $('slady').click(); else if (k === 'g') $('grupy').click(); else if (k === 'r') reset(); else if ('123'.includes(k)) doRundy(+k); });
 // zmieść na ekranie bez przewijania
-(function () { const m = $('main'); function fit() { m.style.zoom = 1; const z = Math.max(.6, Math.min(1, innerHeight / (m.scrollHeight + 4))); m.style.zoom = z < 1 ? z.toFixed(3) : ''; }
+(function () { const m = $('main'); function fit() { const tel=innerWidth<760&&innerHeight>innerWidth;document.documentElement.classList.toggle('tel',tel);if (tel) { m.style.zoom = (innerWidth / 640).toFixed(3); return; } m.style.zoom = 1; const z = Math.max(.6, Math.min(1, innerHeight / (m.scrollHeight + 4))); m.style.zoom = z < 1 ? z.toFixed(3) : ''; }
   let q = 0; const later = () => { cancelAnimationFrame(q); q = requestAnimationFrame(fit); };
   addEventListener('resize', later); addEventListener('load', fit); new MutationObserver(later).observe($('runda').parentNode, {childList: true, subtree: true, characterData: true}); setTimeout(fit, 50); })();
 fetch('../rag/slowa_mapa.json').then(r => r.json()).then(M => {
