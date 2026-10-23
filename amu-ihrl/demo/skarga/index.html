@@ -78,7 +78,7 @@ Pisz po polsku. Nie wymyślaj źródeł. Jeśli czegoś nie jesteś pewien, zazn
 </pre></details>
 <div class="cols">
 <section class="col" data-w="gemini"><h2>Gemini 3.5 Flash-Lite <small>darmowy plan Gemini · przez OpenRouter, 23.10.2026</small></h2>
-<p class="links">Surowe odpowiedzi: <a href="gemini_flash_lite.md" target="_blank">tekst</a> · <a href="gemini_raw.json" target="_blank">odpowiedź API</a></p>
+<p class="links">Surowe odpowiedzi: <a href="gemini_flash_lite.html" target="_blank">tekst</a> · <a href="gemini_raw.html" target="_blank">odpowiedź API</a></p>
 <div class="pismo" id="p-gemini"><p><b>STRASBURG</b></p>
 <p><b>FORMULARZ SKARGI</b> <i>(Projekt sporządzony przez radcy prawnego / adwokata specjalizującego się w ochronie praw człowieka)</i></p>
 <hr>
@@ -116,7 +116,7 @@ Pisz po polsku. Nie wymyślaj źródeł. Jeśli czegoś nie jesteś pewien, zazn
 <p><i>(Podpis pełnomocnika)</i> <b>[Imię i Nazwisko Prawnika]</b> Radca Prawny / Adwokat</p></div>
 <div class="zg"><p class="lab"><span>Zgłoszenia</span><span class="cnt"></span></p><div class="list"></div></div></section>
 <section class="col" data-w="claude"><h2>Fable 5.1 (plan) + Opus 5.5 (pismo) <small>Anthropic · lokalnie, 23.10.2026</small></h2>
-<p class="links">Surowe odpowiedzi: <a href="fable_plan.md" target="_blank">plan Fable</a> · <a href="fable_opus.md" target="_blank">pismo Opusa</a></p>
+<p class="links">Surowe odpowiedzi: <a href="fable_plan.html" target="_blank">plan Fable</a> · <a href="fable_opus.html" target="_blank">pismo Opusa</a></p>
 <div class="pismo" id="p-claude"><h2>SKARGA DO EUROPEJSKIEGO TRYBUNAŁU PRAW CZŁOWIEKA</h2>
 <h3>[Imię i nazwisko Skarżącej] przeciwko Polsce</h3>
 <p><i>Projekt, wersja robocza z [data]</i></p>
@@ -363,15 +363,15 @@ bar.querySelectorAll('button').forEach(b=>b.onmousedown=b.ontouchstart=async e=>
  const j=await send({t:'zglos',wersja:s.w,cytat:s.t,glos:b.dataset.g});if(j&&j.ok){moje[j.id]=b.dataset.g;store.set('skarga-moje',JSON.stringify(moje))}odswiez()});
 /* weryfikacja prowadzącego */
 const WN={P:'✓ zgadza się',S:'≈ istnieje, ale mówi co innego',H:'✗ nie istnieje albo błąd'},WK=v=>v==='~'?'S':v;
-function rysujWer(){const out=$('#werOut');out.innerHTML='';const H={'w-P':[],'w-S':[],'w-H':[]};
- [['gemini','Gemini 3.5 Flash-Lite'],['claude','Fable 5.1 + Opus 5.5']].forEach(([w,nazwa])=>{const items=wer[w]||[],brak=wer[w+'_brak']||[];if(!items.length&&!brak.length)return;
+function rysujWer(){const out=$('#werOut');out.innerHTML='';const H={'w-P':[],'w-S':[],'w-H':[]};const grid=document.createElement('div');grid.className='cols';out.append(grid);
+ [['gemini','Gemini 3.5 Flash-Lite'],['claude','Fable 5.1 + Opus 5.5']].forEach(([w,nazwa])=>{const items=wer[w]||[],brak=wer[w+'_brak']||[];const col=document.createElement('div');grid.append(col);if(!items.length&&!brak.length)return;
   const box=$('#p-'+w),hd=document.createElement('p');hd.className='lab';const c={P:0,S:0,H:0};items.forEach(x=>c[WK(x.werdykt)]++);
-  hd.textContent=`${nazwa}: ✓ ${c.P} · ≈ ${c.S} · ✗ ${c.H}`;out.append(hd);
+  hd.textContent=`${nazwa}: ✓ ${c.P} · ≈ ${c.S} · ✗ ${c.H}`;col.append(hd);
   items.forEach(x=>{const k=WK(x.werdykt),r=rangeOf(box,x.cytat.replace(/\*/g,''));if(r)H['w-'+k].push(r);
    const d=document.createElement('div');d.className='wi '+k;d.innerHTML=`<span class="v"></span> <b></b><br><span class="u"></span>${x.zrodlo?` <a href="${x.zrodlo}" target="_blank" rel="noopener">źródło ↗</a>`:''}`;
    d.querySelector('.v').textContent=WN[k];d.querySelector('b').textContent=x.cytat.replace(/\*/g,'');d.querySelector('.u').textContent=x.uwaga;
-   d.onclick=e=>{if(e.target.tagName==='A')return;if(r){CSS.highlights&&CSS.highlights.set('w-pick',new Highlight(r));r.startContainer.parentElement.scrollIntoView({block:'center',behavior:'smooth'})}};out.append(d)});
-  brak.forEach(x=>{const d=document.createElement('div');d.className='wi H';d.innerHTML=`<span class="v">Brakuje</span> <span class="u"></span>${x.zrodlo?` <a href="${x.zrodlo}" target="_blank" rel="noopener">źródło ↗</a>`:''}`;d.querySelector('.u').textContent=x.tekst;out.append(d)})});
+   d.onclick=e=>{if(e.target.tagName==='A')return;if(r){CSS.highlights&&CSS.highlights.set('w-pick',new Highlight(r));r.startContainer.parentElement.scrollIntoView({block:'center',behavior:'smooth'})}};col.append(d)});
+  brak.forEach(x=>{const d=document.createElement('div');d.className='wi H';d.innerHTML=`<span class="v">Brakuje</span> <span class="u"></span>${x.zrodlo?` <a href="${x.zrodlo}" target="_blank" rel="noopener">źródło ↗</a>`:''}`;d.querySelector('.u').textContent=x.tekst;col.append(d)})});
  if(window.CSS&&CSS.highlights)Object.entries(H).forEach(([k,v])=>CSS.highlights.set(k,new Highlight(...v)))}
 $('#werBtn').onclick=async()=>{if(wer){wer=null;$('#werOut').innerHTML='';['w-P','w-S','w-H','w-pick'].forEach(k=>CSS.highlights&&CSS.highlights.delete(k));$('#werBtn').textContent='Odsłoń weryfikację';return}
  try{const r=await fetch('weryfikacja.json',{cache:'no-store'});if(!r.ok)throw 0;wer=await r.json();$('#werBtn').textContent='Schowaj weryfikację';rysujWer()}catch(e){$('#werOut').textContent='Weryfikacja pojawi się po zajęciach.'}};
