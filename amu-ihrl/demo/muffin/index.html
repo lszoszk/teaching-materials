@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pies czy muffin: dwa sposoby uczenia · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab()};addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}html.jasny img{filter:invert(1) hue-rotate(180deg)}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>
+:root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--blue:#6fb7c9;--line:#4d4059;--muted:#ada290;--ok:#7fb069;--bad:#d65a4a}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--paper);font:19px/1.4 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;overflow:hidden}
+main{position:absolute;left:0;top:0;width:1600px;height:900px;padding:18px 26px;transform-origin:0 0}
+header{display:flex;align-items:baseline;gap:18px;margin:0 0 12px}
+h1{font-size:28px;line-height:1.2;margin:0}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.grid{display:grid;grid-template-columns:1090px 1fr;gap:20px}
+#st{position:relative;height:770px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}
+.fr{position:absolute;border:3px solid #3a3048;background:#16111d;transition:all .6s ease}
+.fr b{position:absolute;left:12px;top:6px;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.fr.sup b{font-size:20px}
+.t{position:absolute;width:116px;height:113px;transition:left .8s cubic-bezier(.5,0,.2,1),top .8s cubic-bezier(.5,0,.2,1),box-shadow .3s;box-shadow:0 0 0 3px #150f1b,4px 4px 0 3px #0008}
+.t img{width:100%;height:100%;display:block}
+.t .tag{position:absolute;left:0;right:0;bottom:0;background:#150f1bd9;color:var(--paper);font-size:14px;text-align:center;padding:1px 0;display:none}
+body.prawda .t .tag{display:block}
+.t .pr{position:absolute;left:-3px;right:-3px;top:-28px;font-size:15px;font-weight:700;text-align:center;display:none}
+.t.ok{box-shadow:0 0 0 5px var(--ok),4px 4px 0 5px #0008}.t.ok .pr{display:block;color:var(--ok)}
+.t.bad{box-shadow:0 0 0 5px var(--bad),4px 4px 0 5px #0008}.t.bad .pr{display:block;color:var(--bad)}
+.t.now{box-shadow:0 0 0 5px var(--gold),4px 4px 0 5px #0008}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:12px 16px;margin:0 0 14px}
+.lab{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+button{font:inherit;font-size:16px;cursor:pointer;border:3px solid #150f1b;background:var(--ink);color:var(--paper);padding:6px 11px;box-shadow:3px 3px 0 #0008;border-color:var(--line)}
+button.on{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700}
+button.pri{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700;font-size:19px;padding:8px 16px}button:disabled{opacity:.4;cursor:default}
+button.lnk{background:none;box-shadow:none;border:0;color:var(--muted);text-decoration:underline;padding:2px 4px;font-size:15px}button.lnk.on{background:none;color:var(--gold)}
+button kbd{font:inherit;font-size:13px;opacity:.7;margin-left:4px}
+#opis{font-size:18px;line-height:1.4;min-height:5.6em;margin:0}
+#wynik{font-size:24px;font-weight:700;color:var(--gold);min-height:1.4em;margin:8px 0 0}
+.muted{color:var(--muted)}small{font-size:13px}
+#why{position:absolute;left:90px;right:90px;top:200px;z-index:30;display:none;background:var(--ink);border:4px solid var(--gold);box-shadow:8px 8px 0 #000a;padding:22px 28px;font-size:24px;line-height:1.45}
+#why.on{display:block}#why b{color:var(--gold)}#why small{display:block;margin-top:12px;color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+<main>
+<header><h1>Pies czy muffin: <span>dwa sposoby uczenia</span></h1><p class="sub">12 obrazków z mema. Obliczenia prawdziwe, policzone wcześniej.</p></header>
+<div class="grid">
+<div id="st"><div id="why"></div></div>
+<div>
+<section class="box"><p class="lab" id="krok"></p><p id="opis"></p><p id="wynik"></p></section>
+<div class="row"><button data-m="next" class="pri">Dalej <kbd>→</kbd></button><button data-m="prev">Wstecz <kbd>←</kbd></button><button data-m="again" id="againBtn" hidden>Jeszcze raz <kbd>R</kbd></button></div>
+<div class="row"><button data-m="prawda" class="lnk">Co jest czym <kbd>P</kbd></button><button data-m="dlaczego" class="lnk">Dlaczego te dwie metody? <kbd>D</kbd></button></div>
+<p class="muted"><small>Zdjęcia: K. Zack (2016), za M. Yao (2017). k-średnie na kolorach 16×16 px albo na embeddingach DINOv2-small; nadzorowane: regresja logistyczna, każdy obrazek zgaduje model uczony na pozostałych 11.</small></p>
+</div>
+</div>
+</main>
+<script>
+const D={"lab": ["M", "P", "M", "P", "P", "M", "P", "M", "M", "P", "M", "P"], "pix": {"2": [[0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0], [1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0], [0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1], [1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1]], "3": [[2, 2, 2, 1, 2, 0, 0, 2, 1, 2, 0, 0], [1, 2, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0], [1, 1, 1, 2, 1, 0, 1, 2, 2, 1, 0, 2], [1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 2], [2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 1, 0], [0, 0, 0, 1, 0, 1, 2, 0, 1, 1, 2, 1]]}, "emb": {"2": [1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0], "3": [1, 2, 1, 2, 2, 1, 0, 1, 1, 0, 1, 2]}, "sup": {"pix": [0.53, 0.36, 0.45, 0.39, 0.87, 0.5, 0.63, 0.06, 0.82, 0.67, 0.57, 0.33], "emb": [0.07, 0.9, 0.1, 0.91, 0.92, 0.13, 0.86, 0.08, 0.12, 0.89, 0.1, 0.91]}};
+const $=s=>document.querySelector(s), st=$('#st'), TW=116, TH=113, GAP=12;
+const T=D.lab.map((l,i)=>{const d=document.createElement('div');d.className='t';d.innerHTML=`<img src="kafle/k${String(i).padStart(2,'0')}.webp" alt="${l==='P'?'pies':'muffin'}"><span class="tag">${l==='P'?'pies':'muffin'}</span><span class="pr"></span>`;st.append(d);return d});
+let run={2:0,3:0},mode='start',timer=null;
+const KROKI=[['start','Start'],['pix2','Nienadzorowane: kolory pikseli'],['pix3','Nienadzorowane: kolory pikseli'],['emb2','Nienadzorowane: lepsze oczy'],['emb3','Nienadzorowane: lepsze oczy'],['sup','Nadzorowane: etykiety człowieka'],['testpix','Nadzorowane: test na kolorach'],['testemb','Nadzorowane: test na lepszych oczach']],ki=m=>KROKI.findIndex(k=>k[0]===m);
+const OP={start:'Siatka z mema. Człowiek od razu widzi: psy i muffiny na przemian. Ale co „widzi” maszyna?',
+ pix2:'<b>Bez etykiet.</b> Algorytm k-średnich porównuje same kolory pikseli i dzieli obrazki na 2 grupy. Psy i muffiny są brązowe z ciemnymi kropkami, więc lądują razem.',
+ pix3:'<b>Bez etykiet, k = 3.</b> Liczbę grup podaje człowiek. Grupy dalej są wymieszane: algorytm grupuje to, co <b>wygląda</b> podobnie.',
+ again:'<b>Inny start, inny podział.</b> k-średnie zaczynają od losowych punktów, więc na tych samych danych wynik się zmienia.',
+ emb2:'<b>Te same k-średnie, lepsze oczy.</b> Zamiast kolorów: opis obrazka z modelu, który widział miliony zdjęć (DINOv2). Teraz psy osobno, muffiny osobno. Ale nazwy grup nadaje dopiero człowiek.',
+ emb3:'<b>Kazaliśmy znaleźć 3 grupy.</b> Model posłusznie znalazł trzy: muffiny i dwie grupy psów. Nienadzorowane zawsze coś znajdzie. Czy to ma sens, ocenia człowiek.',
+ sup:'<b>Nadzorowane.</b> Człowiek oznaczył każdy obrazek: „pies” albo „muffin”. Model uczy się granicy, którą wyznaczył człowiek. Kto nadaje etykiety, ten decyduje, czego model się nauczy.',
+ testpix:'<b>Test na kolorach.</b> Każdy obrazek zgaduje model uczony na pozostałych 11, z etykietami, ale widzący tylko kolory pikseli.',
+ dlaczego:'<b>Dlaczego piksele i „lepsze oczy”?</b> Piksele to najprostszy opis zdjęcia: sam kolor punktów, bez żadnej wiedzy o świecie. „Lepsze oczy” to opis z modelu DINOv2 (Meta, 2023), który bez etykiet, na 142 mln zdjęć, nauczył się wyłapywać kształty i części: oczy, nos, fakturę. Algorytm grupowania zostaje ten sam. Zmieniamy tylko to, co maszyna „widzi”.',
+ testemb:'<b>Test na lepszych oczach.</b> Każdy obrazek zgaduje model uczony na pozostałych 11, z etykietami i z opisem z modelu obrazów.'};
+function place(i,x,y){T[i].style.left=x+'px';T[i].style.top=y+'px'}
+function clearFr(){st.querySelectorAll('.fr').forEach(f=>f.remove())}
+function clearMarks(){if(timer){clearInterval(timer);timer=null}T.forEach(t=>{t.classList.remove('ok','bad','now');t.querySelector('.pr').textContent=''});$('#wynik').textContent=''}
+function layoutStart(){clearFr();const x0=(1090-(4*TW+3*36))/2,y0=(770-(3*TH+2*36))/2;T.forEach((t,i)=>place(i,x0+(i%4)*(TW+36),y0+Math.floor(i/4)*(TH+36)))}
+function layoutGroups(groups,names,sup){clearFr();const k=groups.length,W=1090,H=770,P=22,RG=sup?44:GAP,TOP=sup?70:48,fw=(W-P*(k+1))/k,cols=Math.max(1,Math.floor((fw-24+GAP)/(TW+GAP)));
+ groups.forEach((g,j)=>{const fx=P+j*(fw+P),rows=Math.ceil(g.length/cols),fh=Math.max(260,rows*(TH+RG)+TOP+22),fy=(H-fh)/2,f=document.createElement('div');f.className='fr'+(sup?' sup':'');Object.assign(f.style,{left:fx+'px',top:fy+'px',width:fw+'px',height:fh+'px'});f.innerHTML=`<b>${names[j]}</b>`;st.prepend(f);
+  const cw=Math.min(cols,g.length)*(TW+GAP)-GAP,x0=fx+(fw-cw)/2;g.forEach((i,n)=>place(i,x0+(n%cols)*(TW+GAP),fy+TOP+Math.floor(n/cols)*(TH+RG)))})}
+function groupsOf(a){const k=Math.max(...a)+1,g=[...Array(k)].map(()=>[]);a.forEach((v,i)=>g[v].push(i));g.sort((x,y)=>x[0]-y[0]);return g}
+function on(){const i=ki(mode);$('#krok').textContent=i?`Krok ${i} z ${KROKI.length-1} · ${KROKI[i][1]}`:KROKI[0][1];$('[data-m="prev"]').disabled=!i;$('[data-m="next"]').disabled=i===KROKI.length-1;$('#againBtn').hidden=!mode.startsWith('pix')}
+function go(m){
+ if(m==='next'||m==='prev'){const i=Math.min(KROKI.length-1,Math.max(0,ki(mode)+(m==='next'?1:-1)));if(KROKI[i][0]===mode)return;m=KROKI[i][0]}
+ if(m==='prawda'){$('[data-m="prawda"]').classList.toggle('on',document.body.classList.toggle('prawda'));return}
+ if(m==='dlaczego'){const w=$('#why'),on=!w.classList.contains('on');w.classList.toggle('on',on);document.querySelectorAll('[data-m="dlaczego"]').forEach(b=>b.classList.toggle('on',on));return}
+ $('#why').classList.remove('on');document.querySelectorAll('[data-m="dlaczego"]').forEach(b=>b.classList.remove('on'));
+ clearMarks();
+ if(m==='again'){if(!mode.startsWith('pix'))m='pix2';else{const k=mode.slice(3);run[k]=(run[k]+1)%D.pix[k].length;show(mode,true);return}}
+ show(m,false)}
+function show(m,again){
+ mode=m;on();$('#opis').innerHTML=OP[again?'again':m];
+ if(m==='start')layoutStart();
+ else if(m.startsWith('pix')){const k=m.slice(3),g=groupsOf(D.pix[k][run[k]]);layoutGroups(g,g.map((_,j)=>'grupa '+(j+1)))}
+ else if(m.startsWith('emb')){const k=m.slice(3),g=groupsOf(D.emb[k]);layoutGroups(g,g.map((_,j)=>'grupa '+(j+1)))}
+ else{const g=[[],[]];D.lab.forEach((l,i)=>g[l==='P'?0:1].push(i));layoutGroups(g,['pies','muffin'],true);if(m.startsWith('test'))test(m==='testpix'?'pix':'emb')}}
+function test(rep){const p=D.sup[rep];let i=0,ok=0;$('#wynik').textContent='';
+ timer=setInterval(()=>{if(i>0)T[i-1].classList.remove('now');if(i>=12){clearInterval(timer);timer=null;$('#wynik').textContent=`Trafione: ${ok} z 12`+(ok<=7?' (jak rzut monetą)':'');return}
+  const pies=p[i]>.5,good=pies===(D.lab[i]==='P'),pct=Math.round((pies?p[i]:1-p[i])*100);ok+=good;
+  T[i].querySelector('.pr').textContent=(pies?'pies':'muffin')+' '+pct+'%';T[i].classList.add(good?'ok':'bad');i++},600)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(b)go(b.dataset.m)});
+document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const k=e.key.toLowerCase(),M={'arrowright':'next',' ':'next','arrowleft':'prev','0':'start','1':'pix2','2':'pix3','r':'again','3':'emb2','4':'emb3','5':'sup','k':'testpix','t':'testemb','p':'prawda','d':'dlaczego'};if(M[k]){e.preventDefault();go(M[k])}});
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900),m=$('main');m.style.transform=`translate(${(innerWidth-1600*s)/2}px,${(innerHeight-900*s)/2}px) scale(${s})`}
+$('#why').innerHTML=OP.dlaczego+'<small>Kliknij „Dlaczego te dwie metody?” albo D, żeby zamknąć.</small>';
+addEventListener('resize',fit);fit();show('start');
+</script>
+</body>
+</html>
