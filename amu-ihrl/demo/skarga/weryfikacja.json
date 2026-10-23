@@ -1,0 +1,202 @@
+{
+ "gemini": [
+  {
+   "id": "g01",
+   "cytat": "Reprezentovaná przez",
+   "werdykt": "H",
+   "uwaga": "Czeskie słowo w polskim piśmie. Drobiazg, ale pokazuje, że model nie „pisze po polsku”, tylko przewiduje tokeny.",
+   "zrodlo": null
+  },
+  {
+   "id": "g02",
+   "cytat": "*Kruslin przeciwko Francji*, nr 11801/85, wyrok z 24 kwietnia 1990 r., § 35",
+   "werdykt": "~",
+   "uwaga": "Wyrok, numer i data się zgadzają. Ale § 35 mówi o braku gwarancji przy podsłuchu telefonicznym, a nie o tym, że samo istnienie tajnych przepisów jest ingerencją (to Klass § 41 i Roman Zakharov §§ 170–171).",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-57626"
+  },
+  {
+   "id": "g03",
+   "cytat": "*Szabó i Vissy przeciwko Węgrom*, nr 37138/14, wyrok z 12 stycznia 2016 r., § 35",
+   "werdykt": "~",
+   "uwaga": "Wyrok, numer i data się zgadzają. § 35 dotyczy dopuszczalności skarg na samo ustawodawstwo (podejście z Klass), a nie tego, czym jest ingerencja.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-160020"
+  },
+  {
+   "id": "g04",
+   "cytat": "*Zakharov przeciwko Rosji*, nr 47143/06, wyrok z 4 grudnia 2015 r., § 287",
+   "werdykt": "~",
+   "uwaga": "Sprawa to Roman Zakharov przeciwko Rosji [WI]; numer i data się zgadzają. Ale § 287 mówi odwrotnie, niż twierdzi pismo: brak późniejszego powiadomienia sam w sobie nie przesądza, że ingerencja nie była „konieczna”.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-159324"
+  },
+  {
+   "id": "g05",
+   "cytat": "*Bączkowski i inni przeciwko Polsce* – analogie systemowe",
+   "werdykt": "~",
+   "uwaga": "Wyrok istnieje (1543/06, 3.05.2007), ale dotyczy zakazu Parady Równości w Warszawie (art. 11, 13, 14), nie inwigilacji.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-80464"
+  },
+  {
+   "id": "g06",
+   "cytat": "*Klass i inni przeciwko Niemcom*, nr 5029/71, wyrok z 6 września 1978 r., § 64",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: § 64 wyjaśnia, że art. 13 wymaga środka krajowego dla każdego, kto uważa się za pokrzywdzonego środkiem sprzecznym z Konwencją.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-57510"
+  },
+  {
+   "id": "g07",
+   "cytat": "*Liberto i inni*",
+   "werdykt": "H",
+   "uwaga": "Takiej sprawy nie ma w HUDOC. Najpewniej przekręcone Liberty i inni przeciwko Zjednoczonemu Królestwu (58243/00, 2008).",
+   "zrodlo": null
+  },
+  {
+   "id": "g08",
+   "cytat": "*Szabó i Vissy przeciwko Węgrom*, § 87-92",
+   "werdykt": "~",
+   "uwaga": "Paragrafy istnieją, ale w tej sprawie Trybunał NIE stwierdził naruszenia art. 13 (stwierdził naruszenie art. 8). §§ 90–92 to tylko dopuszczalność zarzutu z art. 13.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-160020"
+  },
+  {
+   "id": "g09",
+   "cytat": "*Steel i Morris przeciwko Zjednoczonemu Królestwu*, nr 68416/01, wyrok z 15 lutego 2005 r.",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: § 89 mówi, że nawet małe grupy kampanijne, jak London Greenpeace, muszą móc skutecznie działać i zabierać głos w sprawach środowiska.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-68224"
+  },
+  {
+   "id": "g10",
+   "cytat": "**Artykuł 47 i art. 51 Konstytucji Rzeczypospolitej Polskiej** – prawo do ochrony życia prywatnego, rodzinnego oraz tajemnicy komunikowania się",
+   "werdykt": "~",
+   "uwaga": "Art. 47 (prywatność) i art. 51 (dane o obywatelu) pasują, ale tajemnicę komunikowania się chroni art. 49 Konstytucji, którego tu brak.",
+   "zrodlo": null
+  },
+  {
+   "id": "g11",
+   "cytat": "art. 19 i nast.",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: art. 19 ustawy o Policji reguluje kontrolę operacyjną. Brakuje jednak art. 20c (dane telekomunikacyjne), o które skarżąca też pyta.",
+   "zrodlo": null
+  },
+  {
+   "id": "g12",
+   "cytat": "(art. 218, art. 237 k.p.k.)",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: art. 218 (wydanie korespondencji i danych) i art. 237 (kontrola i utrwalanie rozmów) k.p.k.",
+   "zrodlo": null
+  },
+  {
+   "id": "g13",
+   "cytat": "Zachowanie 4-miesięcznego terminu",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: od 1.02.2022 (Protokół nr 15) termin to 4 miesiące od ostatecznej decyzji, tu do 1.01.2027. Dopisek o „ówcześnie obowiązującym” terminie jest zbędny.",
+   "zrodlo": null
+  }
+ ],
+ "gemini_brak": [
+  {
+   "tekst": "Brak kluczowego wyroku przeciwko Polsce: Pietrzak i Bychawska-Siniarska i inni przeciwko Polsce, 72038/17 i 25237/18, 28.05.2024 (naruszenie art. 8: kontrola operacyjna, dane telekomunikacyjne, brak powiadomienia i środka).",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-234175"
+  }
+ ],
+ "claude": [
+  {
+   "id": "c01",
+   "cytat": "*Roman Zakharov p. Rosji* [WI], nr 47143/06, 4.12.2015, §§ 294–300",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: § 298 mówi, że wskazane przez rząd środki są dostępne tylko dla osób, które wiedzą o przechwytywaniu, więc w systemie bez powiadomienia nie działają.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-159324"
+  },
+  {
+   "id": "c02",
+   "cytat": "*Klass i inni p. Niemcom*, nr 5029/71, 6.09.1978, §§ 34–38",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: §§ 34–38 to status ofiary przy tajnej inwigilacji (skarżący nie musi wykazać, że środki zastosowano wobec niego).",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-57510"
+  },
+  {
+   "id": "c03",
+   "cytat": "*Halford p. Zjednoczonemu Królestwu*, nr 20605/92, 25.06.1997, § 57",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: § 57 wymaga „uzasadnionego prawdopodobieństwa” (reasonable likelihood), że środek zastosowano wobec skarżącej.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-58039"
+  },
+  {
+   "id": "c04",
+   "cytat": "*Lambert p. Francji*, nr 23618/94, 24.08.1998, §§ 21 i 38–41",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: §§ 38–41 to naruszenie art. 8, gdy podsłuchano rozmowy skarżącego na cudzej linii.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-58219"
+  },
+  {
+   "id": "c05",
+   "cytat": "*Bărbulescu p. Rumunii* [WI], nr 61496/08, 5.09.2017, §§ 72–74",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: §§ 72–74 obejmują komunikator internetowy pojęciami „korespondencji” i „życia prywatnego”.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-177082"
+  },
+  {
+   "id": "c06",
+   "cytat": "*Malone p. Zjednoczonemu Królestwu*, nr 8691/79, 2.08.1984, § 84",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: § 84 dotyczy danych o połączeniach (metering), a nie treści rozmów.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-57533"
+  },
+  {
+   "id": "c07",
+   "cytat": "25.05.2021, § 363",
+   "werdykt": "P",
+   "uwaga": "Zgadza się dosłownie: pozyskanie danych o komunikacji nie musi być mniej inwazyjne niż pozyskanie treści.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-210077"
+  },
+  {
+   "id": "c08",
+   "cytat": "*Iordachi i inni p. Mołdawii*, nr 25198/02, 10.02.2009, §§ 33–35",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: § 34 mówi, że samo istnienie ustawy oznacza zagrożenie inwigilacją dla wszystkich, których może objąć.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-91245"
+  },
+  {
+   "id": "c09",
+   "cytat": "*Ezelin p. Francji*, nr 11800/85, 26.04.1991, § 53",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: § 53 mówi, że udziału w pokojowym zgromadzeniu nie wolno ograniczać osobie, która sama nie popełnia czynów nagannych.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-57675"
+  },
+  {
+   "id": "c10",
+   "cytat": "*Glukhin p. Rosji*, nr 11519/20, 4.07.2023, §§ 84–91",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: w tej części Trybunał ocenia konieczność, a o efekcie mrożącym wobec pokojowych protestujących mówi m.in. streszczenie wyroku i § 88.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-225655"
+  },
+  {
+   "id": "c11",
+   "cytat": "*Sabri Güneş p. Turcji* [WI], nr 27396/06",
+   "werdykt": "P",
+   "uwaga": "Zgadza się, i to ciekawy przypadek: planista (Fable) podał zły numer 27653/10, a wykonawca (Opus) wpisał właściwy 27396/06 i sam oznaczył rozbieżność.",
+   "zrodlo": "https://hudoc.echr.coe.int/?i=001-111957"
+  },
+  {
+   "id": "c12",
+   "cytat": "Przepis art. 19 ust. 16 [**weryf.** numeru ustępu] stanowi, że osobie, wobec której kontrola operacyjna była stosowana, nie udostępnia się materiałów zgromadzonych podczas trwania tej kontroli",
+   "werdykt": "P",
+   "uwaga": "Zgadza się dosłownie z art. 19 ust. 16 ustawy o Policji (tekst jednolity Dz.U. 2025 poz. 636).",
+   "zrodlo": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250000636"
+  },
+  {
+   "id": "c13",
+   "cytat": "Zażalenie na postanowienie sądu w przedmiocie kontroli operacyjnej przysługuje wyłącznie organowi Policji",
+   "werdykt": "~",
+   "uwaga": "Prawie: według art. 19 ust. 20 zażalenie przysługuje organowi Policji, a na postanowienie z ust. 3 także prokuratorowi. Sedno się zgadza: osobie inwigilowanej nie przysługuje.",
+   "zrodlo": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250000636"
+  },
+  {
+   "id": "c14",
+   "cytat": "Jedynym instrumentem jawności jest roczna, statystyczna informacja przedstawiana Sejmowi i Senatowi",
+   "werdykt": "P",
+   "uwaga": "Zgadza się: art. 19 ust. 22 ustawy o Policji (coroczna informacja ministra dla Sejmu i Senatu).",
+   "zrodlo": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250000636"
+  }
+ ],
+ "claude_brak": []
+}
