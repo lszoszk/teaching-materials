@@ -1,0 +1,432 @@
+# SKARGA DO EUROPEJSKIEGO TRYBUNAŁU PRAW CZŁOWIEKA
+
+## [Imię i nazwisko Skarżącej] przeciwko Polsce
+
+*Projekt, wersja robocza z [data]*
+
+> **Nota redakcyjna (wewnętrzna, usunąć przed wysłaniem)**
+> 1. Pismo ma dwie części. Część I zawiera treść do przeniesienia do urzędowego formularza skargi (Reguła 47 Regulaminu Trybunału). Część II to załącznik „Uzasadnienie” w rozumieniu Reguły 47 § 2 lit. b, który nie może przekraczać 20 stron. Oznaczenia i kolejność pól należy dostosować do aktualnej wersji formularza ze strony Trybunału.
+> 2. Placeholdery `[...]` uzupełniamy wyłącznie na podstawie dokumentów i pisemnego oświadczenia Skarżącej. Nie wpisujemy dat, sygnatur ani cytatów z pamięci.
+> 3. Oznaczenie **[weryf.]** wskazuje element podany z pamięci z ograniczoną pewnością: numer paragrafu, numer skargi, numer ustępu przepisu, streszczenie tezy albo stan faktyczny lub prawny na dzień wniesienia skargi. Przed złożeniem trzeba go sprawdzić w HUDOC, ISAP lub Dzienniku Ustaw. Pozostałe numery paragrafów również należy rutynowo zweryfikować.
+> 4. **Termin.** Ostateczne orzeczenie krajowe wydano 1.09.2026 r. Czteromiesięczny termin z art. 35 § 1 Konwencji upływa 1.01.2027 r. Kompletny formularz nadać pocztą najpóźniej **31.12.2026 r.**, a najlepiej do [15.12.2026 r.]. O dacie wniesienia decyduje data stempla pocztowego (Reguła 47 § 6 lit. a). Formularz niekompletny nie przerywa biegu terminu (Reguła 47 § 5.1).
+
+---
+
+**Do:**
+Europejski Trybunał Praw Człowieka
+Rada Europy
+F-67075 Strasbourg Cedex
+Francja
+
+**Skarżąca:** [imię i nazwisko], ur. [data], obywatelka polska, zam. [adres], Kraków
+**Pełnomocnik:** [adw./r.pr. imię i nazwisko], [adres kancelarii, e-mail, telefon]
+**Państwo pozwane:** Rzeczpospolita Polska
+
+# SKARGA
+
+na podstawie art. 34 Konwencji o ochronie praw człowieka i podstawowych wolności (dalej: „Konwencja”) oraz Reguł 45 i 47 Regulaminu Trybunału (dalej: „Regulamin”), wniesiona w języku polskim zgodnie z Regułą 34 § 2 Regulaminu.
+
+**Przedmiot:** tajna inwigilacja i pozyskiwanie danych komunikacyjnych bez powiadomienia osoby zainteresowanej i bez jakiegokolwiek środka prawnego; prawomocna odmowa udzielenia Skarżącej informacji, czy była objęta takimi środkami. Zarzut naruszenia art. 8, art. 13 w zw. z art. 8 oraz art. 10 i 11 Konwencji.
+
+---
+
+# CZĘŚĆ I. TREŚĆ DO FORMULARZA SKARGI
+
+## 1. Skarżąca
+
+- Imię i nazwisko: [ ]
+- Data i miejsce urodzenia: [ ]
+- Obywatelstwo: polskie
+- Adres: [ ], Kraków, Polska
+- Wniosek o zachowanie anonimowości (Reguła 47 § 4): **nie jest składany**. Działalność Skarżącej jest publiczna. [Do ostatecznej decyzji Skarżącej.]
+
+## 2. Państwo, przeciwko któremu skierowana jest skarga
+
+Rzeczpospolita Polska.
+
+## 3. Pełnomocnik
+
+[Adwokat / radca prawny, imię i nazwisko, adres, numer wpisu]. Pełnomocnictwo zawarte jest w formularzu i podpisane przez Skarżącą oraz pełnomocnika.
+
+## 4. Przedstawienie stanu faktycznego
+
+1. Skarżąca mieszka w Krakowie. Od 2022 r. koordynuje lokalne, pokojowe protesty klimatyczne. Organizuje zgromadzenia publiczne, komunikuje się z uczestnikami za pośrednictwem komunikatora internetowego [nazwa] i utrzymuje kontakty z mediami. Nie toczyło się i nie toczy się wobec niej żadne postępowanie karne [do potwierdzenia].
+
+2. W marcu 2024 r. ([data]) funkcjonariusze Policji ([jednostka]) przesłuchali Skarżącą w charakterze świadka w postępowaniu dotyczącym innej sprawy ([sygnatura nieznana Skarżącej / do uzupełnienia]). Zadając pytania, przytaczali treść jej prywatnych wiadomości z komunikatora [nazwa], wymienianych z [rozmówcami] w okresie [ ]. Skarżąca nigdy nie przekazała tych wiadomości organom państwa.
+
+3. Skarżąca nie była stroną tamtego postępowania i nie ma dostępu do jego akt. Nikt jej nie poinformował, jak i na jakiej podstawie Policja uzyskała treść jej korespondencji. W świetle tych okoliczności istnieje uzasadnione prawdopodobieństwo, że jej korespondencję lub dane telekomunikacyjne pozyskano tajnymi środkami, wobec niej lub wobec jej rozmówców. W grę wchodzi kontrola operacyjna z art. 19 ustawy o Policji, pozyskiwanie danych z art. 20c tej ustawy albo inne środki.
+
+4. [Data] 2025 r. Skarżąca zwróciła się do [Prokuratury Okręgowej w Krakowie] z wnioskiem o informację, czy stosowano wobec niej kontrolę operacyjną lub pozyskiwano jej dane telekomunikacyjne. Pytała też, w jakim okresie i na jakiej podstawie to robiono oraz czy materiały zniszczono. Pismem z [data] prokuratura odpowiedziała, że przepisy nie przewidują udzielenia takiej informacji.
+
+5. [Data] 2025 r. Skarżąca złożyła analogiczny wniosek do [sądu, do uzupełnienia]. [Postanowieniem/zarządzeniem] z [data] wniosku nie uwzględniono z tej samej przyczyny. Skarżąca wniosła zażalenie, powołując się m.in. na art. 47, 49 i 51 Konstytucji RP oraz art. 8 i 13 Konwencji [do potwierdzenia].
+
+6. Postanowieniem z 1 września 2026 r. (sygn. [ ]) Sąd Okręgowy w [ ] oddalił zażalenie. W uzasadnieniu wskazał, że [dosłowny cytat do uzupełnienia, np. „przepisy nie przewidują…”]. Od postanowienia nie przysługuje dalszy środek. Postanowienie doręczono [data].
+
+7. Skarżąca do dziś nie wie, czy, kiedy, na jakiej podstawie i w jakim zakresie ingerowano w jej korespondencję. Nie wie też, czy materiały są nadal przechowywane i komu je udostępniono.
+
+## 5. Zarzucane naruszenia Konwencji
+
+**Art. 8 Konwencji (życie prywatne i korespondencja).** Ingerencja w prawa Skarżącej nie była „przewidziana przez ustawę” ani „konieczna w społeczeństwie demokratycznym”. Dotyczy to trzech płaszczyzn:
+
+- **(a) in abstracto.** Obowiązujący reżim prawny nie zapewnia minimalnych gwarancji przeciwko nadużyciom. Chodzi o art. 19, 20c i 20ca ustawy o Policji, przepisy o powszechnej retencji danych oraz art. 168b k.p.k., a Skarżąca jako użytkowniczka usług komunikacji elektronicznej jest objęta ich zakresem. Brakuje powiadomienia następczego i środka dostępnego dla osoby podejrzewającej inwigilację. Dostęp do danych telekomunikacyjnych nie podlega uprzedniej, niezależnej kontroli. Retencja danych jest generalna i niezróżnicowana, a nadzór iluzoryczny. Trybunał stwierdził te braki w wyroku *Pietrzak i Bychawska-Siniarska i inni p. Polsce*.
+- **(b) in concreto.** Istnieje uzasadnione prawdopodobieństwo, że te środki zastosowano wobec Skarżącej lub jej rozmówców. Uzyskaną treść jej korespondencji wykorzystano, poza jakąkolwiek kontrolą, podczas przesłuchania w innej sprawie.
+- **(c) odmowa informacji.** Prawomocnie odmówiono Skarżącej informacji, czy była objęta tymi środkami. Z tego powodu nie może poddać ingerencji kontroli legalności, żądać zniszczenia danych ani dochodzić zadośćuczynienia.
+
+**Art. 13 w zw. z art. 8 Konwencji.** Skarżąca nie ma jakiegokolwiek skutecznego środka odwoławczego. Prokuratura i sądy stwierdziły wprost, że prawo takiego środka nie przewiduje.
+
+**Art. 10 i 11 Konwencji.** Skarżąca koordynuje pokojowe zgromadzenia, a jej komunikacja z uczestnikami jest inwigilowana bez gwarancji. Wywołuje to efekt mrożący i jest nieuzasadnioną ingerencją w wolność wypowiedzi i zgromadzeń. Pomocniczo Skarżąca wnosi o uwzględnienie tej okoliczności w ocenie na gruncie art. 8.
+
+## 6. Spełnienie kryteriów dopuszczalności (art. 35 § 1 Konwencji)
+
+- **Wyczerpanie środków krajowych.** Skarżąca skorzystała z jedynej dostępnej drogi: złożyła wniosek do prokuratury i do sądu, a następnie zażalenie. Sprawę zakończyło prawomocne postanowienie Sądu Okręgowego z 1.09.2026 r., od którego nie przysługuje dalszy środek. W istocie podniosła zarzuty konwencyjne. Inne potencjalne drogi, czyli skarga konstytucyjna, powództwo cywilne, Prezes UODO i RPO, nie są skuteczne, ponieważ każda z nich zakłada wiedzę o ingerencji, której Skarżąca nie ma i nie może uzyskać. Szczegóły zawiera załącznik, pkt IV.A.
+- **Termin.** Ostateczne orzeczenie wydano 1.09.2026 r., a skargę wniesiono [data], czyli w terminie czterech miesięcy. Zarzut in abstracto dotyczy ponadto sytuacji trwałej.
+- **Status ofiary.** Skarżąca spełnia test z wyroku *Roman Zakharov p. Rosji* [WI], §§ 170–172. Jest objęta zakresem przepisów, a prawo krajowe nie daje jej żadnego środka. Dodatkowo istnieje uzasadnione prawdopodobieństwo konkretnej ingerencji.
+
+## 7. Inne postępowania międzynarodowe
+
+Sprawa nie była i nie jest przedmiotem innego międzynarodowego postępowania (art. 35 § 2 lit. b Konwencji).
+
+## 8. Wykaz załączników
+
+Zob. Część III.
+
+## 9. Oświadczenie i podpis
+
+Oświadczam, że informacje podane w formularzu skargi i w załącznikach są, zgodnie z moją wiedzą, prawdziwe i dokładne.
+
+[Miejscowość, data] — [podpis Skarżącej] — [podpis pełnomocnika]
+
+---
+
+# CZĘŚĆ II. ZAŁĄCZNIK: UZASADNIENIE SKARGI
+
+*(Reguła 47 § 2 lit. b Regulaminu)*
+
+## I. Wprowadzenie i istota sprawy
+
+1. Skarżąca prowadzi publiczną, pokojową działalność obywatelską. Z pytań zadawanych jej przez Policję dowiedziała się, że organy państwa znają treść jej prywatnej korespondencji. Próbowała następnie ustalić, czy i na jakiej podstawie objęto ją tajnymi środkami nadzoru, korzystając z jedynych dróg, jakie miała do dyspozycji. Sądy krajowe prawomocnie potwierdziły, że prawo polskie nie przewiduje żadnej procedury, która pozwalałaby uzyskać taką informację.
+
+2. Skarżąca nie twierdzi, że była objęta kontrolą operacyjną, i nie musi tego wykazywać. Istota skargi polega na tym, że prawo polskie takie ustalenie uniemożliwia. Nie przewiduje powiadomienia osoby inwigilowanej, nawet po zakończeniu czynności i zniszczeniu materiałów. Wyłącza jej dostęp do materiałów. Nie daje jej żadnego środka przed niezależnym organem. Dostęp do danych telekomunikacyjnych dopuszcza bez uprzedniej niezależnej kontroli. W wyroku *Pietrzak i Bychawska-Siniarska i inni p. Polsce* Trybunał stwierdził już systemowe naruszenie art. 8 Konwencji w tym zakresie. Niniejsza sprawa różni się od sprawy *Pietrzak* w dwóch istotnych punktach. Dotyczy konkretnej osoby, wobec której istnieją wyraźne przesłanki faktycznego pozyskania korespondencji. Dotyczy też konkretnych orzeczeń krajowych, które odmówiły jakiejkolwiek kontroli. Jednocześnie pokazuje, że po wydaniu wyroku *Pietrzak* stan prawny nie uległ zmianie [stan prac legislacyjnych na dzień wniesienia skargi: **weryf.**].
+
+3. Skarżąca zarzuca naruszenie art. 8 Konwencji (zarzut I), art. 13 w zw. z art. 8 (zarzut II) oraz art. 10 i 11 Konwencji (zarzut III).
+
+## II. Stan faktyczny
+
+### A. Działalność Skarżącej
+
+4. Skarżąca, ur. [data], jest obywatelką polską i mieszka w Krakowie. Od 2022 r. koordynuje lokalne protesty klimatyczne w ramach [nazwa inicjatywy lub grupy, jeżeli dotyczy]. W tym czasie zorganizowała lub współorganizowała [liczba] zgromadzeń publicznych, które zgłaszała w trybie ustawy z 24 lipca 2015 r. – Prawo o zgromadzeniach [do potwierdzenia]. Z uczestnikami, innymi organizatorami i mediami komunikuje się przede wszystkim przez komunikator [nazwa; czy stosuje szyfrowanie end-to-end: do ustalenia]. Jej działalność jest jawna, pokojowa i legalna. Wobec Skarżącej nie toczyło się żadne postępowanie karne ani w sprawie o wykroczenie [do potwierdzenia; jeżeli toczyło się, opisać].
+
+### B. Przesłuchanie w marcu 2024 r.
+
+5. [Data] marca 2024 r. Skarżąca, wezwana [pisemnie / telefonicznie], stawiła się w [jednostka Policji]. Przesłuchano ją w charakterze świadka (art. 177 k.p.k.) w postępowaniu przygotowawczym dotyczącym [opis, jeżeli znany] (sygn. [nieznana / do uzupełnienia]). Skarżąca nie była podejrzaną w tym postępowaniu.
+
+6. W toku przesłuchania funkcjonariusze przytaczali treść prywatnych wiadomości Skarżącej z komunikatora [nazwa]. [Do uzupełnienia na podstawie oświadczenia Skarżącej: daty wiadomości; rozmówcy; czy cytaty były dosłowne; czy wiadomości dotyczyły przedmiotu postępowania, organizacji zgromadzeń czy spraw osobistych; czy obejmowały rozmowy z osobami niezwiązanymi z postępowaniem; czy funkcjonariusze okazywali wydruki lub zrzuty ekranu.] Skarżąca nie udostępniała tych wiadomości organom państwa. Według jej wiedzy nie zostały one nigdzie opublikowane.
+
+7. [Czy pytania i cytaty zaprotokołowano; czy Skarżąca żądała odpisu protokołu; czy go otrzymała.] Jako świadek Skarżąca nie ma dostępu do akt postępowania (art. 156 k.p.k.). Nie poinformowano jej o źródle ani podstawie prawnej pozyskania jej wiadomości.
+
+8. Skarżąca nie wie i nie ma prawnej możliwości ustalić, w jaki sposób funkcjonariusze weszli w posiadanie treści jej korespondencji. Możliwe są w szczególności następujące warianty:
+   (a) kontrola operacyjna wobec Skarżącej (art. 19 ustawy o Policji);
+   (b) kontrola operacyjna wobec jej rozmówcy, w ramach której utrwalono korespondencję z udziałem Skarżącej;
+   (c) procesowa kontrola przekazów informacji (art. 237 i 241 k.p.k.);
+   (d) zatrzymanie lub przeszukanie urządzenia albo konta rozmówcy i odczytanie zapisanych tam wiadomości (art. 217, 219, 236a k.p.k.);
+   (e) pozyskanie danych telekomunikacyjnych lub internetowych (art. 20c ustawy o Policji); dane te nie obejmują treści, ale pozwalają ustalić krąg rozmówców i ukierunkować dalsze czynności.
+
+   Każdy z tych wariantów jest ingerencją w korespondencję i życie prywatne Skarżącej, o której nie została powiadomiona. W każdym z nich ingerencję pogłębiło wykorzystanie treści korespondencji podczas przesłuchania w innej sprawie.
+
+### C. Postępowanie krajowe w latach 2025–2026
+
+9. [Data] 2025 r. Skarżąca skierowała do [Prokuratury Okręgowej w Krakowie] wniosek o udzielenie informacji. Pytała, czy stosowano wobec niej kontrolę operacyjną lub pozyskiwano jej dane telekomunikacyjne, internetowe lub pocztowe, a jeżeli tak, to w jakim okresie i na jakiej podstawie. Pytała też, czy materiały zniszczono, a jeżeli nie, to gdzie są przechowywane. Powołała się na [art. 47, 49 i 51 ust. 3 i 4 Konstytucji RP, art. 8 i 13 Konwencji oraz wyrok *Pietrzak*; do potwierdzenia na podstawie treści wniosku]. Pismem z [data] (znak [ ]) prokuratura odpowiedziała, że przepisy nie przewidują udzielenia takiej informacji.
+
+10. [Data] 2025 r. Skarżąca złożyła analogiczny wniosek do [Sądu Okręgowego w Krakowie, czyli sądu właściwego do zarządzania kontroli operacyjnej i do kontroli z art. 20ca ustawy o Policji; do potwierdzenia]. [Postanowieniem / zarządzeniem] z [data] (sygn. [ ]) [odmówiono uwzględnienia wniosku / pozostawiono go bez rozpoznania], ponieważ przepisy nie przewidują takiego trybu. [Data] Skarżąca wniosła zażalenie.
+
+11. Postanowieniem z 1 września 2026 r. (sygn. [ ]) Sąd Okręgowy w [ ] oddalił zażalenie. W uzasadnieniu stwierdził: „[dosłowny cytat kluczowego fragmentu]”. Postanowienie jest prawomocne i nie przysługuje od niego dalszy środek. Doręczono je pełnomocnikowi lub Skarżącej [data].
+
+12. [Do potwierdzenia z Skarżącą, wpisać tylko, jeśli prawdziwe:] Po przesłuchaniu Skarżąca ograniczyła korzystanie z komunikatora do spraw organizacyjnych. Część uczestników protestów zrezygnowała z kontaktu z nią w obawie przed inwigilacją. Skarżąca odczuwa stały niepokój, że jej komunikacja jest lub była monitorowana i że dane te są nadal przechowywane.
+
+## III. Właściwe prawo krajowe i praktyka; materiały międzynarodowe
+
+### A. Konstytucja Rzeczypospolitej Polskiej z 2 kwietnia 1997 r.
+
+13. Art. 47 gwarantuje prawo do ochrony prawnej życia prywatnego. Art. 49 stanowi: „Zapewnia się wolność i ochronę tajemnicy komunikowania się. Ich ograniczenie może nastąpić jedynie w przypadkach określonych w ustawie i w sposób w niej określony”. Zgodnie z art. 51 ust. 2 władze publiczne nie mogą pozyskiwać, gromadzić i udostępniać innych informacji o obywatelach niż niezbędne w demokratycznym państwie prawnym. Art. 51 ust. 3 przyznaje każdemu prawo dostępu do dotyczących go urzędowych dokumentów i zbiorów danych, przy czym ograniczenie tego prawa może określić ustawa. Art. 51 ust. 4 daje prawo żądania sprostowania oraz usunięcia informacji zebranych w sposób sprzeczny z ustawą. Art. 31 ust. 3 dopuszcza ograniczenia praw wyłącznie w ustawie, gdy są konieczne w demokratycznym państwie i nie naruszają istoty prawa. Art. 45 ust. 1 i art. 77 ust. 2 gwarantują prawo do sądu; ustawa nie może nikomu zamykać drogi sądowej dochodzenia naruszonych wolności lub praw. Art. 54 ust. 1 i art. 57 gwarantują wolność wyrażania poglądów oraz wolność organizowania pokojowych zgromadzeń i uczestniczenia w nich. Zgodnie z art. 91 ratyfikowana umowa międzynarodowa jest stosowana bezpośrednio i ma pierwszeństwo przed ustawą, której nie da się z nią pogodzić. Art. 79 reguluje skargę konstytucyjną.
+
+### B. Ustawa z 6 kwietnia 1990 r. o Policji (t.j. Dz.U. [rok] poz. [ ]): kontrola operacyjna
+
+14. **Art. 19 ust. 1.** Przy wykonywaniu czynności operacyjno-rozpoznawczych dotyczących katalogu umyślnych przestępstw ściganych z oskarżenia publicznego sąd okręgowy może zarządzić kontrolę operacyjną. Działa na pisemny wniosek właściwego organu Policji, złożony po uzyskaniu pisemnej zgody prokuratora [Prokuratora Generalnego albo właściwego prokuratora okręgowego: **weryf.**]. Kontrolę stosuje się, gdy inne środki okazały się bezskuteczne albo będą nieprzydatne. Przepis nie określa kategorii osób, wobec których kontrola może być stosowana. Dla porównania art. 237 § 4 k.p.k. wymienia takie kategorie przy kontroli procesowej [**weryf.**].
+
+15. **Art. 19 ust. 3.** W przypadkach niecierpiących zwłoki organ Policji może zarządzić kontrolę za zgodą prokuratora i w ciągu 5 dni wystąpić do sądu o jej zatwierdzenie, tzw. zgoda następcza.
+
+16. **Art. 19 ust. 6.** Kontrola operacyjna jest prowadzona niejawnie. Obejmuje m.in. uzyskiwanie i utrwalanie treści rozmów prowadzonych przy użyciu środków komunikacji elektronicznej. Obejmuje też uzyskiwanie i utrwalanie treści korespondencji, w tym korespondencji prowadzonej za pomocą środków komunikacji elektronicznej. Wreszcie obejmuje dane zawarte w informatycznych nośnikach danych, telekomunikacyjnych urządzeniach końcowych oraz systemach informatycznych i teleinformatycznych.
+
+17. **Art. 19 ust. 8–9.** Kontrolę zarządza się na okres do 3 miesięcy, z możliwością jednorazowego przedłużenia o kolejne 3 miesiące. Następnie, po pojawieniu się nowych okoliczności, możliwe są dalsze przedłużenia na czas nieprzekraczający łącznie 12 miesięcy, czyli maksymalnie do 18 miesięcy [**weryf.**].
+
+18. **Materiały i dostęp.** Materiały zawierające dowody przekazuje się prokuratorowi, a pozostałe podlegają zniszczeniu [art. 19 ust. 15 i 17: **weryf.** numeracji]. Przepis art. 19 ust. 16 [**weryf.** numeru ustępu] stanowi, że osobie, wobec której kontrola operacyjna była stosowana, nie udostępnia się materiałów zgromadzonych podczas trwania tej kontroli. Zastrzeżenie dotyczy wyłącznie uprawnień podejrzanego z art. 321 k.p.k.
+
+19. **Zażalenie.** Zażalenie na postanowienie sądu w przedmiocie kontroli operacyjnej przysługuje wyłącznie organowi Policji [art. 19 ust. 20: **weryf.**]. Osoba, której kontrola dotyczy, nie jest uczestnikiem tego postępowania, nie jest o nim informowana i nie ma żadnego uprawnienia procesowego.
+
+20. **Brak notyfikacji.** Ustawa nie przewiduje powiadomienia osoby, wobec której stosowano kontrolę operacyjną, ani jej rozmówców. Dotyczy to także okresu po zakończeniu kontroli, zniszczeniu materiałów lub prawomocnym zakończeniu postępowania. Jedynym instrumentem jawności jest roczna, statystyczna informacja przedstawiana Sejmowi i Senatowi [art. 19 ust. 22: **weryf.**].
+
+### C. Ustawa o Policji: dane telekomunikacyjne, pocztowe i internetowe
+
+21. **Art. 20c.** Policja może uzyskiwać dane telekomunikacyjne, pocztowe i internetowe niestanowiące treści przekazu „w celu zapobiegania lub wykrywania przestępstw” albo w celu ratowania życia lub zdrowia ludzkiego. Może to robić bez wiedzy i zgody osoby, której dane dotyczą, bez uprzedniej zgody sądu lub innego niezależnego organu i bez ograniczenia do katalogu poważnych przestępstw. Dane mogą być udostępniane także za pośrednictwem sieci telekomunikacyjnej lub stałego łącza, bez udziału pracowników przedsiębiorcy telekomunikacyjnego [**weryf.** brzmienia po wejściu w życie Prawa komunikacji elektronicznej].
+
+22. **Art. 20ca.** Kontrolę nad pozyskiwaniem tych danych sprawuje sąd okręgowy, wyłącznie następczo i zbiorczo. Organ Policji przekazuje mu półroczne sprawozdania o liczbie przypadków i rodzajach danych, a sąd „może” zapoznać się z materiałami. Kontrola nie jest indywidualna ani uprzednia. Osoba, której dane dotyczą, nie jest o niej informowana ani w niej nie uczestniczy.
+
+23. Przepisy te wprowadzono ustawą z 15 stycznia 2016 r. o zmianie ustawy o Policji oraz niektórych innych ustaw (Dz.U. 2016 poz. 147), która miała wykonać wyrok TK z 30 lipca 2014 r., K 23/11. Ustawa nie wprowadziła notyfikacji ani uprzedniej kontroli dostępu do danych.
+
+24. Analogiczne uprawnienia przysługują innym służbom, m.in. ABW (art. 27–28 ustawy o ABW i AW), CBA (art. 17–18 ustawy o CBA), Straży Granicznej, Krajowej Administracji Skarbowej i Żandarmerii Wojskowej [numeracja: **weryf.**]. Żadna z tych ustaw nie przewiduje notyfikacji następczej. Skarżąca nie wie, która służba mogła pozyskać jej dane.
+
+### D. Retencja danych
+
+25. Do 9 listopada 2024 r. art. 180a ustawy z 16 lipca 2004 r. – Prawo telekomunikacyjne nakładał na przedsiębiorców telekomunikacyjnych obowiązek generalnego i niezróżnicowanego zatrzymywania danych o połączeniach wszystkich użytkowników przez 12 miesięcy, w celu ich udostępniania uprawnionym organom. Od 10 listopada 2024 r. obowiązek ten w istocie utrzymano w ustawie z 12 lipca 2024 r. – Prawo komunikacji elektronicznej (Dz.U. 2024 poz. 1221) [numeracja przepisów PKE i ewentualne zmiany zakresu: **weryf.**]. Skarżąca, jako użytkowniczka usług komunikacji elektronicznej, jest stale objęta tym reżimem.
+
+### E. Kodeks postępowania karnego
+
+26. Art. 156 przyznaje dostęp do akt stronom. Świadek, którego dotyczą art. 177 i nast., takiego dostępu nie ma. Art. 217, 218, 218a, 219 i 236a regulują zatrzymanie rzeczy, korespondencji i danych informatycznych oraz przeszukanie.
+
+27. Art. 237–242 regulują procesową kontrolę i utrwalanie rozmów, a art. 241 rozciąga ją na inne przekazy informacji, w tym korespondencję elektroniczną. Postanowienie sądu ogłasza się osobie, której dotyczy, a ogłoszenie można odroczyć na czas niezbędny ze względu na dobro sprawy, nie dłużej niż do prawomocnego zakończenia postępowania [art. 239: **weryf.**]. Osoba ta może wnieść zażalenie i domagać się zbadania zasadności i legalności kontroli (art. 240). Jest to jedyny w prawie polskim tryb z elementem notyfikacji. Nie obejmuje kontroli operacyjnej ani dostępu do danych z art. 20c ustawy o Policji, a ponadto zakłada, że osoba zainteresowana dowie się o postanowieniu.
+
+28. Art. 168a stanowi, że dowodu co do zasady nie uznaje się za niedopuszczalny wyłącznie dlatego, że uzyskano go z naruszeniem przepisów postępowania [obecne brzmienie: **weryf.**]. Zgodnie z art. 168b o wykorzystaniu materiałów kontroli operacyjnej dotyczących innego przestępstwa lub innej osoby niż objęta zarządzeniem decyduje prokurator, bez udziału sądu i bez powiadomienia tej osoby. W uchwale z 28 czerwca 2018 r., I KZP 4/18, Sąd Najwyższy ograniczył zastosowanie art. 168b do przestępstw katalogowych [**weryf.** dokładnej tezy].
+
+### F. Ochrona danych osobowych i inne drogi
+
+29. Ustawa z 14 grudnia 2018 r. o ochronie danych osobowych przetwarzanych w związku z zapobieganiem i zwalczaniem przestępczości (Dz.U. 2019 poz. 125) wdraża dyrektywę (UE) 2016/680. Przewiduje szerokie ograniczenia prawa dostępu do danych ze względu na dobro postępowania i zadania organów [konkretne przepisy oraz zakres wyłączeń dotyczących służb i materiałów niejawnych: **weryf.**]. Nie przewiduje sądowego zbadania legalności kontroli operacyjnej. Materiały kontroli operacyjnej są informacjami niejawnymi w rozumieniu ustawy z 5 sierpnia 2010 r. o ochronie informacji niejawnych.
+
+30. Ochrona cywilnoprawna (art. 23, 24, 448 i 417 k.c.) wymaga wskazania naruszenia, sprawcy i dowodów.
+
+### G. Orzecznictwo krajowe i kontekst
+
+31. W wyroku z 30 lipca 2014 r., K 23/11, Trybunał Konstytucyjny uznał za niezgodne z Konstytucją m.in. przepisy o pozyskiwaniu danych telekomunikacyjnych bez niezależnej kontroli. Za niekonstytucyjny uznał też brak gwarancji dla materiałów objętych tajemnicą zawodową [zakres rozstrzygnięcia i wypowiedzi TK co do notyfikacji: **weryf.**]. Wcześniej, w wyroku z 12 grudnia 2005 r., K 32/04, TK sformułował wymogi określoności przepisów o kontroli operacyjnej [**weryf.**].
+
+32. W latach 2022–2024 senacka komisja nadzwyczajna, a od 2024 r. sejmowa komisja śledcza badały użycie oprogramowania Pegasus. W 2024 r. Prokurator Generalny poinformował Sejm, że w latach 2017–2022 Pegasusem objęto kilkaset osób [liczba: **weryf.**]. [**weryf.:** doniesienia o informowaniu części tych osób przez prokuraturę w latach 2024–2025. Jeśli to potwierdzone, oznacza, że notyfikacja jest praktycznie wykonalna, ale zależy od uznania władz, a nie od ustawy.]
+
+33. [**weryf.:** stan wykonania wyroku *Pietrzak* przed Komitetem Ministrów i stan prac legislacyjnych na dzień wniesienia skargi. Projekt zakłada, że do tego dnia nie wprowadzono notyfikacji następczej ani środka dla osoby podejrzewającej inwigilację.] Od 2016 r. funkcję Prokuratora Generalnego pełni Minister Sprawiedliwości [stan na dzień skargi: **weryf.**].
+
+### H. Materiały międzynarodowe
+
+34. Komisja Wenecka zaopiniowała ustawę z 15 stycznia 2016 r. (opinia nr 839/2016, CDL-AD(2016)012, czerwiec 2016 r.). Zaleciła m.in. wprowadzenie notyfikacji następczej, niezależnego nadzoru oraz skuteczniejszej kontroli dostępu do metadanych [**weryf.** numeracji punktów].
+
+35. Komitet Praw Człowieka ONZ w uwagach końcowych dotyczących Polski z 2016 r. (CCPR/C/POL/CO/7) wyraził zaniepokojenie przepisami o inwigilacji [numery punktów: **weryf.**].
+
+36. Trybunał Sprawiedliwości Unii Europejskiej wypracował standard, który obowiązuje Polskę jako państwo członkowskie UE i jest istotny dla oceny „jakości prawa”. Wyrok *Digital Rights Ireland* (C-293/12 i C-594/12, 8.04.2014) unieważnił dyrektywę retencyjną. Wyrok *Tele2 Sverige i Watson* (C-203/15 i C-698/15, 21.12.2016) uznał generalną retencję za niedopuszczalną i wymaga uprzedniej kontroli sądu lub niezależnego organu oraz powiadomienia osób, gdy nie zagraża to postępowaniu [pkt 121: **weryf.**]. W tym samym kierunku idą wyroki *La Quadrature du Net* (C-511/18, C-512/18, C-520/18, 6.10.2020), *Prokuratuur* (C-746/18, 2.03.2021), w którym prokuratura prowadząca postępowanie nie jest „niezależnym organem” uprawnionym do zezwolenia na dostęp do danych, *Commissioner of An Garda Síochána* (C-140/20, 5.04.2022) oraz *SpaceNet i Telekom Deutschland* (C-793/19 i C-794/19, 20.09.2022).
+
+37. Art. 6 Konwencji Rady Europy nr 108 zalicza dane ujawniające poglądy polityczne do szczególnych kategorii danych, które wymagają odpowiednich gwarancji.
+
+## IV. Dopuszczalność
+
+### A. Wyczerpanie środków krajowych (art. 35 § 1 Konwencji)
+
+38. Skarżąca musi wyczerpać środki dostępne i wystarczające do naprawienia zarzucanego naruszenia, skuteczne zarówno w teorii, jak i w praktyce. To Rząd, który podnosi zarzut niewyczerpania, musi wykazać istnienie takiego środka (*Akdivar i inni p. Turcji* [WI], nr 21893/93, 16.09.1996, §§ 65–69; *Vučković i inni p. Serbii* (zastrzeżenie wstępne) [WI], nr 17153/11 i 29 innych, 25.03.2014, §§ 69–77).
+
+39. **Wykorzystana droga.** Skarżąca wystąpiła do organu, który wyraża zgodę na kontrolę operacyjną (prokuratura), oraz do sądu. Wniosła zażalenie i uzyskała prawomocne postanowienie z 1.09.2026 r., od którego nie przysługuje dalszy środek. Zarzuty konwencyjne podniosła w istocie: powołała się na prawo do prywatności i tajemnicy komunikowania się, prawo dostępu do dotyczących jej danych oraz art. 8 i 13 Konwencji [do potwierdzenia treścią pism] (*Vučković*, §§ 72–75 [**weryf.**]). Sądy nie badały tych zarzutów merytorycznie wyłącznie dlatego, że prawo nie przewiduje żadnego trybu. Samo to rozstrzygnięcie dowodzi braku skutecznego środka.
+
+40. **Skarga konstytucyjna (art. 79 Konstytucji)** nie jest środkiem skutecznym w tej sprawie, z następujących powodów:
+   - (a) Według orzecznictwa Trybunału skarga konstytucyjna jest skuteczna tylko wtedy, gdy naruszenie wynika bezpośrednio z zastosowania przepisu ustawy sprzecznego z Konstytucją, a nie z jego wadliwego stosowania lub z braku regulacji (*Szott-Medyńska i inni p. Polsce* (dec.), nr 47414/99, 9.10.2003 [**weryf.** numeru]). Tutaj źródłem naruszenia jest brak w ustawodawstwie jakiejkolwiek procedury notyfikacji i kontroli na wniosek jednostki. Trybunał Konstytucyjny nie jest władny wypełnić takiej luki.
+   - (b) Nawet orzeczenie o niekonstytucyjności i wznowienie postępowania (art. 190 ust. 4 Konstytucji) nie dałyby Skarżącej informacji, czy była inwigilowana. Bez interwencji ustawodawcy nadal nie istniałaby procedura, w której sąd mógłby tę informację udzielić. Doświadczenie wyroku K 23/11 pokazuje, że ustawodawca nie wprowadził notyfikacji mimo stwierdzonej niekonstytucyjności (pkt 23 i 31 powyżej).
+   - (c) Ponadto Trybunał stwierdził, że skład TK ukształtowany z naruszeniem prawa nie spełnia wymogu „sądu ustanowionego ustawą” (*Xero Flor w Polsce sp. z o.o. p. Polsce*, nr 4907/18, 7.05.2021). Uznał też, że orzeczenie TK wydane w takim składzie nie może stanowić podstawy ingerencji „przewidzianej przez ustawę” (*M.L. p. Polsce*, nr 40119/21, 14.12.2023). Od 2024 r. orzeczenia TK nie są publikowane w Dzienniku Ustaw, co wyklucza ich skutek [stan na dzień skargi: **weryf.**].
+
+41. **Powództwo o ochronę dóbr osobistych lub odszkodowawcze (art. 23, 24, 448, 417 k.c.)** wymaga wykazania faktu ingerencji, jej sprawcy i bezprawności. Skarżąca nie zna tych okoliczności i nie może ich poznać, bo materiały są niejawne i niedostępne (art. 19 ust. 16 ustawy o Policji). Trybunał uznał, że środki dostępne wyłącznie osobom, które wiedzą o inwigilacji, są nieskuteczne w systemie bez notyfikacji (*Roman Zakharov p. Rosji* [WI], nr 47143/06, 4.12.2015, §§ 294–300 [**weryf.**]).
+
+42. **Skarga do Prezesa UODO i wniosek o dostęp do danych** na podstawie ustawy z 14 grudnia 2018 r. podlegają szerokim ograniczeniom i wyłączeniom. Nie prowadzą do wiążącej oceny legalności kontroli operacyjnej przez sąd ani do ujawnienia materiałów niejawnych (pkt 29). Rząd musiałby wykazać, że droga ta była w praktyce skuteczna w sprawach tajnej inwigilacji.
+
+43. **Wniosek do RPO, petycja, wniosek o informację publiczną i zawiadomienie o przestępstwie** nie są środkami w rozumieniu art. 35 § 1 Konwencji. Nie prowadzą do wiążącego rozstrzygnięcia, dotyczą informacji statystycznych albo zakładają wiedzę o czynie. Zawiadomienie trafiłoby zaś do prokuratury, czyli organu, który wyraża zgodę na kontrolę operacyjną i który już odmówił Skarżącej informacji.
+
+44. **Środki z art. 19 ustawy o Policji i art. 240 k.p.k.** nie są dla Skarżącej dostępne. Zażalenie przysługuje wyłącznie organowi Policji, a tryb z art. 240 k.p.k. zakłada doręczenie postanowienia, którego Skarżąca nigdy nie otrzymała.
+
+45. W wyroku *Pietrzak i Bychawska-Siniarska i inni p. Polsce* (nr 72038/17 i 25237/18, 28.05.2024) Trybunał, oceniając status ofiary, wziął pod uwagę brak w prawie polskim środka dostępnego dla osoby podejrzewającej, że była objęta tajnym nadzorem [**weryf.** dokładnej tezy i paragrafów]. Skarżąca podkreśla, że od tego czasu sytuacja się nie zmieniła.
+
+### B. Termin czterech miesięcy (art. 35 § 1 Konwencji)
+
+46. Ostateczne orzeczenie wydano 1 września 2026 r. Termin biegnie od dnia następnego i upływa z końcem dnia o tej samej liczbie cztery miesiące później, czyli 1 stycznia 2027 r. (por. *Sabri Güneş p. Turcji* [WI], nr 27396/06 [**weryf.** numeru skargi], 29.06.2012, §§ 39–61 [**weryf.**]). Jeżeli postanowienie zostało doręczone, a nie ogłoszone, termin biegnie od doręczenia (*Worm p. Austrii*, nr 22714/93, 29.08.1997, § 33). Skarga wniesiona [data] zachowuje termin w każdym wariancie.
+
+47. Rząd mógłby twierdzić, że termin biegł od przesłuchania w marcu 2024 r., ponieważ wnioski z 2025 r. były z góry bezskuteczne. Zarzut ten byłby chybiony. Skarżąca miała rozsądne podstawy, by oczekiwać, że organy krajowe zastosują bezpośrednio art. 51 ust. 3 i 4 Konstytucji oraz, na podstawie art. 91 Konstytucji, art. 8 i 13 Konwencji w świetle wyroku *Pietrzak*. Nieskuteczność tej drogi stała się pewna dopiero z chwilą wydania prawomocnego postanowienia. Jeśli skarżący korzysta z pozornie dostępnego środka i dopiero później dowiaduje się o okolicznościach, które czynią go nieskutecznym, termin biegnie od chwili, gdy się o nich dowiedział (*Varnava i inni p. Turcji* [WI], nr 16064/90 i in., 18.09.2009, § 157 [**weryf.**]). Państwo nie może jednocześnie wymagać wyczerpania środków i zarzucać skarżącemu, że z nich korzystał.
+
+48. Pomocniczo: zarzut in abstracto dotyczy sytuacji trwałej. Reżim prawny, który nie przewiduje notyfikacji ani środka, nadal obowiązuje, a ewentualne dane dotyczące Skarżącej mogą być nadal przechowywane [**weryf.** orzecznictwa dotyczącego biegu terminu przy zarzutach in abstracto w sprawach inwigilacji]. Skarżąca nie opiera dopuszczalności wyłącznie na tym argumencie.
+
+### C. Status ofiary (art. 34 Konwencji)
+
+49. W sprawach tajnej inwigilacji Trybunał stosuje test z wyroku *Roman Zakharov* (§§ 170–172), który składa się z dwóch elementów. Pierwszym jest zakres ustawodawstwa: czy skarżący może zostać nim dotknięty, ponieważ należy do grupy, w którą przepisy są wymierzone, albo ponieważ przepisy obejmują wszystkich użytkowników usług komunikacyjnych. Drugim jest dostępność środków krajowych: jeżeli system nie daje skutecznego środka osobie podejrzewającej inwigilację, powszechne podejrzenia i obawy są uzasadnione. Wtedy skarżący nie musi wykazywać, że środki zastosowano wobec niego (*Zakharov*, § 171; por. *Klass i inni p. Niemcom*, nr 5029/71, 6.09.1978, §§ 34–38; *Weber i Saravia p. Niemcom* (dec.), nr 54934/00, 29.06.2006, §§ 78–79; *Association for European Integration and Human Rights i Ekimdzhiev p. Bułgarii*, nr 62540/00, 28.06.2007, §§ 58–59; *Iordachi i inni p. Mołdawii*, nr 25198/02, 10.02.2009, §§ 33–35; *Szabó i Vissy p. Węgrom*, nr 37138/14, 12.01.2016, §§ 32–39 [**weryf.**]).
+
+50. **Pierwszy element** jest spełniony. Przepisy o retencji i o dostępie do danych (art. 20c ustawy o Policji) obejmują każdego użytkownika usług komunikacji elektronicznej, a więc także Skarżącą. Art. 19 ustawy o Policji nie określa kategorii osób, które mogą zostać objęte kontrolą. Mogą nią być objęci także rozmówcy osób podejrzanych i świadkowie. Ponadto Skarżąca jako koordynatorka protestów należy do grupy realnie narażonej na zainteresowanie służb.
+
+51. **Drugi element** jest spełniony w sposób szczególnie wyraźny. Sądy krajowe stwierdziły prawomocnie, że prawo nie przewiduje udzielenia Skarżącej informacji. W wyroku *Pietrzak* Trybunał uznał za ofiary osoby w analogicznej sytuacji prawnej [**weryf.**].
+
+52. **Niezależnie od tego** istnieje „uzasadnione prawdopodobieństwo” konkretnej ingerencji (*Halford p. Zjednoczonemu Królestwu*, nr 20605/92, 25.06.1997, § 57; *Kennedy p. Zjednoczonemu Królestwu*, nr 26839/05, 18.05.2010, §§ 122–124 [**weryf.**]). Funkcjonariusze przytaczali treść prywatnych wiadomości Skarżącej, a więc państwo dysponowało jej korespondencją.
+
+53. Status ofiary nie zależy od tego, czy celem środka była Skarżąca, czy jej rozmówca. Ingerencją w prawa danej osoby jest także przechwycenie jej rozmów prowadzonych z cudzego urządzenia lub na cudzej linii (*Lambert p. Francji*, nr 23618/94, 24.08.1998, §§ 21 i 38–41 [**weryf.**]; *Pruteanu p. Rumunii*, nr 30181/05, 3.02.2015 [§§: **weryf.**]).
+
+### D. Pozostałe przesłanki
+
+54. Sprawa nie była przedmiotem innego postępowania międzynarodowego (art. 35 § 2 lit. b). Kryterium braku znaczącego uszczerbku (art. 35 § 3 lit. b) nie ma zastosowania. Sprawa dotyczy podstawowych gwarancji tajemnicy korespondencji i ma charakter systemowy, a poszanowanie praw człowieka wymaga jej merytorycznego zbadania. Wiadomości z komunikatora są „korespondencją” w rozumieniu art. 8 (pkt 55 poniżej). Zdarzenia miały miejsce po uznaniu przez Polskę prawa skargi indywidualnej.
+
+## V. Zarzut I: naruszenie art. 8 Konwencji
+
+### A. Zastosowanie art. 8
+
+55. Wiadomości przesyłane za pomocą komunikatorów internetowych mieszczą się w pojęciach „korespondencji” i „życia prywatnego” (*Bărbulescu p. Rumunii* [WI], nr 61496/08, 5.09.2017, §§ 72–74 [**weryf.**]; *Copland p. Zjednoczonemu Królestwu*, nr 62617/00, 3.04.2007, §§ 41–44). Ochroną objęte są również dane o komunikacji, niezależnie od jej treści (*Malone p. Zjednoczonemu Królestwu*, nr 8691/79, 2.08.1984, § 84; *Copland*, § 43; *Benedik p. Słowenii*, nr 62357/14, 24.04.2018 [§§: **weryf.**]; *Big Brother Watch i inni p. Zjednoczonemu Królestwu* [WI], nr 58170/13, 62322/14 i 24960/15, 25.05.2021, § 363 [**weryf.**]: pozyskanie danych o komunikacji nie musi być mniej inwazyjne niż pozyskanie treści).
+
+56. Informacje o publicznej, w tym politycznej, działalności jednostki wchodzą w zakres życia prywatnego, jeżeli władze systematycznie je gromadzą i przechowują (*Rotaru p. Rumunii* [WI], nr 28341/95, 4.05.2000, §§ 43–44; *Catt p. Zjednoczonemu Królestwu*, nr 43514/15, 24.01.2019, § 93 i n. [**weryf.**]).
+
+### B. Ingerencja
+
+57. W sprawie występują cztery odrębne, a zarazem powiązane postacie ingerencji.
+
+58. **(1) Samo istnienie ustawodawstwa.** Ustawodawstwo dopuszczające tajny nadzór bez gwarancji stanowi ingerencję wobec wszystkich, do których może być stosowane. Zagrożenie inwigilacją uderza w swobodę komunikacji (*Klass*, § 41; *Zakharov*, §§ 168–171 [**weryf.**]).
+
+59. **(2) Pozyskanie korespondencji Skarżącej.** Przytoczenie treści jej wiadomości przez Policję oznacza, że państwo w taki czy inny sposób uzyskało jej korespondencję. Każdy z wariantów opisanych w pkt 8 jest ingerencją.
+
+60. **(3) Przechowywanie i wykorzystanie danych.** Przechowywanie przez władze informacji dotyczących życia prywatnego oraz ich wykorzystanie są samodzielnymi ingerencjami (*Leander p. Szwecji*, nr 9248/81, 26.03.1987, § 48; *Amann p. Szwajcarii* [WI], nr 27798/95, 16.02.2000, §§ 65 i 69–70; *Rotaru*, § 46). Ingerencją było więc samo wykorzystanie prywatnej korespondencji Skarżącej przy przesłuchaniu jej jako świadka w innej sprawie, czyli jej ujawnienie w innym celu i innym osobom.
+
+61. **(4) Odmowa informacji.** Skarżąca nie może ustalić, czy jej dane nadal istnieją, ani doprowadzić do ich zniszczenia. Pogłębia to ingerencję i odbiera jej wszelką kontrolę nad informacjami o sobie (*Leander*, § 48; *Rotaru*, § 46).
+
+62. Rząd mógłby twierdzić, że wiadomości przekazał Policji dobrowolnie rozmówca Skarżącej. Nawet wtedy dalsze przechowywanie i wykorzystanie jej korespondencji przez organy w innym postępowaniu, bez żadnych reguł, stanowi ingerencję przypisaną państwu. Przede wszystkim jednak informacje o źródle i podstawie pozyskania znajdują się wyłącznie w posiadaniu władz. Niemożność ich ustalenia przez Skarżącą jest istotą zarzutu, a nie argumentem przeciwko niemu (zob. wnioski procesowe w pkt X).
+
+### C. „Przewidziana przez ustawę” i „konieczna w społeczeństwie demokratycznym”
+
+63. **Standard.** Ustawa musi być dostępna i przewidywalna. W sferze tajnego nadzoru, gdzie ryzyko arbitralności jest oczywiste, musi wskazywać z wystarczającą jasnością, w jakich okolicznościach i na jakich warunkach władze mogą stosować środki (*Malone*, §§ 67–68; *Kruslin p. Francji*, nr 11801/85, 24.04.1990, §§ 33–36; *Huvig p. Francji*, nr 11105/84, 24.04.1990, §§ 32–35 [**weryf.**]). Minimalne gwarancje obejmują:
+   - (1) charakter przestępstw, które mogą uzasadniać zastosowanie środka;
+   - (2) kategorie osób, wobec których można go zastosować;
+   - (3) limit czasu;
+   - (4) procedurę badania, wykorzystywania i przechowywania danych;
+   - (5) środki ostrożności przy przekazywaniu danych innym podmiotom;
+   - (6) okoliczności usunięcia lub zniszczenia materiałów.
+
+   Źródła: *Weber i Saravia*, § 95; *Zakharov*, § 231.
+
+64. Gwarancje muszą być „odpowiednie i skuteczne” na wszystkich trzech etapach: przy zarządzeniu środka, w czasie jego stosowania i po jego zakończeniu (*Klass*, §§ 50 i 55; *Zakharov*, §§ 232–234). W sprawach tajnego nadzoru Trybunał ocenia „przewidziane przez ustawę” i „konieczność” łącznie (*Zakharov*, § 236; *Kennedy*, § 155 [**weryf.**]). Państwa nie mogą, w imię obrony demokracji, stosować środków, które grożą jej podważeniem lub zniszczeniem (*Klass*, § 49). Środki tajnego nadzoru muszą być „ściśle konieczne” (*Szabó i Vissy*, § 73).
+
+65. Poniżej Skarżąca przedstawia braki prawa polskiego, każdy wraz z przepisem i orzecznictwem.
+
+#### 1. Brak jakiejkolwiek notyfikacji następczej
+
+66. Trybunał podkreśla, że kwestia powiadomienia po zakończeniu nadzoru jest nierozerwalnie związana ze skutecznością środków odwoławczych. Bez notyfikacji osoba zainteresowana co do zasady nie może zakwestionować legalności nadzoru (*Zakharov*, §§ 286–290; *Klass*, § 57 [**weryf.**]). Gdy tylko można to zrobić bez narażenia celu środka, informacja powinna zostać przekazana osobom zainteresowanym (*Weber i Saravia*, § 135; *Szabó i Vissy*, § 86; *Association… Ekimdzhiev*, §§ 90–91).
+
+67. Prawo polskie nie przewiduje notyfikacji w żadnym momencie: po zakończeniu kontroli, po zniszczeniu materiałów ani po prawomocnym zakończeniu postępowania. Wyklucza też dostęp do materiałów (art. 19 ust. 16 ustawy o Policji). Kontrastuje to z kodeksowym trybem kontroli procesowej, który przewiduje ogłoszenie postanowienia i zażalenie osoby, której ono dotyczy (art. 239–240 k.p.k.). Ustawodawca uznał więc notyfikację za wykonalną w postępowaniu karnym, a z kontroli operacyjnej, ingerującej w prywatność w tym samym stopniu, ją wyłączył. Te same zastrzeżenia sformułowały Komisja Wenecka (2016) i TSUE (*Tele2 Sverige*). Trybunał stwierdził ten brak w wyroku *Pietrzak* [**weryf.** paragrafów].
+
+#### 2. Brak środka dla osoby podejrzewającej inwigilację
+
+68. Brak notyfikacji może zostać zrekompensowany tylko wtedy, gdy każda osoba podejrzewająca inwigilację może zwrócić się do niezależnego organu. Organ ten musi mieć dostęp do materiałów i kompetencję do stwierdzenia naruszenia, nakazania zniszczenia danych i przyznania zadośćuczynienia (*Kennedy*, § 167; *Zakharov*, §§ 288–300 [**weryf.**]). W prawie polskim takiego organu nie ma. Zażalenie na postanowienie o kontroli przysługuje tylko Policji (pkt 19). Prokuratura i sądy prawomocnie potwierdziły w sprawie Skarżącej, że żadnej procedury nie ma (pkt 9–11). Sytuacja Skarżącej jest dokładnym przeciwieństwem modelu, który Trybunał zaakceptował w sprawie *Kennedy*.
+
+#### 3. Dostęp do danych telekomunikacyjnych bez uprzedniej niezależnej kontroli
+
+69. Art. 20c ustawy o Policji pozwala pozyskiwać dane o komunikacji każdej osoby „w celu zapobiegania lub wykrywania przestępstw”. Nie wymaga do tego zgody sądu ani innego niezależnego organu i nie ogranicza się do poważnych przestępstw. Dane mogą być pobierane bezpośrednio przez stałe łącze. Trybunał uznał za szczególnie podatny na nadużycia system, w którym służby mają bezpośredni dostęp do danych bez konieczności okazywania zezwolenia operatorowi (*Zakharov*, §§ 268–270 [**weryf.**]). Za niewystarczające uznał też dopuszczenie dostępu do danych o komunikacji bez uprzedniej, niezależnej kontroli (*Ekimdzhiev i inni p. Bułgarii*, nr 70078/12, 11.01.2022 [§§: **weryf.**]; *Benedik p. Słowenii*). Następcza, zbiorcza kontrola na podstawie półrocznych sprawozdań (art. 20ca) nie obejmuje indywidualnej oceny konieczności i proporcjonalności, nie daje osobie zainteresowanej żadnej roli i nie prowadzi do jej powiadomienia. W tym zakresie Trybunał stwierdził naruszenie w wyroku *Pietrzak* [**weryf.**]. Zbieżne stanowiska zajęły TK (K 23/11) i TSUE (*Prokuratuur*).
+
+#### 4. Generalna i niezróżnicowana retencja danych
+
+70. Polskie prawo nakazuje przechowywanie przez 12 miesięcy danych o komunikacji wszystkich użytkowników, bez względu na jakikolwiek związek z zagrożeniem (pkt 25). Trybunał uznał retencję tego rodzaju, połączoną z niewystarczającymi gwarancjami dostępu, za niezgodną z art. 8 (*Pietrzak* [**weryf.**]; *Ekimdzhiev i inni* [**weryf.**]; *Škoberne p. Słowenii*, nr 19920/20, 15.02.2024). TSUE ocenił ją tak samo (*Tele2 Sverige*, *La Quadrature du Net*, *SpaceNet*).
+
+#### 5. Niewystarczający nadzór
+
+71. Kontrolę operacyjną zarządza sąd, ale bez kontradyktoryjności i na podstawie materiałów przedstawionych przez Policję. Wniosek wymaga zgody prokuratora, który podlega Prokuratorowi Generalnemu, będącemu zarazem członkiem rządu [**weryf.** stanu na dzień skargi]. Prokurator nie jest organem niezależnym od władzy wykonawczej i stron (*Dumitru Popescu p. Rumunii (nr 2)*, nr 71525/01, 26.04.2007, §§ 70–73 [**weryf.**]; por. TSUE *Prokuratuur*). Nadzór parlamentarny ma wyłącznie charakter statystyczny (art. 19 ust. 22 ustawy o Policji [**weryf.**]; art. 11 Prawa o prokuraturze [**weryf.**]). Trybunał wymaga, by nadzór był niezależny, rzeczywisty i obejmował dostęp do materiałów (*Klass*, § 56; *Zakharov*, §§ 275–285; *Iordachi*, § 51 [**weryf.**]). [Uzupełnić danymi z rocznych informacji Prokuratora Generalnego o liczbie wniosków i odsetku ich uwzględnienia: **weryf.**]
+
+#### 6. Kategorie osób i ochrona osób trzecich
+
+72. Art. 19 ustawy o Policji nie określa, wobec kogo może być stosowana kontrola. Nie zawiera też żadnych reguł dotyczących rozmówców osoby kontrolowanej, których korespondencja jest utrwalana „przy okazji” (*Zakharov*, §§ 243–248 [**weryf.**]; *Iordachi*, § 44 [**weryf.**]). Osoby te nie mają żadnej legitymacji ani wiedzy, a w świetle *Lambert* i *Pruteanu* ich prawa również wymagają ochrony. Skarżąca może należeć właśnie do tej kategorii.
+
+#### 7. Wykorzystywanie i przekazywanie materiałów
+
+73. Według art. 168b k.p.k. o wykorzystaniu materiałów wobec innych osób lub co do innych przestępstw decyduje prokurator, bez sądu i bez powiadomienia osoby zainteresowanej. Uchwała SN I KZP 4/18 ograniczyła to do przestępstw katalogowych. Tym bardziej niejasne jest więc, na jakiej podstawie treść korespondencji świadka mogła być wykorzystywana przy przesłuchaniu w innej sprawie. Nie istnieją jasne reguły co do przekazywania i ujawniania materiałów innym podmiotom ani co do wykorzystania „materiałów pochodnych” (por. *Weber i Saravia*, § 95, gwarancja nr 5; *Dragojević p. Chorwacji*, nr 68955/11, 15.01.2015 [§§: **weryf.**]; *Zoltán Varga p. Słowacji*, nr 58361/12 i 2 inne, 20.07.2021 [**weryf.**]). W sprawie Skarżącej skutek był taki, że jej prywatna korespondencja posłużyła organom w zupełnie innym celu i bez żadnej kontroli.
+
+#### 8. Szczególna wrażliwość danych o działalności obywatelskiej
+
+74. Skarżąca jest organizatorką pokojowych zgromadzeń. Jej korespondencja ujawnia poglądy polityczne i sieć kontaktów osób zaangażowanych w protest. Dane ujawniające poglądy polityczne wymagają wzmożonej ochrony (*Catt*, §§ 112 i 123 [**weryf.**]; art. 6 Konwencji nr 108). Gromadzenie takich danych bez ścisłej potrzeby jest nieproporcjonalne (*Segerstedt-Wiberg i inni p. Szwecji*, nr 62332/00, 6.06.2006, §§ 90–92 i 107 [**weryf.**]). Brak gwarancji jest w takim wypadku szczególnie dotkliwy, a margines oceny państwa wąski.
+
+#### 9. Konkluzja co do art. 8
+
+75. Prawo polskie nie spełnia wymogu „jakości prawa” i nie zapewnia odpowiednich i skutecznych gwarancji przeciwko nadużyciom. W szczególności brakuje notyfikacji, środka odwoławczego i niezależnej kontroli dostępu do danych. Ingerencja w prawa Skarżącej, we wszystkich postaciach opisanych w pkt 57–61, nie była więc „przewidziana przez ustawę” ani „konieczna w społeczeństwie demokratycznym”. Doszło do naruszenia art. 8 Konwencji.
+
+## VI. Zarzut II: naruszenie art. 13 w zw. z art. 8 Konwencji
+
+76. Zarzut z art. 8 jest „uzasadniony” (*arguable*) w rozumieniu art. 13. Wynika to z wyroku *Pietrzak* oraz z faktu, że Policja posłużyła się prywatną korespondencją Skarżącej (*Boyle i Rice p. Zjednoczonemu Królestwu*, nr 9659/82 i 9658/82, 27.04.1988, § 52).
+
+77. W sprawach tajnego nadzoru środek odwoławczy musi być „tak skuteczny, jak to możliwe” przy ograniczeniach właściwych systemowi tajności. Może nim być również ogół dostępnych środków ocenianych łącznie (*Klass*, §§ 64–69 [**weryf.**]; *Leander*, §§ 77–78). Trybunał stwierdzał naruszenie art. 13, gdy osoba zainteresowana nie mogła uzyskać ani zniszczenia danych, ani kontroli ich gromadzenia (*Rotaru*, §§ 67–73; *Segerstedt-Wiberg*, §§ 117–122; *Association… Ekimdzhiev*, §§ 98–103 [**weryf.**]; *Ekimdzhiev i inni p. Bułgarii* [**weryf.**]).
+
+78. W sprawie Skarżącej żaden środek wymieniony w pkt 40–44, ani pojedynczo, ani w agregacie, nie pozwala:
+   - (i) ustalić, czy doszło do ingerencji;
+   - (ii) zbadać jej legalności;
+   - (iii) doprowadzić do zniszczenia danych;
+   - (iv) uzyskać zadośćuczynienia.
+
+   Nie jest to założenie skarżącej, lecz prawomocne ustalenie sądów krajowych (pkt 11).
+
+79. Skarżąca zdaje sobie sprawę, że Trybunał w niektórych sprawach uznawał zarzut z art. 13 za objęty oceną na gruncie art. 8 (*Zakharov*, § 307). Wnosi jednak o odrębne rozpoznanie tego zarzutu. Niniejsza sprawa, inaczej niż sprawy oceniane wyłącznie in abstracto, obejmuje konkretne postępowanie krajowe, w którym Skarżąca próbowała uzyskać ochronę i spotkała się z prawomocną odmową opartą na braku jakiejkolwiek podstawy prawnej. Tak postąpił Trybunał w sprawie *Ekimdzhiev i inni* [**weryf.**].
+
+## VII. Zarzut III: naruszenie art. 10 i 11 Konwencji
+
+80. **Zastosowanie.** Koordynowanie pokojowych zgromadzeń i komunikowanie się z ich uczestnikami należy do istoty wolności zgromadzeń i wolności wypowiedzi. Wolność udziału w pokojowym zgromadzeniu nie może być ograniczana wobec osoby, która sama nie dopuszcza się czynów nagannych (*Ezelin p. Francji*, nr 11800/85, 26.04.1991, § 53; *Kudrevičius i inni p. Litwie* [WI], nr 37553/05, 15.10.2015, §§ 91–92 [**weryf.**]).
+
+81. **Ingerencja.** Gromadzenie i przechowywanie przez władze danych o poglądach politycznych i działalności jednostki może stanowić ingerencję w prawa z art. 10 i 11 (*Segerstedt-Wiberg*, § 107). Monitorowanie organizatorów i uczestników pokojowych protestów wywołuje efekt mrożący (*Catt* [**weryf.** §§]; *Glukhin p. Rosji*, nr 11519/20, 4.07.2023, §§ 84–91 [**weryf.**]). W sprawie Skarżącej organy znały jej korespondencję z innymi osobami zaangażowanymi w protesty. Jednocześnie Skarżąca nie może ustalić, czy jest monitorowana. Doprowadziło to do ograniczenia jej komunikacji i do wycofania się części uczestników [pkt 12, **do potwierdzenia**].
+
+82. **Brak uzasadnienia.** Z przyczyn wskazanych w pkt 63–75 ingerencja nie była „przewidziana przez ustawę” ani konieczna.
+
+83. **Wniosek ewentualny.** Gdyby Trybunał uznał, że zarzut ten nie wymaga odrębnego rozpoznania, Skarżąca wnosi o uwzględnienie charakteru jej działalności jako okoliczności, która wzmacnia ocenę naruszenia art. 8.
+
+## VIII. Słuszne zadośćuczynienie (art. 41) i wykonanie wyroku (art. 46)
+
+84. **Szkoda niemajątkowa.** Skarżąca wnosi o zasądzenie [10 000 EUR; kwota do decyzji]. Zdaje sobie sprawę, że w sprawach ocenianych in abstracto Trybunał bywa skłonny uznać samo stwierdzenie naruszenia za wystarczające zadośćuczynienie (*Zakharov*, § 312 [**weryf.**]). Sprawa Skarżącej ma jednak wymiar konkretny. Jej prywatną korespondencję wykorzystano podczas przesłuchania. Pozostaje w stanie trwałej niepewności i niepokoju. Ograniczyła swoją komunikację obywatelską. Wreszcie prawomocnie odmówiono jej jakiejkolwiek informacji i kontroli.
+
+85. **Koszty i wydatki.** Skarżąca wnosi o zwrot kosztów postępowania krajowego oraz postępowania przed Trybunałem według zestawienia, które przedłoży na etapie wyznaczonym przez Trybunał (Reguła 60 Regulaminu).
+
+86. **Art. 46: środki generalne.** Naruszenie ma charakter systemowy i zostało już stwierdzone w wyroku *Pietrzak*. Skarżąca wnosi więc, by Trybunał wskazał rodzaj środków generalnych niezbędnych do wykonania wyroku, w szczególności:
+   - (a) wprowadzenie notyfikacji następczej osób objętych kontrolą operacyjną i pozyskiwaniem danych, z ograniczonymi, podlegającymi kontroli sądowej wyjątkami;
+   - (b) wprowadzenie procedury, w której każda osoba podejrzewająca inwigilację może zwrócić się do niezależnego sądu lub organu z dostępem do materiałów i kompetencją do stwierdzenia nielegalności, nakazania zniszczenia danych i przyznania zadośćuczynienia;
+   - (c) wprowadzenie uprzedniej kontroli sądu lub niezależnego organu nad dostępem do danych o komunikacji;
+   - (d) ograniczenie retencji danych do zakresu ściśle niezbędnego;
+   - (e) poddanie kontroli sądowej decyzji podejmowanych na podstawie art. 168b k.p.k.
+
+87. **Środki indywidualne.** Skarżąca wnosi o wskazanie, że państwo powinno ją poinformować, czy i w jakim trybie pozyskano jej korespondencję lub dane. Powinno też zapewnić jej możliwość kontroli sądowej legalności tych działań oraz zniszczyć dane zgromadzone z naruszeniem Konwencji.
+
+## IX. Wnioski procesowe
+
+88. **Art. 38 Konwencji oraz Reguły 44A i 44C Regulaminu.** Informacje o tym, czy i jak pozyskano korespondencję Skarżącej, znajdują się wyłącznie w posiadaniu władz. Skarżąca wnosi o wezwanie Rządu do wskazania:
+   - (a) czy wobec Skarżącej lub, w zakresie jej korespondencji, wobec jej rozmówców stosowano środki z art. 19 lub 20c ustawy o Policji, analogicznych przepisów innych ustaw albo art. 237 i 241 k.p.k.;
+   - (b) w jaki sposób i na jakiej podstawie funkcjonariusze przesłuchujący Skarżącą w marcu 2024 r. dysponowali treścią jej wiadomości;
+   - (c) czy materiały te są nadal przechowywane.
+
+   W razie odmowy lub niepełnej odpowiedzi Skarżąca wnosi o wyciągnięcie z tego odpowiednich wniosków (Reguła 44C § 1).
+
+89. **Tryb rozpoznania.** Wobec wyroku *Pietrzak* Skarżąca sugeruje rozpoznanie sprawy przez komitet w trybie art. 28 § 1 lit. b Konwencji jako sprawy objętej ugruntowanym orzecznictwem. Ewentualnie wnosi o nadanie sprawie pierwszeństwa (Reguła 41 Regulaminu) z uwagi na jej systemowy charakter i efekt mrożący dla działalności obywatelskiej.
+
+## X. Żądania
+
+Na podstawie powyższego Skarżąca wnosi o:
+
+1. uznanie skargi za dopuszczalną;
+2. stwierdzenie naruszenia **art. 8** Konwencji;
+3. stwierdzenie naruszenia **art. 13 w zw. z art. 8** Konwencji;
+4. stwierdzenie naruszenia **art. 10 i 11** Konwencji, a ewentualnie uwzględnienie tych okoliczności w ramach oceny na gruncie art. 8;
+5. zasądzenie od pozwanego Państwa, na podstawie art. 41 Konwencji, kwoty [10 000 EUR] tytułem zadośćuczynienia za szkodę niemajątkową oraz zwrotu kosztów i wydatków według przedłożonego zestawienia;
+6. wskazanie, na podstawie art. 46 Konwencji, środków generalnych i indywidualnych opisanych w pkt 86–87;
+7. uwzględnienie wniosków procesowych z pkt 88–89.
+
+[Miejscowość, data]
+
+[Podpis pełnomocnika]
+[Podpis Skarżącej]
+
+---
+
+# CZĘŚĆ III. WYKAZ ZAŁĄCZNIKÓW
+
+*(kopie, ponumerowane i ułożone chronologicznie; Reguła 47 § 3.1 lit. a)*
+
+1. Wezwanie na przesłuchanie z [data] marca 2024 r. (jeżeli istnieje).
+2. Protokół przesłuchania świadka lub wniosek o jego wydanie wraz z odpowiedzią. W braku protokołu: pisemne oświadczenie Skarżącej opisujące przebieg przesłuchania i przytaczane wiadomości.
+3. Wniosek Skarżącej do [Prokuratury Okręgowej w Krakowie] z [data] 2025 r.
+4. Odpowiedź prokuratury z [data].
+5. Wniosek Skarżącej do [sądu] z [data] 2025 r.
+6. [Postanowienie / zarządzenie] [sądu] z [data].
+7. Zażalenie z [data].
+8. Postanowienie Sądu Okręgowego w [ ] z 1 września 2026 r., sygn. [ ], z dowodem doręczenia.
+9. Dokumenty potwierdzające działalność Skarżącej: zgłoszenia zgromadzeń, publikacje prasowe [zanonimizowane w zakresie danych osób trzecich].
+10. Pełnomocnictwo (jeżeli nie jest w całości zawarte w formularzu).
+11. [Opcjonalnie] Wyciągi z materiałów kontekstowych: opinia Komisji Weneckiej CDL-AD(2016)012, raporty organizacji pozarządowych, sprawozdanie senackiej komisji nadzwyczajnej.
+
+---
+
+> **Uwagi redakcyjne do weryfikacji przed wysłaniem (wewnętrzne, usunąć)**
+> 1. **Fakty.** Uzupełnić wszystkie placeholdery na podstawie dokumentów. Dosłownie zacytować uzasadnienie postanowienia z 1.09.2026 r. Potwierdzić, czy we wnioskach i zażaleniu powołano Konstytucję, Konwencję i wyrok *Pietrzak*. Ustalić, który sąd orzekał w I instancji. Pkt 12 wpisać tylko, jeśli jest prawdziwy.
+> 2. ***Pietrzak i Bychawska-Siniarska i inni p. Polsce*.** Sprawdzić w HUDOC numery paragrafów, dokładne rozstrzygnięcia (art. 8 w poszczególnych reżimach; art. 13; art. 41; ewentualne wskazania z art. 46), język wyroku oraz stan wykonania przed Komitetem Ministrów.
+> 3. **Numery skarg i paragrafy** oznaczone [weryf.], w szczególności: *Sabri Güneş* (projekt podaje nr 27396/06; planista wskazał 27653/10, zweryfikować), *Varnava* § 157, *Lambert*, *Pruteanu*, *Catt*, *Glukhin*, *Big Brother Watch* § 363, *Dumitru Popescu (nr 2)*, *Ekimdzhiev i inni* (2022), *Zakharov* §§ 243–248, 268–270, 294–300, 312, *Iordachi* §§ 44 i 51.
+> 4. **Prawo krajowe.** Zweryfikować numerację ustępów art. 19 ustawy o Policji (ust. 16, 17, 20, 22) w aktualnym tekście jednolitym. Sprawdzić brzmienie art. 20c po wejściu w życie PKE, przepisy PKE o retencji oraz art. 239 k.p.k. i art. 168a k.p.k. Zweryfikować przepisy ustawy z 14.12.2018 r. o ograniczeniach prawa dostępu i tezę uchwały I KZP 4/18.
+> 5. **Kontekst.** Zweryfikować: stan prac legislacyjnych po *Pietrzak*, połączenie funkcji MS i PG na dzień skargi, publikację orzeczeń TK, liczbę osób objętych Pegasusem oraz ewentualne przypadki informowania ich przez prokuraturę.
+> 6. **Formalności.** Użyć aktualnego formularza. Uzupełnić wszystkie pola i podpisy. Zachować limity objętości sekcji formularza i załącznika (do 20 stron). Wysłać przesyłką poleconą z datą stempla najpóźniej 31.12.2026 r.

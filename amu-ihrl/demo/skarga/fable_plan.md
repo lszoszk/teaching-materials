@@ -1,0 +1,292 @@
+# Plan (konspekt) skargi do ETPC – [Skarżąca] p. Polsce
+## Tajna inwigilacja koordynatorki protestów klimatycznych; brak notyfikacji i środka odwoławczego
+
+Oznaczenia pewności cytowań: **[W]** wysoka, **[Ś]** średnia, **[N]** niska. Jeżeli pewność co do numeru paragrafu jest niska, wykonawca ma cytować sprawę bez paragrafu albo z dopiskiem „§§ do weryfikacji". Nie dodawać orzeczeń spoza tej listy bez własnego oznaczenia pewności.
+
+---
+
+## 0. Instrukcje dla wykonawcy (model piszący)
+
+1. **Forma**: pismo odwzorowujące formularz skargi (Reguła 47 Regulaminu Trybunału) + „Załącznik – uzasadnienie" (Reguła 47 § 2(b): max 20 stron) [Ś co do limitów stron; W co do istnienia limitów]. W formularzu: fakty (max 3 str.), zarzuty (max 2 str.), dopuszczalność (max 1 str.) [Ś].
+2. **Język**: polski (Reguła 34 § 2 – skarga może być wniesiona w języku urzędowym państwa-strony) [W].
+3. **Nie twierdzić jako faktu**, że wobec skarżącej stosowano kontrolę operacyjną. Pisać: „uzasadnione prawdopodobieństwo" / „istotne przesłanki". Istotą skargi jest to, że **nie da się tego ustalić** – i to jest naruszenie.
+4. **Placeholdery**: `[imię i nazwisko]`, `[data przesłuchania – marzec 2024]`, `[sygn. akt]`, `[data wniosku do prokuratury]`, `[data wniosku do sądu]`, `[data postanowienia I inst.]`, `[data doręczenia postanowienia z 1.09.2026]`. Nie wymyślać sygnatur ani treści dokumentów.
+5. **Termin**: ostateczne orzeczenie 1.09.2026 → 4 miesiące (art. 35 § 1 po Protokole 15) upływają **1.01.2027**; rekomendować wysłanie kompletnego formularza **najpóźniej 31.12.2026** (data stempla pocztowego, Reguła 47 § 6(a)) [Ś].
+6. Każde orzeczenie cytować w formacie: *Nazwa p. Państwu*, nr skargi, data, § – i zachować oznaczenie pewności z niniejszego planu (w wersji „czystej" dla klienta oznaczenia można przenieść do przypisu redakcyjnego).
+
+---
+
+## 1. Struktura pisma
+
+### Część I – Formularz (skrót)
+- **A. Skarżąca** – dane; obywatelstwo polskie; miejsce zamieszkania Kraków. Rozważyć wniosek o anonimowość (Reguła 47 § 4) – raczej **nie**, bo działalność jest publiczna; ewentualnie zaznaczyć do decyzji klientki.
+- **C. Pełnomocnik** – adwokat/radca; pełnomocnictwo na formularzu.
+- **D. Państwo** – Rzeczpospolita Polska.
+- **E. Stan faktyczny** (chronologia, zob. pkt 2).
+- **F. Zarzuty** – art. 8; art. 13 w zw. z art. 8; art. 10 i 11 (samodzielnie i w zw. z art. 8) – zob. pkt 4.
+- **G. Dopuszczalność** – wyczerpanie, termin, status ofiary – zob. pkt 5.
+- **H. Inne postępowania międzynarodowe** – brak.
+- **I. Lista załączników** – zob. pkt 10.
+- Oświadczenie i podpis (Reguła 45; Reguła 47 § 3.1).
+
+### Część II – Załącznik „Uzasadnienie" (≤ 20 stron)
+1. Wprowadzenie i istota sprawy (1 str.)
+2. Stan faktyczny szczegółowy (2 str.)
+3. Właściwe prawo krajowe i praktyka; materiały międzynarodowe (3–4 str.)
+4. Dopuszczalność (2–3 str.)
+5. Zarzut I – art. 8 (6–7 str.)
+6. Zarzut II – art. 13 w zw. z art. 8 (2 str.)
+7. Zarzut III – art. 10 i 11 (1,5 str.)
+8. Art. 41 i art. 46; wnioski procesowe (1 str.)
+
+---
+
+## 2. Stan faktyczny – co i jak opisać
+
+**Chronologia (placeholdery dat):**
+1. Od 2022 r. skarżąca koordynuje lokalne protesty klimatyczne w Krakowie: organizacja zgromadzeń (zgłoszenia w trybie ustawy – Prawo o zgromadzeniach), komunikacja z uczestnikami przez komunikator internetowy, kontakty z mediami. Podkreślić: **działalność pokojowa, legalna, publiczna**; brak postępowań karnych przeciwko skarżącej (jeśli tak jest – potwierdzić z klientką).
+2. Marzec 2024 r.: przesłuchanie w charakterze **świadka** (art. 177 k.p.k.) w innej sprawie, przez funkcjonariuszy Policji [jednostka]. Funkcjonariusze przytaczali (w pytaniach) **treść prywatnych wiadomości** skarżącej z komunikatora – z określonych dat, z określonymi rozmówcami. Opisać: jak dokładne były cytaty, czy dotyczyły spraw niezwiązanych z przedmiotem przesłuchania, czy były to wiadomości szyfrowane „end-to-end" (jeśli tak – wskazuje to na dostęp do urządzenia lub do konta, a nie do „danych telekomunikacyjnych"). Czy treść pytań została zaprotokołowana; czy skarżąca prosiła o odpis protokołu (art. 156 k.p.k. – jako świadek nie jest stroną i nie ma dostępu do akt).
+3. Skarżąca nie była stroną tamtego postępowania, nie zna jego sygnatury ani podstawy pozyskania wiadomości (możliwe źródła: kontrola operacyjna – art. 19 ustawy o Policji; dane telekomunikacyjne – art. 20c; procesowa kontrola rozmów – art. 237 k.p.k.; zabezpieczenie/przeszukanie urządzenia rozmówcy – art. 217, 219, 236a k.p.k.; zgoda następcza – art. 168b k.p.k.). **Każdy z tych wariantów to ingerencja w jej korespondencję, o której nie została powiadomiona.**
+4. 2025 r.: wniosek do prokuratury [Prokuratura Okręgowa w Krakowie – organ wyrażający zgodę w trybie art. 19 ust. 1] o informację, czy stosowano kontrolę operacyjną lub pozyskiwano dane telekomunikacyjne. Odpowiedź: przepisy nie przewidują udzielenia takiej informacji [data, forma – pismo/postanowienie].
+5. 2025 r.: wniosek do sądu [Sąd Okręgowy w Krakowie – sąd zarządzający kontrolę i sąd kontrolujący dostęp do danych w trybie art. 20ca]. Odmowa [data]. Zażalenie. **Postanowienie Sądu Okręgowego z 1.09.2026 r.** – zażalenie oddalone; brak dalszego środka. Zacytować dosłownie kluczowe zdanie uzasadnienia („przepisy nie przewidują...") – to jest najmocniejszy dowód braku środka krajowego.
+6. Wskazać, że we wnioskach skarżąca powoływała (lub: wykonawca zakłada, że powoływała – do potwierdzenia) art. 47, 49, 51 ust. 3 Konstytucji RP oraz art. 8 i 13 Konwencji i wyrok *Pietrzak* – ważne dla „podniesienia zarzutu co do istoty" (pkt 5.1).
+7. Kontekst ogólny (krótko, z zaznaczeniem źródeł do weryfikacji): wyrok *Pietrzak* (2024) stwierdzający systemową niezgodność polskiego reżimu z art. 8; afera Pegasus (senacka komisja nadzwyczajna 2022–2023, sejmowa komisja śledcza od 2024; informacja Ministra Sprawiedliwości z 2024 r. o kilkuset osobach objętych Pegasusem w latach 2017–2022 [Ś/N – liczbę zweryfikować]); brak zmian legislacyjnych wykonujących *Pietrzak* na dzień wniesienia skargi [do sprawdzenia: stan prac legislacyjnych w 2025–2026].
+
+---
+
+## 3. Prawo polskie – przepisy do przytoczenia
+
+### 3.1. Konstytucja RP
+- art. 47 (prawo do prywatności), **art. 49** (wolność i tajemnica komunikowania się; ograniczenia tylko ustawą), **art. 51 ust. 2–4** (zakaz pozyskiwania informacji ponad niezbędne; **ust. 3 – prawo dostępu do dotyczących jednostki dokumentów i zbiorów danych**; ust. 4 – prawo żądania usunięcia danych zebranych niezgodnie z ustawą), art. 31 ust. 3, art. 45 ust. 1, **art. 77 ust. 2** (zakaz zamykania drogi sądowej), art. 78, art. 54, art. 57, art. 79 (skarga konstytucyjna – w kontekście dopuszczalności), art. 91. [W]
+
+### 3.2. Ustawa z 6.04.1990 r. o Policji – kontrola operacyjna i dane telekomunikacyjne
+- **art. 19 ust. 1** – sąd okręgowy zarządza kontrolę operacyjną na wniosek organu Policji po pisemnej zgodzie prokuratora; katalog umyślnych przestępstw; zasada subsydiarności („gdy inne środki okazały się bezskuteczne albo będą nieprzydatne"). [W]
+- art. 19 ust. 3 – tryb niecierpiący zwłoki (zgoda prokuratora, sąd w 5 dni). [W]
+- **art. 19 ust. 6** – formy: treść rozmów, obraz/dźwięk, **treść korespondencji, w tym elektronicznej**, dane z nośników/urządzeń końcowych/systemów, przesyłki. [W]
+- art. 19 ust. 7 – treść wniosku (m.in. dane pozwalające jednoznacznie określić podmiot). [Ś]
+- art. 19 ust. 8–9 – 3 miesiące + 3 miesiące + dalsze przedłużenia; łącznie do 18 miesięcy (3+3+12). [Ś]
+- art. 19 ust. 15 – przekazanie materiałów zawierających dowody prokuratorowi. [Ś]
+- **art. 19 ust. 16** – „Osobie, wobec której kontrola operacyjna była stosowana, nie udostępnia się materiałów zgromadzonych podczas trwania tej kontroli" (z zastrzeżeniem art. 321 k.p.k. – dotyczy tylko podejrzanego). **Przepis kluczowy: ustawowe wyłączenie dostępu.** [Ś/W – numer ustępu do weryfikacji]
+- art. 19 ust. 17 – zniszczenie materiałów nieistotnych. [Ś]
+- **art. 19 ust. 20** – zażalenie na postanowienia sądu przysługuje **wyłącznie organowi Policji**. [Ś]
+- art. 19 ust. 22 – roczna, jawna informacja ministra dla Sejmu i Senatu (statystyka). [Ś]
+- **art. 20c ust. 1–2** – pozyskiwanie danych telekomunikacyjnych, pocztowych i internetowych (niestanowiących treści) „w celu zapobiegania lub wykrywania przestępstw" – **bez uprzedniej zgody sądu**, bez katalogu przestępstw, bez wiedzy i zgody osoby; także przez stałe łącze teleinformatyczne. [W]
+- **art. 20ca** – „kontrola" sądu okręgowego: **półroczne sprawozdania zbiorcze** Policji; sąd „może" zapoznać się z materiałami. Brak kontroli uprzedniej, brak kontroli indywidualnej, brak informowania osoby. [Ś/W]
+- art. 20cb – dane abonenckie. [Ś]
+- Analogiczne przepisy innych służb (przytoczyć zbiorczo, [Ś]): ustawa o ABW i AW – art. 27, 28; ustawa o CBA – art. 17, 18; ustawa o Straży Granicznej – art. 9e, 10b; ustawa o KAS – art. 118, 127; ustawa o Żandarmerii Wojskowej – art. 31.
+- Ustawa z 15.01.2016 r. o zmianie ustawy o Policji (Dz.U. 2016 poz. 147) – wykonanie wyroku TK K 23/11; wprowadziła art. 20ca; nie wprowadziła notyfikacji. [Ś]
+
+### 3.3. Retencja danych
+- Dawne art. 180a, 180c, 180d ustawy z 16.07.2004 r. – Prawo telekomunikacyjne (retencja 12 miesięcy, zakres danych, tajemnica). [W co do treści historycznej]
+- Od 10.11.2024 r.: ustawa z 12.07.2024 r. – **Prawo komunikacji elektronicznej** (Dz.U. 2024 poz. 1221) – przepisy o retencji danych przejmujące art. 180a–180d Pt (12 miesięcy, retencja generalna i niezróżnicowana). **Numerację artykułów PKE zweryfikować** [N]; nie podawać numeru bez sprawdzenia.
+
+### 3.4. Kodeks postępowania karnego
+- art. 156 (dostęp do akt – strony; świadek nie ma dostępu) [W]; art. 177, 183, 190 (świadek) [W]; art. 217, 219, 236a (przeszukanie, zatrzymanie rzeczy, dane informatyczne) [Ś]; art. 218, 218a (żądanie wydania korespondencji/danych; zabezpieczenie danych) [Ś]; **art. 237–242** (procesowa kontrola i utrwalanie rozmów; art. 239 – odroczenie ogłoszenia postanowienia osobie, której dotyczy, nie dłużej niż do prawomocnego zakończenia postępowania; art. 240 – zażalenie „osoby, której dotyczy") – **jedyny tryb z elementem notyfikacji, nie dotyczy kontroli operacyjnej** [Ś/W]; **art. 168a** (dowody uzyskane z naruszeniem przepisów co do zasady dopuszczalne) [W]; **art. 168b** (wykorzystanie materiałów kontroli operacyjnej co do innego przestępstwa lub innej osoby – **decyzja prokuratora**, bez sądu i bez notyfikacji) [W]; art. 459, 465 (zażalenia) [W].
+- Uchwała SN z 28.06.2018 r., **I KZP 4/18** – art. 168b ogranicza się do przestępstw katalogowych z art. 19 ust. 1 ustawy o Policji. [Ś/W]
+
+### 3.5. Inne akty
+- Ustawa z 28.01.2016 r. – Prawo o prokuraturze: **art. 11** (roczna jawna informacja Prokuratora Generalnego o liczbie osób objętych wnioskami o kontrolę) [Ś]; art. 57 (uprawnienia nadzorcze PG wobec kontroli operacyjnej) [N – zweryfikować].
+- Ustawa z 14.12.2018 r. o ochronie danych osobowych przetwarzanych w związku z zapobieganiem i zwalczaniem przestępczości (Dz.U. 2019 poz. 125) – wyłączenia podmiotowe (służby specjalne) i ograniczenia prawa dostępu „dla dobra postępowania"; skarga do Prezesa UODO. [Ś co do istnienia; N co do numerów artykułów – cytować opisowo]
+- Ustawa z 5.08.2010 r. o ochronie informacji niejawnych (materiały kontroli operacyjnej jako niejawne). [W]
+- Ustawa z 10.06.2016 r. o działaniach antyterrorystycznych – art. 9 (dotyczy cudzoziemców; wspomnieć jako element systemu, nie jako podstawę zarzutu). [Ś]
+
+### 3.6. Orzecznictwo krajowe i materiały
+- **Wyrok TK z 30.07.2014 r., K 23/11** – niekonstytucyjność m.in. braku niezależnej kontroli nad pozyskiwaniem danych telekomunikacyjnych i braku procedur niszczenia materiałów objętych tajemnicą zawodową. [Ś/W]
+- Wyrok TK z 12.12.2005 r., K 32/04 – wymogi określoności przepisów o kontroli operacyjnej. [Ś]
+- Wniosek RPO do TK z 2016 r. przeciwko ustawie „inwigilacyjnej" (sygn. – [N], prawdopodobnie K 9/16) – nierozpoznany merytorycznie / stan do sprawdzenia.
+- **Komisja Wenecka, opinia nr 839/2016 (CDL-AD(2016)012, czerwiec 2016)** o ustawie z 15.01.2016 r. – zalecenia: notyfikacja następcza, niezależny nadzór, kontrola dostępu do metadanych. [Ś/W]
+- Komitet Praw Człowieka ONZ, Uwagi końcowe – Polska 2016 (CCPR/C/POL/CO/7), fragment o inwigilacji. [Ś co do istnienia; N co do punktów]
+- Raporty Fundacji Panoptykon i HFPC; raport senackiej komisji ds. Pegasusa (2023). [Ś – opisowo]
+- Orzecznictwo TSUE (jako kontekst i element oceny „jakości prawa" w państwie UE; Trybunał w *Pietrzak* i *Ekimdzhiev 2022* odwołuje się do niego): *Digital Rights Ireland* (C-293/12 i C-594/12, 8.04.2014) [W]; *Tele2 Sverige/Watson* (C-203/15 i C-698/15, 21.12.2016) [W]; *La Quadrature du Net* (C-511/18, C-512/18, C-520/18, 6.10.2020) [W]; *Prokuratuur* (C-746/18, 2.03.2021 – uprzednia kontrola sądu lub niezależnego organu przy dostępie do danych) [W]; *SpaceNet* (C-793/19 i C-794/19, 20.09.2022) [Ś]; *Commissioner of An Garda Síochána* (C-140/20, 5.04.2022) [Ś].
+
+---
+
+## 4. Zarzuty – które przepisy Konwencji i dlaczego
+
+### Zarzut I – art. 8 (życie prywatne i korespondencja) – zarzut główny
+Trzy płaszczyzny (ująć wyraźnie, bo każda ma inny test statusu ofiary):
+- **(a) in abstracto** – samo istnienie reżimu kontroli operacyjnej (art. 19) i dostępu do danych (art. 20c–20ca) oraz generalnej retencji, pozbawionego gwarancji wymaganych przez Konwencję (brak notyfikacji, brak środka, brak uprzedniej niezależnej kontroli dostępu do danych, decyzja prokuratora z art. 168b);
+- **(b) in concreto** – uzasadnione prawdopodobieństwo, że wobec skarżącej zastosowano środek (cytowanie prywatnych wiadomości), bez notyfikacji i możliwości weryfikacji;
+- **(c) odmowa informacji** – orzeczenia z 2025–2026 r. potwierdzające, że prawo nie daje żadnej drogi ustalenia, czy ingerencja miała miejsce, a tym bardziej – zbadania jej legalności i żądania zniszczenia danych.
+
+### Zarzut II – art. 13 w zw. z art. 8
+Brak jakiegokolwiek skutecznego środka: sąd i prokuratura wprost stwierdziły brak podstawy prawnej. Zaznaczyć, że Trybunał może uznać zarzut za pochłonięty przez art. 8 (*Zakharov* § 307 [Ś]) – podnosić mimo to, bo w *Ekimdzhiev 2022* stwierdzono odrębne naruszenie art. 13 [Ś].
+
+### Zarzut III – art. 10 i art. 11 (samodzielnie, a pomocniczo jako element oceny art. 8)
+Inwigilacja organizatorki pokojowych zgromadzeń = efekt mrożący dla wolności wypowiedzi i zgromadzeń; dane o poglądach politycznych są danymi wrażliwymi. Realistycznie: Trybunał często uznaje brak odrębnej kwestii (*Catt*) – wnosić o rozpoznanie, a co najmniej o uwzględnienie statusu aktywistki jako okoliczności obciążającej w ramach art. 8.
+
+### Zarzuty rozważone i **niepodnoszone** (wyjaśnić w planie, nie w skardze)
+- art. 6 § 1 – ryzyko niedopuszczalności ratione materiae wobec postępowań dotyczących tajnej inwigilacji; art. 13 pokrywa potrzebę.
+- art. 14 w zw. z art. 8 – brak materiału porównawczego; ryzyko oczywistej bezzasadności i rozmycia skargi.
+
+---
+
+## 5. Dopuszczalność – jak uzasadnić
+
+### 5.1. Wyczerpanie środków krajowych (art. 35 § 1)
+1. Skarżąca wykorzystała jedyną dostępną drogę: wniosek do prokuratury i do sądu, zażalenie, prawomocne postanowienie SO z 1.09.2026 r.; brak kasacji/dalszego środka. Zarzut podniesiony „co do istoty" (*Vučković* §§ 69–77 [Ś]; *Gherghina* (dec.) [WI] §§ 83–89 [Ś]).
+2. **Ciężar dowodu skuteczności innych środków spoczywa na Rządzie** (*Akdivar* §§ 65–69 [Ś/W]; *Vučković* § 77 [Ś]).
+3. Uprzedzić zarzuty niewyczerpania:
+   - **skarga konstytucyjna (art. 79 Konstytucji)** – skuteczna tylko gdy naruszenie wynika z treści przepisu, nie z jego stosowania (*Szott-Medyńska* (dec.) [W co do tezy]); tu problem to w istocie **zaniechanie ustawodawcze** (brak procedury notyfikacji i środka), którego TK nie może usunąć w trybie skargi; dodatkowo: wątpliwości co do TK jako „sądu ustanowionego ustawą" (*Xero Flor* [Ś]; *M.L. p. Polsce* [Ś]) i problem niepublikowania orzeczeń TK od 2024 r. [Ś – stan do sprawdzenia];
+   - **powództwo o ochronę dóbr osobistych (art. 23–24 k.c.)** – wymaga wiedzy o fakcie i sprawcy ingerencji; skarżąca jej nie ma i nie może uzyskać;
+   - **skarga do Prezesa UODO / wniosek o dostęp do danych** – wyłączenia i ograniczenia w ustawie z 2018 r.; organ nie ma dostępu do materiałów niejawnych kontroli operacyjnej [Ś – opisowo];
+   - **wniosek do RPO, informacja publiczna, sprawozdania parlamentarne** – nie są środkami w rozumieniu art. 13/35 (brak mocy wiążącej; informacje statystyczne; materiały niejawne);
+   - art. 19 ust. 20 ustawy o Policji – zażalenie tylko dla Policji; art. 19 ust. 16 – ustawowy zakaz udostępnienia.
+4. Oparcie: *Pietrzak* – Trybunał stwierdził brak skutecznego środka w prawie polskim (dlatego status ofiary in abstracto) [Ś/W co do tezy; §§ do weryfikacji].
+
+### 5.2. Termin 4 miesięcy
+- Ostateczne orzeczenie: 1.09.2026 r. Bieg od dnia następnego, upływ 1.01.2027 r. (*Sabri Güneş* [WI] §§ 39–44, 60 [Ś]). Jeżeli postanowienie doręczono później – bieg od doręczenia (*Worm* § 33 [Ś]), ale **liczyć ostrożnie od 1.09.2026**.
+- Pomocniczo: zarzut in abstracto dotyczy **sytuacji trwałej** (obowiązywanie reżimu bez notyfikacji; dalsze przechowywanie ewentualnych danych) – termin nie biegnie w ten sam sposób; nie opierać się na tym wyłącznie.
+
+### 5.3. Status ofiary (art. 34)
+Zastosować dwustopniowy test *Roman Zakharov* [WI] §§ 170–172 [W]:
+1. **Zakres ustawodawstwa** – polskie przepisy obejmują każdego użytkownika usług łączności (art. 20c, retencja) i każdą osobę mogącą być „podmiotem" kontroli operacyjnej; skarżąca jako organizatorka protestów należy dodatkowo do grupy realnie narażonej (działania Policji wobec ruchów protestu).
+2. **Dostępność środków krajowych** – brak skutecznego środka → uzasadnione „powszechne podejrzenie", skarżąca nie musi wykazywać, że była inwigilowana (*Zakharov* § 171; *Klass* §§ 34–38 [Ś/W]; *Weber i Saravia* §§ 78–79 [Ś]; *Ekimdzhiev 2007* §§ 58–59 [Ś]; *Iordachi* §§ 33–35 [Ś]; *Szabó* §§ 32–39 [Ś]; **Pietrzak** – wprost dla Polski [Ś/W]).
+3. **Ponadto**: nawet gdyby środki istniały, zachodzi „uzasadnione prawdopodobieństwo" konkretnej ingerencji (*Halford* § 57 [Ś]; *Kennedy* §§ 119–129 [Ś]; *Kvasnica* [Ś, §§ do weryfikacji]) – cytowanie prywatnych wiadomości przez Policję.
+4. Status ofiary nie zależy od tego, czy skarżąca była „celem", czy osobą trzecią/rozmówczynią (*Lambert* §§ 35–41 [Ś]; *Pruteanu* [Ś, §§ do weryfikacji]).
+
+### 5.4. Pozostałe
+- art. 35 § 2(b) – brak innego postępowania międzynarodowego.
+- art. 35 § 3(b) – nie dotyczy: waga prawa, kwestia systemowa, sprawa rozpoznana merytorycznie przez sądy krajowe.
+- ratione materiae: wiadomości z komunikatora = „korespondencja" (pkt 6.1).
+
+---
+
+## 6. Schemat argumentacji merytorycznej
+
+### 6.1. Art. 8 – krok 1: zastosowanie
+- Wiadomości z komunikatora = „korespondencja" i „życie prywatne": *Bărbulescu* [WI] §§ 70–74 [Ś/W]; *Copland* §§ 41–44 [Ś/W]; *Taylor-Sabori* (przechwytywanie wiadomości pagerowych) [Ś, §§ do weryfikacji]; *Halford* § 44 [Ś].
+- Dane telekomunikacyjne/metadane: *Malone* § 84 [Ś/W]; *Copland* § 43 [Ś]; *Ben Faiza* [Ś]; *Big Brother Watch* [WI] – metadane nie mniej inwazyjne niż treść (§ 363 [N]); *Podchasov* §§ 59–80 [Ś].
+- Dane o działalności politycznej/publicznej zbierane systematycznie: *Rotaru* [WI] §§ 43–46 [Ś]; *Catt* § 112 [Ś]; *Segerstedt-Wiberg* [Ś].
+
+### 6.2. Krok 2: ingerencja (cztery formy – ująć osobno)
+- Samo istnienie ustawodawstwa: *Klass* § 41 [Ś/W]; *Zakharov* §§ 170–171 [W]; *Pietrzak* [Ś/W].
+- Prawdopodobne zastosowanie i wykorzystanie treści w przesłuchaniu: *Halford* § 57 [Ś]; *Kvasnica* [Ś].
+- Przechowywanie danych niezależnie od dalszego użycia: *Amann* [WI] §§ 65–70 [Ś/W]; *Leander* § 48 [Ś]; *Rotaru* § 46 [Ś].
+- Brak notyfikacji i niemożność weryfikacji jako samodzielny element ingerencji/braku gwarancji: *Zakharov* §§ 286–291 [Ś]; *Szabó* § 86 [Ś/W]; *Weber i Saravia* § 135 [Ś]; *Ekimdzhiev 2007* §§ 90–91 [Ś].
+
+### 6.3. Krok 3: „przewidziane przez ustawę" – jakość prawa (centrum skargi)
+- Standard: *Malone* §§ 67–68 [Ś/W]; *Huvig* §§ 32–35, *Kruslin* §§ 33–36 [Ś]; *Zakharov* §§ 227–234 [Ś], w tym **sześć minimalnych gwarancji** – *Weber i Saravia* § 95 [W], *Zakharov* § 231 [Ś]: (1) charakter przestępstw, (2) kategorie osób, (3) limit czasu, (4) procedura badania/wykorzystania/przechowywania, (5) środki ostrożności przy przekazywaniu, (6) okoliczności usunięcia/zniszczenia; plus: autoryzacja (*Zakharov* §§ 257–267 [Ś]; *Szabó* § 77 [Ś]; *Dumitru Popescu (nr 2)* §§ 70–73 [Ś/N]), nadzór (*Zakharov* §§ 275–285 [Ś]; *Klass* §§ 55–56 [Ś]), notyfikacja i środki (*Zakharov* §§ 286–301 [Ś]; *Kennedy* § 167 [Ś/N] – brak notyfikacji kompensowany tylko dostępnym dla każdego niezależnym organem), „end-to-end safeguards" i kontrola ex post (*Big Brother Watch* [WI] §§ 335–339, 350–361 [Ś/N]; *Centrum för rättvisa* [WI] [Ś, bez §§]).
+- Trybunał bada „przewidziane przez ustawę" i „konieczność" łącznie: *Zakharov* § 236 [Ś]; *Kennedy* § 155 [Ś/N].
+- **Mapowanie na prawo polskie** (każdy punkt z przepisem i orzeczeniem):
+  1. Brak jakiejkolwiek notyfikacji – nawet po zakończeniu kontroli, zniszczeniu materiałów, zakończeniu postępowania (art. 19 ustawy o Policji – brak przepisu; art. 19 ust. 16 – zakaz dostępu; kontrast z art. 239 k.p.k.). → *Zakharov* §§ 287–291; *Ekimdzhiev 2007* § 90; *Szabó* § 86; **Pietrzak**.
+  2. Brak organu/sądu, do którego jednostka mogłaby się zwrócić o weryfikację (art. 19 ust. 20 – zażalenie tylko dla Policji; postanowienie SO z 1.09.2026). → *Kennedy* § 167 (a contrario); *Lambert* §§ 38–41; *Association…Ekimdzhiev* §§ 100–103 [Ś/N]; **Pietrzak**.
+  3. Dostęp do danych telekomunikacyjnych bez uprzedniej niezależnej kontroli i bez katalogu (art. 20c); kontrola następcza zbiorcza (art. 20ca) iluzoryczna. → **Pietrzak**; *Ekimdzhiev 2022* [Ś, §§ do weryfikacji]; TK K 23/11; Komisja Wenecka 2016; TSUE *Prokuratuur*.
+  4. Retencja generalna i niezróżnicowana przez 12 miesięcy (Pt 180a → PKE). → **Pietrzak**; *Ekimdzhiev 2022*; *Škoberne* [Ś/N]; TSUE *Tele2*, *La Quadrature du Net*.
+  5. Wykorzystanie materiałów wobec innych osób/innych przestępstw decyzją prokuratora, bez sądu i notyfikacji (art. 168b k.p.k.); SN I KZP 4/18 ogranicza do katalogu – tym bardziej wymaga wyjaśnienia, skąd Policja miała wiadomości świadka. → *Dragojević* [Ś]; *Bašić p. Chorwacji* [N – opcjonalnie].
+  6. Osoby trzecie/rozmówcy – brak jakiejkolwiek ochrony i legitymacji. → *Lambert*; *Pruteanu*.
+  7. Nadzór parlamentarny (art. 19 ust. 22 ustawy o Policji; art. 11 Prawa o prokuraturze) – wyłącznie statystyczny; prokurator jako organ nadzoru nie jest niezależny od strony wnioskującej. → *Zakharov* §§ 275–285; *Klass* § 56; *Iordachi* § 51 (statystyka akceptacji wniosków) [Ś/N].
+
+### 6.4. Krok 4: konieczność w społeczeństwie demokratycznym
+- *Klass* §§ 48–50 [Ś/W] (ryzyko „podważenia demokracji w imię jej obrony"); *Szabó* § 73 [Ś/W] („ścisła konieczność"); *Zakharov* § 232 [Ś]; *Uzun* §§ 61–66 (gradacja inwazyjności) [Ś – opcjonalnie].
+- Element aktywistyczny: *Segerstedt-Wiberg* §§ 107, 113 [Ś]; *Catt* §§ 93–128 [Ś]; *Glukhin* §§ 84–91 [Ś]; *Ezelin* § 53 [W]; *Kudrevičius* [WI] §§ 91–92 [Ś/N].
+
+### 6.5. Art. 13 w zw. z art. 8
+1. „Arguable claim" – *Boyle i Rice* § 52 [Ś].
+2. Standard w sprawach inwigilacji: środek „tak skuteczny, jak to możliwe" w warunkach tajności – *Leander* §§ 77–84 [Ś]; *Rotaru* §§ 67–73 [Ś]; *Segerstedt-Wiberg* §§ 117–122 [Ś]; *Association…Ekimdzhiev* §§ 100–103 [Ś/N]; *Ekimdzhiev 2022* – naruszenie art. 13 [Ś].
+3. Zastosowanie: żaden z instrumentów (pkt 5.1.3) – ani pojedynczo, ani „w agregacie" (*Leander* § 77) – nie pozwala ustalić faktu ingerencji, ocenić legalności, uzyskać zniszczenia danych ani zadośćuczynienia; sądy krajowe potwierdziły to wprost.
+
+### 6.6. Art. 10 i 11
+1. Zastosowanie: koordynacja pokojowych zgromadzeń i komunikacja z uczestnikami – rdzeń art. 11 i art. 10 (*Ezelin* § 53; *Kudrevičius* §§ 91–92).
+2. Ingerencja: gromadzenie/wykorzystanie danych o działalności politycznej i o sieci kontaktów organizatorki (*Segerstedt-Wiberg* §§ 107, 113; *Glukhin*; *Catt* – efekt mrożący).
+3. Brak „przewidzenia przez ustawę" – z tych samych przyczyn co art. 8.
+4. Wniosek ewentualny: uwzględnienie w ramach art. 8 (*Catt* – brak odrębnej kwestii [Ś]).
+
+---
+
+## 7. Lista orzeczeń ETPC do powołania (nazwa – nr – data – §§ – zastosowanie – pewność)
+
+1. *Klass i inni p. Niemcom*, 5029/71, 6.09.1978 – §§ 34–38 (status ofiary), 41 (ingerencja), 48–50 (konieczność), 55–56 (nadzór sądowy), 58 (notyfikacja). [W sprawa; Ś/W §§]
+2. *Malone p. Zjednoczonemu Królestwu*, 8691/79, 2.08.1984 – §§ 67–68 (jakość prawa), 84, 87–88 (metering). [W; Ś/W §§]
+3. *Leander p. Szwecji*, 9248/81, 26.03.1987 – § 48; §§ 77–84 (art. 13). [W; Ś §§]
+4. *Boyle i Rice p. ZK*, 9659/82 i 9658/82, 27.04.1988 – § 52 (arguable claim). [Ś]
+5. *Huvig p. Francji*, 11105/84, i *Kruslin p. Francji*, 11801/85, 24.04.1990 – §§ 32–35 / 33–36. [W; Ś §§]
+6. *Ezelin p. Francji*, 11800/85, 26.04.1991 – § 53. [W]
+7. *Akdivar i inni p. Turcji* [WI], 21893/93, 16.09.1996 – §§ 65–69. [Ś/W]
+8. *Halford p. ZK*, 20605/92, 25.06.1997 – §§ 44, 57. [W; Ś §§]
+9. *Worm p. Austrii*, 22714/93, 29.08.1997 – § 33. [Ś]
+10. *Lambert p. Francji*, 23618/94, 24.08.1998 – §§ 35–41. [W; Ś §§]
+11. *Amann p. Szwajcarii* [WI], 27798/95, 16.02.2000 – §§ 65–70. [W; Ś §§]
+12. *Rotaru p. Rumunii* [WI], 28341/95, 4.05.2000 – §§ 43–46, 55–63, 67–73. [W; Ś §§]
+13. *Taylor-Sabori p. ZK*, 47114/99, 22.10.2002 – (§§ do weryfikacji). [Ś]
+14. *Szott-Medyńska i inni p. Polsce* (dec.), 47414/99, 9.10.2003 – skarga konstytucyjna. [W teza; Ś nr]
+15. *Weber i Saravia p. Niemcom* (dec.), 54934/00, 29.06.2006 – §§ 78–79, 93–95, 135. [W; § 95 W]
+16. *Segerstedt-Wiberg i inni p. Szwecji*, 62332/00, 6.06.2006 – §§ 107, 113, 117–122. [W; Ś §§]
+17. *Copland p. ZK*, 62617/00, 3.04.2007 – §§ 41–44. [W; Ś/W §§]
+18. *Dumitru Popescu p. Rumunii (nr 2)*, 71525/01, 26.04.2007 – §§ 70–73. [Ś; N §§]
+19. *Association for European Integration and Human Rights i Ekimdzhiev p. Bułgarii*, 62540/00, 28.06.2007 – §§ 58–59, 75–77, 90–91, 100–103. [W; Ś/N §§]
+20. *Liberty i inni p. ZK*, 58243/00, 1.07.2008 – §§ 56–57, 62–63. [Ś]
+21. *Iordachi i inni p. Mołdawii*, 25198/02, 10.02.2009 – §§ 33–35, 39–53, 51. [Ś]
+22. *Kvasnica p. Słowacji*, 72094/01, 9.06.2009 – (§§ 79–89 [N]). [Ś]
+23. *Kennedy p. ZK*, 26839/05, 18.05.2010 – §§ 119–129, 155, 167. [W; Ś/N §§]
+24. *Uzun p. Niemcom*, 35623/05, 2.09.2010 – §§ 61–66. [Ś – opcjonalnie]
+25. *Sabri Güneş p. Turcji* [WI], 27653/10, 29.06.2012 – §§ 39–44, 60. [Ś]
+26. *Vučković i inni p. Serbii* [WI] (zastrzeżenie wstępne), 17153/11 i in., 25.03.2014 – §§ 69–77. [Ś/W]
+27. *Dragojević p. Chorwacji*, 68955/11, 15.01.2015 – §§ 83–101. [Ś; N §§]
+28. *Pruteanu p. Rumunii*, 30181/05, 3.02.2015 – (§§ 48–57 [N]). [Ś]
+29. *Gherghina p. Rumunii* (dec.) [WI], 42219/07, 9.07.2015 – §§ 83–89. [Ś]
+30. *Kudrevičius i inni p. Litwie* [WI], 37553/05, 15.10.2015 – §§ 91–92. [W; Ś/N §§]
+31. **Roman Zakharov p. Rosji** [WI], 47143/06, 4.12.2015 – §§ 164–179 (status; test §§ 170–172), 227–234 (jakość prawa; § 231 gwarancje), 236, 257–267, 275–285, 286–301, 302–305, 307 (art. 13), 312 (art. 41). [W sprawa i test; Ś pozostałe §§]
+32. *Szabó i Vissy p. Węgrom*, 37138/14, 12.01.2016 – §§ 32–39, 73, 75–77, 86. [W; Ś/W §§]
+33. *Bărbulescu p. Rumunii* [WI], 61496/08, 5.09.2017 – §§ 70–74. [W; Ś §§]
+34. *Ben Faiza p. Francji*, 31446/12, 8.02.2018 – (§§ do weryfikacji). [Ś]
+35. *Catt p. ZK*, 43514/15, 24.01.2019 – §§ 93–128 (§ 112). [W; Ś §§]
+36. *Big Brother Watch i inni p. ZK* [WI], 58170/13, 62322/14, 24960/15, 25.05.2021 – §§ 335–339, 350–361, 363. [W; Ś/N §§]
+37. *Centrum för rättvisa p. Szwecji* [WI], 35252/08, 25.05.2021 – bez §§. [W sprawa]
+38. *Xero Flor w Polsce sp. z o.o. p. Polsce*, 4907/18, 7.05.2021 – teza o TK. [W; bez §§]
+39. *Zoltán Varga p. Słowacji*, 58361/12 i 2 inne, 20.07.2021 – przechowywanie materiałów pochodnych, brak gwarancji. [Ś; bez §§]
+40. **Ekimdzhiev i inni p. Bułgarii**, 70078/12, 11.01.2022 – gwarancje inwigilacji, retencja danych, art. 13, art. 46. [W sprawa; Ś naruszenia; N §§]
+41. *Haščák p. Słowacji*, 58359/12 i 2 inne, 23.06.2022 – (opcjonalnie). [Ś]
+42. *Glukhin p. Rosji*, 11519/20, 4.07.2023 – §§ 84–91 (art. 8); art. 10. [Ś]
+43. *M.L. p. Polsce*, 40119/21, 14.12.2023 – TK; „przewidziane przez ustawę". [Ś]
+44. *Podchasov p. Rosji*, 33696/19, 13.02.2024 – §§ 59–80. [Ś]
+45. *Škoberne p. Słowenii*, 19920/20, 15.02.2024 – generalna retencja = naruszenie art. 8. [Ś; bez §§]
+46. **Pietrzak i Bychawska-Siniarska i inni p. Polsce**, 72038/17 i 25237/18, 28.05.2024 – status ofiary in abstracto wobec braku środka w Polsce; naruszenie art. 8 co do reżimu kontroli operacyjnej (brak notyfikacji, brak środka, niewystarczający nadzór) i co do retencji/dostępu do danych telekomunikacyjnych; wyrok w j. francuskim [Ś]; **§§ do weryfikacji – nie podawać numerów**; kwestia art. 13 i art. 46 w tym wyroku – do sprawdzenia [N].
+
+**Nie cytować** bez weryfikacji: spraw dot. Pegasusa p. Polsce (status komunikacji nieznany), *Verein KlimaSeniorinnen* (nie dotyczy inwigilacji – co najwyżej jedno zdanie kontekstowe).
+
+---
+
+## 8. Żądania (sekcja „wnioski" w załączniku; w formularzu skrótowo)
+
+1. **Stwierdzenie naruszenia**: art. 8; art. 13 w zw. z art. 8; art. 10 i 11 (ewentualnie: uwzględnienie w ramach art. 8).
+2. **Art. 41 – słuszne zadośćuczynienie**: szkoda niemajątkowa – zaproponować kwotę rzędu [np. 10 000 EUR] z zastrzeżeniem, że w sprawach in abstracto Trybunał często poprzestaje na stwierdzeniu naruszenia (*Zakharov* § 312 [Ś]); uzasadnić element konkretny (wykorzystanie wiadomości w przesłuchaniu, pozycja aktywistki, odmowa informacji). Koszty i wydatki – wg wykazu (Reguła 60; zestawienie do przedłożenia na etapie obserwacji).
+3. **Art. 46 – środki generalne** (wniosek o wskazanie, jak w *Ekimdzhiev 2022* [Ś]): wprowadzenie notyfikacji następczej; procedury umożliwiającej każdemu zwrócenie się do niezależnego organu/sądu o weryfikację; uprzedniej niezależnej kontroli dostępu do danych telekomunikacyjnych; ograniczenia retencji; sądowej kontroli art. 168b k.p.k.
+4. **Środki indywidualne**: poinformowanie skarżącej, czy i w jakim trybie pozyskano jej korespondencję/dane; zniszczenie materiałów; umożliwienie kontroli sądowej.
+5. **Wnioski procesowe**:
+   - wezwanie Rządu (art. 38 Konwencji; Reguły 44A i 44C) do ujawnienia, czy wobec skarżącej stosowano środki z art. 19/20c ustawy o Policji lub art. 237/168b k.p.k. i na jakiej podstawie Policja dysponowała treścią jej wiadomości; wniosek o wyciągnięcie wniosków z ewentualnej odmowy (Reguła 44C) [Ś];
+   - sugestia rozpoznania w trybie „ugruntowanego orzecznictwa" (art. 28 § 1(b)) z uwagi na *Pietrzak* – lub alternatywnie wniosek o traktowanie priorytetowe (Reguła 41) z uwagi na systemowy charakter i efekt mrożący;
+   - ewentualnie: brak wniosku o anonimowość (do decyzji klientki).
+
+---
+
+## 9. Antycypowane zarzuty Rządu i odpowiedzi (do wplecenia w uzasadnienie)
+
+| Zarzut Rządu | Odpowiedź |
+|---|---|
+| Actio popularis / brak statusu ofiary | Test *Zakharov* §§ 170–172 spełniony w obu członach; *Pietrzak* dla Polski; dodatkowo „uzasadnione prawdopodobieństwo" (*Halford*). |
+| Brak dowodu, że wiadomości pochodziły z inwigilacji (mogły pochodzić od rozmówcy) | Każdy wariant jest ingerencją w korespondencję skarżącej bez notyfikacji i środka (*Lambert*, *Pruteanu*); niemożność ustalenia źródła jest właśnie naruszeniem; informacja jest wyłącznie w rękach Rządu – art. 38, Reguła 44C. |
+| Niewyczerpanie (skarga konstytucyjna, powództwo cywilne, UODO, RPO) | Pkt 5.1.3; ciężar dowodu na Rządzie (*Akdivar* § 68); sądy krajowe stwierdziły brak podstawy prawnej. |
+| Istnieje nadzór (sąd zarządzający, prokurator, sprawozdania art. 20ca, informacje roczne) | Nadzór bez udziału i wiedzy jednostki, bez kontroli następczej na wniosek, statystyczny; *Zakharov* §§ 275–301; *Pietrzak*; Komisja Wenecka 2016; TK K 23/11. |
+| Art. 13 pochłonięty przez art. 8 | Dopuszczalne; wnosić o rozpoznanie jak w *Ekimdzhiev 2022*. |
+| Brak ingerencji w art. 10/11 | *Segerstedt-Wiberg* §§ 107, 113; *Glukhin*; *Catt* – co najmniej element oceny art. 8. |
+| Termin | Pkt 5.2; sytuacja trwała pomocniczo. |
+
+---
+
+## 10. Załączniki i checklista formalna
+
+**Załączyć (kopie, Reguła 47 § 3.1):**
+1. Wniosek do prokuratury [data] i odpowiedź [data].
+2. Wniosek do sądu [data], postanowienie I instancji [data], zażalenie [data], **postanowienie SO z 1.09.2026 r.** (z dowodem doręczenia).
+3. Wezwanie na przesłuchanie z marca 2024 r.; protokół przesłuchania świadka lub wniosek o jego wydanie (jeśli był) – jeżeli brak, oświadczenie skarżącej opisujące przebieg przesłuchania i cytowane wiadomości.
+4. Dowody działalności: zgłoszenia zgromadzeń, publikacje medialne, zrzuty komunikacji (bez danych osób trzecich lub zanonimizowane).
+5. Pełnomocnictwo.
+6. Opcjonalnie: wyciągi z raportów (Panoptykon/HFPC, Senat) – jako materiał kontekstowy.
+
+**Checklista przed wysyłką:**
+- formularz urzędowy, aktualna wersja, wszystkie pola, podpis skarżącej i pełnomocnika (niekompletny formularz = odrzucenie, Reguła 47 § 5.1);
+- limity stron w sekcjach E/F/G i załącznika (≤ 20 stron);
+- spójność dat; każda data z dokumentu, nie z pamięci;
+- wysyłka pocztą z datą stempla ≤ 31.12.2026;
+- lista orzeczeń przejrzana pod kątem oznaczeń pewności – numery paragrafów oznaczone [N] usunięte albo opatrzone zastrzeżeniem.
