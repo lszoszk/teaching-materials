@@ -906,6 +906,9 @@ html.tel body .hud :is([data-action=prev],[data-action=next]){flex:1 1 0;font-si
 html.tel body .hud #counter{font-size:15px;white-space:nowrap;padding:0 10px}
 html.tel-czyt .slide.active{padding-bottom:180px}
 
+/* przycisk mapy w pasku: wyszarzony, gdy nic nie robi (jesteś na mapie i nie ma slajdu, do którego wrócić) */
+nav.hud [data-action="map"]:disabled{opacity:.3;cursor:default}
+
 </style>
 <script src="../statystyki.js" defer></script></head><body data-public="false" data-online><main id="viewport"><div id="stage"><div id="world" aria-hidden="true"></div>
 
@@ -2877,7 +2880,7 @@ function timeUsed(){return elapsed+(running?(Date.now()-started)/1000:0)}
 function notes(){if(isStudent)return '';const s=slides[current];return `<p class="meta">Slajd ${current+1} / ${slides.length} · plan ${s.dataset.min} min</p><h2>${s.dataset.title}</h2>${s.querySelector('.notes')?.innerHTML||''}`}
 function render(){
  slides.forEach((s,i)=>{s.classList.toggle('active',i===current);s.inert=i!==current;s.setAttribute('aria-hidden',String(i!==current));if(i!==current)s.querySelectorAll('video,audio').forEach(v=>v.pause())});
- $('stage').classList.toggle('on-map',isMap(current));{const mb=$('mapaBtn');if(mb){const m=isMap(current);mb.hidden=m&&!mapReturn;mb.textContent=m?'Wróć do slajdu ▸':'◂ Mapa'}}$('stage').classList.toggle('walk-on',walkMode&&isMap(current));hud();
+ $('stage').classList.toggle('on-map',isMap(current));{const mb=$('mapaBtn');if(mb){const m=isMap(current);mb.hidden=m&&!mapReturn;mb.textContent=m?'Wróć do slajdu ▸':'◂ Mapa'}}{const m=isMap(current),bez=m&&!mapReturn;document.querySelectorAll('nav.hud [data-action="map"]').forEach(x=>{x.disabled=bez;x.title=bez?'Jesteś na mapie (ten przycisk wraca z mapy do slajdu)':m?'Wróć do slajdu (M)':'Mapa i powrót do slajdu (M)'})}$('stage').classList.toggle('walk-on',walkMode&&isMap(current));hud();
  $('counter').textContent=current<mainCount?`${current+1} / ${mainCount}`:`Dodatek ${current-mainCount+1}`;
  $('progress').style.width=`${Math.min(current+1,mainCount)/mainCount*100}%`;
  if($('presenterNotes').dataset.slide!==String(current)){$('noteBody').innerHTML=notes();$('presenterNotes').innerHTML=notes();$('presenterNotes').dataset.slide=String(current)}
