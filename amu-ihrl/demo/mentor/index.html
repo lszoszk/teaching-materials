@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Mentor: przewodnik po kursie · IHRL 2026/27</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
@@ -13,7 +13,7 @@
 :root{--bg:#141019;--ink:#1b1622;--deep:#0f0b14;--paper:#efe6d2;--gold:#e0b950;--blue:#6fb7c9;--line:#4d4059;--muted:#ada290;--ok:#7fb069;--bad:#d65a4a;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--paper);font:17px/1.5 var(--mono)}
-main{max-width:1120px;margin:0 auto;padding:16px 20px 0;min-height:100vh;display:flex;flex-direction:column}
+main{max-width:1120px;margin:0 auto;padding:16px 20px 0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
 header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-right:230px}
 h1{font-size:28px;margin:0}h1 span{color:var(--gold)}
 .sub{color:var(--muted);margin:0;font-size:15px}
@@ -42,11 +42,14 @@ button:disabled{opacity:.45;cursor:default}
 .start b{color:var(--paper)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
 .chips button{font:14px/1.3 var(--sans);text-align:left}
-form#f{position:sticky;bottom:0;background:var(--bg);padding:10px 0 14px;display:flex;gap:10px;align-items:flex-end;border-top:2px solid #2a2135}
+form#f{position:sticky;bottom:0;background:var(--bg);padding:10px 0 14px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:flex-end;border-top:2px solid #2a2135}
 #q{flex:1;min-height:48px;max-height:180px;resize:vertical;background:var(--deep);color:var(--paper);border:3px solid var(--line);font:17px/1.45 var(--sans);padding:9px 12px}
 #q:focus{outline:none;border-color:var(--gold)}
 #wyslij{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700;font-size:17px;padding:10px 18px}
 .mysli{color:var(--muted);font-style:italic}
+.ai-info{margin:10px 0 2px;padding:8px 12px;border-left:5px solid var(--gold);background:var(--deep);font:15px/1.45 var(--sans);color:var(--paper)}.ai-info b{color:var(--gold)}
+.ai-stopka{flex-basis:100%;margin:0;font:12px/1.3 var(--sans);color:var(--muted)}
+.msg .kto .ai{display:inline-block;margin-left:6px;padding:0 5px;border:1px solid var(--gold);border-radius:3px;letter-spacing:1px}
 .panel{position:fixed;inset:5vh 6vw;z-index:50;display:none;background:var(--ink);border:4px solid var(--gold);box-shadow:10px 10px 0 #000b;padding:20px 24px;overflow:auto}
 .panel.on{display:block}.panel h2{margin:0 0 10px;color:var(--gold);font-size:22px}
 .panel p,.panel li{font:16px/1.5 var(--sans)}.panel .x{position:sticky;top:0;float:right}
@@ -54,25 +57,40 @@ form#f{position:sticky;bottom:0;background:var(--bg);padding:10px 0 14px;display
 .kodbox{max-width:560px;margin:30px 0;padding:16px 18px;background:var(--ink);box-shadow:inset 0 0 0 2px #3a3048,5px 5px 0 #0008}
 .kodbox input{font:inherit;font-size:18px;padding:6px 10px;background:var(--deep);color:var(--paper);border:3px solid var(--line);width:12em;margin-right:8px}
 small,.muted{color:var(--muted)}
-@media (max-width:760px){header{padding-right:0;margin-top:46px}.porown{grid-template-columns:1fr}.pasek{gap:10px}.msg{max-width:100%}}
+@media (max-width:760px){
+ html #trybBtn,html #prezBtn{position:absolute;font-size:12px;padding:5px 8px;top:8px}html #prezBtn{right:92px}
+ main{padding:44px 12px 0}
+ header{padding-right:0;gap:4px}h1{font-size:21px}.sub{display:none}
+ .pasek{gap:8px;margin:8px 0}.grupa{width:100%}.grupa>b{width:52px;font-size:11px;letter-spacing:1px}
+ .grupa button[data-tryb],.grupa button[data-model]{flex:1;font-size:14px;padding:7px 6px;min-height:40px}
+ .grupa:last-child{overflow-x:auto;white-space:nowrap;gap:2px}.grupa:last-child button{font-size:13px}
+ .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}.chips button{white-space:nowrap;scroll-snap-align:start;flex:none}
+ #log{gap:10px}.msg{max-width:100%;padding:10px 12px;box-shadow:inset 0 0 0 2px #3a3048,3px 3px 0 #0008}.msg.ty{max-width:92%}
+ .msg .tekst{font-size:16px}.msg .meta{font-size:11px}.msg .meta button{min-height:36px;min-width:40px;font-size:14px}
+ .porown{grid-template-columns:1fr}
+ form#f{padding:8px 0 calc(10px + env(safe-area-inset-bottom));gap:8px}#q{font-size:16px;min-height:44px;padding:8px 10px}#wyslij{padding:10px 12px;font-size:16px}
+ .panel{inset:0;border-width:0;box-shadow:none;padding:14px 14px calc(14px + env(safe-area-inset-bottom))}.panel pre{max-height:none}
+ .opinia .wyb button{flex:1;min-height:40px}
+}
 </style>
 <script src="../../../statystyki.js" defer></script></head>
 <body>
 <main>
 <header><h1>Mentor: <span>przewodnik po kursie</span></h1><p class="sub">W Odysei Atena przybiera postać Mentora: nie daje gotowych odpowiedzi, pomaga do nich dojść.</p></header>
+<p class="ai-info" role="note"><b>To jest AI, nie prowadzący.</b> Odpowiedzi Mentora generuje model językowy i <b>mogą zawierać błędy</b>. Sprawdzaj je na slajdach i w źródłach, do których odsyła.</p>
 <div class="pasek">
- <div class="grupa"><b>Tryb</b><button data-tryb="sparing" data-stat="tryb-sparing" class="on" title="Mentor zadaje pytania i podpowiada">Sparing</button><button data-tryb="gdzie" data-stat="tryb-gdzie" title="Krótka odpowiedź z odnośnikiem do slajdu">Gdzie to było?</button><button data-tryb="dyskusja" data-stat="tryb-dyskusja" title="Rozmowa o temacie, który Cię ciekawi">Dyskusja</button></div>
+ <div class="grupa"><b>Tryb</b><button data-tryb="sparing" data-stat="tryb-sparing" class="on" title="Mentor zadaje pytania i podpowiada">Sparing</button><button data-tryb="gdzie" data-stat="tryb-gdzie" title="Krótka odpowiedź z odnośnikiem do slajdu">Gdzie to było?</button></div>
  <div class="grupa"><b>Model</b><button data-model="sol" data-stat="model-sol" class="on">GPT-6.1 Sol</button><button data-model="sonnet" data-stat="model-sonnet">Claude Sonnet 5.5</button></div>
  <div class="grupa"><button class="lnk" id="nowa" data-stat="nowa-rozmowa">Nowa rozmowa</button><button class="lnk" data-panel="kontekst" data-stat="co-dostaje-model">Co dostaje model?</button><button class="lnk" data-panel="o" data-stat="o-mentorze">O Mentorze</button><button class="lnk" data-panel="ogolna" data-stat="opinia-ogolna">Twoja opinia</button></div>
 </div>
 <div id="log"></div>
-<form id="f" autocomplete="off"><textarea id="q" placeholder="Zapytaj o coś z zajęć albo poproś: „przepytaj mnie z RAG”" rows="2"></textarea><button id="wyslij" type="submit" data-stat="wyslij">Wyślij</button></form>
+<form id="f" autocomplete="off"><textarea id="q" placeholder="Zapytaj o coś z zajęć albo poproś: „przepytaj mnie z RAG”" rows="2"></textarea><button id="wyslij" type="submit" data-stat="wyslij">Wyślij</button><p class="ai-stopka">Mentor to AI: może się mylić. Sprawdzaj w slajdach. Nie wpisuj danych osobowych.</p></form>
 </main>
 
 <section class="panel" id="p-o" aria-label="O Mentorze"><button class="x" data-zamknij>✕ <small>Esc</small></button>
 <h2>O Mentorze</h2>
-<p><b>To prototyp.</b> Mentor zna tylko materiały kursu: slajdy z lokacji, które są już otwarte na mapie, teksty dem i omówienie wyroku T-323. Zajęć za kłódką nie zna. Może się mylić: sprawdzaj odpowiedzi na slajdach, do których odsyła.</p>
-<p><b>Trzy tryby.</b> W „Sparingu” Mentor przepytuje: zadaje jedno pytanie, a po błędzie podpowiada, zamiast od razu dawać odpowiedź. W trybie „Gdzie to było?” odpowiada krótko i wskazuje slajd oraz źródło. W „Dyskusji” rozmawia o temacie, który Cię ciekawi: pyta o Twoje zdanie, pokazuje przykład ze źródłem, stawia kontrargumenty. Linki do źródeł pochodzą wyłącznie ze slajdów.</p>
+<p><b>Mentor to AI, nie człowiek.</b> Odpowiedzi generuje model językowy (GPT-6.1 Sol albo Claude Sonnet 5.5) i mogą zawierać błędy, także pewnie brzmiące. <b>To prototyp.</b> Mentor zna tylko materiały kursu: slajdy z lokacji, które są już otwarte na mapie, teksty dem i omówienie wyroku T-323. Zajęć za kłódką nie zna. Może się mylić: sprawdzaj odpowiedzi na slajdach, do których odsyła.</p>
+<p><b>Dwa tryby.</b> W „Sparingu” Mentor przepytuje: zadaje jedno pytanie, a po błędzie podpowiada, zamiast od razu dawać odpowiedź. Gdy napiszesz „poddaję się”, dostaniesz odpowiedź od razu. W trybie „Gdzie to było?” odpowiada krótko i wskazuje slajd oraz źródło. Linki do źródeł pochodzą wyłącznie ze slajdów.</p><p><b>Dlaczego tak.</b> Sparing opiera się na badaniach: przypominanie z pamięci utrwala wiedzę lepiej niż ponowne czytanie, a tutor, który podpowiada zamiast dawać gotowe odpowiedzi, nie osłabia wyników na egzaminie bez AI (zwykły czat osłabiał). Szczegóły i źródła są w panelu „Co dostaje model?”.</p>
 <p><b>Dwa modele, ten sam materiał.</b> GPT-6.1 Sol (OpenAI) i Claude Sonnet 5.5 (Anthropic) dostają tę samą instrukcję i te same materiały. Przycisk „Zapytaj drugiego” pokazuje odpowiedź drugiego modelu obok. Napisz, który był lepszy i dlaczego: to pomoże wybrać model na resztę semestru.</p>
 <p><b>Twoje dane.</b> Pytania idą przez serwer kursu do OpenRouter i dalej tylko do dostawców, którzy nie zbierają danych z zapytań. Serwer kursu nie zapisuje treści rozmów ani Twojego adresu IP, tylko liczby: model, tryb, tokeny, koszt. Opinia zapisuje się, gdy ją wyślesz; rozmowa trafia do opinii tylko wtedy, gdy zaznaczysz zgodę. Nie wpisuj danych osobowych.</p>
 <p><b>Czego Mentor nie robi.</b> Nie pisze prac zaliczeniowych, nie zna pytań z quizu i nikogo nie ocenia. Rozmowy z Mentorem nie mają wpływu na ocenę.</p>
@@ -98,8 +116,7 @@ const DEMO='https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/';
 const DEMA={'Następne słowo':'nastepne-slowo','RAG na wyrokach ETPC':'rag','Embeddingi':'embeddingi','Pies czy muffin':'muffin','Tablica z testu RAG':'tablica','Skarga do ETPC':'skarga'};
 const NAZWA={sol:'GPT-6.1 Sol',sonnet:'Claude Sonnet 5.5'}, INNY={sol:'sonnet',sonnet:'sol'};
 const PODPOW={sparing:['Przepytaj mnie z RAG z zajęć 26.10','Przepytaj mnie z trzech sposobów uczenia','Sprawdź, czy rozumiem, czym jest token','Przepytaj mnie z wyroku T-323'],
- gdzie:['Gdzie było o tym, ile mylą się Lexis+ AI i Westlaw?','Jak AI Act definiuje system AI?','Wyjaśnij embeddingi komuś, kto nie programuje','Do kiedy wybieram ścieżkę zaliczenia?'],
- dyskusja:['Porozmawiajmy o AI w sądach Pakistanu','Czy sędzia może pytać czatbota, co znaczy słowo w ustawie?','Czy firmy mogą trenować modele na moich tekstach?','Co mnie niepokoi w AI w sądach']};
+ gdzie:['Gdzie było o tym, ile mylą się Lexis+ AI i Westlaw?','Jak AI Act definiuje system AI?','Wyjaśnij embeddingi komuś, kto nie programuje','Do kiedy wybieram ścieżkę zaliczenia?']};
 let tryb='sparing', model='sol', hist=[], czeka=false;
 const kod={get:()=>{try{return localStorage.getItem('mentor-kod')||''}catch(e){return ''}},set:v=>{try{v?localStorage.setItem('mentor-kod',v):localStorage.removeItem('mentor-kod')}catch(e){}}};
 let KOD=new URLSearchParams(location.search).get('kod')||kod.get();
@@ -133,7 +150,7 @@ function start(){
  if(!KOD){const d=document.createElement('div');d.className='kodbox';d.innerHTML=`<p><b>Kod zajęć</b> (prowadzący poda go na zajęciach):</p><input id="kodIn" type="text" spellcheck="false" autocapitalize="off"><button id="kodOk" data-stat="kod-ok">Dalej</button><p class="muted"><small>Kod zapamięta się w tej przeglądarce.</small></p>`;log.append(d);
   const ok=()=>{const v=$('#kodIn').value.trim();if(v){KOD=v;kod.set(v);start()}};$('#kodOk').onclick=ok;$('#kodIn').onkeydown=e=>{if(e.key==='Enter')ok()};$('#kodIn').focus();return}
  const d=document.createElement('div');d.className='start';
- d.innerHTML=`<p>${{sparing:'<b>Sparing:</b> Mentor zada Ci jedno pytanie naraz. Po błędzie podpowie, ale nie poda od razu odpowiedzi. Napisz „poddaję się”, jeśli chcesz ją zobaczyć.',gdzie:'<b>Gdzie to było?</b> Krótka odpowiedź z odnośnikiem do slajdu, materiału i źródła.',dyskusja:'<b>Dyskusja:</b> wybierz temat z kursu, który Cię ciekawi. Mentor zapyta o Twoje zdanie, pokaże przykład ze źródłem i postawi kontrargument. Możesz się z nim nie zgadzać.'}[tryb]} Mentor zna materiały z otwartych lokacji na mapie.</p><div class="chips">${PODPOW[tryb].map(p=>`<button type="button" data-podp="${esc(p)}">${esc(p)}</button>`).join('')}</div>`;
+ d.innerHTML=`<p>${{sparing:'<b>Sparing:</b> Mentor zada Ci jedno pytanie naraz. Po błędzie podpowie, ale nie poda od razu odpowiedzi. Napisz „poddaję się”, kiedy chcesz ją zobaczyć.',gdzie:'<b>Gdzie to było?</b> Krótka odpowiedź z odnośnikiem do slajdu, materiału i źródła.'}[tryb]} Mentor zna materiały z otwartych lokacji na mapie.</p><div class="chips">${PODPOW[tryb].map(p=>`<button type="button" data-podp="${esc(p)}">${esc(p)}</button>`).join('')}</div>`;
  log.append(d)}
 function dodaj(rola,html,cls=''){const d=document.createElement('div');d.className='msg '+cls+(rola==='ty'?' ty':'');d.innerHTML=html;log.append(d);d.scrollIntoView({block:'end',behavior:'smooth'});return d}
 const zl=v=>v.toFixed(v<0.01?4:3).replace('.',',')+' $', tys=n=>(n||0).toLocaleString('pl-PL');
@@ -151,7 +168,7 @@ async function wyslij(tekst){
  if(czeka||!tekst.trim())return; if(!KOD){start();return}
  if(!hist.length)log.innerHTML='';
  czeka=true;$('#wyslij').disabled=true;
- dodaj('ty',`<p class="kto">Ty · ${{sparing:'Sparing',gdzie:'Gdzie to było?',dyskusja:'Dyskusja'}[tryb]}</p><div class="tekst">${md(tekst)}</div>`);
+ dodaj('ty',`<p class="kto">Ty · ${{sparing:'Sparing',gdzie:'Gdzie to było?'}[tryb]}</p><div class="tekst">${md(tekst)}</div>`);
  hist.push({role:'user',content:tekst});
  const el=dodaj('mentor','');const stop=myslenie(el,model);const pyt=hist.slice();
  try{const r=await zapytaj(model,pyt);stop();
@@ -161,7 +178,7 @@ async function wyslij(tekst){
  czeka=false;$('#wyslij').disabled=false;$('#q').focus()}
 
 function odpowiedz(el,r,pyt){
- el.innerHTML=`<p class="kto">Mentor · ${esc(r.nazwa)}</p><div class="tekst">${md(r.odp)}</div><div class="meta">${metaHTML(r)}<button data-ocena="1" title="Dobra odpowiedź" data-stat="ocena-plus">👍</button><button data-ocena="-1" title="Słaba odpowiedź" data-stat="ocena-minus">👎</button><button data-por title="Ta sama rozmowa, drugi model" data-stat="porownaj">Zapytaj ${NAZWA[INNY[r.model]]}</button></div>`;
+ el.innerHTML=`<p class="kto">Mentor <span class="ai">AI</span> · ${esc(r.nazwa)}</p><div class="tekst">${md(r.odp)}</div><div class="meta">${metaHTML(r)}<button data-ocena="1" title="Dobra odpowiedź" data-stat="ocena-plus">👍</button><button data-ocena="-1" title="Słaba odpowiedź" data-stat="ocena-minus">👎</button><button data-por title="Ta sama rozmowa, drugi model" data-stat="porownaj">Zapytaj ${NAZWA[INNY[r.model]]}</button></div>`;
  el._r=r;el._pyt=pyt}
 
 async function porownaj(el){
@@ -197,7 +214,7 @@ let kontekstWczytany=false;
 async function panel(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+id));
  if(id==='ogolna'&&!$('#ogolnaBox').childElementCount){opinia($('#ogolnaBox'),{ocena:null});$('#ogolnaBox').querySelector('b').textContent='Twoja opinia'}
  if(id==='kontekst'&&!kontekstWczytany){try{const j=await (await fetch(API+'/kontekst')).json();kontekstWczytany=true;
-  $('#kontekstTresc').innerHTML=`<p><b>Instrukcja</b> (${tys(j.instrukcja.length)} znaków):</p><pre>${esc(j.instrukcja)}</pre><p><b>Materiały</b>: ${j.meta.slajdy} slajdów i ${j.meta.dema.length} dem, ${tys(j.materialy.length)} znaków, stan na ${esc(j.meta.stan)}. Lokacje za kłódką (przystanki ${j.meta.zamkniete_przystanki.join(', ')}) są pominięte.</p><pre>${esc(j.materialy)}</pre><p class="muted">Modele: ${Object.values(j.modele).map(m=>esc(m.nazwa+' ('+m.firma+', '+m.id+')')).join(' · ')}</p>`}
+  $('#kontekstTresc').innerHTML=`<p><b>Instrukcja</b> (${tys(j.instrukcja.length)} znaków):</p><pre>${esc(j.instrukcja)}</pre>${j.podstawy?`<p><b>Na czym opierają się reguły</b> (badania nad uczeniem się i tutorami AI):</p><pre>${esc(j.podstawy)}</pre>`:''}<p><b>Materiały</b>: ${j.meta.slajdy} slajdów i ${j.meta.dema.length} dem, ${tys(j.materialy.length)} znaków, stan na ${esc(j.meta.stan)}. Lokacje za kłódką (przystanki ${j.meta.zamkniete_przystanki.join(', ')}) są pominięte.</p><pre>${esc(j.materialy)}</pre><p class="muted">Modele: ${Object.values(j.modele).map(m=>esc(m.nazwa+' ('+m.firma+', '+m.id+')')).join(' · ')}</p>`}
   catch(e){$('#kontekstTresc').innerHTML='<p>Nie udało się wczytać kontekstu z serwera.</p>'}}}
 
 document.addEventListener('click',e=>{
