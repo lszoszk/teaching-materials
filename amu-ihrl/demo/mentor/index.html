@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mentor: przewodnik po kursie · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J; w oknie W zgrany z prezentacją (postMessage w obie strony) */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab();if(parent!==window)try{parent.postMessage({demoJasny:on},location.origin)}catch(e){}};addEventListener('message',e=>{if(e.origin===location.origin&&e.data&&typeof e.data.demoJasny==='boolean'&&e.data.demoJasny!==on)set(e.data.demoJasny)});addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}</style>
+<style>
+:root{--bg:#141019;--ink:#1b1622;--deep:#0f0b14;--paper:#efe6d2;--gold:#e0b950;--blue:#6fb7c9;--line:#4d4059;--muted:#ada290;--ok:#7fb069;--bad:#d65a4a;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:17px/1.5 var(--mono)}
+main{max-width:1120px;margin:0 auto;padding:16px 20px 0;min-height:100vh;display:flex;flex-direction:column}
+header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-right:230px}
+h1{font-size:28px;margin:0}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0;font-size:15px}
+.pasek{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:12px 0 10px}
+.grupa{display:flex;align-items:center;gap:6px}.grupa>b{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-right:4px}
+button{font:inherit;font-size:15px;cursor:pointer;border:3px solid var(--line);background:var(--ink);color:var(--paper);padding:5px 10px;box-shadow:3px 3px 0 #0008}
+button.on{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700}
+button.lnk{background:none;border:0;box-shadow:none;color:var(--blue);text-decoration:underline;padding:2px 4px;font-size:14px}
+button:disabled{opacity:.45;cursor:default}
+#log{flex:1;display:flex;flex-direction:column;gap:14px;padding:6px 0 18px}
+.msg{max-width:860px;padding:12px 16px;border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,5px 5px 0 #0008;background:var(--ink)}
+.msg.ty{align-self:flex-end;background:#2a2135;max-width:720px}
+.msg .tekst{font:17px/1.55 var(--sans)}.msg .tekst p{margin:0 0 .6em}.msg .tekst p:last-child{margin:0}.msg .tekst ul,.msg .tekst ol{margin:.2em 0 .6em;padding-left:1.4em}
+.msg .tekst a{color:var(--blue)}.msg .tekst a.ref{color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold);white-space:nowrap}
+.msg .kto{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
+.msg .meta{margin-top:10px;font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.msg .meta button{font-size:13px;padding:2px 8px;box-shadow:2px 2px 0 #0008}
+.msg.blad{border-color:var(--bad);color:#f3c6c0}
+.porown{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.porown .msg{max-width:none;box-shadow:inset 0 0 0 2px #3a3048}
+.opinia{margin-top:12px;padding:10px 12px;background:var(--deep);box-shadow:inset 0 0 0 2px #3a3048;font-size:14px}
+.opinia textarea{width:100%;min-height:58px;margin:6px 0;background:var(--bg);color:var(--paper);border:2px solid var(--line);font:15px/1.4 var(--sans);padding:6px 8px}
+.opinia label{display:block;color:var(--muted);font-size:13px;margin:4px 0}
+.opinia .wyb{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.start{color:var(--muted);font:16px/1.5 var(--sans);max-width:820px}
+.start b{color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.chips button{font:14px/1.3 var(--sans);text-align:left}
+form#f{position:sticky;bottom:0;background:var(--bg);padding:10px 0 14px;display:flex;gap:10px;align-items:flex-end;border-top:2px solid #2a2135}
+#q{flex:1;min-height:48px;max-height:180px;resize:vertical;background:var(--deep);color:var(--paper);border:3px solid var(--line);font:17px/1.45 var(--sans);padding:9px 12px}
+#q:focus{outline:none;border-color:var(--gold)}
+#wyslij{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700;font-size:17px;padding:10px 18px}
+.mysli{color:var(--muted);font-style:italic}
+.panel{position:fixed;inset:5vh 6vw;z-index:50;display:none;background:var(--ink);border:4px solid var(--gold);box-shadow:10px 10px 0 #000b;padding:20px 24px;overflow:auto}
+.panel.on{display:block}.panel h2{margin:0 0 10px;color:var(--gold);font-size:22px}
+.panel p,.panel li{font:16px/1.5 var(--sans)}.panel .x{position:sticky;top:0;float:right}
+.panel pre{white-space:pre-wrap;background:var(--deep);box-shadow:inset 0 0 0 2px #3a3048;padding:10px 12px;font-size:13px;line-height:1.45;max-height:46vh;overflow:auto}
+.kodbox{max-width:560px;margin:30px 0;padding:16px 18px;background:var(--ink);box-shadow:inset 0 0 0 2px #3a3048,5px 5px 0 #0008}
+.kodbox input{font:inherit;font-size:18px;padding:6px 10px;background:var(--deep);color:var(--paper);border:3px solid var(--line);width:12em;margin-right:8px}
+small,.muted{color:var(--muted)}
+@media (max-width:760px){header{padding-right:0;margin-top:46px}.porown{grid-template-columns:1fr}.pasek{gap:10px}.msg{max-width:100%}}
+</style>
+<script src="../../../statystyki.js" defer></script></head>
+<body>
+<main>
+<header><h1>Mentor: <span>przewodnik po kursie</span></h1><p class="sub">W Odysei Atena przybiera postać Mentora: nie daje gotowych odpowiedzi, pomaga do nich dojść.</p></header>
+<div class="pasek">
+ <div class="grupa"><b>Tryb</b><button data-tryb="sparing" data-stat="tryb-sparing" class="on" title="Mentor zadaje pytania i podpowiada">Sparing</button><button data-tryb="gdzie" data-stat="tryb-gdzie" title="Krótka odpowiedź z odnośnikiem do slajdu">Gdzie to było?</button><button data-tryb="dyskusja" data-stat="tryb-dyskusja" title="Rozmowa o temacie, który Cię ciekawi">Dyskusja</button></div>
+ <div class="grupa"><b>Model</b><button data-model="sol" data-stat="model-sol" class="on">GPT-6.1 Sol</button><button data-model="sonnet" data-stat="model-sonnet">Claude Sonnet 5.5</button></div>
+ <div class="grupa"><button class="lnk" id="nowa" data-stat="nowa-rozmowa">Nowa rozmowa</button><button class="lnk" data-panel="kontekst" data-stat="co-dostaje-model">Co dostaje model?</button><button class="lnk" data-panel="o" data-stat="o-mentorze">O Mentorze</button><button class="lnk" data-panel="ogolna" data-stat="opinia-ogolna">Twoja opinia</button></div>
+</div>
+<div id="log"></div>
+<form id="f" autocomplete="off"><textarea id="q" placeholder="Zapytaj o coś z zajęć albo poproś: „przepytaj mnie z RAG”" rows="2"></textarea><button id="wyslij" type="submit" data-stat="wyslij">Wyślij</button></form>
+</main>
+
+<section class="panel" id="p-o" aria-label="O Mentorze"><button class="x" data-zamknij>✕ <small>Esc</small></button>
+<h2>O Mentorze</h2>
+<p><b>To prototyp.</b> Mentor zna tylko materiały kursu: slajdy z lokacji, które są już otwarte na mapie, teksty dem i omówienie wyroku T-323. Zajęć za kłódką nie zna. Może się mylić: sprawdzaj odpowiedzi na slajdach, do których odsyła.</p>
+<p><b>Trzy tryby.</b> W „Sparingu” Mentor przepytuje: zadaje jedno pytanie, a po błędzie podpowiada, zamiast od razu dawać odpowiedź. W trybie „Gdzie to było?” odpowiada krótko i wskazuje slajd oraz źródło. W „Dyskusji” rozmawia o temacie, który Cię ciekawi: pyta o Twoje zdanie, pokazuje przykład ze źródłem, stawia kontrargumenty. Linki do źródeł pochodzą wyłącznie ze slajdów.</p>
+<p><b>Dwa modele, ten sam materiał.</b> GPT-6.1 Sol (OpenAI) i Claude Sonnet 5.5 (Anthropic) dostają tę samą instrukcję i te same materiały. Przycisk „Zapytaj drugiego” pokazuje odpowiedź drugiego modelu obok. Napisz, który był lepszy i dlaczego: to pomoże wybrać model na resztę semestru.</p>
+<p><b>Twoje dane.</b> Pytania idą przez serwer kursu do OpenRouter i dalej tylko do dostawców, którzy nie zbierają danych z zapytań. Serwer kursu nie zapisuje treści rozmów ani Twojego adresu IP, tylko liczby: model, tryb, tokeny, koszt. Opinia zapisuje się, gdy ją wyślesz; rozmowa trafia do opinii tylko wtedy, gdy zaznaczysz zgodę. Nie wpisuj danych osobowych.</p>
+<p><b>Czego Mentor nie robi.</b> Nie pisze prac zaliczeniowych, nie zna pytań z quizu i nikogo nie ocenia. Rozmowy z Mentorem nie mają wpływu na ocenę.</p>
+<p><b>Koszt.</b> Każde pytanie kosztuje: płaci się za tokeny (pamiętasz slajd o kluczu API?). Pod każdą odpowiedzią widać, ile. Dzienny limit kosztów chroni budżet kursu.</p>
+</section>
+<section class="panel" id="p-kontekst" aria-label="Co dostaje model"><button class="x" data-zamknij>✕ <small>Esc</small></button>
+<h2>Co dostaje model?</h2>
+<p>Przy każdym pytaniu model dostaje trzy rzeczy: <b>instrukcję</b>, <b>materiały kursu</b> i <b>całą dotychczasową rozmowę</b>. Ostatnia wiadomość ma dopisek z trybem, np. „[Tryb: Sparing]”. To RAG bez wyszukiwania: materiały są na tyle małe, że mieszczą się w całości. Model niczego się z rozmowy nie uczy: jego wagi się nie zmieniają.</p>
+<div id="kontekstTresc"><p class="muted">Wczytuję…</p></div>
+</section>
+<section class="panel" id="p-ogolna" aria-label="Twoja opinia"><button class="x" data-zamknij>✕ <small>Esc</small></button>
+<h2>Twoja opinia o Mentorze</h2>
+<p>Co działa, co przeszkadza, czego brakuje? Bez danych osobowych.</p>
+<div id="ogolnaBox"></div>
+</section>
+
+<script>
+const $=s=>document.querySelector(s), log=$('#log');
+const LOKAL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+const API=new URLSearchParams(location.search).get('api')||(LOKAL?'http://127.0.0.1:8010':'https://150.254.115.204/mentor-api');
+const MAPA=LOKAL?'../../../mapa_studenci.html':'https://lszoszk.github.io/teaching-materials/amu-ihrl/';
+const DEMO='https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/';
+const DEMA={'Następne słowo':'nastepne-slowo','RAG na wyrokach ETPC':'rag','Embeddingi':'embeddingi','Pies czy muffin':'muffin','Tablica z testu RAG':'tablica','Skarga do ETPC':'skarga'};
+const NAZWA={sol:'GPT-6.1 Sol',sonnet:'Claude Sonnet 5.5'}, INNY={sol:'sonnet',sonnet:'sol'};
+const PODPOW={sparing:['Przepytaj mnie z RAG z zajęć 26.10','Przepytaj mnie z trzech sposobów uczenia','Sprawdź, czy rozumiem, czym jest token','Przepytaj mnie z wyroku T-323'],
+ gdzie:['Gdzie było o tym, ile mylą się Lexis+ AI i Westlaw?','Jak AI Act definiuje system AI?','Wyjaśnij embeddingi komuś, kto nie programuje','Do kiedy wybieram ścieżkę zaliczenia?'],
+ dyskusja:['Porozmawiajmy o AI w sądach Pakistanu','Czy sędzia może pytać czatbota, co znaczy słowo w ustawie?','Czy firmy mogą trenować modele na moich tekstach?','Co mnie niepokoi w AI w sądach']};
+let tryb='sparing', model='sol', hist=[], czeka=false;
+const kod={get:()=>{try{return localStorage.getItem('mentor-kod')||''}catch(e){return ''}},set:v=>{try{v?localStorage.setItem('mentor-kod',v):localStorage.removeItem('mentor-kod')}catch(e){}}};
+let KOD=new URLSearchParams(location.search).get('kod')||kod.get();
+
+// --- tekst odpowiedzi: bezpieczny HTML, odnośniki do slajdów i dem ---
+const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function odnosniki(w){   // treść nawiasu kwadratowego (już po esc)
+ let t=w.replace(/slajd(?:y|zie|u)?\s*(\d+)(?:\s*[–-]\s*(\d+))?/g,(m,a,b)=>`<a class="ref" href="${MAPA}#s${a}" target="_blank" rel="noopener">${m}</a>`);
+ t=t.replace(/materiał: (?:demo )?„([^”]+)”/g,(m,n)=>{const k=Object.keys(DEMA).find(x=>n.startsWith(x));return k?`<a class="ref" href="${DEMO}${DEMA[k]}/" target="_blank" rel="noopener">${m}</a>`:m});
+ return '['+t+']'}
+function inline(s){
+ s=esc(s);
+ s=s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,(m,t,u)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`);
+ s=s.replace(/\[([^\]]*(?:slajd|materiał)[^\]]*)\]/g,(m,w)=>odnosniki(w));
+ s=s.replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*([^*\n]+)\*/g,'$1<i>$2</i>');
+ return s}
+function md(src){
+ const out=[];let lista=null;
+ const zamknij=()=>{if(lista){out.push(`</${lista}>`);lista=null}};
+ for(const blok of src.replace(/\r/g,'').split(/\n{2,}/)){
+  const linie=blok.split('\n');
+  if(linie.every(l=>/^\s*([-*•]|\d+[.)])\s+/.test(l))){
+   const typ=/^\s*\d/.test(linie[0])?'ol':'ul'; if(lista!==typ){zamknij();out.push(`<${typ}>`);lista=typ}
+   linie.forEach(l=>out.push('<li>'+inline(l.replace(/^\s*([-*•]|\d+[.)])\s+/,''))+'</li>'))
+  }else{zamknij();out.push('<p>'+linie.map(inline).join('<br>')+'</p>')}}
+ zamknij();return out.join('')}
+
+// --- widok ---
+function start(){
+ log.innerHTML='';
+ if(!KOD){const d=document.createElement('div');d.className='kodbox';d.innerHTML=`<p><b>Kod zajęć</b> (prowadzący poda go na zajęciach):</p><input id="kodIn" type="text" spellcheck="false" autocapitalize="off"><button id="kodOk" data-stat="kod-ok">Dalej</button><p class="muted"><small>Kod zapamięta się w tej przeglądarce.</small></p>`;log.append(d);
+  const ok=()=>{const v=$('#kodIn').value.trim();if(v){KOD=v;kod.set(v);start()}};$('#kodOk').onclick=ok;$('#kodIn').onkeydown=e=>{if(e.key==='Enter')ok()};$('#kodIn').focus();return}
+ const d=document.createElement('div');d.className='start';
+ d.innerHTML=`<p>${{sparing:'<b>Sparing:</b> Mentor zada Ci jedno pytanie naraz. Po błędzie podpowie, ale nie poda od razu odpowiedzi. Napisz „poddaję się”, jeśli chcesz ją zobaczyć.',gdzie:'<b>Gdzie to było?</b> Krótka odpowiedź z odnośnikiem do slajdu, materiału i źródła.',dyskusja:'<b>Dyskusja:</b> wybierz temat z kursu, który Cię ciekawi. Mentor zapyta o Twoje zdanie, pokaże przykład ze źródłem i postawi kontrargument. Możesz się z nim nie zgadzać.'}[tryb]} Mentor zna materiały z otwartych lokacji na mapie.</p><div class="chips">${PODPOW[tryb].map(p=>`<button type="button" data-podp="${esc(p)}">${esc(p)}</button>`).join('')}</div>`;
+ log.append(d)}
+function dodaj(rola,html,cls=''){const d=document.createElement('div');d.className='msg '+cls+(rola==='ty'?' ty':'');d.innerHTML=html;log.append(d);d.scrollIntoView({block:'end',behavior:'smooth'});return d}
+const zl=v=>v.toFixed(v<0.01?4:3).replace('.',',')+' $', tys=n=>(n||0).toLocaleString('pl-PL');
+function metaHTML(r){return `<span>${esc(r.nazwa)} · ${String(r.sekundy).replace('.',',')} s</span><span title="tokeny wejścia (w tym z pamięci podręcznej) · tokeny wyjścia">${tys(r.tokeny.wej)} tok. wejścia (${tys(r.tokeny.cache)} z pamięci) · ${tys(r.tokeny.wyj)} wyjścia · ${zl(r.koszt)}</span>`}
+
+async function zapytaj(m,wiad){
+ const r=await fetch(API+'/czat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kod:KOD,tryb,model:m,wiadomosci:wiad})});
+ const j=await r.json().catch(()=>({blad:'Serwer Mentora nie odpowiada.'}));
+ if(r.status===403){KOD='';kod.set('');}
+ if(!r.ok) throw new Error(j.blad||'Błąd '+r.status);
+ return j}
+function myslenie(el,m){const t0=Date.now();el.innerHTML=`<p class="kto">${NAZWA[m]}</p><p class="mysli">Mentor myśli… <span>0</span> s</p>`;const i=setInterval(()=>{const s=el.querySelector('.mysli span');if(s)s.textContent=Math.round((Date.now()-t0)/1000)},500);return()=>clearInterval(i)}
+
+async function wyslij(tekst){
+ if(czeka||!tekst.trim())return; if(!KOD){start();return}
+ if(!hist.length)log.innerHTML='';
+ czeka=true;$('#wyslij').disabled=true;
+ dodaj('ty',`<p class="kto">Ty · ${{sparing:'Sparing',gdzie:'Gdzie to było?',dyskusja:'Dyskusja'}[tryb]}</p><div class="tekst">${md(tekst)}</div>`);
+ hist.push({role:'user',content:tekst});
+ const el=dodaj('mentor','');const stop=myslenie(el,model);const pyt=hist.slice();
+ try{const r=await zapytaj(model,pyt);stop();
+  hist.push({role:'assistant',content:r.odp,model:r.model});
+  odpowiedz(el,r,pyt)}
+ catch(e){stop();hist.pop();el.classList.add('blad');el.innerHTML=`<p>${esc(e.message)}</p>`;if(!KOD)setTimeout(start,1200)}
+ czeka=false;$('#wyslij').disabled=false;$('#q').focus()}
+
+function odpowiedz(el,r,pyt){
+ el.innerHTML=`<p class="kto">Mentor · ${esc(r.nazwa)}</p><div class="tekst">${md(r.odp)}</div><div class="meta">${metaHTML(r)}<button data-ocena="1" title="Dobra odpowiedź" data-stat="ocena-plus">👍</button><button data-ocena="-1" title="Słaba odpowiedź" data-stat="ocena-minus">👎</button><button data-por title="Ta sama rozmowa, drugi model" data-stat="porownaj">Zapytaj ${NAZWA[INNY[r.model]]}</button></div>`;
+ el._r=r;el._pyt=pyt}
+
+async function porownaj(el){
+ const r=el._r,pyt=el._pyt,inny=INNY[r.model];const b=el.querySelector('[data-por]');b.disabled=true;
+ const box=document.createElement('div');box.className='porown';box.innerHTML=`<div class="msg"><p class="kto">${esc(r.nazwa)}</p><div class="tekst">${md(r.odp)}</div></div><div class="msg" id="tmp"></div>`;el.append(box);
+ const d2=box.querySelector('#tmp');d2.removeAttribute('id');const stop=myslenie(d2,inny);
+ try{const r2=await zapytaj(inny,pyt);stop();d2.innerHTML=`<p class="kto">${esc(r2.nazwa)}</p><div class="tekst">${md(r2.odp)}</div><div class="meta">${metaHTML(r2)}</div>`;
+  el.querySelector('.tekst').style.display='none';
+  opinia(el,{pyt,odp:{[r.model]:r.odp,[inny]:r2.odp},porownanie:true,model:r.model})}
+ catch(e){stop();d2.classList.add('blad');d2.innerHTML=`<p>${esc(e.message)}</p>`;b.disabled=false}}
+
+function opinia(el,o){
+ el.querySelectorAll('.opinia').forEach(x=>x.remove());
+ const d=document.createElement('div');d.className='opinia';
+ d.innerHTML=(o.porownanie?`<b>Która odpowiedź lepsza?</b><div class="wyb"><button data-wybor="sol" data-stat="lepszy-sol">GPT-6.1 Sol</button><button data-wybor="sonnet" data-stat="lepszy-sonnet">Claude Sonnet 5.5</button><button data-wybor="remis" data-stat="lepszy-remis">Podobnie</button></div>`:`<b>${o.ocena>0?'👍 Co było dobre?':'👎 Co było nie tak?'}</b> <small>(nieobowiązkowo)</small>`)+
+ `<textarea placeholder="Dlaczego? Np. „podał zły slajd”, „za długo”, „dobre pytanie naprowadzające”"></textarea>`+
+ (o.pyt?`<label><input type="checkbox"> Dołącz tę wymianę (pytania i odpowiedzi) do opinii. Bez danych osobowych.</label>`:'')+
+ `<button data-wyslij-op data-stat="wyslij-opinie">Wyślij opinię</button> <span class="muted"></span>`;
+ el.append(d);
+ let wybor=null;
+ d.querySelectorAll('[data-wybor]').forEach(b=>b.onclick=()=>{wybor=b.dataset.wybor;d.querySelectorAll('[data-wybor]').forEach(x=>x.classList.toggle('on',x===b))});
+ d.querySelector('[data-wyslij-op]').onclick=async e=>{
+  const kom=d.querySelector('textarea').value.trim(),zg=d.querySelector('input[type=checkbox]')?.checked;
+  if(o.porownanie&&!wybor&&!kom){d.querySelector('.muted').textContent='Wybierz odpowiedź albo napisz komentarz.';return}
+  const rozmowa=zg?[...o.pyt.map(m=>({role:m.role,content:m.content,model:m.model||null})),...Object.entries(o.odp||{}).map(([m,t])=>({role:'assistant',model:m,content:t}))]:null;
+  e.target.disabled=true;
+  try{const r=await fetch(API+'/opinia',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kod:KOD,model:o.model||null,tryb,ocena:o.ocena||null,wybor,komentarz:kom,zgoda:!!zg,rozmowa})});
+   if(!r.ok)throw new Error((await r.json()).blad);d.innerHTML='<b>Dziękuję!</b> Opinia zapisana.'}
+  catch(err){e.target.disabled=false;d.querySelector('.muted').textContent=err.message||'Nie udało się wysłać.'}}}
+
+// --- panele ---
+let kontekstWczytany=false;
+async function panel(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+id));
+ if(id==='ogolna'&&!$('#ogolnaBox').childElementCount){opinia($('#ogolnaBox'),{ocena:null});$('#ogolnaBox').querySelector('b').textContent='Twoja opinia'}
+ if(id==='kontekst'&&!kontekstWczytany){try{const j=await (await fetch(API+'/kontekst')).json();kontekstWczytany=true;
+  $('#kontekstTresc').innerHTML=`<p><b>Instrukcja</b> (${tys(j.instrukcja.length)} znaków):</p><pre>${esc(j.instrukcja)}</pre><p><b>Materiały</b>: ${j.meta.slajdy} slajdów i ${j.meta.dema.length} dem, ${tys(j.materialy.length)} znaków, stan na ${esc(j.meta.stan)}. Lokacje za kłódką (przystanki ${j.meta.zamkniete_przystanki.join(', ')}) są pominięte.</p><pre>${esc(j.materialy)}</pre><p class="muted">Modele: ${Object.values(j.modele).map(m=>esc(m.nazwa+' ('+m.firma+', '+m.id+')')).join(' · ')}</p>`}
+  catch(e){$('#kontekstTresc').innerHTML='<p>Nie udało się wczytać kontekstu z serwera.</p>'}}}
+
+document.addEventListener('click',e=>{
+ const t=e.target.closest('[data-tryb]');if(t){tryb=t.dataset.tryb;document.querySelectorAll('[data-tryb]').forEach(b=>b.classList.toggle('on',b===t));if(!hist.length)start();return}
+ const m=e.target.closest('[data-model]');if(m){model=m.dataset.model;document.querySelectorAll('[data-model]').forEach(b=>b.classList.toggle('on',b===m));return}
+ const p=e.target.closest('[data-podp]');if(p){wyslij(p.dataset.podp);return}
+ const pa=e.target.closest('[data-panel]');if(pa){panel(pa.dataset.panel);return}
+ if(e.target.closest('[data-zamknij]')){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));return}
+ const msg=e.target.closest('.msg');
+ const oc=e.target.closest('[data-ocena]');if(oc&&msg){opinia(msg,{ocena:+oc.dataset.ocena,model:msg._r.model,pyt:msg._pyt,odp:{[msg._r.model]:msg._r.odp}});return}
+ if(e.target.closest('[data-por]')&&msg){porownaj(msg);return}
+ if(e.target.closest('#nowa')){hist=[];start()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'))});
+$('#f').addEventListener('submit',e=>{e.preventDefault();const v=$('#q').value;$('#q').value='';wyslij(v)});
+$('#q').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('#f').requestSubmit()}});
+start();
+</script>
+</body>
+</html>
