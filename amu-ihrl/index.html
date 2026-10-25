@@ -675,6 +675,14 @@ body[data-public="true"] .kurs .kmedia .kph{display:none}
 #szukajOut .sx{color:var(--muted)}
 #szukajBtn{font-size:20px}
 @media (max-height:520px){#szukaj.overlay{inset:2vh 4vw auto}}
+/* telefon: wyszukiwarka na całą szerokość, wynik w dwóch wierszach (numer i lokacja, pod spodem tytuł i fragment) */
+html.tel #szukaj.overlay{inset:8px 8px auto;max-height:calc(100dvh - 84px);padding:10px;gap:8px}
+html.tel #szukaj input{font-size:17px;padding:10px 12px}
+html.tel #szukajOut button{grid-template-columns:auto 1fr;column-gap:10px;padding:8px 10px;font-size:16px;line-height:1.35}
+html.tel #szukajOut .sn{grid-row:1;grid-column:1}
+html.tel #szukajOut .sc{grid-row:1;grid-column:2;white-space:normal;text-align:right;font-size:11px}
+html.tel #szukajOut .st{grid-row:2;grid-column:1/3}
+html.tel #szukajOut .ss{grid-column:1/3;font-size:14px;overflow-wrap:anywhere}
 .kurs.kllm .kplan li{font-size:23px;padding-left:52px}.kurs.kllm .kplan{gap:12px}.kurs.kllm .kplan li:before{width:32px;height:32px;line-height:32px;font-size:18px}
 .kurs.kllm .kbox{padding:16px 20px;gap:10px}.kurs.kllm .kbox p{font-size:21px}.kurs.kllm .kans{font-size:26px}.kurs.kllm .kalso{font-size:18px}.kurs.kllm h2{font-size:46px}
 /* Źródła: 40 pozycji, mniejsze litery */
@@ -1512,7 +1520,7 @@ html.tel-czyt .slide.active{padding-bottom:180px}
 <li>Darmowe czatboty: ryzyko dla danych (pkt 28).</li>
 </ul></div>
 </div>
-<p class="kalso frag" data-o="3"><span class="lab">A strony?</span>Ujawnienie AI w pismach; sąd wyłapuje <b>nieistniejące cytaty</b> (pkt 39–40). Za chwilę Wy jesteście sądem.</p>
+<p class="kalso frag" data-o="3"><span class="lab">A strony?</span>Ujawnienie AI w pismach; sąd wyłapuje <b>nieistniejące cytaty</b> (pkt 39–40).</p>
 <footer class="src"><a href="https://rm.coe.int/cepej-2025-18final-en-draft-guidelines-on-the-use-of-generative-ai-for/48802a4ad1" target="_blank" rel="noopener" title="CEPEJ, Guidelines on the use of generative artificial intelligence for courts, CEPEJ(2025)18Final, przyjęte 4–5.12.2025, Strasburg, 19.12.2025">CEPEJ(2025)18Final</a><a href="https://www.coe.int/en/web/cepej/cepej-tools-on-cyberjustice-and-artificial-intelligence" target="_blank" rel="noopener" title="CEPEJ, narzędzia o cyberwymiarze sprawiedliwości i AI">CEPEJ: narzędzia</a></footer>
 <span class="slide-number">39</span>
 </section>

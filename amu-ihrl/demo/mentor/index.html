@@ -73,28 +73,65 @@ small,.muted{color:var(--muted)}
  .panel{inset:0;border-width:0;box-shadow:none;padding:14px 14px calc(14px + env(safe-area-inset-bottom))}.panel pre{max-height:none}
  .opinia .wyb button{flex:1;min-height:40px}
 }
+/* pasek: dwie decyzje na wierzchu (tryb, pytanie), reszta w menu */
+header.bar{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding-right:230px}
+header.bar h1{font-size:24px;margin:0;display:flex;align-items:center;gap:8px}
+header.bar h1 .ai,.msg .kto .ai{font-size:12px;letter-spacing:1px;padding:1px 6px;border:2px solid var(--gold);color:var(--gold);border-radius:3px}
+.seg{display:flex}.seg button{box-shadow:none;border-width:2px;font-size:15px;padding:6px 12px}.seg button+button{border-left:0}
+.chip{font-size:15px;padding:6px 12px;border-width:2px;box-shadow:none}
+.dd{position:relative}
+.menu{position:absolute;top:calc(100% + 6px);left:0;z-index:40;min-width:270px;max-width:calc(100vw - 24px);background:var(--ink);border:2px solid var(--gold);box-shadow:6px 6px 0 #000a;padding:6px;display:flex;flex-direction:column;gap:4px}
+.menu[hidden]{display:none}.menu.prawo{left:auto;right:0}
+.menu>button{display:block;width:100%;text-align:left;border:0;box-shadow:none;background:none;padding:8px 10px;font:15px/1.3 var(--sans)}
+.menu>button:hover{background:#2a2135}.menu>button.on{background:#2f2640;color:var(--paper);font-weight:400;outline:2px solid var(--gold);outline-offset:-2px}
+.menu>button b{display:block;font-family:var(--mono)}.menu>button small{color:var(--muted);font-size:13px}
+.menu .mstopka{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);padding:6px 4px 2px}
+.ai-info{font-size:14px;padding:6px 10px;margin:10px 0 4px}.ai-info .lnk{font-size:13px}
+#kluczBox .rzad{display:flex;gap:8px;flex-wrap:wrap;align-items:center}#kluczBox input[type=password]{flex:1;min-width:180px;width:auto;font-size:16px}
+/* odnośniki w odpowiedziach: plakietki do slajdów, zwykłe podkreślone linki do źródeł */
+.msg .tekst a{color:inherit;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px}
+.msg .tekst a.ref{display:inline-block;font:600 13px/1.6 var(--mono);color:var(--paper);background:#3a3048;border:0;border-radius:4px;padding:0 6px;margin:1px 0;text-decoration:none;white-space:nowrap}
+.msg .tekst a.ref:hover{background:#4d4059}
+.msg .tekst .refs{color:var(--muted);font-size:14px}
+.msg .meta .info{cursor:help;border-bottom:1px dotted var(--muted)}
+@media (max-width:760px){header.bar{padding-right:0;gap:8px}header.bar h1{font-size:19px;flex:1}.dd-wiecej{order:1}.seg{order:2;flex:1 1 100%}.dd-model{order:3;flex:1 1 100%}#modelBtn{width:100%;text-align:left}.seg button{flex:1;padding:8px 6px;min-height:40px}.chip{min-height:40px}
+ .menu{position:fixed;left:12px;right:12px;top:auto;min-width:0}.menu.prawo{left:12px;right:12px}}
 </style>
 <script src="../../../statystyki.js" defer></script></head>
 <body>
 <main>
-<header><h1>Mentor: <span>przewodnik po kursie</span></h1><p class="sub">W Odysei Atena przybiera postać Mentora: nie daje gotowych odpowiedzi, pomaga do nich dojść.</p></header>
-<p class="ai-info" role="note"><b>To jest AI, nie prowadzący.</b> Odpowiedzi Mentora generuje model językowy i <b>mogą zawierać błędy</b>. Sprawdzaj je na slajdach i w źródłach, do których odsyła.</p>
-<div class="pasek">
- <div class="grupa"><b>Tryb</b><button data-tryb="sparing" data-stat="tryb-sparing" class="on" title="Mentor zadaje pytania i podpowiada">Sparing</button><button data-tryb="gdzie" data-stat="tryb-gdzie" title="Krótka odpowiedź z odnośnikiem do slajdu">Gdzie to było?</button></div>
- <div class="grupa"><b>Model</b><button data-model="sol" data-stat="model-sol" class="on">GPT-6.1 Sol</button><button data-model="sonnet" data-stat="model-sonnet">Claude Sonnet 5.5</button><button data-model="gemini" data-stat="model-gemini" title="Dla chętnych: Twój bezpłatny klucz z Google AI Studio">Gemini · Twój klucz</button></div>
- <div class="grupa"><button class="lnk" id="nowa" data-stat="nowa-rozmowa">Nowa rozmowa</button><button class="lnk" data-panel="kontekst" data-stat="co-dostaje-model">Co dostaje model?</button><button class="lnk" data-panel="o" data-stat="o-mentorze">O Mentorze</button><button class="lnk" data-panel="ogolna" data-stat="opinia-ogolna">Twoja opinia</button></div>
-</div>
+<header class="bar">
+ <h1>Mentor <span class="ai">AI</span></h1>
+ <div class="seg" role="group" aria-label="Tryb"><button data-tryb="sparing" class="on" data-stat="tryb-sparing" title="Mentor pyta, Ty odpowiadasz">Sparing</button><button data-tryb="gdzie" data-stat="tryb-gdzie" title="Krótka odpowiedź z odnośnikiem do slajdu">Gdzie to było?</button></div>
+ <div class="dd dd-model"><button id="modelBtn" class="chip" aria-haspopup="true" aria-expanded="false" data-stat="model-menu">GPT-6.1 Sol ▾</button>
+  <div class="menu" id="modelMenu" hidden>
+   <button data-model="sol" class="on" data-stat="model-sol"><b>GPT-6.1 Sol</b><small>OpenAI · domyślny</small></button>
+   <button data-model="sonnet" data-stat="model-sonnet"><b>Claude Sonnet 5.5</b><small>Anthropic · do porównania</small></button>
+   <button data-model="gemini" data-stat="model-gemini"><b>Gemini</b><small>dla chętnych · Twój bezpłatny klucz Google</small></button>
+   <div id="gZarzad" class="mstopka" hidden><button class="lnk" id="gkeyZmien" data-stat="gemini-zmien-model">Zmień model Gemini</button><button class="lnk" id="gkeyUsun" data-stat="gemini-klucz-usun">Usuń klucz</button></div>
+  </div></div>
+ <div class="dd dd-wiecej"><button id="wiecejBtn" class="chip" aria-haspopup="true" aria-expanded="false" title="Więcej" data-stat="wiecej">⋯</button>
+  <div class="menu prawo" id="wiecejMenu" hidden>
+   <button id="nowa" data-stat="nowa-rozmowa">Nowa rozmowa</button>
+   <button data-panel="kontekst" data-stat="co-dostaje-model">Co dostaje model?</button>
+   <button data-panel="o" data-stat="o-mentorze">O Mentorze</button>
+   <button data-panel="ogolna" data-stat="opinia-ogolna">Twoja opinia</button>
+  </div></div>
+</header>
+<p class="ai-info" role="note"><b>To jest AI, nie prowadzący:</b> może się mylić. Sprawdzaj na slajdach, do których odsyła. <button class="lnk" data-panel="o" data-stat="ai-wiecej">Więcej</button></p>
 <div id="kluczBox" class="kodbox" hidden>
-<p><b>Dla chętnych: Gemini na Twoim bezpłatnym kluczu Google.</b> Nie musisz: Sol i Sonnet działają bez klucza.</p>
-<p class="muted"><small>Jak zdobyć klucz: <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank" rel="noopener">instrukcja Google „Using Gemini API keys”</a>. W skrócie: wejdź na <a href="https://aistudio.google.com/api-keys" target="_blank" rel="noopener">aistudio.google.com/api-keys</a>, zaloguj się kontem Google, kliknij „Create API key”, skopiuj klucz i wklej go tutaj.</small></p>
-<p><input id="gkeyIn" type="password" autocomplete="off" spellcheck="false" placeholder="klucz Google"><button id="gkeyOk" data-stat="gemini-klucz-zapisz">Zapisz</button></p>
-<label class="muted"><input type="checkbox" id="gkeyTrwale"> Zapamiętaj na tym urządzeniu (bez zaznaczenia: do zamknięcia karty)</label>
-<p id="gkeyInfo"></p>
-<div id="gmodelBox" hidden><label>Model: <select id="gmodelSel"></select></label> <button class="lnk" id="gkeyUsun" data-stat="gemini-klucz-usun">Usuń klucz</button></div>
-<p class="muted"><small>Klucz zostaje w Twojej przeglądarce. Pytania, rozmowa i materiały kursu idą prosto do Google; serwer kursu ich nie widzi. Według <a href="https://ai.google.dev/gemini/terms" target="_blank" rel="noopener">warunków Gemini API</a>: tylko osoby pełnoletnie; w EOG Google stosuje do bezpłatnego limitu te same zasady co do płatnego, czyli nie używa zapytań do ulepszania modeli. Mimo to nie wpisuj danych osobowych. Bezpłatny limit jest dzienny: gdy się skończy, wróć do Sol albo Sonneta.</small></p>
+ <p><b>Gemini na Twoim bezpłatnym kluczu Google</b> <small class="muted">(dla chętnych)</small></p>
+ <div id="gkeyWpis">
+  <p class="muted"><small><a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank" rel="noopener">Instrukcja Google: jak zdobyć klucz</a> · <a href="https://aistudio.google.com/api-keys" target="_blank" rel="noopener">aistudio.google.com/api-keys</a></small></p>
+  <p class="rzad"><input id="gkeyIn" type="password" autocomplete="off" spellcheck="false" placeholder="wklej klucz"><button id="gkeyOk" data-stat="gemini-klucz-zapisz">Zapisz</button><button class="lnk" id="gkeyAnuluj" data-stat="gemini-anuluj">Anuluj</button></p>
+  <label class="muted"><input type="checkbox" id="gkeyTrwale"> Zapamiętaj na tym urządzeniu</label>
+ </div>
+ <div id="gmodelBox" class="rzad" hidden><label>Model: <select id="gmodelSel"></select></label><button id="gGotowe" data-stat="gemini-gotowe">Gotowe</button></div>
+ <p id="gkeyInfo" class="muted"></p>
+ <p class="muted"><small>Klucz zostaje w przeglądarce; zapytania idą prosto do Google, serwer kursu ich nie widzi. <a href="https://ai.google.dev/gemini/terms" target="_blank" rel="noopener">Warunki Gemini API</a>: tylko osoby pełnoletnie; w EOG bezpłatny limit bez używania zapytań do ulepszania modeli. Nie wpisuj danych osobowych.</small></p>
 </div>
 <div id="log"></div>
-<form id="f" autocomplete="off"><textarea id="q" placeholder="Zapytaj o coś z zajęć albo poproś: „przepytaj mnie z RAG”" rows="2"></textarea><button id="wyslij" type="submit" data-stat="wyslij">Wyślij</button><p class="ai-stopka">Mentor to AI: może się mylić. Sprawdzaj w slajdach. Nie wpisuj danych osobowych.</p></form>
+<form id="f" autocomplete="off"><textarea id="q" placeholder="Zapytaj o coś z zajęć albo poproś: „przepytaj mnie z RAG”" rows="2"></textarea><button id="wyslij" type="submit" data-stat="wyslij">Wyślij</button><p class="ai-stopka">Odpowiedzi AI mogą zawierać błędy. Nie wpisuj danych osobowych.</p></form>
 </main>
 
 <section class="panel" id="p-o" aria-label="O Mentorze"><button class="x" data-zamknij>✕ <small>Esc</small></button>
@@ -135,9 +172,16 @@ function gBlad(s,j){const m=(j&&j.error&&j.error.message)||'';if(/API key/i.test
 async function gModele(k){const r=await fetch(GAPI+'/models?pageSize=200',{headers:{'x-goog-api-key':k}});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(gBlad(r.status,j));
  return (j.models||[]).filter(m=>(m.supportedGenerationMethods||[]).includes('generateContent')&&/gemini/.test(m.name)&&!/(image|tts|audio|live|embed|robotics|computer)/.test(m.name)).map(m=>({id:m.name.replace('models/',''),nazwa:m.displayName||m.name}))}
 function gDomyslny(l){const v=x=>parseFloat((x.id.match(/(\d+(?:\.\d+)?)/)||[0,0])[1])||0;const f=l.filter(x=>/flash/.test(x.id)&&!/lite|preview|exp/.test(x.id)).sort((a,b)=>v(b)-v(a));return (f[0]||l.find(x=>/flash/.test(x.id))||l[0]||{}).id||''}
-async function gPokaz(){const k=GKEY.get(),box=$('#kluczBox');box.hidden=model!=='gemini';if(box.hidden)return;$('#gmodelBox').hidden=!k;if(!k){$('#gkeyIn').focus();return}
- try{const l=await gModele(k);if(!l.find(x=>x.id===GMODEL))GMODEL=gDomyslny(l);$('#gmodelSel').innerHTML=l.map(x=>`<option value="${esc(x.id)}"${x.id===GMODEL?' selected':''}>${esc(x.nazwa)} (${esc(x.id)})</option>`).join('');$('#gkeyInfo').textContent='Klucz działa. Model: '+GMODEL+'.'}
- catch(e){$('#gkeyInfo').textContent=e.message}}
+function chipModel(){$('#modelBtn').textContent=(model==='gemini'?'Gemini'+(GMODEL?' · '+GMODEL.replace(/^gemini-/,''):'')+' · Twój klucz':NAZWA[model])+' ▾';
+ document.querySelectorAll('[data-model]').forEach(b=>b.classList.toggle('on',b.dataset.model===model));$('#gZarzad').hidden=!GKEY.get()}
+async function gPokaz(wybor){   // panel tylko, gdy trzeba: brak klucza albo zmiana modelu
+ const k=GKEY.get(),box=$('#kluczBox');$('#gkeyInfo').textContent='';
+ if(model!=='gemini'){box.hidden=true;chipModel();return}
+ if(k&&!wybor){box.hidden=true;if(!GMODEL){try{GMODEL=gDomyslny(await gModele(k))}catch(e){}}chipModel();return}
+ box.hidden=false;$('#gkeyWpis').hidden=!!k;$('#gmodelBox').hidden=!k;
+ if(!k){$('#gkeyIn').focus();chipModel();return}
+ try{const l=await gModele(k);if(!l.find(x=>x.id===GMODEL))GMODEL=gDomyslny(l);$('#gmodelSel').innerHTML=l.map(x=>`<option value="${esc(x.id)}"${x.id===GMODEL?' selected':''}>${esc(x.nazwa)} (${esc(x.id)})</option>`).join('')}
+ catch(e){$('#gkeyInfo').textContent=e.message}chipModel()}
 async function zapytajGemini(wiad){
  const k=GKEY.get();if(!k)throw new Error('Wpisz swój klucz Google w polu powyżej.');if(!GMODEL)await gPokaz();
  if(!KTX){const j=await (await fetch(API+'/kontekst')).json();KTX=j.instrukcja+j.materialy}
@@ -149,18 +193,18 @@ async function zapytajGemini(wiad){
  if(!odp.trim())throw new Error('Gemini nie odpowiedział'+(c&&c.finishReason?' ('+c.finishReason+')':'')+'. Spróbuj jeszcze raz.');
  const u=j.usageMetadata||{};
  return {odp,model:'gemini',nazwa:'Gemini · '+GMODEL,sekundy:Math.round((Date.now()-t0)/100)/10,tokeny:{wej:u.promptTokenCount,cache:u.cachedContentTokenCount||0,wyj:(u.candidatesTokenCount||0)+(u.thoughtsTokenCount||0)},koszt:0,wlasny:true}}
-const PODPOW={sparing:['Przepytaj mnie z RAG z zajęć 26.10','Przepytaj mnie z trzech sposobów uczenia','Sprawdź, czy rozumiem, czym jest token','Przepytaj mnie z wyroku T-323'],
- gdzie:['Gdzie było o tym, ile mylą się Lexis+ AI i Westlaw?','Jak AI Act definiuje system AI?','Wyjaśnij embeddingi komuś, kto nie programuje','Do kiedy wybieram ścieżkę zaliczenia?']};
+const PODPOW={sparing:['Przepytaj mnie z RAG z zajęć 26.10','Przepytaj mnie z trzech sposobów uczenia','Przepytaj mnie z wyroku T-323'],
+ gdzie:['Ile mylą się Lexis+ AI i Westlaw?','Jak AI Act definiuje system AI?','Do kiedy wybieram ścieżkę zaliczenia?']};
 let tryb='sparing', model='sol', hist=[], czeka=false;
 const kod={get:()=>{try{return localStorage.getItem('mentor-kod')||''}catch(e){return ''}},set:v=>{try{v?localStorage.setItem('mentor-kod',v):localStorage.removeItem('mentor-kod')}catch(e){}}};
 let KOD=new URLSearchParams(location.search).get('kod')||kod.get();
 
 // --- tekst odpowiedzi: bezpieczny HTML, odnośniki do slajdów i dem ---
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function odnosniki(w){   // treść nawiasu kwadratowego (już po esc)
- let t=w.replace(/slajd(?:y|zie|u)?\s*(\d+)(?:\s*[–-]\s*(\d+))?/g,(m,a,b)=>`<a class="ref" href="${MAPA}#s${a}" target="_blank" rel="noopener">${m}</a>`);
- t=t.replace(/materiał: (?:demo )?„([^”]+)”/g,(m,n)=>{const k=Object.keys(DEMA).find(x=>n.startsWith(x));return k?`<a class="ref" href="${DEMO}${DEMA[k]}/" target="_blank" rel="noopener">${m}</a>`:m});
- return '['+t+']'}
+function odnosniki(w){   // treść nawiasu kwadratowego (już po esc) -> plakietki bez nawiasów
+ let t=w.replace(/slajd(?:y|zie|u)?\s*(\d+)(?:\s*[–-]\s*(\d+))?/g,(m,a,b)=>`<a class="ref" href="${MAPA}#s${a}" target="_blank" rel="noopener" title="Otwórz slajd ${a}">${b?'slajdy '+a+'–'+b:'slajd '+a}</a>`);
+ t=t.replace(/materiał: (?:demo )?„([^”]+)”/g,(m,n)=>{const k=Object.keys(DEMA).find(x=>n.startsWith(x));return k?`<a class="ref" href="${DEMO}${DEMA[k]}/" target="_blank" rel="noopener">demo: ${n.split(' (')[0]}</a>`:m});
+ return '<span class="refs">'+t+'</span>'}
 function inline(s){
  s=esc(s);
  s=s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,(m,t,u)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`);
@@ -188,7 +232,7 @@ function start(){
  log.append(d)}
 function dodaj(rola,html,cls=''){const d=document.createElement('div');d.className='msg '+cls+(rola==='ty'?' ty':'');d.innerHTML=html;log.append(d);d.scrollIntoView({block:'end',behavior:'smooth'});return d}
 const zl=v=>v.toFixed(v<0.01?4:3).replace('.',',')+' $', tys=n=>(n||0).toLocaleString('pl-PL');
-function metaHTML(r){return `<span>${esc(r.nazwa)} · ${String(r.sekundy).replace('.',',')} s</span><span title="tokeny wejścia (w tym z pamięci podręcznej) · tokeny wyjścia">${tys(r.tokeny.wej)} tok. wejścia (${tys(r.tokeny.cache)} z pamięci) · ${tys(r.tokeny.wyj)} wyjścia · ${r.wlasny?'Twój klucz':zl(r.koszt)}</span>`}
+function metaHTML(r){return `<span class="info" tabindex="0" title="${tys(r.tokeny.wej)} tokenów wejścia (${tys(r.tokeny.cache)} z pamięci podręcznej) · ${tys(r.tokeny.wyj)} tokenów wyjścia">${esc(r.nazwa)} · ${String(r.sekundy).replace('.',',')} s · ${r.wlasny?'Twój klucz':zl(r.koszt)}</span>`}
 
 async function zapytaj(m,wiad){
  if(m==='gemini')return zapytajGemini(wiad);
@@ -213,7 +257,7 @@ async function wyslij(tekst){
  czeka=false;$('#wyslij').disabled=false;$('#q').focus()}
 
 function odpowiedz(el,r,pyt){
- el.innerHTML=`<p class="kto">Mentor <span class="ai">AI</span> · ${esc(r.nazwa)}</p><div class="tekst">${md(r.odp)}</div><div class="meta">${metaHTML(r)}<button data-ocena="1" title="Dobra odpowiedź" data-stat="ocena-plus">👍</button><button data-ocena="-1" title="Słaba odpowiedź" data-stat="ocena-minus">👎</button><button data-por title="Ta sama rozmowa, drugi model" data-stat="porownaj">Zapytaj ${NAZWA[INNY[r.model]]}</button></div>`;
+ el.innerHTML=`<p class="kto">Mentor <span class="ai">AI</span> · ${esc(r.nazwa)}</p><div class="tekst">${md(r.odp)}</div><div class="meta">${metaHTML(r)}<button data-ocena="1" title="Dobra odpowiedź" data-stat="ocena-plus">👍</button><button data-ocena="-1" title="Słaba odpowiedź" data-stat="ocena-minus">👎</button><button data-por title="Zapytaj o to samo: ${NAZWA[INNY[r.model]]}" data-stat="porownaj">Porównaj</button></div>`;
  el._r=r;el._pyt=pyt}
 
 async function porownaj(el){
@@ -254,22 +298,28 @@ async function panel(id){document.querySelectorAll('.panel').forEach(p=>p.classL
 
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-tryb]');if(t){tryb=t.dataset.tryb;document.querySelectorAll('[data-tryb]').forEach(b=>b.classList.toggle('on',b===t));if(!hist.length)start();return}
- const m=e.target.closest('[data-model]');if(m){model=m.dataset.model;document.querySelectorAll('[data-model]').forEach(b=>b.classList.toggle('on',b===m));gPokaz();return}
- if(e.target.closest('#gkeyOk')){const v=$('#gkeyIn').value.trim();if(!v)return;$('#gkeyInfo').textContent='Sprawdzam klucz…';gModele(v).then(()=>{GKEY.set(v,$('#gkeyTrwale').checked);$('#gkeyIn').value='';gPokaz()}).catch(er=>{$('#gkeyInfo').textContent=er.message});return}
- if(e.target.closest('#gkeyUsun')){GKEY.set('');GMODEL='';$('#gkeyInfo').textContent='Klucz usunięty z tej przeglądarki.';gPokaz();return}
+ const mb=e.target.closest('#modelBtn,#wiecejBtn');if(mb){const mn=mb.nextElementSibling,otw=mn.hidden;zamknijMenu();mn.hidden=!otw;mb.setAttribute('aria-expanded',otw);return}
+ if(!e.target.closest('.menu'))zamknijMenu();
+ const m=e.target.closest('[data-model]');if(m){model=m.dataset.model;zamknijMenu();gPokaz();return}
+ if(e.target.closest('#gkeyZmien')){zamknijMenu();model='gemini';gPokaz(true);return}
+ if(e.target.closest('#gkeyOk')){const v=$('#gkeyIn').value.trim();if(!v)return;$('#gkeyInfo').textContent='Sprawdzam klucz…';gModele(v).then(l=>{GKEY.set(v,$('#gkeyTrwale').checked);$('#gkeyIn').value='';GMODEL=gDomyslny(l);gPokaz()}).catch(er=>{$('#gkeyInfo').textContent=er.message});return}
+ if(e.target.closest('#gkeyAnuluj')){if(!GKEY.get())model='sol';$('#kluczBox').hidden=true;chipModel();return}
+ if(e.target.closest('#gGotowe')){$('#kluczBox').hidden=true;chipModel();return}
+ if(e.target.closest('#gkeyUsun')){zamknijMenu();GKEY.set('');GMODEL='';if(model==='gemini')model='sol';gPokaz();return}
  const p=e.target.closest('[data-podp]');if(p){wyslij(p.dataset.podp);return}
- const pa=e.target.closest('[data-panel]');if(pa){panel(pa.dataset.panel);return}
+ const pa=e.target.closest('[data-panel]');if(pa){zamknijMenu();panel(pa.dataset.panel);return}
  if(e.target.closest('[data-zamknij]')){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));return}
  const msg=e.target.closest('.msg');
  const oc=e.target.closest('[data-ocena]');if(oc&&msg){opinia(msg,{ocena:+oc.dataset.ocena,model:msg._r.model,pyt:msg._pyt,odp:{[msg._r.model]:msg._r.odp}});return}
  if(e.target.closest('[data-por]')&&msg){porownaj(msg);return}
- if(e.target.closest('#nowa')){hist=[];start()}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'))});
+ if(e.target.closest('#nowa')){zamknijMenu();hist=[];start()}});
+function zamknijMenu(){document.querySelectorAll('.menu').forEach(x=>x.hidden=true);document.querySelectorAll('#modelBtn,#wiecejBtn').forEach(b=>b.setAttribute('aria-expanded','false'))}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){zamknijMenu();document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'))}});
 $('#f').addEventListener('submit',e=>{e.preventDefault();const v=$('#q').value;$('#q').value='';wyslij(v)});
-$('#gmodelSel').addEventListener('change',e=>{GMODEL=e.target.value;try{localStorage.setItem('mentor-gmodel',GMODEL)}catch(x){}$('#gkeyInfo').textContent='Model: '+GMODEL+'.'});
+$('#gmodelSel').addEventListener('change',e=>{GMODEL=e.target.value;try{localStorage.setItem('mentor-gmodel',GMODEL)}catch(x){}chipModel()});
 $('#gkeyIn').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#gkeyOk').click()}});
 $('#q').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('#f').requestSubmit()}});
-start();
+chipModel();start();
 </script>
 </body>
 </html>
