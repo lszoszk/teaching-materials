@@ -12,8 +12,9 @@
 <style>
 :root{--bg:#141019;--ink:#1b1622;--deep:#0f0b14;--paper:#efe6d2;--gold:#e0b950;--blue:#6fb7c9;--line:#4d4059;--muted:#ada290;--ok:#7fb069;--bad:#d65a4a;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--paper);font:17px/1.5 var(--mono)}
-main{max-width:1120px;margin:0 auto;padding:16px 20px 0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--paper);font:17px/1.5 var(--mono)}
+/* cały Mentor mieści się w oknie: przewija się tylko rozmowa, pole pytania zawsze widać */
+main{max-width:1120px;margin:0 auto;padding:16px 20px 0;box-sizing:border-box;height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
 header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-right:230px}
 h1{font-size:28px;margin:0}h1 span{color:var(--gold)}
 .sub{color:var(--muted);margin:0;font-size:15px}
@@ -23,7 +24,7 @@ button{font:inherit;font-size:15px;cursor:pointer;border:3px solid var(--line);b
 button.on{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700}
 button.lnk{background:none;border:0;box-shadow:none;color:var(--blue);text-decoration:underline;padding:2px 4px;font-size:14px}
 button:disabled{opacity:.45;cursor:default}
-#log{flex:1;display:flex;flex-direction:column;gap:14px;padding:6px 0 18px}
+#log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;gap:14px;padding:6px 4px 18px 0}
 .msg{max-width:860px;padding:12px 16px;border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,5px 5px 0 #0008;background:var(--ink)}
 .msg.ty{align-self:flex-end;background:#2a2135;max-width:720px}
 .msg .tekst{font:17px/1.55 var(--sans)}.msg .tekst p{margin:0 0 .6em}.msg .tekst p:last-child{margin:0}.msg .tekst ul,.msg .tekst ol{margin:.2em 0 .6em;padding-left:1.4em}
@@ -42,7 +43,7 @@ button:disabled{opacity:.45;cursor:default}
 .start b{color:var(--paper)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
 .chips button{font:14px/1.3 var(--sans);text-align:left}
-form#f{position:sticky;bottom:0;background:var(--bg);padding:10px 0 14px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:flex-end;border-top:2px solid #2a2135}
+form#f{flex:none;background:var(--bg);padding:10px 0 14px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:flex-end;border-top:2px solid #2a2135}
 #q{flex:1;min-height:48px;max-height:180px;resize:vertical;background:var(--deep);color:var(--paper);border:3px solid var(--line);font:17px/1.45 var(--sans);padding:9px 12px}
 #q:focus{outline:none;border-color:var(--gold)}
 #wyslij{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700;font-size:17px;padding:10px 18px}
