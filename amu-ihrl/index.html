@@ -1669,7 +1669,7 @@ nav.hud [data-action="map"]:disabled{opacity:.3;cursor:default}
 </section>
 
 
-<section aria-label="Slajd 48: Gildia prawników: Oko Cyklopa" class="slide kurs kcyk" data-title="Gildia prawników: Oko Cyklopa" data-title-odyseja="Gildia prawników: Oko Cyklopa" data-min="15" data-appendix="false">
+<section aria-label="Slajd 48: Gildia prawników: Oko Cyklopa" class="slide kurs kcyk" data-zamek="Otworzymy na kolejnych zajęciach" data-title="Gildia prawników: Oko Cyklopa" data-title-odyseja="Gildia prawników: Oko Cyklopa" data-min="15" data-appendix="false">
 <div class="kicker" data-u-odyseja="Gildia · rozpoznawanie twarzy · eksperyment">Gildia · rozpoznawanie twarzy · eksperyment</div>
 <h2>Oko <span class="gld">Cyklopa</span></h2>
 <div class="kgrid kcykg">
@@ -2876,7 +2876,7 @@ function setWall(v){wall=Math.abs(v-BASE)<.005?BASE:Math.max(1.2,Math.min(6,Math
 const UNIS=window.UNIVERSES||{};let universe='wiedzmin',CH=(UNIS.wiedzmin||{}).chapters||['MAPA','SĄD','GILDIA PRAWNIKÓW','KUŹNIA','PRACOWNIA ALCHEMIKA','ARENA','PORT'];
 const mapIdx=k=>slides.findIndex(s=>s.classList.contains('map-slide')&&Number(s.dataset.stop||0)===k&&!s.hasAttribute('data-final'));
 /* lokacje poza szlakiem (budynek z `poza` w universes.js): otwarte, ale „dalej” i „wstecz” ich nie odwiedzają; wchodzi się z mapy albo z wyszukiwarki */
-function krok(i,dir){const ch0=chapterOf(i);let j=i+dir;while(j>=0&&j<slides.length&&slides[j].dataset.appendix!=='true'&&window.MAPA&&MAPA.offRoute&&MAPA.offRoute(chapterOf(j))&&chapterOf(j)!==ch0)j+=dir;return j}
+function krok(i,dir){const ch0=chapterOf(i);let j=i+dir;while(j>=0&&j<slides.length&&slides[j].dataset.appendix!=='true'&&((window.MAPA&&MAPA.offRoute&&MAPA.offRoute(chapterOf(j))&&chapterOf(j)!==ch0)||(slides[j].dataset.zamek&&lockOf(j))))j+=dir;return j}
 function chapterOf(i){for(let j=i;j>=0;j--){const s=slides[j];if(s.classList.contains('map-slide')&&!s.hasAttribute('data-final'))return Number(s.dataset.stop||0)}return 0}
 function hud(){const el=$('chap');if(!el||!window.MAPA)return;const s=slides[current];if(isMap(current)||s.dataset.appendix==='true'){el.hidden=true;return}const k=chapterOf(current);el.hidden=false;
  el.innerHTML=`<span class="cn">${k?String(k).padStart(2,'0')+' · '+CH[k]:CH[0]}</span>`}
@@ -2984,7 +2984,8 @@ function toggle(id){const open=$(id).classList.contains('show');document.querySe
 function full(){document.fullscreenElement?document.exitFullscreen?.():document.documentElement.requestFullscreen?.().catch(()=>{})}
 /* ?odblokuj: podgląd zamkniętych lokacji tylko w wersji prowadzącego (mapa.html), nie w studenckiej ani online */
 let unlockPreview=document.body.dataset.public!=='true'&&!('online' in document.body.dataset)&&new URLSearchParams(location.search).has('odblokuj');
-function lockOf(i){const s=slides[i];if(!unlockPreview&&s&&s.dataset.zamekPoi)return window.MAPA&&MAPA.poiLock?MAPA.poiLock(s.dataset.zamekPoi):'';if(unlockPreview||!s||s.dataset.appendix==='true'||(s.classList.contains('map-slide')&&!s.hasAttribute('data-final')))return '';return window.MAPA&&MAPA.lockedAt?MAPA.lockedAt(chapterOf(i)):''}
+function lockOf(i){const s=slides[i];if(!unlockPreview&&s&&s.dataset.zamek)return s.dataset.zamek;   /* pojedynczy slajd na kłódkę */
+ if(!unlockPreview&&s&&s.dataset.zamekPoi)return window.MAPA&&MAPA.poiLock?MAPA.poiLock(s.dataset.zamekPoi):'';if(unlockPreview||!s||s.dataset.appendix==='true'||(s.classList.contains('map-slide')&&!s.hasAttribute('data-final')))return '';return window.MAPA&&MAPA.lockedAt?MAPA.lockedAt(chapterOf(i)):''}
 let awBack=-1;
 window.addEventListener('open-slide',e=>{const id=e.detail;if(id==='_back'){if(awBack>=0){const b=awBack;awBack=-1;show(b)}return}const i=slides.findIndex(s=>s.dataset.id===id);if(i<0)return;awBack=current;show(i,true)});
 document.addEventListener('click',e=>{if(e.target.closest('[data-back]')){e.preventDefault();window.dispatchEvent(new CustomEvent('open-slide',{detail:'_back'}))}});
