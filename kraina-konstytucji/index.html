@@ -16,7 +16,7 @@
   button { margin-top: 14px; width: 100%; font: 16px ui-monospace, monospace; letter-spacing: 2px; background: #e0b950; color: #150f1b; border: 3px solid #150f1b; padding: 10px; cursor: pointer; }
   #msg { min-height: 24px; margin: 12px 0 0; color: #ef8a7c; }
 </style>
-<script src="../statystyki.js" defer></script>
+
 </head>
 <body>
 <main>
@@ -43,8 +43,6 @@
     const html = await new Response(new Blob([gz]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
     try { localStorage.setItem('kraina_kod', kod); } catch (e) {}
     document.open(); document.write(html); document.close();
-    // statystyki: document.open() kasuje nasłuch kliknięć, więc skrypt wczytuje się jeszcze raz (liczy „otwarta” i trasy #/…)
-    const st = document.createElement('script'); st.src = '../statystyki.js'; st.setAttribute('data-trasy', ''); document.head.append(st);
   }
   const msg = document.getElementById('msg');
   let zapamietany = null;

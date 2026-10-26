@@ -910,7 +910,7 @@ html.tel-czyt .slide.active{padding-bottom:180px}
 nav.hud [data-action="map"]:disabled{opacity:.3;cursor:default}
 
 </style>
-<script src="../statystyki.js" defer></script></head><body data-public="false" data-online><main id="viewport"><div id="stage"><div id="world" aria-hidden="true"></div>
+</head><body data-public="false" data-online><main id="viewport"><div id="stage"><div id="world" aria-hidden="true"></div>
 
 
 <section aria-label="Slajd 1: Start: Międzynarodowa ochrona praw człowieka w świecie cyfrowym" class="slide map-slide" data-stop="0" data-title="Start: Międzynarodowa ochrona praw człowieka w świecie cyfrowym" data-min="1" data-appendix="false">
@@ -1383,9 +1383,9 @@ nav.hud [data-action="map"]:disabled{opacity:.3;cursor:default}
 
 <section aria-label="Slajd 31: Bilet wyjścia 19.10: co z niego wynika" class="slide kurs kbil" data-title="Bilet wyjścia 19.10: co z niego wynika" data-title-odyseja="Bilet wyjścia 19.10: co z niego wynika" data-min="4" data-appendix="false">
 <div class="kicker">Areopag · z biletu wyjścia 19.10</div>
-<h2>Dwa pytania <span class="gld">z biletu</span></h2>
+<h2>Dwa pytania <span class="gld">z poprzednich zajęć</span></h2>
 <div class="kgrid c2">
-<div class="kbox frag" data-o="1"><div class="lab">Co to jest klucz API?</div><p>Hasło, którym <b>program</b>, a nie człowiek, korzysta z modelu. Każde zapytanie kosztuje (płaci się za tokeny). Klucz w publicznym repozytorium to klucz dla całego świata.</p></div>
+<div class="kbox frag" data-o="1"><div class="lab">Co to jest klucz API?</div><p>Hasło, którym <b>program</b>, a nie człowiek, korzysta z modelu. Każde zapytanie kosztuje (płaci się za tokeny). Klucz w publicznym repozytorium to klucz dla całego świata.</p><a class="kmore" href="https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/mentor/" target="_blank" rel="noopener">Mentor: tak działa klucz API ↗</a></div>
 <div class="kbox frag" data-o="2"><div class="lab">Program w jednym pliku HTML?</div><p>Ta mapa to jeden plik: <b>HTML</b> (treść), <b>CSS</b> (wygląd), <b>JavaScript</b> (ruch). Działa w przeglądarce, bez serwera. Napisany z AI.</p><p>Tak samo teledysk <a class="gld" href="https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/radbruch/" data-live="https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/radbruch/" data-live-title="RADBRUCH SAYS · TELEDYSK Z HTML" target="_blank" rel="noopener">Radbruch Says ↗</a>: obraz to strona HTML, muzyka z ElevenLabs.</p></div>
 </div>
 <span class="slide-number">31</span>
@@ -2865,7 +2865,7 @@ function setWall(v){wall=Math.abs(v-BASE)<.005?BASE:Math.max(1.2,Math.min(6,Math
 const UNIS=window.UNIVERSES||{};let universe='wiedzmin',CH=(UNIS.wiedzmin||{}).chapters||['MAPA','SĄD','GILDIA PRAWNIKÓW','KUŹNIA','PRACOWNIA ALCHEMIKA','ARENA','PORT'];
 const mapIdx=k=>slides.findIndex(s=>s.classList.contains('map-slide')&&Number(s.dataset.stop||0)===k&&!s.hasAttribute('data-final'));
 /* lokacje poza szlakiem (budynek z `poza` w universes.js): otwarte, ale „dalej” i „wstecz” ich nie odwiedzają; wchodzi się z mapy albo z wyszukiwarki */
-function krok(i,dir){const ch0=chapterOf(i);let j=i+dir;while(j>=0&&j<slides.length&&slides[j].dataset.appendix!=='true'&&((window.MAPA&&MAPA.offRoute&&MAPA.offRoute(chapterOf(j))&&chapterOf(j)!==ch0)||(slides[j].dataset.zamek&&lockOf(j))))j+=dir;return j}
+function krok(i,dir){const ch0=chapterOf(i);let j=i+dir;while(j>=0&&j<slides.length&&slides[j].dataset.appendix!=='true'&&((window.MAPA&&MAPA.offRoute&&MAPA.offRoute(chapterOf(j))&&chapterOf(j)!==ch0)||lockOf(j)))j+=dir;return j}
 function chapterOf(i){for(let j=i;j>=0;j--){const s=slides[j];if(s.classList.contains('map-slide')&&!s.hasAttribute('data-final'))return Number(s.dataset.stop||0)}return 0}
 function hud(){const el=$('chap');if(!el||!window.MAPA)return;const s=slides[current];if(isMap(current)||s.dataset.appendix==='true'){el.hidden=true;return}const k=chapterOf(current);el.hidden=false;
  el.innerHTML=`<span class="cn">${k?String(k).padStart(2,'0')+' · '+CH[k]:CH[0]}</span>`}

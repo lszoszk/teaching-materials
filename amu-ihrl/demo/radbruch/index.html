@@ -14,12 +14,12 @@ video{display:block;width:100%;max-height:calc(100vh - 34px);background:#000}
 video::cue{font:500 1em/1.3 "IBM Plex Mono",ui-monospace,Menlo,monospace;background:rgba(0,0,0,.65)}
 p{margin:8px 12px;color:#ada290;font-size:13px;text-align:center}p a{color:#e0b950}
 </style>
-<script src="../../../statystyki.js" defer></script></head>
+</head>
 <body>
 <video id="v" controls playsinline preload="metadata" poster="poster.jpg" src="radbruch-says-720p.mp4">
 <track kind="subtitles" srclang="pl" label="polski" src="napisy-pl.vtt" default>
 </video>
 <p>Radbruch Says: Between Justice and Legal Certainty · Ł. Szoszkiewicz · obraz: HTML z Claude Fable 5.1 i Opus 5.5, muzyka: ElevenLabs Music · <a href="https://lszoszk.github.io/teaching-materials/radbruch-says/" target="_blank" rel="noopener">tekst i źródła ↗</a></p>
-<script>/* w oknie W z prezentacji film rusza od razu (jeśli przeglądarka pozwoli; inaczej przycisk ▶) */if(parent!==window){const v=document.getElementById('v');v.play().catch(()=>{})}</script>
+<!-- film rusza tylko przyciskiem ▶: prezentacja wczytuje tę stronę w tle już przy wejściu na slajd -->
 </body>
 </html>
