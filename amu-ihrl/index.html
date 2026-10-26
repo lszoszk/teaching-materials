@@ -1751,7 +1751,8 @@ nav.hud [data-action="map"]:disabled{opacity:.3;cursor:default}
 <div class="kbox frag" data-o="1"><div class="lab">Na koniec, bez AI: ocena projektu</div><p>Seniorzy z grupy AI lepsi od seniorów bez AI. <b>Juniorzy średnio bez zysku.</b></p></div>
 </div>
 <p class="kans frag" data-o="2">Na studiach — bez skrótów. W pracy — z AI. <br><span style="font-size:20px;font-weight:400">Tylko ćwicząc sami, nauczycie się, na co zwracać uwagę, co sprawdzać i co można oddać narzędziu.</span></p>
-<footer class="src"><a href="https://www.nber.org/papers/w35720" target="_blank" rel="noopener" title="D. Autor i in., Does AI Assistance Enhance or Erode Expertise?, NBER Working Paper 35720 (IX 2026), praca robocza">Autor i in., NBER 35720</a></footer>
+<p style="font-size:18px;margin:14px 0 0">Zasady korzystania z AI na UAM: <a href="https://bip.amu.edu.pl/__data/assets/pdf_file/0022/682051/ZR-250-2025-2026.pdf" target="_blank" rel="noopener">Zarządzenie nr 250/2025/2026 Rektora UAM z 25 września 2026 r. ↗</a></p>
+<footer class="src"><a href="https://www.nber.org/papers/w35720" target="_blank" rel="noopener" title="D. Autor i in., Does AI Assistance Enhance or Erode Expertise?, NBER Working Paper 35720 (IX 2026), praca robocza">Autor i in., NBER 35720</a><a href="https://bip.amu.edu.pl/__data/assets/pdf_file/0022/682051/ZR-250-2025-2026.pdf" target="_blank" rel="noopener" title="Zarządzenie nr 250/2025/2026 Rektora UAM z 25.09.2026 w sprawie zasad korzystania z systemów sztucznej inteligencji w procesie kształcenia studentów">ZR 250/2025/2026</a></footer>
 <span class="slide-number">53</span>
 </section>
 
@@ -2415,7 +2416,7 @@ odyseja:{name:'Odyseja',terrain:'assets/mapa_teren_odyseja.webp',mode:'ship',
  buildings:[{id:"wprowadzenie",c:[445,752],lx:-130,art:"namiot",name:"NAMIOT RADY",sub:"Narada przed wyprawą"},
 {id:"przystan",c:[1285,560],name:"SKAŁY SYREN",sub:"Jak działa maszyna, która mówi pięknie?"},
 {id:"areopag",c:[350,418],name:"AREOPAG",sub:"AI w sądach: już nie tylko protokołowanie"},
-{id:"pylos",c:[700,235],name:"GILDIA PRAWNIKÓW",sub:"Czym właściwie jest praca prawnika?",locked:"Otworzymy na kolejnych zajęciach"},
+{id:"pylos",c:[700,235],name:"GILDIA PRAWNIKÓW",sub:"Czym właściwie jest praca prawnika?",poza:true},
 {id:"scheria",c:[860,478],name:"WYSPA FEAKÓW",sub:"Jedna osoba, cały warsztat",locked:"Otworzymy na kolejnych zajęciach"},
 {id:"itaka",c:[1485,420],name:"ITAKA",sub:"Próba łuku",locked:"Zamknięte do końca semestru"}],
  poi:[{id:'charlotin',c:[1215,690],art:'wrak',name:'WRAKI POD SKAŁAMI SYREN',text:'Pod skałami leżą wraki tych, którzy uwierzyli pieśni. Na początku października 2026 r. to ponad 2000 spraw z kilkudziesięciu państw i terytoriów, w których sąd stwierdził, że pismo powoływało zmyślenia AI. W 2023 r. kilkanaście, w 2024 r. ok. 60, w 2025 r. ok. 850, a w 2026 r. do połowy września ponad 1100 (to sprawy zebrane w bazie, nie pełny pomiar). W ponad 800 wśród autorów był prawnik, w ponad 1100 — sama strona, bez prawnika. Z Polski są dwie: NSA (I FZ 104/26) i KIO (3342/25). Zbiera je Damien Charlotin.',links:[['baza Damiena Charlotina: AI Hallucination Cases','https://www.damiencharlotin.com/hallucinations/']]},
@@ -2746,8 +2747,9 @@ function enter(k,dir,isFinal){if(!ready)return;cancel();roamStop();walkOn=false;
   if(U.mode==='ship'){finT=setTimeout(()=>finOn(true),dir>0?1200:0);return}
   if(dir>0){sail();finT=setTimeout(()=>finOn(true),3000)}else{boatAt(BOAT_END);hero.style.display='none';finOn(true)}return}
  if(k===0){arrived=true;rebuild(0,true);heroAt(S[0][0],S[0][1]);setInv(0);showDialog('','',false);return}
- if(dir>0){arrived=false;rebuild(k-1,true);heroAt(S[k-1][0],S[k-1][1]);setInv(k-1);showDialog('','',false);collect(k-1)}
- else if(dir===0){arrived=false;rebuild(k-1,true);heroAt(S[k-1][0],S[k-1][1]);setInv(k);showDialog('','',false)}
+ let p=k-1;while(p>0&&BLD[p]&&BLD[p].poza)p--;   /* lokacja poza szlakiem: statek rusza z ostatniej lokacji na szlaku */
+ if(dir>0){arrived=false;rebuild(p,true);heroAt(S[p][0],S[p][1]);setInv(k-1);showDialog('','',false);collect(k-1)}
+ else if(dir===0){arrived=false;rebuild(p,true);heroAt(S[p][0],S[p][1]);setInv(k);showDialog('','',false)}
  else{arrived=true;rebuild(k,true);heroAt(S[k][0],S[k][1]);setInv(k);showDialog(BLD[k].name,BLD[k].locked||BLD[k].sub,true)}}
 function collect(n){if(!INV||n<0||n>=ITEMS.length)return;const it=ITEMS[n],slot=document.querySelectorAll('#inv .slot')[n],mx=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--W'))-1600)/2||0;
  const [hx,hy]=S[n];flyer.innerHTML=icon(it.id);flyer.style.display='block';const sx=mx+hx-39,sy=hy-cameraY-HD().h*HD().ay-86;
@@ -2835,7 +2837,7 @@ function init(){world=$('world');if(!world)return;world.dataset.u=UNAME;hero&&ca
  world.querySelectorAll('[data-direction]').forEach(button=>{button.onpointerdown=e=>{e.preventDefault();button.setPointerCapture(e.pointerId);key(button.dataset.direction,true)};button.onpointerup=button.onpointercancel=button.onlostpointercapture=()=>key(button.dataset.direction,false)});
  fog=$('fog');ctx=fog.getContext('2d');hero=$('hero');heroImg=$('heroImg');dlg=$('dialog');flyer=$('flyer');ready=true;rebuild(0,true);heroAt(S[0][0],S[0][1])}
 function setUniverse(n){useUniverse(n);if(world)init()}
-window.MAPA={init,setUniverse,enter,next,leave,key,action,setWalk,get universe(){return UNAME},state:()=>({stop,arrived,final,walking:!!walking,roaming:!!roamRaf,pos:pos.map(Math.round),camera:[0,Math.round(cameraY)],worldSize:[MW,MH],walkOn,near:near&&near.name}),icon,get ITEMS(){return ITEMS},lockedAt:k=>{const b=BLD[k];return b&&b.locked||''},poiLock:id=>{const p=POI.find(x=>x.id===id);return p&&p.locked||''},setJump:f=>{onJump=f},
+window.MAPA={init,setUniverse,enter,next,leave,key,action,setWalk,get universe(){return UNAME},state:()=>({stop,arrived,final,walking:!!walking,roaming:!!roamRaf,pos:pos.map(Math.round),camera:[0,Math.round(cameraY)],worldSize:[MW,MH],walkOn,near:near&&near.name}),icon,get ITEMS(){return ITEMS},lockedAt:k=>{const b=BLD[k];return b&&b.locked||''},offRoute:k=>{const b=BLD[k];return !!(b&&b.poza)},poiLock:id=>{const p=POI.find(x=>x.id===id);return p&&p.locked||''},setJump:f=>{onJump=f},
  _blocked:blocked,returnToRoute,
  _tp:(x,y)=>{walkOn=true;world.classList.add('roam');heroAt(x,y);revealAt(x,y,R_PATH);drawFog();updateNear()}};
 })();
@@ -2873,6 +2875,8 @@ function setWall(v){wall=Math.abs(v-BASE)<.005?BASE:Math.max(1.2,Math.min(6,Math
 
 const UNIS=window.UNIVERSES||{};let universe='wiedzmin',CH=(UNIS.wiedzmin||{}).chapters||['MAPA','SĄD','GILDIA PRAWNIKÓW','KUŹNIA','PRACOWNIA ALCHEMIKA','ARENA','PORT'];
 const mapIdx=k=>slides.findIndex(s=>s.classList.contains('map-slide')&&Number(s.dataset.stop||0)===k&&!s.hasAttribute('data-final'));
+/* lokacje poza szlakiem (budynek z `poza` w universes.js): otwarte, ale „dalej” i „wstecz” ich nie odwiedzają; wchodzi się z mapy albo z wyszukiwarki */
+function krok(i,dir){const ch0=chapterOf(i);let j=i+dir;while(j>=0&&j<slides.length&&slides[j].dataset.appendix!=='true'&&window.MAPA&&MAPA.offRoute&&MAPA.offRoute(chapterOf(j))&&chapterOf(j)!==ch0)j+=dir;return j}
 function chapterOf(i){for(let j=i;j>=0;j--){const s=slides[j];if(s.classList.contains('map-slide')&&!s.hasAttribute('data-final'))return Number(s.dataset.stop||0)}return 0}
 function hud(){const el=$('chap');if(!el||!window.MAPA)return;const s=slides[current];if(isMap(current)||s.dataset.appendix==='true'){el.hidden=true;return}const k=chapterOf(current);el.hidden=false;
  el.innerHTML=`<span class="cn">${k?String(k).padStart(2,'0')+' · '+CH[k]:CH[0]}</span>`}
@@ -2953,14 +2957,14 @@ function execute(a){
   if(isMap(current)&&window.MAPA&&MAPA.next()){sync();return}
   const czyt=document.documentElement.classList.contains('tel-czyt');   /* telefon: wszystko na slajdzie już widać, więc „dalej” od razu zmienia slajd */
   const f=czyt?null:frags(slides[current]).find(x=>!x.classList.contains('on'));
-  if(f){f.classList.add('on');if(f.classList.contains('dk'))flyTimeSquares(slides[current]);const au=f.querySelector('audio');if(au){au.currentTime=0;au.play().catch(()=>toast('Nie udało się odtworzyć muzyki.'))}const bv=f.querySelector('video[data-bg]');if(bv&&!isPresenter){bv.muted=true;bv.currentTime=0;bv.play().catch(()=>{})}sync()}else if(current<(current<mainCount?mainCount:slides.length)-1)show(current+1);
+  if(f){f.classList.add('on');if(f.classList.contains('dk'))flyTimeSquares(slides[current]);const au=f.querySelector('audio');if(au){au.currentTime=0;au.play().catch(()=>toast('Nie udało się odtworzyć muzyki.'))}const bv=f.querySelector('video[data-bg]');if(bv&&!isPresenter){bv.muted=true;bv.currentTime=0;bv.play().catch(()=>{})}sync()}else{const j=krok(current,1);if(j<(current<mainCount?mainCount:slides.length))show(j)}
  }else if(a==='enter'){
   if(isMap(current)&&window.MAPA&&MAPA.action())sync();
  }else if(a==='walk:toggle'){
   if(isMap(current)&&window.MAPA){walkMode=!walkMode;MAPA.setWalk(walkMode);$('stage').classList.toggle('walk-on',walkMode);sync()}
  }else if(a==='prev'){
   const f=isStudent||document.documentElement.classList.contains('tel-czyt')?null:frags(slides[current]).filter(x=>x.classList.contains('on')).pop();
-  if(f){f.classList.remove('on');f.querySelector('audio')?.pause();f.querySelector('video[data-bg]')?.pause();sync()}else if(current>0)show(current-1,true);
+  if(f){f.classList.remove('on');f.querySelector('audio')?.pause();f.querySelector('video[data-bg]')?.pause();sync()}else{const j=krok(current,-1);if(j>=0)show(j,true)}
  }else if(a==='first')show(0);
  else if(a==='last')show(ending,true);
  else if(a==='reveal'){frags(slides[current]).forEach(f=>f.classList.add('on'));if(!isPresenter)slides[current].querySelectorAll('video[data-bg]').forEach(v=>{v.muted=true;v.play().catch(()=>{})});sync()}

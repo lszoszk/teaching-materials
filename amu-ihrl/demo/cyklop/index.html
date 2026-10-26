@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oko Cyklopa: co widzi kamera · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J; w oknie W zgrany z prezentacją (postMessage w obie strony) */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab();if(parent!==window)try{parent.postMessage({demoJasny:on},location.origin)}catch(e){}};addEventListener('message',e=>{if(e.origin===location.origin&&e.data&&typeof e.data.demoJasny==='boolean'&&e.data.demoJasny!==on)set(e.data.demoJasny)});addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}html.jasny canvas{filter:invert(1) hue-rotate(180deg)}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>
+:root{--bg:#141019;--ink:#1b1622;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--accent:#d67653;--blue:#6fb7c9;--line:#4d4059;--muted:#ada290;--ok:#7fb069;--bad:#d65a4a}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--paper);font:19px/1.4 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;overflow:hidden}
+main{position:absolute;left:0;top:0;width:1600px;height:900px;padding:18px 26px;transform-origin:0 0}
+header{display:flex;align-items:baseline;gap:18px;margin:0 0 12px}
+h1{font-size:28px;line-height:1.2;margin:0}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.grid{display:grid;grid-template-columns:1040px 1fr;gap:22px}
+#oko{position:relative;width:1040px;height:585px;background:#0f0b14;border:4px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,0 0 0 2px var(--gold),8px 8px 0 #000a;border-radius:46px;overflow:hidden}
+#oko canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#oko .tag{position:absolute;left:22px;top:14px;z-index:3;font-size:14px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;text-shadow:0 1px 3px #000}
+#zaslona{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#0f0b14;text-align:center;padding:0 80px}
+#zaslona svg{width:300px;height:auto}
+#zaslona p{margin:0;font-size:18px;color:var(--muted)}
+#odlicz{position:absolute;inset:0;z-index:5;display:none;align-items:center;justify-content:center;font-size:190px;font-weight:700;color:var(--gold);text-shadow:6px 6px 0 #000a;pointer-events:none}
+#odlicz.on{display:flex}
+#stan{display:flex;align-items:center;gap:16px;margin:14px 0 0;font-size:26px;font-weight:700;min-height:40px}
+#stan .kto{padding:4px 12px;border:3px solid #150f1b;box-shadow:3px 3px 0 #0008}
+#stan .kto.tak{background:var(--bad);color:#150f1b}#stan .kto.nie{background:var(--ok);color:#150f1b}#stan .kto.pod{background:var(--gold);color:#150f1b}#stan .kto.off{background:var(--ink);color:var(--muted)}
+#stan .pw{flex:1;height:18px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}#stan .pw i{display:block;height:100%;width:0;background:var(--gold);transition:width .12s}
+#stan .ile{font-size:18px;color:var(--muted);min-width:150px;text-align:right}
+#pasek[hidden]{display:none}#pasek{display:block;width:1040px;height:30px;margin:10px 0 0;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}
+.priv{font-size:14px;color:var(--muted);margin:8px 0 0}
+.akty{display:flex;gap:8px;margin:0 0 12px}
+.akty button{flex:1;font-size:16px;padding:8px 6px}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:14px 18px;margin:0 0 14px}
+.lab{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+.box p{margin:0 0 10px;font-size:17px;line-height:1.42}
+button{font:inherit;font-size:16px;cursor:pointer;border:3px solid #150f1b;background:var(--ink);color:var(--paper);padding:6px 11px;box-shadow:3px 3px 0 #0008;border-color:var(--line)}
+button.on{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700}
+button.pri{background:var(--gold);color:#150f1b;border-color:#150f1b;font-weight:700;font-size:20px;padding:9px 18px}button:disabled{opacity:.4;cursor:default}
+button kbd{font:inherit;font-size:13px;opacity:.7;margin-left:4px}
+.wie{width:100%;border-collapse:collapse;font-size:18px}
+.wie td{padding:5px 0;border-bottom:2px solid #2a2135}.wie td:last-child{text-align:right;font-weight:700;color:var(--gold)}
+.akt[hidden]{display:none}
+#wynik{font-size:30px;font-weight:700;color:var(--gold);margin:6px 0 10px;min-height:1.3em}
+#proby{margin:0;padding:0;list-style:none;font-size:17px}#proby li{padding:2px 0}#proby li.best{color:var(--gold);font-weight:700}
+.ruch{display:grid;grid-template-columns:190px 1fr 52px;gap:10px;align-items:center;margin:6px 0;font-size:16px}
+.ruch .t{height:20px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048}.ruch .t i{display:block;height:100%;width:0;background:var(--blue);transition:width .1s}
+.ruch .p{text-align:right}
+.tech{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}
+.tech button{text-align:left;font-size:15px;line-height:1.25;padding:7px 9px;min-height:60px;box-shadow:2px 2px 0 #0008}
+.tech button small{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+.tech button.on small{color:#150f1b}
+.tech button .ozn{float:right;font-weight:700;font-size:17px}.tech button .ozn.t{color:var(--ok)}.tech button .ozn.n{color:var(--bad)}
+#werdykt{position:absolute;left:14px;right:14px;bottom:14px;z-index:6;display:none;max-height:calc(100% - 28px);overflow:auto;background:#150f1bf0;border:3px solid var(--gold);box-shadow:6px 6px 0 #000a;padding:12px 18px 10px;font-size:17px;line-height:1.42}
+#werdykt.on{display:block}
+#werdykt h3{margin:0 0 6px;font-size:24px}#werdykt h3.tak{color:var(--ok)}#werdykt h3.nie{color:var(--bad)}
+#werdykt p{margin:0 0 6px}#werdykt small{color:var(--muted);font-size:14px}
+#werdykt .x{position:absolute;right:8px;top:8px;font-size:14px;padding:3px 8px}
+.muted{color:var(--muted)}small{font-size:14px}
+a{color:var(--blue)}
+#stop{position:absolute;left:60px;right:60px;top:70px;bottom:40px;z-index:30;display:none;background:var(--ink);border:4px solid var(--gold);box-shadow:10px 10px 0 #000b;padding:24px 30px;overflow:auto}
+#stop.on{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+#stop h2{margin:0 0 12px;font-size:34px;color:var(--gold)}
+#stop p{font-size:18px;line-height:1.45;margin:0 0 12px}
+#stop blockquote{margin:0 0 14px;padding:10px 16px;border-left:5px solid var(--gold);background:#0f0b14;font-size:17px;line-height:1.45}
+#stop blockquote cite{display:block;margin-top:6px;font-style:normal;font-size:14px;color:var(--muted)}
+#stop .x{position:absolute;right:14px;bottom:12px}
+.syt{background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;padding:10px 14px;margin:0 0 10px;cursor:pointer}
+.syt b{color:var(--gold)}
+.syt .odp{display:none;margin-top:8px;padding-top:8px;border-top:2px dashed #3a3048;font-size:16px;line-height:1.42}
+.syt.on .odp{display:block}.syt.on{box-shadow:inset 0 0 0 2px var(--gold)}
+.syt .w{font-weight:700}.w.z{color:var(--bad)}.w.d{color:var(--ok)}.w.r{color:var(--gold)}
+</style>
+<style>
+/* telefon pionowo: układ na 640 px w jednej kolumnie, powiększony do szerokości ekranu; strona przewija się w pionie */
+html.tel,html.tel body{height:auto;overflow:auto}
+html.tel main{position:static;height:auto;transform:none;width:640px;padding:76px 12px 24px}
+html.tel header{flex-wrap:wrap}
+html.tel .grid{grid-template-columns:1fr}
+html.tel #oko{width:616px;height:462px}
+html.tel #pasek{width:616px}
+html.tel #stop{position:fixed;left:0;right:0;top:0;bottom:0;zoom:1}
+html.tel #stop.on{grid-template-columns:1fr}
+</style>
+<script src="../../../statystyki.js" defer></script></head>
+<body>
+<main>
+<header><h1>Oko Cyklopa: <span>co widzi kamera</span></h1><p class="sub">Polifem miał jedno oko. Ta strona też.</p></header>
+<div class="grid">
+<div>
+ <div id="oko">
+  <canvas id="cv" width="1280" height="720"></canvas>
+  <span class="tag">Oko Polifema</span>
+  <div id="zaslona">
+   <svg viewBox="0 0 120 60" shape-rendering="crispEdges" aria-hidden="true"><path fill="#3a3048" d="M10 30h10v-6h10v-6h20v-4h20v4h20v6h10v6h10v0h-10v6h-10v6H70v4H50v-4H30v-6H20v-6z"/><path fill="#efe6d2" d="M18 30h8v-5h10v-5h48v5h10v5h8v0h-8v5H84v5H36v-5H26v-5z"/><rect x="44" y="16" width="32" height="28" fill="#e0b950"/><rect x="48" y="20" width="24" height="20" fill="#b8892c"/><rect x="54" y="24" width="12" height="12" fill="#150f1b"/><rect x="56" y="25" width="4" height="4" fill="#efe6d2"/></svg>
+   <button class="pri" id="kamBtn" data-stat="otworz-oko">Otwórz oko (kamera) <kbd>K</kbd></button>
+   <p id="info">Wczytuję model rozpoznawania twarzy…</p>
+  </div>
+  <div id="odlicz"></div>
+  <div id="werdykt" aria-live="polite"></div>
+ </div>
+ <div id="stan"><span class="kto off" id="kto">OKO ZAMKNIĘTE</span><span class="pw" title="Pewność modelu, że widzi twarz"><i id="pwi"></i></span><span class="ile" id="ile"></span></div>
+ <canvas id="pasek" width="1040" height="30" hidden></canvas>
+ <p class="priv">Obraz z kamery i pomiary twarzy nie opuszczają tej przeglądarki. Strona niczego nie zapisuje. Model: Google MediaPipe (wykrywanie twarzy i 478 punktów).</p>
+</div>
+<div>
+ <div class="akty"><button data-a="1" class="on">1 · Oko patrzy</button><button data-a="2">2 · Bądź Nikim</button><button data-a="3">3 · Emocje</button></div>
+
+ <section class="box akt" id="a1">
+  <p class="lab">Co Cyklop o Tobie wie (na żywo)</p>
+  <table class="wie">
+   <tr><td>Twarz w kadrze</td><td id="w-tw">–</td></tr>
+   <tr><td>Punkty na twarzy</td><td id="w-pk">–</td></tr>
+   <tr><td>Odległość od ekranu</td><td id="w-od">–</td></tr>
+   <tr><td>Głowa</td><td id="w-gl">–</td></tr>
+   <tr><td>Odwrócenia wzroku</td><td id="w-ow">0</td></tr>
+   <tr><td>Mrugnięcia</td><td id="w-mr">0</td></tr>
+   <tr><td>Czas przed kamerą</td><td id="w-cz">0:00</td></tr>
+  </table>
+  <p style="margin-top:14px">To wszystko liczy się kilkadziesiąt razy na sekundę, na zwykłym laptopie. Ta strona nic nie zapisuje. Program pilnujący egzaminu online mógłby zapisywać każdą z tych liczb.</p>
+  <p class="muted"><small>Moskwa, wrzesień 2020: wszystkie kamery miejskie, ok. 175 000, z rozpoznawaniem twarzy na żywo (<a href="https://hudoc.echr.coe.int/?i=001-225655" target="_blank" rel="noopener">Glukhin przeciwko Rosji, 2023, § 5</a>).</small></p>
+ </section>
+
+ <section class="box akt" id="a2" hidden>
+  <p class="lab">Bądź Nikim · 20 sekund</p>
+  <p><b>Nie wychodź z kadru.</b> Cyklop liczy sekundy, w których nie nałoży siatki na Twoją twarz (bez niej nie sprawdzi, kim jesteś). Wybierz sposób z protestów i zgadnij: <b>trzy działają, trzy nie.</b></p>
+  <div class="tech" id="tech"></div>
+  <p><button class="pri" id="grajBtn" data-stat="badz-nikim-start">Start <kbd>spacja</kbd></button></p>
+  <p id="wynik"></p>
+  <ol id="proby"></ol>
+  <p class="muted"><small>Odyseusz powiedział Polifemowi, że nazywa się Nikt, a z jaskini wyszedł pod brzuchem barana. Oszukać czujnik to stary pomysł.</small></p>
+ </section>
+
+ <section class="box akt" id="a3" hidden>
+  <p class="lab">Co Cyklop mierzy na Twojej twarzy</p>
+  <div id="ruchy"></div>
+  <p style="margin-top:12px">To są <b>ruchy</b> twarzy, nie uczucia. Uniesione kąciki ust to jeszcze nie radość.</p>
+  <p><button class="pri" id="emoBtn" data-stat="powiedz-co-czuje">Powiedz, co czuję → <kbd>E</kbd></button></p>
+ </section>
+</div>
+</div>
+
+<div id="stop" role="dialog" aria-label="Rozpoznawanie emocji: zakaz">
+ <button class="x" data-stat="zamknij-zakaz" id="stopX">✕ <kbd>Esc</kbd></button>
+ <div>
+  <h2>Nie powiem. To uczelnia.</h2>
+  <p>Wniosek z twarzy, że się cieszysz, wstydzisz albo złościsz, to <b>rozpoznawanie emocji</b>. W miejscu pracy i w instytucji edukacyjnej AI Act tego zakazuje. Wyjątek: względy medyczne lub bezpieczeństwa. Zakaz obowiązuje od 2 lutego 2025 r.</p>
+  <blockquote>„Zakazuje się […] wykorzystywania systemów AI do wyciągania wniosków na temat emocji osoby fizycznej w miejscu pracy lub instytucjach edukacyjnych”<cite>AI Act, art. 5 ust. 1 lit. f</cite></blockquote>
+  <p>A słupki, które widzisz obok? Pomiar ruchu twarzy to jeszcze nie rozpoznawanie emocji. Pojęcie to nie obejmuje:</p>
+  <blockquote>„samego wykrywania łatwych do zauważenia form wyrazu, gestów lub ruchów, chyba że wykorzystuje się je do identyfikacji lub wnioskowania na temat emocji”<cite>AI Act, motyw 18 (przykłady w motywie: grymas, uśmiech)</cite></blockquote>
+  <p>Uśmiech wolno zmierzyć. Wniosku „jest szczęśliwy” tutaj wyciągnąć nie wolno.</p>
+  <p class="muted"><small>Źródła: <a href="https://eur-lex.europa.eu/legal-content/PL/TXT/?uri=OJ:L_202401689" target="_blank" rel="noopener">rozporządzenie (UE) 2024/1689 (AI Act), EUR-Lex</a> · <a href="https://hudoc.echr.coe.int/?i=001-225655" target="_blank" rel="noopener">Glukhin przeciwko Rosji, nr 11519/20, 4.07.2023, HUDOC</a></small></p>
+ </div>
+ <div>
+  <p class="lab">Cztery sytuacje · kliknij, żeby zobaczyć odpowiedź</p>
+  <div class="syt" data-stat="sytuacja-egzamin"><b>1.</b> Platforma do egzaminów ustnych online ocenia z twarzy, czy student jest pewny siebie, czy zakłopotany, i dolicza to do oceny.
+   <div class="odp"><span class="w z">Zakazane.</span> Zakłopotanie to emocja (motyw 18 wymienia je wprost), a uczelnia to instytucja edukacyjna: art. 5 ust. 1 lit. f.</div></div>
+  <div class="syt" data-stat="sytuacja-kierowca"><b>2.</b> Kamera w autobusie wykrywa, że kierowca zasypia, i włącza alarm.
+   <div class="odp"><span class="w d">To nie rozpoznawanie emocji.</span> Zmęczenie to stan fizyczny. Motyw 18 podaje właśnie ten przykład: wykrywanie zmęczenia pilotów i kierowców, żeby zapobiec wypadkom.</div></div>
+  <div class="syt" data-stat="sytuacja-sklep"><b>3.</b> Sklep liczy uśmiechy klientów przy kasie, żeby zmierzyć ich zadowolenie.
+   <div class="odp"><span class="w r">Nie zakazane, ale pod nadzorem.</span> Wniosek „zadowolony” to wnioskowanie o emocji (satysfakcja jest w motywie 18). Sklep nie jest jednak miejscem pracy klientów ani szkołą, więc art. 5 nie działa. To system wysokiego ryzyka (zał. III pkt 1 lit. c), a klienci muszą o nim wiedzieć (art. 50 ust. 3).</div></div>
+  <div class="syt" data-stat="sytuacja-metro"><b>4.</b> Policja w metrze rozpoznaje na żywo uczestnika pokojowego protestu i go zatrzymuje.
+   <div class="odp"><span class="w z">Naruszenie art. 8 i 10 EKPC</span> w sprawie Glukhin przeciwko Rosji (2023). Rozpoznawanie twarzy na żywo wymaga „najwyższego poziomu uzasadnienia” (§ 86) i może zniechęcać do korzystania z wolności wypowiedzi i zgromadzeń (§ 88). W UE: art. 5 ust. 1 lit. h AI Act zakazuje tego w przestrzeni publicznej, z wąskimi wyjątkami (np. poszukiwanie ofiar porwań, zapobieganie atakowi terrorystycznemu, poszukiwanie podejrzanych o poważne przestępstwa).</div></div>
+ </div>
+</div>
+</main>
+<script type="module">
+const MP='https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35';
+const $=s=>document.querySelector(s),cv=$('#cv'),ctx=cv.getContext('2d'),pasek=$('#pasek'),pctx=pasek.getContext('2d');
+const video=document.createElement('video'),src=document.createElement('canvas'),sctx=src.getContext('2d');video.muted=true;video.playsInline=true;
+let LM=null,LMp=null,FD=null,FL=null,du=null,mpErr=null,stream=null,wznow=false,akt='1',lastT=-1,gotowe=null;
+const RUCHY=[['Kąciki ust w górę',['mouthSmileLeft','mouthSmileRight']],['Brwi w górę',['browInnerUp']],['Brwi ściągnięte',['browDownLeft','browDownRight']],['Oczy szeroko',['eyeWideLeft','eyeWideRight']],['Usta otwarte',['jawOpen']],['Nos zmarszczony',['noseSneerLeft','noseSneerRight']]];
+$('#ruchy').innerHTML=RUCHY.map((r,i)=>`<div class="ruch"><span>${r[0]}</span><span class="t"><i id="r${i}"></i></span><span class="p" id="rp${i}">–</span></div>`).join('');
+
+// model: biblioteka z CDN, modele z tego folderu; GPU, a gdy się nie da, procesor
+async function zaladuj(){
+ const {FilesetResolver,FaceLandmarker,FaceDetector,DrawingUtils}=await import(MP+'/vision_bundle.mjs');
+ const fs=await FilesetResolver.forVisionTasks(MP+'/wasm');
+ const lmOpt=(delegate,bs)=>({baseOptions:{modelAssetPath:'modele/face_landmarker.task',delegate},runningMode:'VIDEO',numFaces:1,outputFaceBlendshapes:bs});
+ const mk=delegate=>Promise.all([
+  FaceLandmarker.createFromOptions(fs,lmOpt(delegate,true)),
+  FaceLandmarker.createFromOptions(fs,lmOpt(delegate,false)),
+  FaceDetector.createFromOptions(fs,{baseOptions:{modelAssetPath:'modele/blaze_face_short_range.tflite',delegate},runningMode:'VIDEO',minDetectionConfidence:0.5})]);
+ try{[LM,LMp,FD]=await mk('GPU')}catch(e){[LM,LMp,FD]=await mk('CPU')}
+ du=new DrawingUtils(ctx);FL=FaceLandmarker;
+}
+gotowe=zaladuj().then(()=>{if(!stream)$('#info').textContent='Model gotowy. Kamera włączy się dopiero po kliknięciu.'}).catch(e=>{mpErr=e;$('#info').textContent='Nie udało się wczytać modelu (internet?). '+e.message});
+
+async function startCam(){
+ if(stream)return;
+ if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){$('#info').textContent='Kamera działa tylko na stronie https albo na localhost.';return}
+ $('#info').textContent='Proszę o dostęp do kamery…';
+ try{stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:1280},height:{ideal:720},facingMode:'user'},audio:false})}
+ catch(e){$('#info').textContent=e.name==='NotAllowedError'?'Kamera zablokowana. Zezwól na kamerę (ikona w pasku adresu) i kliknij jeszcze raz.':'Nie ma dostępu do kamery: '+e.message;return}
+ video.srcObject=stream;await video.play();
+ cv.width=src.width=video.videoWidth||1280;cv.height=src.height=video.videoHeight||720;
+ if(!LM){$('#info').textContent='Kamera działa. Czekam na model…';try{await gotowe}catch(e){}if(!LM)return}
+ $('#zaslona').style.display='none';reset();requestAnimationFrame(petla);
+}
+function stopCam(){if(!stream)return;stream.getTracks().forEach(t=>t.stop());stream=null;video.srcObject=null;
+ $('#zaslona').style.display='';$('#info').textContent='Oko zamknięte. Kamera wyłączona.';ustawStan(null);
+ if(gra){gra=null;$('#odlicz').classList.remove('on');$('#wynik').textContent=''}}
+// okno W zamknięte (ramka 0×0) albo karta w tle: kamera gaśnie; po powrocie wraca sama
+function czuwaj(){const ukryte=document.hidden||!innerWidth;if(ukryte&&stream){wznow=true;stopCam()}else if(!ukryte&&wznow&&!stream){wznow=false;startCam()}}
+addEventListener('resize',czuwaj);document.addEventListener('visibilitychange',czuwaj);addEventListener('pagehide',stopCam);
+
+// pomiary (akt 1)
+let M;function reset(){M={tw:0,mr:0,ow:0,zamk:false,odw:false,odwOd:0,ost:performance.now()}}reset();
+const fmt=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+function ustawStan(widzi,pew,pod){const k=$('#kto');
+ if(widzi===null){k.className='kto off';k.textContent='OKO ZAMKNIĘTE';$('#pwi').style.width='0';$('#ile').textContent='';return}
+ k.className='kto '+(widzi?'tak':pod?'pod':'nie');k.textContent=widzi?'WIDZĘ CIĘ':pod?'COŚ TU JEST?':'NIKOGO NIE WIDZĘ';
+ $('#pwi').style.width=Math.round((pew||0)*100)+'%';$('#ile').textContent=pew?'pewność '+Math.round(pew*100)+'%':'pewność –'}
+
+function petla(){
+ if(!stream)return;requestAnimationFrame(petla);
+ if(video.readyState<2||video.currentTime===lastT)return;lastT=video.currentTime;
+ const t=performance.now(),dt=Math.min(.2,(t-M.ost)/1000);M.ost=t;
+ const W=cv.width,H=cv.height,rys=akt==='2'&&tech&&TECH[tech].rys;
+ sctx.drawImage(video,0,0,W,H);
+ if(rys){let p=null;try{p=LMp.detectForVideo(video,t)}catch(e){}const f=p&&p.faceLandmarks&&p.faceLandmarks[0];if(f){sctx.save();rys(sctx,uklad(f,W,H));sctx.restore()}}   // przymiarka: Cyklop dostaje obraz już z dodatkiem
+ let lm=null,fd=null;try{lm=LM.detectForVideo(src,t);fd=FD.detectForVideo(src,t)}catch(e){return}
+ ctx.save();ctx.translate(W,0);ctx.scale(-1,1);ctx.drawImage(src,0,0,W,H);ctx.restore();   // lustro
+ const twarz=lm.faceLandmarks&&lm.faceLandmarks[0],det=fd.detections&&fd.detections[0],pew=det?det.categories[0].score:0,widzi=!!twarz;   // widzi = nałożył siatkę punktów; bez niej nie wyrówna twarzy i nie sprawdzi, czyja jest
+ if(twarz){const L=twarz.map(p=>({x:1-p.x,y:p.y,z:p.z})),F=FL,lw=Math.max(1,W/900);
+  du.drawConnectors(L,F.FACE_LANDMARKS_TESSELATION,{color:'rgba(224,185,80,.33)',lineWidth:lw});
+  du.drawConnectors(L,F.FACE_LANDMARKS_FACE_OVAL,{color:'#e0b950',lineWidth:2.5*lw});
+  du.drawConnectors(L,F.FACE_LANDMARKS_LEFT_IRIS,{color:'#6fb7c9',lineWidth:2*lw});du.drawConnectors(L,F.FACE_LANDMARKS_RIGHT_IRIS,{color:'#6fb7c9',lineWidth:2*lw})}
+ if(det&&det.boundingBox){const b=det.boundingBox,x=W-b.originX-b.width,y=b.originY,w=b.width,h=b.height,c=Math.min(w,h)*.22,s=W/640;
+  const kol=twarz?'#d65a4a':'#e0b950';ctx.strokeStyle=kol;ctx.lineWidth=4*s/2;ctx.setLineDash(twarz?[]:[8*s,6*s]);ctx.beginPath();
+  [[x,y,1,1],[x+w,y,-1,1],[x,y+h,1,-1],[x+w,y+h,-1,-1]].forEach(([px,py,dx,dy])=>{ctx.moveTo(px+dx*c,py);ctx.lineTo(px,py);ctx.lineTo(px,py+dy*c)});ctx.stroke();ctx.setLineDash([]);
+  const txt=(twarz?'TWARZ · ':'PODEJRZENIE · ')+Math.round(pew*100)+'%';ctx.font=`700 ${Math.round(15*s)}px "IBM Plex Mono",Menlo,monospace`;const tw=ctx.measureText(txt).width;
+  ctx.fillStyle=kol;ctx.fillRect(x,y-22*s,tw+12*s,20*s);ctx.fillStyle='#150f1b';ctx.fillText(txt,x+6*s,y-7*s)}
+ ustawStan(widzi,pew,!!det);
+ // akt 1: co wie
+ if(widzi)M.tw+=dt;
+ let yaw=null,cm=null;
+ if(twarz){const n=twarz[1],a=twarz[234],b=twarz[454],r=(n.x-(a.x+b.x)/2)/((b.x-a.x)/2||1);yaw=Math.asin(Math.max(-1,Math.min(1,r)))*180/Math.PI;
+  if(twarz.length>=478){const ir=(Math.hypot(twarz[469].x-twarz[471].x,twarz[469].y-twarz[471].y)+Math.hypot(twarz[474].x-twarz[476].x,twarz[474].y-twarz[476].y))/2*W,f=(W/2)/Math.tan(30*Math.PI/180);if(ir>1)cm=f*1.17/ir}}
+ const patrzy=yaw!==null&&Math.abs(yaw)<25;
+ if(!patrzy&&!M.odw&&M.tw>0){if(!M.odwOd)M.odwOd=t;else if(t-M.odwOd>400){M.odw=true;M.ow++}}else if(patrzy){M.odw=false;M.odwOd=0}
+ const bs=lm.faceBlendshapes&&lm.faceBlendshapes[0],B={};if(bs)bs.categories.forEach(c=>B[c.categoryName]=c.score);
+ if(bs){const z=((B.eyeBlinkLeft||0)+(B.eyeBlinkRight||0))/2>.45;if(z&&!M.zamk)M.mr++;M.zamk=z}
+ if(akt==='1'){$('#w-tw').textContent=widzi?'tak':det?'może':'nie';$('#w-pk').textContent=twarz?twarz.length:'–';
+  $('#w-od').textContent=cm?'ok. '+Math.round(Math.max(15,Math.min(300,cm))/5)*5+' cm':'–';
+  $('#w-gl').textContent=yaw===null?'–':(Math.abs(yaw)<12?'prosto':'obrócona o ok. '+Math.round(Math.abs(yaw)/5)*5+'°');
+  $('#w-ow').textContent=M.ow;$('#w-mr').textContent=M.mr;$('#w-cz').textContent=fmt(M.tw)}
+ if(akt==='3')RUCHY.forEach((r,i)=>{const v=bs?r[1].reduce((s,k)=>s+(B[k]||0),0)/r[1].length:0;$('#r'+i).style.width=Math.round(v*100)+'%';$('#rp'+i).textContent=bs?Math.round(v*100)+'%':'–'});
+ krokGry(t,widzi,dt);
+}
+
+// akt 2: Bądź Nikim
+let gra=null,tech=null;const tn=[];const RUNDA=20,proby=[],f1=v=>v.toFixed(1).replace('.',',');
+function startGry(){if(!stream){startCam();return}if(gra)return;gra={faza:'odlicz',t0:performance.now(),kl:[]};$('#werdykt').classList.remove('on');$('#wynik').textContent='';pasek.hidden=false;pctx.clearRect(0,0,pasek.width,pasek.height);$('#odlicz').classList.add('on')}
+function krokGry(t,widzi,dt){if(!gra)return;
+ if(gra.faza==='odlicz'){const s=3-Math.floor((t-gra.t0)/1000);if(s>0){$('#odlicz').textContent=s;return}gra={faza:'runda',t0:t,kl:[],nikt:0};$('#odlicz').textContent='';$('#odlicz').classList.remove('on')}
+ const e=(t-gra.t0)/1000;if(!widzi)gra.nikt+=dt;
+ const x=Math.min(1,e/RUNDA)*pasek.width;pctx.fillStyle=widzi?'#d65a4a':'#7fb069';pctx.fillRect(gra.px??0,2,Math.max(1,x-(gra.px??0)),pasek.height-4);gra.px=x;
+ $('#wynik').textContent=`Nikt przez ${gra.nikt.toFixed(1).replace('.',',')} s · zostało ${Math.max(0,Math.ceil(RUNDA-e))} s`;
+ if(e>=RUNDA){const n=Math.round(gra.nikt*10)/10;proby.push(n);tn.push(tech?TECH[tech].n:'');gra=null;const best=Math.max(...proby);
+  $('#wynik').textContent=`Nikt przez ${f1(n)} s z ${RUNDA}`;
+  $('#proby').innerHTML=proby.map((p,i)=>`<li class="${p===best&&best>0?'best':''}">Próba ${i+1}${tn[i]?' · '+tn[i]:''}: ${f1(p)} s${p===best&&best>0?' ★':''}</li>`).slice(-3).join('');
+  if(tech){const T=TECH[tech],b=document.querySelector(`[data-t="${tech}"] .ozn`);b.textContent=T.ok?'✓':'✗';b.className='ozn '+(T.ok?'t':'n');
+   $('#werdykt').innerHTML=`<button class="x" id="werX">✕</button><h3 class="${T.ok?'tak':'nie'}">${T.ok?'✓':'✗'} ${T.n}: ${T.ok?'działa':'nie działa'}</h3><p><b>Twój wynik:</b> Nikt przez ${f1(n)} s z ${RUNDA}.</p><p><b>Dlaczego?</b> ${T.dl}</p><p><b>A w mieście?</b> ${T.m}</p><small>${T.zr.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l}</a>`).join(' · ')}</small>`;
+   $('#werdykt').classList.add('on')}}}
+
+// przymiarki: kształty w układzie twarzy (O między oczami, u w stronę lewego oka osoby, v w dół; x w szerokościach, y w wysokościach twarzy)
+function uklad(f,W,H){const P=i=>[f[i].x*W,f[i].y*H],O=P(168),a=P(33),b=P(263),d=Math.hypot(b[0]-a[0],b[1]-a[1])||1,u=[(b[0]-a[0])/d,(b[1]-a[1])/d],v=[-u[1],u[0]],
+ fw=Math.hypot(P(454)[0]-P(234)[0],P(454)[1]-P(234)[1]),fh=Math.hypot(P(152)[0]-P(10)[0],P(152)[1]-P(10)[1]);
+ return{P,fw,fh,ang:Math.atan2(u[1],u[0]),F:(x,y)=>[O[0]+u[0]*x*fw+v[0]*y*fh,O[1]+u[1]*x*fw+v[1]*y*fh]}}
+function wielokat(c,pts,kol){c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle=kol;c.fill()}
+const SZCZEKA=[93,132,58,172,136,150,149,176,148,152,377,400,378,379,365,397,288,361,323];
+function okulary(c,k){const e=[[33,133],[362,263]].map(([i,j])=>{const p=k.P(i),q=k.P(j);return[(p[0]+q[0])/2,(p[1]+q[1])/2]});
+ c.strokeStyle='#2a2630';c.lineWidth=k.fw*.03;c.beginPath();c.moveTo(...e[0]);c.lineTo(...e[1]);c.stroke();
+ c.fillStyle='#0d0b10';e.forEach(([x,y])=>{c.beginPath();c.ellipse(x,y,k.fw*.17,k.fh*.085,k.ang,0,Math.PI*2);c.fill();c.stroke()});
+ c.fillStyle='rgba(255,255,255,.16)';e.forEach(([x,y])=>{c.beginPath();c.ellipse(x-k.fw*.06,y-k.fh*.03,k.fw*.05,k.fh*.018,k.ang-.4,0,Math.PI*2);c.fill()})}
+function maseczka(c,k,kol,faldy){const o=k.F(0,.25),pts=SZCZEKA.map(i=>{const p=k.P(i);return[o[0]+(p[0]-o[0])*1.06,o[1]+(p[1]-o[1])*1.06]});
+ c.beginPath();c.moveTo(...k.F(-.1,.13));pts.forEach(p=>c.lineTo(...p));c.lineTo(...k.F(.1,.13));c.quadraticCurveTo(...k.F(0,.08),...k.F(-.1,.13));c.closePath();c.fillStyle=kol;c.fill();
+ if(faldy){c.strokeStyle='rgba(40,70,100,.35)';c.lineWidth=k.fw*.012;[.24,.33,.42].forEach(y=>{c.beginPath();c.moveTo(...k.F(-.38,y));c.quadraticCurveTo(...k.F(0,y+.03),...k.F(.38,y));c.stroke()});
+  c.strokeStyle='#e8eef2';c.lineWidth=k.fw*.015;[[pts[0],k.P(234)],[pts[pts.length-1],k.P(454)]].forEach(([a,b])=>{c.beginPath();c.moveTo(...a);c.lineTo(...b);c.stroke()})}}
+function kaptur(c,k){c.beginPath();const N=28;for(let i=0;i<=N;i++){const a=Math.PI*(1+i/N),p=k.F(Math.cos(a)*.8,.12+Math.sin(a)*.8);i?c.lineTo(...p):c.moveTo(...p)}
+ c.lineTo(...k.F(.8,.8));c.lineTo(...k.F(-.8,.8));c.closePath();
+ const ow=[k.F(-.44,-.07),k.F(.44,-.07),...[454,323,361,288,397,365,379,378,400,377,152,148,176,149,150,136,172,58,132,93,234].map(i=>k.P(i))];
+ ow.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle='#1b1820';c.fill('evenodd')}
+function parasol(c,k){const C=k.F(0,.12),R=k.fh*.95,n=8,a0=-Math.PI/2+k.ang,pt=(a,r)=>[C[0]+r*Math.cos(a),C[1]+r*Math.sin(a)];
+ c.beginPath();for(let i=0;i<n;i++){const a=a0+i*2*Math.PI/n,b=a0+(i+1)*2*Math.PI/n;if(!i)c.moveTo(...pt(a,R));c.quadraticCurveTo(...pt((a+b)/2,R*.86),...pt(b,R))}c.closePath();
+ const g=c.createRadialGradient(C[0],C[1],R*.1,C[0],C[1],R);g.addColorStop(0,'#3b4f73');g.addColorStop(1,'#1c2638');c.fillStyle=g;c.fill();
+ c.strokeStyle='rgba(180,200,230,.35)';c.lineWidth=R*.012;for(let i=0;i<n;i++){c.beginPath();c.moveTo(...C);c.lineTo(...pt(a0+i*2*Math.PI/n,R));c.stroke()}
+ c.fillStyle='#c9b27a';c.beginPath();c.arc(C[0],C[1],R*.03,0,7);c.fill()}
+function dazzle(c,k){c.lineJoin='miter';c.lineCap='butt';c.strokeStyle='#0b0a0d';c.lineWidth=k.fw*.11;
+ c.beginPath();c.moveTo(...k.F(-.34,-.24));c.lineTo(...k.F(-.02,0));c.lineTo(...k.F(.3,.32));c.stroke();   // pas przez grzbiet nosa
+ wielokat(c,[k.F(-.44,.1),k.F(-.14,.12),k.F(-.34,.38)],'#f4f1ea');                                         // jasny klin na policzku
+ wielokat(c,[k.F(.1,-.2),k.F(.44,-.22),k.F(.4,-.04),k.F(.16,-.06)],'#0b0a0d');                             // plama na brwi
+ wielokat(c,[k.F(.18,.42),k.F(.4,.3),k.F(.36,.5)],'#b3262f')}
+function swiatlo(c,k){const C=k.F(0,.15),R=k.fh*1.3;c.fillStyle='rgba(0,0,0,.55)';c.fillRect(0,0,c.canvas.width,c.canvas.height);   // ekspozycja przyciemnia resztę kadru
+ const g=c.createRadialGradient(C[0],C[1],0,C[0],C[1],R);g.addColorStop(0,'#fff');g.addColorStop(.5,'#fff');g.addColorStop(.7,'rgba(255,248,225,.85)');g.addColorStop(1,'rgba(255,240,200,0)');   // prześwietlony środek
+ c.fillStyle=g;c.beginPath();c.arc(C[0],C[1],R,0,7);c.fill();
+ c.strokeStyle='rgba(255,250,235,.5)';c.lineWidth=k.fw*.03;for(let i=0;i<6;i++){const a=i*Math.PI/6+k.ang;c.beginPath();c.moveTo(C[0]-Math.cos(a)*R*1.6,C[1]-Math.sin(a)*R*1.6);c.lineTo(C[0]+Math.cos(a)*R*1.6,C[1]+Math.sin(a)*R*1.6);c.stroke()}}
+const HUDOC_G='https://hudoc.echr.coe.int/?i=001-225655',HUDOC_S='https://hudoc.echr.coe.int/?i=001-145466';
+const TECH={
+ parasol:{n:'Parasol przed kamerą',o:'jak w Hongkongu w 2019 r.',rys:parasol,ok:true,
+  dl:'Cyklop nie nałoży siatki na twarz, której nie widać.',
+  m:'W Hongkongu w 2019 r. protestujący zasłaniali twarze maskami i parasolami, żeby kamery ich nie nagrały i nie rozpoznały. Ale parasol też widać, a jedna zasłonięta kamera to nie cała sieć: w Moskwie w 2020 r. było ok. 175 000 kamer z rozpoznawaniem twarzy (Glukhin, § 5).',
+  zr:[['Al Jazeera, 16.08.2019','https://www.aljazeera.com/news/2019/8/16/laser-beams-twitter-war-the-tech-side-of-hong-kong-protests'],['Glukhin przeciwko Rosji, § 5',HUDOC_G]]},
+ dazzle:{n:'Makijaż „CV Dazzle”',o:'czarno-białe plamy na twarzy',rys:dazzle,ok:false,
+  dl:'Wzory CV Dazzle z 2010 r. projektowano przeciw staremu detektorowi Viola-Jones, który szukał prostych kontrastów: ciemne oczy, jasny grzbiet nosa. Dzisiejsze detektory to sieci neuronowe uczone na ogromnej liczbie twarzy. Patrzą na całość, więc kilka plam ich nie myli: siatka trzyma się twarzy.',
+  m:'Autor, Adam Harvey, sam pisze, że wzory 1–5 działały na algorytm, który wyszedł z użycia ok. 2016 r. Przepis z internetu bywa starszy niż kamera, przed którą ma chronić.',
+  zr:[['A. Harvey, CV Dazzle','https://adam.harvey.studio/cvdazzle/']]},
+ maseczka:{n:'Maseczka',o:'nos, usta i broda zakryte',rys:(c,k)=>maseczka(c,k,'#a6c8e0',1),ok:false,
+  dl:'Zostają oczy, brwi, czoło i kształt głowy. To wystarcza, żeby nałożyć siatkę i zgadnąć, gdzie pod maseczką są nos i usta.',
+  m:'Maseczka bardziej przeszkadza w rozpoznaniu, kim jesteś. W lipcu 2020 r. nawet najlepsze z 89 algorytmów sprzed pandemii myliły się przy maseczkach w 5–50% prób. W grudniu 2020 r. najlepsze nowe algorytmy myliły się w 2,4–5%. Systemy dostosowały się w kilka miesięcy.',
+  zr:[['NIST, 27.07.2020','https://www.nist.gov/news-events/news/2020/07/nist-launches-studies-masks-effect-face-recognition-software'],['NIST, 1.12.2020','https://www.nist.gov/news-events/news/2020/12/face-recognition-software-shows-improvement-recognizing-masked-faces']]},
+ profil:{n:'Głowa bokiem',o:'bez przymiarki: odwróć się profilem',rys:null,ok:true,
+  dl:'Ten model zrobiono do zdjęć z przodu, z bliska, jak z kamerki laptopa albo telefonu. Z profilu Cyklop czasem jeszcze coś podejrzewa, ale siatki na twarz nie nałoży.',
+  m:'W mieście kamer jest wiele i patrzą z różnych stron, a wystarczy jedna klatka z przodu. Glukhina rozpoznano najpierw ze zdjęć w Telegramie, a potem odnaleziono w metrze kamerami na żywo (§ 86).',
+  zr:[['Google, MediaPipe Face Detector','https://developers.google.com/edge/mediapipe/solutions/vision/face_detector'],['Glukhin przeciwko Rosji, § 86',HUDOC_G]]},
+ swiatlo:{n:'Światło w obiektyw',o:'laser albo latarka, jak w Hongkongu',rys:swiatlo,ok:true,
+  dl:'Jasna plama prześwietla obraz w miejscu twarzy, a reszta kadru ciemnieje. Cyklop czasem widzi w plamie „coś”, ale siatki na twarz nie nałoży.',
+  m:'W Hongkongu w 2019 r. protestujący celowali laserami w policję, także po to, żeby utrudnić rozpoznawanie twarzy. Policja ostrzegała, że lasery mogą oślepić funkcjonariuszy. Laser w oczy człowieka to już nie unik przed kamerą, tylko zagrożenie dla zdrowia.',
+  zr:[['Al Jazeera, 16.08.2019','https://www.aljazeera.com/news/2019/8/16/laser-beams-twitter-war-the-tech-side-of-hong-kong-protests']]},
+ blok:{n:'Kaptur, okulary i maseczka',o:'wszystko naraz',rys:(c,k)=>{kaptur(c,k);maseczka(c,k,'#141218');okulary(c,k)},ok:false,
+  dl:'Cyklop zwykle dalej nakłada siatkę: z zarysu głowy i odsłoniętych policzków zgaduje, gdzie są oczy, nos i usta. Spójrz na pewność ramki: spada, ale nie znika.',
+  m:'Znaleźć twarz to nie to samo, co rozpoznać, czyja jest. Tu pełne zasłonięcie naprawdę przeszkadza, i dlatego państwa go zakazują: Hongkong od 5.10.2019 r. na zgromadzeniach, do roku więzienia. W S.A.S. przeciwko Francji (2014) Trybunał uznał, że sam argument bezpieczeństwa nie uzasadnia ogólnego zakazu zasłaniania twarzy (§ 139). Zakaz i tak się ostał, z innego powodu: „życie razem” (§ 157).',
+  zr:[['Rząd Hongkongu, 4.10.2019','https://www.info.gov.hk/gia/general/201910/04/P2019100400613.htm'],['S.A.S. przeciwko Francji, §§ 139, 157',HUDOC_S]]}};
+$('#tech').innerHTML=Object.entries(TECH).map(([k,T])=>`<button data-t="${k}" data-stat="technika-${k}"><span class="ozn"></span>${T.n}<small>${T.o}</small></button>`).join('');
+function wybierz(k){tech=tech===k?null:k;document.querySelectorAll('[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===tech));$('#werdykt').classList.remove('on')}
+
+// akty, przyciski, klawisze
+function pokaz(a){akt=a;document.querySelectorAll('.akt').forEach(s=>s.hidden=s.id!=='a'+a);document.querySelectorAll('[data-a]').forEach(b=>b.classList.toggle('on',b.dataset.a===a));if(a!=='2'){pasek.hidden=true;$('#werdykt').classList.remove('on')}}
+function zakaz(on){$('#stop').classList.toggle('on',on)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)pokaz(b.dataset.a);
+ const tb=e.target.closest('[data-t]');if(tb&&!gra)wybierz(tb.dataset.t);if(e.target.closest('#werX'))$('#werdykt').classList.remove('on');if(e.target.closest('#kamBtn'))startCam();if(e.target.closest('#grajBtn'))startGry();if(e.target.closest('#emoBtn'))zakaz(true);if(e.target.closest('#stopX'))zakaz(false);
+ const s=e.target.closest('.syt');if(s&&!e.target.closest('a'))s.classList.toggle('on')});
+document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const k=e.key.toLowerCase();
+ if(k==='1'||k==='2'||k==='3'){pokaz(k);return}
+ if(k==='k'){stream?stopCam():startCam();return}
+ if(k===' '){e.preventDefault();pokaz('2');startGry();return}
+ if(k==='e'){pokaz('3');zakaz(!$('#stop').classList.contains('on'));return}
+ if(k==='escape')zakaz(false)});
+
+function fit(){const tel=innerWidth<760&&innerHeight>innerWidth,m=$('main');document.documentElement.classList.toggle('tel',tel);if(tel){m.style.transform='';m.style.zoom=(innerWidth/640).toFixed(3);return}m.style.zoom='';const s=Math.min(innerWidth/1600,innerHeight/900);m.style.transform=`translate(${(innerWidth-1600*s)/2}px,${(innerHeight-900*s)/2}px) scale(${s})`}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
