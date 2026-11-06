@@ -90,9 +90,12 @@ header.bar h1 .ai,.msg .kto .ai{font-size:12px;letter-spacing:1px;padding:1px 6p
 .ai-info{font-size:14px;padding:6px 10px;margin:10px 0 4px}.ai-info .lnk{font-size:13px}
 #kluczBox .rzad{display:flex;gap:8px;flex-wrap:wrap;align-items:center}#kluczBox input[type=password]{flex:1;min-width:180px;width:auto;font-size:16px}
 /* odnośniki w odpowiedziach: plakietki do slajdów, zwykłe podkreślone linki do źródeł */
-.msg .tekst a{color:inherit;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px}
-.msg .tekst a.ref{display:inline-block;font:600 13px/1.6 var(--mono);color:var(--paper);background:#3a3048;border:0;border-radius:4px;padding:0 6px;margin:1px 0;text-decoration:none;white-space:nowrap}
-.msg .tekst a.ref:hover{background:#4d4059}
+.msg .tekst a{color:var(--blue);text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px}
+.msg .tekst a:hover{color:var(--gold)}
+.msg .tekst a:focus-visible,.panel a:focus-visible,.kodbox a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.msg .tekst a.ref{display:inline-block;font:600 13px/1.6 var(--mono);color:var(--gold);background:var(--deep);border:1.5px solid var(--gold);border-radius:4px;padding:0 6px;margin:1px 0;text-decoration:none;white-space:nowrap}
+.msg .tekst a.ref:hover{background:var(--gold);color:var(--deep)}
+.panel a,.kodbox a,.ai-info a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
 .msg .tekst .refs{color:var(--muted);font-size:14px}
 .msg .meta .info{cursor:help;border-bottom:1px dotted var(--muted)}
 @media (max-width:760px){header.bar{padding-right:0;gap:8px}header.bar h1{font-size:19px;flex:1}.dd-wiecej{order:1}.seg{order:2;flex:1 1 100%}.dd-model{order:3;flex:1 1 100%}#modelBtn{width:100%;text-align:left}.seg button{flex:1;padding:8px 6px;min-height:40px}.chip{min-height:40px}

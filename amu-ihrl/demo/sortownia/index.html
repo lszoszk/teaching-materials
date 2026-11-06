@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sortownia AI Act · IHRL 2026/27</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J; w oknie W zgrany z prezentacją (postMessage w obie strony) */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab();if(parent!==window)try{parent.postMessage({demoJasny:on},location.origin)}catch(e){}};addEventListener('message',e=>{if(e.origin===location.origin&&e.data&&typeof e.data.demoJasny==='boolean'&&e.data.demoJasny!==on)set(e.data.demoJasny)});addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>html.jasny{background:#ebe7f0}html.jasny body{filter:invert(1) hue-rotate(180deg) contrast(1.06)}</style>
+<script>/* powrót do prezentacji (strona otwarta sama, nie w oknie W): slajd z tym demem; lokalnie mapa.html, online strona kursu */addEventListener('DOMContentLoaded',()=>{if(window.top!==window)return;const p=location.pathname,m=p.match(/\/demo\/([\w-]+)\//);if(!m)return;const a=document.createElement('a');a.id='prezBtn';a.textContent='← Prezentacja';a.title='Wróć do slajdu z tym demem';a.href=(p.includes('/kurs/demo/')?'../../../mapa.html?odblokuj':'../../')+'#demo='+m[1];document.documentElement.append(a)})</script><style>#prezBtn{position:fixed;top:10px;right:118px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;box-shadow:3px 3px 0 #0008;text-decoration:none}html.jasny #prezBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
+<style>
+:root{--bg:#141019;--ink:#1b1622;--deep:#0f0b14;--paper:#efe6d2;--parch:#ded0b2;--gold:#e0b950;--line:#4d4059;--muted:#ada290;--z:#d67653;--w:#e0b950;--p:#6fb7c9;--r:#7fb069}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--paper);font:17px/1.5 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+main{max-width:760px;margin:0 auto;padding:18px 16px 60px}
+body.wyniki main{max-width:1500px;padding:14px 22px 30px}
+h1{font-size:26px;line-height:1.2;margin:0 0 6px}h1 span{color:var(--gold)}
+.sub{color:var(--muted);margin:0 0 12px;font-size:15px}
+.box{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,6px 6px 0 #0008;padding:14px 16px;margin:0 0 16px}
+.karta p.opis{margin:0 0 12px;font-size:18px;line-height:1.45;color:var(--parch)}
+.karta .nr{font-size:13px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.kat{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kat button{font-weight:600;font-size:15px;line-height:1.25;font-family:inherit;padding:10px 6px;background:var(--deep);color:var(--paper);border:2px solid var(--line);cursor:pointer;text-align:center}
+.kat button[data-k=Z]{border-color:var(--z)}.kat button[data-k=W]{border-color:var(--w)}.kat button[data-k=P]{border-color:var(--p)}.kat button[data-k=R]{border-color:var(--r)}
+.kat button.on[data-k=Z]{background:var(--z);color:#150f1b}.kat button.on[data-k=W]{background:var(--w);color:#150f1b}.kat button.on[data-k=P]{background:var(--p);color:#150f1b}.kat button.on[data-k=R]{background:var(--r);color:#150f1b}
+.kat button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
+#postep{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;margin:0 0 10px;border-bottom:2px solid var(--line);display:flex;gap:12px;align-items:center;font-size:15px}
+#postep .pas{flex:1;height:10px;background:var(--deep);border:2px solid var(--line)}#postep .pas i{display:block;height:100%;background:var(--gold);width:0}
+#st{font-size:14px;color:var(--muted);min-height:20px}
+a.ai{color:var(--p);text-decoration:underline;text-underline-offset:3px;font-weight:600}a.ai:hover{color:var(--gold)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin:0 0 12px}.leg b{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:5px}
+/* widok wyników (ekran w sali) */
+#siatka{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.wk{background:var(--ink);border:3px solid #150f1b;box-shadow:inset 0 0 0 2px #3a3048,5px 5px 0 #0008;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-height:290px}
+.wk:focus-visible{outline:3px solid var(--gold)}
+.wk .t{font-size:15px;line-height:1.35;color:var(--parch);flex:1}
+.wk .t b{color:var(--paper)}
+.sl{display:flex;flex-direction:column;gap:3px}
+.sl div{display:grid;grid-template-columns:28px 1fr 34px;gap:6px;align-items:center;font-size:13px}
+.sl span.b{height:14px;background:var(--deep);border:1px solid var(--line)}.sl span.b i{display:block;height:100%}
+.sl div.ok{outline:2px solid var(--paper);outline-offset:1px}
+.odp{display:none;font-size:13px;line-height:1.4;color:var(--paper);border-top:1px dashed var(--line);padding-top:6px}
+.wk.on .odp{display:block}.wk.on .t{flex:none}
+.odp .k{font-weight:700;letter-spacing:1px}
+.pasek{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 12px}
+.pasek button{font-weight:600;font-size:14px;line-height:1;font-family:inherit;padding:8px 12px;background:var(--deep);color:var(--paper);border:2px solid var(--line);cursor:pointer}
+.big{font-size:22px;color:var(--gold)}
+@media (max-width:1100px){#siatka{grid-template-columns:repeat(2,1fr)}}
+body:not(.wyniki) #postep{padding-right:118px}
+@media (max-width:700px){#prezBtn{display:none}}
+</style>
+</head>
+<body>
+<main id="m"></main>
+<script>
+/* Sortownia AI Act (9.11.2026): student przypisuje 10 systemów do kategorii ryzyka; ekran w sali pokazuje wyniki klasy i odpowiedź.
+   Widok telefonu: domyślny. Widok wyników: ?wyniki (slajd „Agora: pracownia”, okno W). Serwer: apps_script.gs (Google Apps Script, kod zajęć). */
+const API='https://script.google.com/macros/s/AKfycbzoNMQLbngKLafIpBCtDVtXKXhKqciYz6l6LelTJOf2J-TkGJlmqPnFip1bfioJCB9Z/exec';   // wdrożenie apps_script.gs (projekt „IHRL 2026/27: sortownia AI Act”, konto lszoszk@gmail.com); pusty = tryb lokalny
+const KAT={Z:'Zakazane',W:'Wysokie ryzyko',P:'Przejrzystość',R:'Reszta'};
+const KOL={Z:'var(--z)',W:'var(--w)',P:'var(--p)',R:'var(--r)'};
+const X=[
+{id:'twarze',t:'<b>Wyszukiwarka twarzy</b>: wgrywasz zdjęcie, a ona znajduje tę osobę w internecie. Bazę zbudowała, pobierając miliardy zdjęć ze stron i mediów społecznościowych.',k:'Z',p:'art. 5 ust. 1 lit. e',d:'Baza do rozpoznawania twarzy z nieukierunkowanego pozyskiwania wizerunków z internetu. Tak działają Clearview AI i PimEyes.'},
+{id:'stadion',t:'<b>Policja na stadionie</b>: kamery przy wejściu porównują na żywo twarze kibiców z listą osób poszukiwanych.',k:'Z',p:'art. 5 ust. 1 lit. h, ust. 2–7',d:'Zdalna identyfikacja biometryczna w czasie rzeczywistym w przestrzeni publicznej. Wyjątki są wąskie: ofiary porwań, zagrożenie zamachem, sprawca poważnego przestępstwa z zał. II; zawsze uprzednia zgoda sądu albo niezależnego organu i ustawa krajowa.'},
+{id:'nagranie',t:'<b>Policja po bójce</b>: następnego dnia program porównuje twarz z nagrania monitoringu z bazą zdjęć osób wcześniej zatrzymanych.',k:'W',p:'zał. III pkt 1 lit. a; art. 26 ust. 10',d:'Ta sama technologia, ale „po fakcie”: nie zakaz, tylko wysokie ryzyko. Potrzebna zgoda sądu albo organu (przed użyciem lub do 48 godzin) i związek z konkretnym przestępstwem.'},
+{id:'egzamin',t:'<b>Egzamin online</b>: program obserwuje twarz studenta i ocenia, czy jest zestresowany i czy kłamie.',k:'Z',p:'art. 5 ust. 1 lit. f',d:'Wnioski o emocjach w instytucji edukacyjnej są zakazane. Uwaga: samo wykrywanie ściągania podczas egzaminu (np. zerkanie w telefon) to wysokie ryzyko, zał. III pkt 3 lit. d.'},
+{id:'cv',t:'<b>Rekrutacja</b>: system czyta CV kandydatów, układa ranking i odrzuca najsłabszych, zanim zobaczy ich człowiek.',k:'W',p:'zał. III pkt 4 lit. a',d:'Wybór kandydatów do pracy. Obowiązki z art. 9–15 (m.in. dane, nadzór człowieka) i informacja dla kandydatów.'},
+{id:'czatbot',t:'<b>Czatbot urzędu miasta</b> odpowiada na pytania o godziny otwarcia i potrzebne dokumenty.',k:'P',p:'art. 50 ust. 1',d:'Rozmówca musi wiedzieć, że rozmawia z AI. Gdyby czatbot rozstrzygał o świadczeniach, doszłoby wysokie ryzyko (zał. III pkt 5 lit. a).'},
+{id:'kierowca',t:'<b>Autobus</b>: kamera w kabinie wykrywa, że kierowca zasypia, i włącza alarm.',k:'R',p:'motyw 18',d:'Zmęczenie to stan fizyczny, nie emocja: motyw 18 wprost wyłącza wykrywanie zmęczenia kierowców i pilotów. Brak zakazu i brak obowiązków z zał. III.'},
+{id:'punkty',t:'<b>Gmina</b> przyznaje mieszkańcom punkty za „postawę obywatelską” (mandaty, segregacja śmieci, opinie sąsiadów). Od punktów zależy miejsce w kolejce po mieszkanie komunalne.',k:'Z',p:'art. 5 ust. 1 lit. c',d:'Scoring społeczny: ocena ludzi za zachowanie, która prowadzi do gorszego traktowania w niezwiązanej sprawie albo nieproporcjonalnie.'},
+{id:'telefon',t:'<b>Telefon</b> odblokowuje się, gdy rozpozna twarz właściciela.',k:'R',p:'art. 3 pkt 36; zał. III pkt 1 lit. a',d:'Weryfikacja 1:1 („czy to ta sama osoba?”) nie jest zdalną identyfikacją 1:N. Zał. III wprost ją wyłącza.'},
+{id:'sedzia',t:'<b>Sąd</b>: program wyszukuje orzecznictwo do sprawy i proponuje sędziemu kwalifikację prawną czynu.',k:'W',p:'zał. III pkt 8 lit. a; art. 6 ust. 3',d:'Pomoc sędziemu w badaniu i wykładni faktów i prawa. Gdyby program tylko anonimizował wyroki albo układał terminy, byłoby to zadanie pomocnicze (art. 6 ust. 3), bez wysokiego ryzyka.'}];
+const $=s=>document.querySelector(s),Q=new URLSearchParams(location.search),WYNIKI=Q.has('wyniki');
+const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+let voter=store.get('sort-voter');if(!voter){voter='v'+Math.random().toString(36).slice(2,12);store.set('sort-voter',voter)}
+let moje={};try{moje=JSON.parse(store.get('sort-moje')||'{}')}catch(e){}
+const st=t=>{const e=$('#st');if(e)e.textContent=t};
+const kod=()=>{let k=store.get('sort-kod');if(!k){k=(prompt('Kod zajęć (z ekranu):')||'').trim();if(k)store.set('sort-kod',k)}return k};
+async function send(o){if(!API){st('Tryb lokalny: wybór zapisany tylko w tej przeglądarce.');return}
+ const k=kod();if(!k){st('Bez kodu zajęć wybór nie trafi na ekran.');return}o.kod=k;o.voter=voter;
+ try{const r=await fetch(API,{method:'POST',body:JSON.stringify(o),redirect:'follow'});const j=await r.json();
+  if(j.ok)st('Zapisano. Możesz zmienić zdanie do końca zadania.');else if(j.err==='kod'){store.set('sort-kod','');st('Zły kod zajęć. Kliknij jeszcze raz.')}else st('Nie zapisano: '+j.err)}
+ catch(e){st('Brak połączenia z serwerem. Wybór zostaje w telefonie; kliknij ponownie za chwilę.')}}
+/* kolejność kart: inna dla każdej osoby, stała po odświeżeniu */
+function tasuj(a,seed){let s=0;for(const c of seed)s=(s*31+c.charCodeAt(0))>>>0;const r=()=>(s=(s*1664525+1013904223)>>>0)/4294967296;const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function telefon(){
+ const kol=tasuj(X,voter);
+ $('#m').innerHTML=`<h1>Sortownia <span>AI Act</span></h1><p class="sub">Dziesięć systemów. Do której szuflady AI Act trafia każdy z nich? Wybierz jedną kategorię; możesz zmienić zdanie. Anonimowo, bez logowania.</p>
+ <p class="leg"><span><b style="background:var(--z)"></b>Zakazane (art. 5)</span><span><b style="background:var(--w)"></b>Wysokie ryzyko (zał. III)</span><span><b style="background:var(--p)"></b>Przejrzystość (art. 50)</span><span><b style="background:var(--r)"></b>Reszta</span></p>
+ <p class="sub"><a class="ai" href="https://eur-lex.europa.eu/legal-content/PL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">AI Act po polsku (EUR-Lex): art. 5, 6, 50 i zał. III ↗</a></p>
+ <div id="postep"><span id="ile">0/10</span><span class="pas"><i></i></span></div><div id="st"></div>`+
+ kol.map((x,i)=>`<section class="box karta" data-id="${x.id}"><div class="nr">System ${i+1} z 10</div><p class="opis">${x.t}</p><div class="kat">${Object.entries(KAT).map(([k,n])=>`<button type="button" data-k="${k}" class="${moje[x.id]===k?'on':''}">${n}</button>`).join('')}</div></section>`).join('')+
+ `<p class="sub">Odpowiedzi i przepisy pokażemy na ekranie, gdy wszyscy skończą.</p>`;
+ const licz=()=>{const n=X.filter(x=>moje[x.id]).length;$('#ile').textContent=n+'/10';$('#postep i').style.width=n*10+'%'};licz();
+ document.querySelectorAll('.karta').forEach(s=>s.querySelectorAll('button').forEach(b=>b.onclick=()=>{const id=s.dataset.id,k=b.dataset.k;moje[id]=k;store.set('sort-moje',JSON.stringify(moje));
+  s.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));licz();send({t:'glos',przyklad:id,kat:k})}));
+ if(!API)st('Tryb lokalny: wybory zostają w tej przeglądarce.')}
+/* ekran w sali */
+let stan={glosy:{},osoby:0},odsl=new Set();
+function lokalnie(){const g={};X.forEach(x=>{g[x.id]={Z:0,W:0,P:0,R:0};if(moje[x.id])g[x.id][moje[x.id]]++});return{glosy:g,osoby:Object.keys(moje).length?1:0}}
+function wyniki(){
+ document.body.classList.add('wyniki');
+ $('#m').innerHTML=`<div class="pasek"><h1 style="margin:0">Sortownia <span>AI Act</span>: wyniki sali</h1><span class="big" id="osoby"></span><button id="all" type="button">Odsłoń wszystkie</button><button id="ukr" type="button">Ukryj odpowiedzi</button><span id="st"></span></div>
+ <p class="leg"><span><b style="background:var(--z)"></b>Z · zakazane</span><span><b style="background:var(--w)"></b>W · wysokie ryzyko</span><span><b style="background:var(--p)"></b>P · przejrzystość</span><span><b style="background:var(--r)"></b>R · reszta</span><span>Klik w kartę: odpowiedź z AI Act.</span><a class="ai" href="https://eur-lex.europa.eu/legal-content/PL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">AI Act po polsku ↗</a></p><div id="siatka"></div>`;
+ $('#all').onclick=()=>{X.forEach(x=>odsl.add(x.id));rysuj()};$('#ukr').onclick=()=>{odsl.clear();rysuj()};rysuj();odswiez();setInterval(odswiez,5000)}
+function rysuj(){const s=$('#siatka');if(!s)return;const o=stan.osoby,d=o%10,s100=o%100;$('#osoby').textContent=o?o+(o===1?' osoba':(d>=2&&d<=4&&(s100<12||s100>14))?' osoby':' osób'):'';
+ s.innerHTML=X.map((x,i)=>{const g=stan.glosy[x.id]||{Z:0,W:0,P:0,R:0},n=g.Z+g.W+g.P+g.R,on=odsl.has(x.id);
+  return `<div class="wk${on?' on':''}" tabindex="0" data-id="${x.id}"><div class="t">${i+1}. ${x.t}</div><div class="sl">${Object.keys(KAT).map(k=>`<div class="${on&&k===x.k?'ok':''}"><span>${k}</span><span class="b"><i style="width:${n?Math.round(g[k]/n*100):0}%;background:${KOL[k]}"></i></span><span>${g[k]}</span></div>`).join('')}</div>
+  <div class="odp"><span class="k" style="color:${KOL[x.k]}">${KAT[x.k].toUpperCase()}</span> · ${x.p}<br>${x.d}</div></div>`}).join('');
+ s.querySelectorAll('.wk').forEach(w=>{const f=()=>{const id=w.dataset.id;odsl.has(id)?odsl.delete(id):odsl.add(id);rysuj()};w.onclick=f;w.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}}})}
+async function odswiez(){if(!API){stan=lokalnie();rysuj();st('Tryb lokalny (bez serwera)');return}
+ try{const r=await fetch(API+'?a=stan',{cache:'no-store'});const j=await r.json();if(j.ok){stan=j;rysuj();st('Na żywo · '+new Date().toLocaleTimeString('pl-PL'))}}catch(e){st('Brak połączenia z serwerem; spróbuję za 5 s.')}}
+WYNIKI?wyniki():telefon();
+</script>
+</body>
+</html>
