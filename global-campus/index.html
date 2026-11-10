@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI and Human Rights · Global Campus</title>
+<meta name="description" content="New Technologies cluster, Global Campus of Human Rights: slides, demos and Garage Research for four sessions on AI and human rights.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Nunito+Sans:wght@400;700&display=swap">
+<style>
+:root{--bg:#F4EEE2;--card:#FBF7EF;--ink:#22201C;--soft:#4E4A42;--muted:#6B655B;--line:#D9CBB0;--gold:#B08A3E;--red:#A63D2A;--teal:#2F6F73;--ochre:#8A6A2B;--blue:#3B4F7A;--lagoon:#1F3A3D;--foam:#CFE0DC}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 "Nunito Sans",Arial,sans-serif}
+a{color:var(--teal);font-weight:700;text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{color:var(--red)}
+header{background:var(--lagoon);color:#F4EEE2;padding:48px 16px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.frame{border:6px double var(--gold);padding:32px 36px}
+.eyebrow{margin:0 0 10px;font-size:14px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#C9A24A}
+h1{font:600 clamp(40px,7vw,76px)/1.02 "Cormorant Garamond",Georgia,serif;margin:0 0 14px}
+.lead{margin:0;font-size:21px;color:var(--foam);max-width:720px}
+.meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;margin:28px 0 30px;color:var(--foam);font-size:16px}
+.meta b{color:#F4EEE2}
+.shelf{display:block;width:100%;height:56px}
+main{padding:44px 0 56px}
+h2{font:600 40px/1.1 "Cormorant Garamond",Georgia,serif;margin:0 0 20px}
+.sessions{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:0 0 52px}
+.s{background:var(--card);border:1px solid var(--line);border-top:8px solid var(--teal);padding:24px 26px;display:flex;flex-direction:column;gap:10px}
+.s.two{border-top-color:var(--ochre)}.s.three{border-top-color:var(--red)}
+.num{font:600 54px/1 "Cormorant Garamond",Georgia,serif;color:var(--muted)}
+.s h3{margin:0;font-size:22px}
+.s p{margin:0;color:var(--soft)}
+.day{font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.s ul{margin:6px 0 0;padding-left:18px}
+.s li{margin:3px 0}
+.btn{display:inline-block;margin-top:auto;padding:10px 16px;background:var(--lagoon);color:#F4EEE2;text-decoration:none;font-weight:700}
+.btn:hover{background:var(--red);color:#F4EEE2}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0 0 52px}
+.t{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--teal);padding:16px 18px}
+.t.trav{border-left-color:var(--ochre)}.t.vote{border-left-color:var(--red)}.t.uhri{border-left-color:var(--blue)}
+.t a{display:block;font-size:18px;margin-bottom:4px}
+.t span{color:var(--soft);font-size:15px}
+.read{columns:2;column-gap:40px;padding-left:18px;margin:0 0 40px;color:var(--soft)}
+.read li{break-inside:avoid;margin:0 0 8px}
+.note{background:var(--card);border:5px double var(--gold);padding:18px 22px;color:var(--soft)}
+footer{background:var(--lagoon);color:var(--foam);padding:22px 16px;font-size:15px}
+footer a{color:#F4EEE2}
+@media (max-width:860px){.sessions{grid-template-columns:1fr}.tools{grid-template-columns:1fr 1fr}.read{columns:1}}
+@media (max-width:520px){.tools{grid-template-columns:1fr}.frame{padding:22px 20px}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="frame">
+<p class="eyebrow">Global Campus of Human Rights · New Technologies cluster</p>
+<h1>AI and Human Rights, from the inside</h1>
+<p class="lead">Four sessions: how language models work and fail, open tools built with AI on UN human rights sources, and two sessions building your own in Garage Research.</p>
+</div>
+<div class="meta"><span><b>Łukasz Szoszkiewicz</b> · Adam Mickiewicz University, Poznań</span><span>Monastery of San Nicolò, Lido di Venezia</span></div>
+</div>
+<svg class="shelf" viewBox="0 0 1180 56" preserveAspectRatio="none" aria-hidden="true"><defs><pattern id="b" width="118" height="48" patternUnits="userSpaceOnUse"><rect x="0" y="8" width="7" height="40" fill="#A63D2A"/><rect x="8" y="16" width="5" height="32" fill="#5E9A96"/><rect x="14" y="10" width="9" height="38" fill="#C9A24A"/><rect x="24" y="4" width="6" height="44" fill="#5872A6"/><rect x="31" y="18" width="4" height="30" fill="#D9C9A8"/><rect x="36" y="12" width="8" height="36" fill="#7A8F5A"/><rect x="45" y="8" width="6" height="40" fill="#A63D2A"/><rect x="52" y="16" width="10" height="32" fill="#8A5A3C"/><rect x="63" y="4" width="7" height="44" fill="#5E9A96"/><rect x="71" y="14" width="5" height="34" fill="#C9A24A"/><rect x="77" y="9" width="9" height="39" fill="#5872A6"/><rect x="87" y="19" width="5" height="29" fill="#A63D2A"/><rect x="93" y="7" width="8" height="41" fill="#7A8F5A"/><rect x="102" y="15" width="6" height="33" fill="#D9C9A8"/><rect x="109" y="11" width="9" height="37" fill="#8A5A3C"/></pattern></defs><rect x="0" y="0" width="1180" height="48" fill="url(#b)"/><rect x="0" y="48" width="1180" height="8" fill="#B08A3E"/></svg>
+</header>
+<main class="wrap">
+<h2>Sessions</h2>
+<div class="sessions">
+<section class="s">
+<span class="num">1</span>
+<span class="day">Day 1</span>
+<h3>Inside the Machine</h3>
+<p>How language models are made, where they fail, and what relying on them does to us.</p>
+<ul>
+<li><a href="bits/">Zeros and ones</a>: type, zoom, hover</li>
+<li><a href="next-word/">Next word</a>: GPT-2 in your browser</li>
+<li><a href="https://poloclub.github.io/transformer-explainer/">Transformer Explainer</a></li>
+</ul>
+<a class="btn" href="https://claude.ai/artifact/K3iE2agdfPK9YJ3wtyxLcJ">Slides</a>
+</section>
+<section class="s two">
+<span class="num">2</span>
+<span class="day">Day 1</span>
+<h3>Tools Built with AI</h3>
+<p>Find it, cite it, check it: one question through four open tools, then your first build in Garage Research.</p>
+<a class="btn" href="https://claude.ai/artifact/M7ys5y93srt1QrtU9BEMWB">Slides</a>
+</section>
+<section class="s three">
+<span class="num">3–4</span>
+<span class="day">Day 2</span>
+<h3>Garage Research</h3>
+<p>Describe a tool in plain words; a model writes it; it runs in your browser on UN data. What clean data lets you do, and where clean data comes from.</p>
+<a class="btn" href="https://lszoszk.github.io/workshop-studio/">Open Garage Research</a>
+</section>
+</div>
+<h2>The tools</h2>
+<div class="tools">
+<div class="t"><a href="https://lszoszk.github.io/generalcomments/">UN Human Rights Database</a><span>General Comments, treaty body jurisprudence, Special Procedures, paragraph by paragraph</span></div>
+<div class="t trav"><a href="https://lszoszk.github.io/travaux-preparatoires/">UN Travaux Préparatoires</a><span>The drafting of the UDHR, the ICCPR and the ICESCR, 1946–1966</span></div>
+<div class="t vote"><a href="https://lszoszk.github.io/hrc-voting/">HRC Voting</a><span>How States vote at the Commission, the Council and the Third Committee</span></div>
+<div class="t uhri"><a href="https://lszoszk.github.io/UnitedNations_recommendations/">UHRI+</a><span>Recommendations and observations addressed to States</span></div>
+</div>
+<h2>To read after class</h2>
+<ul class="read">
+<li>Vaswani et al., <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a> (2017)</li>
+<li>Sutton, <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">The Bitter Lesson</a> (2019)</li>
+<li>Dell’Acqua et al., <a href="https://doi.org/10.1287/orsc.2025.21838">Navigating the Jagged Technological Frontier</a>, Organization Science (2026)</li>
+<li>Autor et al., <a href="https://www.nber.org/papers/w35720">Does AI Assistance Enhance or Erode Expertise?</a>, NBER (2026)</li>
+<li>Mehmood, Goessmann and Ash, <a href="https://elliottash.com/papers/Mehmood-Goessmann-Ash-Courts-of-Tomorrow-Evidence-Nationwide-Rollout-Generative-AI.pdf">Courts of Tomorrow</a> (2026)</li>
+<li>Osmani, <a href="https://x.com/addyosmani/article/2117512471930167377">Critical thinking when agents do the work</a> (2026)</li>
+<li>Charlotin, <a href="https://www.damiencharlotin.com/hallucinations/">AI Hallucination Cases Database</a></li>
+<li><a href="https://artificialanalysis.ai/models">Artificial Analysis</a> and <a href="https://github.com/prinz-ai/prinzbench">PrinzBench</a>: a public and a private benchmark</li>
+</ul>
+<p class="note">The tools are unofficial and not endorsed by OHCHR: in case of doubt, the official record prevails. Ask in the UN Human Rights Database, the Garage Research models and any AI assistant send what you type to the company that runs them: no confidential text there.</p>
+</main>
+<footer><div class="wrap">Łukasz Szoszkiewicz · <a href="mailto:l.szoszkiewicz@amu.edu.pl">l.szoszkiewicz@amu.edu.pl</a> · the bookshelf motif comes from the Armonie workshop at Santa Maria Formosa, Venice</div></footer>
+</body>
+</html>
