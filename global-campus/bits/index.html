@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zeros and ones · Global Campus</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Nunito+Sans:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{--bg:#F4EEE2;--card:#FBF7EF;--ink:#22201C;--soft:#4E4A42;--muted:#6B655B;--line:#D9CBB0;--gold:#B08A3E;--red:#A63D2A;--teal:#2F6F73}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 "Nunito Sans",Arial,sans-serif}
+main{max-width:1500px;margin:0 auto;padding:28px 24px 32px}
+.eyebrow{margin:0;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+h1{font:600 52px/1.1 "Cormorant Garamond",Georgia,serif;margin:6px 0 22px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--card);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.lab{margin:0;font-weight:700;font-size:22px;color:var(--teal)}
+input[type=text]{font:600 24px "IBM Plex Mono",ui-monospace,monospace;padding:8px 10px;border:2px solid var(--line);background:#fff;color:var(--ink);width:100%}
+input[type=text]:focus{outline:2px solid var(--gold)}
+.rows{display:flex;flex-direction:column;gap:4px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:20px}
+.r{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:baseline}
+.r b{font-size:24px;text-align:center}
+.r.two span{color:var(--red)}
+canvas{width:100%;max-width:340px;aspect-ratio:1;border:5px double var(--gold);background:#120e17;cursor:crosshair;image-rendering:pixelated}
+input[type=range]{width:100%;max-width:340px;accent-color:var(--gold)}
+.info{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:16px;min-height:3em;color:var(--soft)}
+small{color:var(--muted);font-size:15px}
+.take{margin:24px 0 0;padding:20px 26px;background:var(--card);border:5px double var(--gold);font-size:22px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<p class="eyebrow">Inside the Machine · what a model is made of</p>
+<h1>For a computer, everything is zeros and ones</h1>
+<div class="grid">
+<section class="card">
+<p class="lab">Text</p>
+<input id="txt" type="text" value="Lido" maxlength="12" spellcheck="false" aria-label="Type a word">
+<div class="rows" id="bits"></div>
+<small>Every letter is a number, every number is eight bits. Letters outside English (ł, é, ש) take two bytes or more: shown in red.</small>
+</section>
+<section class="card">
+<p class="lab">Image</p>
+<canvas class="px" width="340" height="340" data-src="../../amu-ihrl/assets/genewa_2026.webp" data-fx="0.5" data-fy="0.4"></canvas>
+<input class="zoom" type="range" min="1" max="40" value="1" aria-label="Zoom">
+<p class="info">Move the slider to zoom in, then hover over a pixel.</p>
+</section>
+<section class="card">
+<p class="lab">A video frame</p>
+<canvas class="px" width="340" height="340" data-src="../../amu-ihrl/assets/huang_poster.jpg" data-fx="0.5" data-fy="0.3"></canvas>
+<input class="zoom" type="range" min="1" max="40" value="1" aria-label="Zoom">
+<p class="info">A video is about 30 such images every second.</p>
+</section>
+</div>
+<p class="take">A model turns each of these into a <b>vector</b>, a long list of numbers (an embedding): text cut into tokens, images into patches. All of it ends up in one space.</p>
+</main>
+<script>
+const b8 = n => n.toString(2).padStart(8, '0'), enc = new TextEncoder();
+const txt = document.getElementById('txt'), out = document.getElementById('bits');
+function draw() {
+  out.textContent = '';
+  [...txt.value].slice(0, 12).forEach(ch => {
+    const by = [...enc.encode(ch)], r = document.createElement('div');
+    r.className = 'r' + (by.length > 1 ? ' two' : '');
+    const b = document.createElement('b'); b.textContent = ch === ' ' ? '␣' : ch;
+    const s = document.createElement('span'); s.textContent = by.map(b8).join(' ');
+    r.append(b, s); out.append(r);
+  });
+}
+txt.addEventListener('input', draw); draw();
+document.querySelectorAll('canvas.px').forEach(cv => {
+  const z = cv.nextElementSibling, info = z.nextElementSibling, img = new Image(), ctx = cv.getContext('2d'), N = cv.width;
+  let off = null, data = null, view = null;
+  img.onload = () => {
+    off = document.createElement('canvas'); off.width = img.naturalWidth; off.height = img.naturalHeight;
+    const o = off.getContext('2d'); o.drawImage(img, 0, 0);
+    try { data = o.getImageData(0, 0, off.width, off.height).data; } catch (e) { data = null; info.textContent = 'Pixel values need the page served online (not opened as a local file).'; }
+    render();
+  };
+  function render() {
+    if (!off) return;
+    const k = +z.value, W = off.width, H = off.height, side = Math.max(W, H) / k, cx = W * +cv.dataset.fx, cy = H * +cv.dataset.fy;
+    const sw = Math.min(side, W), sh = Math.min(side, H);
+    const sx = Math.max(0, Math.min(W - sw, cx - sw / 2)), sy = Math.max(0, Math.min(H - sh, cy - sh / 2));
+    const s = Math.min(N / sw, N / sh);
+    view = {sx, sy, sw, sh, s, ox: (N - sw * s) / 2, oy: (N - sh * s) / 2};
+    ctx.imageSmoothingEnabled = k < 3; ctx.fillStyle = '#120e17'; ctx.fillRect(0, 0, N, N);
+    ctx.drawImage(off, sx, sy, sw, sh, view.ox, view.oy, sw * s, sh * s);
+    if (k >= 12) {
+      ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = 1;
+      for (let x = Math.ceil(sx); x < sx + sw; x++) { const X = view.ox + (x - sx) * s; ctx.beginPath(); ctx.moveTo(X, view.oy); ctx.lineTo(X, view.oy + sh * s); ctx.stroke(); }
+      for (let y = Math.ceil(sy); y < sy + sh; y++) { const Y = view.oy + (y - sy) * s; ctx.beginPath(); ctx.moveTo(view.ox, Y); ctx.lineTo(view.ox + sw * s, Y); ctx.stroke(); }
+    }
+  }
+  z.addEventListener('input', render);
+  cv.addEventListener('mousemove', e => {
+    if (!view || !data) return;
+    const r = cv.getBoundingClientRect(), mx = (e.clientX - r.left) / r.width * N, my = (e.clientY - r.top) / r.height * N;
+    const x = Math.floor(view.sx + (mx - view.ox) / view.s), y = Math.floor(view.sy + (my - view.oy) / view.s);
+    if (x < 0 || y < 0 || x >= off.width || y >= off.height) return;
+    const i = (y * off.width + x) * 4, R = data[i], G = data[i + 1], B = data[i + 2];
+    info.innerHTML = `pixel (${x}, ${y}): <b style="color:rgb(${R},${G},${B})">■</b> R ${R} · G ${G} · B ${B}<br>${b8(R)} ${b8(G)} ${b8(B)}`;
+  });
+  img.src = cv.dataset.src;
+});
+</script>
+</body>
+</html>
