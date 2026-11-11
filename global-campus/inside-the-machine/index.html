@@ -401,7 +401,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">2 · Tuning on examples</h3>
 <p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)">People write thousands of pairs: a task and a good answer. On anything: conversations, legal letters, a language.</p>
 <p style="font-size:24px;line-height:1.4;color:var(--cf-22201c);background:var(--cb-f4eee2);padding:16px 20px"><b>Task:</b> Can the police read my messages?<br><b>Model answer:</b> Only on a legal basis, usually with a court’s consent.</p>
-<p style="font-size:24px;line-height:1.4;color:var(--cf-6b655b)">It learns the form. <a href="#32">How we did it →</a></p>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-6b655b)">It learns the form. <a href="#31">How we did it →</a></p>
 </div>
 <div style="display:flex;flex-direction:column;gap:14px;background:var(--cb-fbf7ef);padding:36px;border:1px solid var(--cl-d9cbb0)">
 <h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">3 · Human ratings</h3>
@@ -503,7 +503,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 <div style="display:flex;flex-direction:column;gap:14px">
 <p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cf-2f6f73)">My test · with sources (RAG)</p>
-<p style="font-size:28px;line-height:1.4;color:var(--cf-22201c)">Three ECtHR questions, cases checked in HUDOC. <a href="#30">What is RAG? →</a></p>
+<p style="font-size:28px;line-height:1.4;color:var(--cf-22201c)">Three ECtHR questions, cases checked in HUDOC. <a href="#29">What is RAG? →</a></p>
 <table style="font-size:26px;color:var(--cf-22201c)">
 <tr><th style="width:46%">Cited case</th><th style="width:27%;text-align:right">no sources</th><th style="width:27%;text-align:right">with sources</th></tr>
 <tr><td>correct</td><td style="text-align:right">31</td><td style="text-align:right"><b>36</b></td></tr>
@@ -624,7 +624,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:28px;line-height:1.4;color:var(--cf-22201c)">After training: fewer open legal questions, more editing and summaries, where the output is <b>easy to check</b>.</p>
 <p style="font-size:28px;line-height:1.4;color:var(--cf-22201c)">The judge works faster, but still checks and decides.</p>
 <p style="font-size:26px;line-height:1.4;color:var(--cf-a63d2a)">Not reported: how often JudgeGPT invented things.</p>
-<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">The same pattern among patent lawyers: <a href="#31">appendix →</a></p>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">The same pattern among patent lawyers: <a href="#30">appendix →</a></p>
 </div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
@@ -632,48 +632,19 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">23 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="24" data-id="spectrum">
-<section id="spectrum" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
-<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Part III · 2 · Why it goes wrong</p>
-<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Offloading, deferral, surrender</h2>
-<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px">
-<div style="display:flex;flex-direction:column;gap:16px;background:var(--cb-fbf7ef);padding:36px 40px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)">
-<h3 style="font-size:36px;font-weight:700;color:var(--cf-2f6f73)">Offloading</h3>
-<p style="font-size:26px;line-height:1.45;color:var(--cf-22201c)">You give the model a task. The result stays yours: you check it and can explain it.</p>
-<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42);background:var(--cb-f4eee2);padding:14px 18px"><i>The model summarises a judgment; you read the key paragraphs and fix the summary.</i></p>
-</div>
-<div style="display:flex;flex-direction:column;gap:16px;background:var(--cb-fbf7ef);padding:36px 40px;border:1px solid var(--cl-d9cbb0);border-top:8px solid #B08A3E">
-<h3 style="font-size:36px;font-weight:700;color:var(--cf-8a6a2b)">Deferral</h3>
-<p style="font-size:26px;line-height:1.45;color:var(--cf-22201c)">The model’s answer becomes the starting point of your next step, untested.</p>
-<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42);background:var(--cb-f4eee2);padding:14px 18px"><i>You build your argument on that summary without opening the judgment.</i></p>
-</div>
-<div style="display:flex;flex-direction:column;gap:16px;background:var(--cb-fbf7ef);padding:36px 40px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-a63d2a)">
-<h3 style="font-size:36px;font-weight:700;color:var(--cf-a63d2a)">Surrender</h3>
-<p style="font-size:26px;line-height:1.45;color:var(--cf-22201c)">The model’s answer becomes your answer. You no longer feel the need to check.</p>
-<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42);background:var(--cb-f4eee2);padding:14px 18px"><i>The summary goes into your submission. Asked what the Court held, you cannot say.</i></p>
-</div>
-</div>
-<div style="display:flex;flex-direction:column;background:var(--cb-fbf7ef);padding:28px 40px;border:5px double #B08A3E">
-<p style="font-size:30px;line-height:1.4;color:var(--cf-22201c)">The test: if you cannot explain the answer, even with the model’s help, you have surrendered it.</p>
-</div>
-<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)"><a href="https://x.com/addyosmani/article/2117512471930167377">Addy Osmani (2026)</a> · “cognitive surrender”: <a href="https://papers.ssrn.com/abstract=6097646">Shaw and Nave, Wharton (2026)</a></p>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">24 / 33</p>
-</section>
-</div>
-<div class="frame" data-n="25" data-id="agency">
-<section id="agency" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:26px">
-<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Part III · 3 · Use it to extend yourself</p>
+<div class="frame" data-n="24" data-id="agency">
+<section id="agency" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Part III · 2 · Avoid or extend</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Delegate to avoid the work, or use it to do more?</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
 <div style="display:flex;flex-direction:column;gap:8px;background:var(--cb-fbf7ef);padding:24px 32px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-a63d2a)">
-<h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Avoid: it does the work, you take the output</h3>
-<p style="font-size:25px;line-height:1.4;color:var(--cf-22201c)">Pupils who practised maths with plain ChatGPT did <b>17% worse</b> once it was taken away.</p>
-<p style="font-size:25px;line-height:1.4;color:var(--cf-22201c)">Junior patent lawyers wrote better drafts with AI, but on a test without it gained <b>nothing</b> on average.</p>
+<h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Avoid: cognitive surrender</h3>
+<p style="font-size:25px;line-height:1.4;color:var(--cf-22201c)">The model’s answer becomes your answer, and you stop checking. <b>If you cannot explain it, you have surrendered it.</b> <a href="#33">Offloading, deferral, surrender →</a></p>
+<p style="font-size:25px;line-height:1.4;color:var(--cf-22201c)">Pupils with plain ChatGPT did <b>17% worse</b> once it was taken away. Junior patent lawyers: better drafts with AI, <b>no gain</b> on a test without it.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:8px;background:var(--cb-fbf7ef);padding:24px 32px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)">
 <h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">Extend: you stay the author, and learn</h3>
-<p style="font-size:25px;line-height:1.4;color:var(--cf-22201c)">Senior patent lawyers who worked with AI for three months did <b>better on a test without it</b> (+0.45 SD). <a href="#31">The study →</a></p>
+<p style="font-size:25px;line-height:1.4;color:var(--cf-22201c)">Senior patent lawyers who worked with AI for three months did <b>better on a test without it</b> (+0.45 SD). <a href="#30">The study →</a></p>
 <p style="font-size:25px;line-height:1.4;color:var(--cf-22201c)"><i>“Most people don’t bring their own advantages to AI”</i>: your knowledge, taste and agency (Mollick).</p>
 </div>
 </div>
@@ -692,13 +663,13 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;left:128px;bottom:64px;width:1540px;font-size:20px;color:var(--cf-6b655b)"><a href="https://www.nber.org/papers/w35720">Autor et al. 2026</a> · <a href="https://doi.org/10.1073/pnas.2422633122">Bastani et al. 2025</a> · <a href="https://doi.org/10.1038/s41598-025-97652-6">Kestin et al. 2025</a>, via <a href="https://www.aworld.org/blog/gamification-engagement/scalable-ai-tutoring-how-ai-solves-bloom-s-2-sigma-problem/">AWorld on Bloom’s 2 sigma</a> · <a href="https://www.oneusefulthing.org/p/the-overhang">Mollick 2026</a> · <a href="https://arxiv.org/abs/2409.04109">Si et al. 2024</a> · <a href="https://doi.org/10.1126/sciadv.adn5290">Doshi and Hauser 2024</a></p>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">25 / 33</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1540px;font-size:20px;color:var(--cf-6b655b)"><a href="https://www.nber.org/papers/w35720">Autor et al. 2026</a> · <a href="https://papers.ssrn.com/abstract=6097646">Shaw and Nave 2026</a> · <a href="https://doi.org/10.1073/pnas.2422633122">Bastani et al. 2025</a> · <a href="https://doi.org/10.1038/s41598-025-97652-6">Kestin et al. 2025</a>, via <a href="https://www.aworld.org/blog/gamification-engagement/scalable-ai-tutoring-how-ai-solves-bloom-s-2-sigma-problem/">AWorld on Bloom’s 2 sigma</a> · <a href="https://www.oneusefulthing.org/p/the-overhang">Mollick 2026</a> · <a href="https://arxiv.org/abs/2409.04109">Si et al. 2024</a> · <a href="https://doi.org/10.1126/sciadv.adn5290">Doshi and Hauser 2024</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">24 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="26" data-id="habits">
+<div class="frame" data-n="25" data-id="habits">
 <section id="habits" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:20px">
-<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Part III · 4 · What to do</p>
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Part III · 3 · What to do</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Ten habits that keep you at the centre</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(5, auto);grid-auto-flow:column;gap:12px 24px">
 <div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a);width:52px;text-align:center">1</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Write down your own answer before you ask.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">A fluent answer makes it hard to imagine another one.</p></div></div>
@@ -707,17 +678,17 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a);width:52px;text-align:center">4</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Ask open questions, not for the verdict.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">“Give me the pros and cons.” The decision stays with you.</p></div></div>
 <div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">5</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">If you would not sign it, it does not go out.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">You can hand off the work, not the responsibility.</p></div></div>
 <div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">6</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Be intentional.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">An agent can quiz you, interview you and show you its evidence, but only if you set that up. So set it up.</p></div></div>
-<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">7</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Be honest about your place on the spectrum.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">If you can’t explain the answer, even with an agent’s help, you’ve surrendered it.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">7</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Be honest about your place on the <a href="#33">spectrum</a>.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">If you can’t explain the answer, even with an agent’s help, you’ve surrendered it.</p></div></div>
 <div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">8</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">A green check means one thing.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">What did it check? What did it not check?</p></div></div>
 <div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">9</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Read to know what decisions it made.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">What did it decide for you?</p></div></div>
 <div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">10</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Craft your prompt.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">How you write your prompt shows how much you understood the problem.</p></div></div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
 <p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:var(--cf-6b655b)"><b style="color:var(--cf-a63d2a)">1–4</b> from my own practice (3: <a href="https://aclanthology.org/2026.acl-long.1586/">Huang et al., DeepFact, ACL 2026</a>) · <b style="color:var(--cf-2f6f73)">5–10</b> after <a href="https://x.com/addyosmani/article/2117512471930167377">Addy Osmani (2026)</a></p>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">26 / 33</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">25 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="27" data-id="close">
+<div class="frame" data-n="26" data-id="close">
 <section id="close" style="background:var(--cb-a63d2a);color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:36px">
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#F4EEE2">Preparation gets cheaper. Decision and judgement stay with you.</h2>
 <div style="display:flex;flex-direction:column;gap:44px">
@@ -735,10 +706,10 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 </div>
 <p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:44px;font-weight:600;line-height:1.2;color:#F4EEE2">The art: use models where they are strong, and keep their harms small.</p>
-<p style="font-size:24px;line-height:1.4;color:#F4E3D7">A warning from <a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai">Bell and Legg (2026)</a>: writing is also thinking. The decision often forms while you write. · Purpose and task: <a href="#33">Jensen Huang →</a></p>
+<p style="font-size:24px;line-height:1.4;color:#F4E3D7">A warning from <a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai">Bell and Legg (2026)</a>: writing is also thinking. The decision often forms while you write. · Purpose and task: <a href="#32">Jensen Huang →</a></p>
 </section>
 </div>
-<div class="frame" data-n="28" data-id="next">
+<div class="frame" data-n="27" data-id="next">
 <section id="next" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">After the break</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Next: tools built this way</h2>
@@ -754,10 +725,10 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
 <p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:var(--cf-6b655b)">Inside the Machine · Global Campus of Human Rights</p>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">28 / 33</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">27 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="29" data-id="sources">
+<div class="frame" data-n="28" data-id="sources">
 <section id="sources" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:96px 128px 140px;display:flex;flex-direction:column;gap:24px">
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Sources</h2>
 <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:36px">
@@ -811,10 +782,10 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </ul>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:var(--cf-6b655b)">Inside the Machine · Global Campus of Human Rights</p>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">29 / 33</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">28 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="30" data-id="rag">
+<div class="frame" data-n="29" data-id="rag">
 <section id="rag" style="display:flex; flex-direction:column; gap:24px; padding:128px 128px 160px; background:var(--cb-f4eee2); color:var(--cf-22201c); font-family:'Nunito Sans', Arial, sans-serif">
   <p style="font-size:24px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--cf-a63d2a)">Appendix · How RAG works</p>
   <h2 style="font-family:'Cormorant Garamond', Georgia, serif; font-size:72px; font-weight:600; line-height:1.1; color:var(--cf-22201c)">RAG: search first, then answer</h2>
@@ -849,10 +820,10 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
   <p style="font-size:28px; line-height:1.4; color:var(--cf-22201c)">Without RAG the model answers from memory, guessing the next token. With RAG it answers from sources you can open, and you still check the footnotes.</p>
   <svg aria-label="" xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" style="position:absolute; top:64px; right:128px; width:120px; height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
   <p style="position:absolute; bottom:64px; left:128px; width:1100px; font-size:24px; color:var(--cf-6b655b)"><a href="#18">← Back to slide 18</a></p>
-  <p style="position:absolute; right:128px; bottom:64px; width:200px; font-size:24px; text-align:right; color:var(--cf-6b655b)">30 / 33</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; font-size:24px; text-align:right; color:var(--cf-6b655b)">29 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="31" data-id="patent">
+<div class="frame" data-n="30" data-id="patent">
 <section id="patent" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Appendix · Patent lawyers</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">AI helps everyone. It teaches those who have the basics.</h2>
@@ -873,10 +844,10 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:24px;line-height:1.4;color:var(--cf-6b655b)"><a href="https://www.nber.org/papers/w35720">Autor et al., “Does AI Assistance Enhance or Erode Expertise?”, NBER Working Paper 35720 (2026)</a></p>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
 <p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:var(--cf-6b655b)"><a href="#23">← Back to slide 23</a></p>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">31 / 33</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">30 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="32" data-id="pllum">
+<div class="frame" data-n="31" data-id="pllum">
 <section id="pllum" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Appendix · Stage 2, from the inside</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">How we tuned a public model for law</h2>
@@ -898,10 +869,10 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
 <p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:var(--cf-6b655b)"><a href="#14">← Back to slide 14</a></p>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">32 / 33</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">31 / 33</p>
 </section>
 </div>
-<div class="frame" data-n="33" data-id="huang">
+<div class="frame" data-n="32" data-id="huang">
 <section id="huang" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Appendix · Purpose and task</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Purpose and task</h2>
@@ -917,7 +888,36 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:var(--cf-6b655b)"><a href="#27">← Back to slide 27</a></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:var(--cf-6b655b)"><a href="#26">← Back to slide 26</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">32 / 33</p>
+</section>
+</div>
+<div class="frame" data-n="33" data-id="spectrum">
+<section id="spectrum" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Appendix · Offloading, deferral, surrender</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Offloading, deferral, surrender</h2>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;background:var(--cb-fbf7ef);padding:36px 40px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)">
+<h3 style="font-size:36px;font-weight:700;color:var(--cf-2f6f73)">Offloading</h3>
+<p style="font-size:26px;line-height:1.45;color:var(--cf-22201c)">You give the model a task. The result stays yours: you check it and can explain it.</p>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42);background:var(--cb-f4eee2);padding:14px 18px"><i>The model summarises a judgment; you read the key paragraphs and fix the summary.</i></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:var(--cb-fbf7ef);padding:36px 40px;border:1px solid var(--cl-d9cbb0);border-top:8px solid #B08A3E">
+<h3 style="font-size:36px;font-weight:700;color:var(--cf-8a6a2b)">Deferral</h3>
+<p style="font-size:26px;line-height:1.45;color:var(--cf-22201c)">The model’s answer becomes the starting point of your next step, untested.</p>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42);background:var(--cb-f4eee2);padding:14px 18px"><i>You build your argument on that summary without opening the judgment.</i></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:var(--cb-fbf7ef);padding:36px 40px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-a63d2a)">
+<h3 style="font-size:36px;font-weight:700;color:var(--cf-a63d2a)">Surrender</h3>
+<p style="font-size:26px;line-height:1.45;color:var(--cf-22201c)">The model’s answer becomes your answer. You no longer feel the need to check.</p>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42);background:var(--cb-f4eee2);padding:14px 18px"><i>The summary goes into your submission. Asked what the Court held, you cannot say.</i></p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;background:var(--cb-fbf7ef);padding:28px 40px;border:5px double #B08A3E">
+<p style="font-size:30px;line-height:1.4;color:var(--cf-22201c)">The test: if you cannot explain the answer, even with the model’s help, you have surrendered it.</p>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)"><a href="#24">← Back to slide 24</a> · <a href="https://x.com/addyosmani/article/2117512471930167377">Addy Osmani (2026)</a> · “cognitive surrender”: <a href="https://papers.ssrn.com/abstract=6097646">Shaw and Nave, Wharton (2026)</a></p>
 <p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">33 / 33</p>
 </section>
 </div>
