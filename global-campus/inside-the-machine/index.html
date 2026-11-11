@@ -41,6 +41,8 @@ body.read #stage{width:auto;height:auto;transform:none !important}
 body.read .frame{display:block;position:relative;width:calc(1920px * var(--k,1));height:calc(1080px * var(--k,1));margin:0 auto 28px;box-shadow:0 2px 18px rgba(0,0,0,.18)}
 body.read .frame>section{transform:scale(var(--k,1));transform-origin:top left}
 /* slide 4: live demos */
+.step{opacity:0;transform:translateY(18px);transition:opacity .45s,transform .45s}
+.step.shown,body.read .step{opacity:1;transform:none}
 .kbox{display:flex;flex-direction:column;gap:12px;background:var(--u-card);padding:24px 28px;border:1px solid var(--u-line)}
 .kbox h3{font-size:32px;font-weight:700;color:var(--u-teal)}
 .kcap,.px-i{font-size:24px;line-height:1.4;color:var(--u-muted);min-height:2.8em}
@@ -537,8 +539,8 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
 <div style="display:flex;flex-direction:column;gap:16px">
 <div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);padding:18px 28px;border:1px solid var(--cl-d9cbb0);border-left:10px solid var(--cl-2f6f73)">
-<p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:60px;font-weight:600;line-height:1;color:var(--cf-2f6f73);width:190px">0.3 Wh</p>
-<p style="flex:1;font-size:24px;line-height:1.35;color:var(--cf-22201c)">one short prompt in the data centre: a 10 W LED bulb for 2 minutes, and about 0.3 mL of water</p>
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:60px;font-weight:600;line-height:1;color:var(--cf-2f6f73);width:190px">0.24 Wh</p>
+<p style="flex:1;font-size:24px;line-height:1.35;color:var(--cf-22201c)">a typical Gemini prompt, as Google measured it: a 10 W LED bulb for 1.5 minutes, and 0.26 mL of water, about five drops</p>
 </div>
 <div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);padding:18px 28px;border:1px solid var(--cl-d9cbb0);border-left:10px solid var(--cl-8a6a2b)">
 <p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:60px;font-weight:600;line-height:1;color:var(--cf-8a6a2b);width:190px">40 Wh</p>
@@ -551,24 +553,24 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">A human rights question too: who lives next to the data centre? The UN Scientific Panel on AI (2026): environmental impacts <i>“are growing significantly and are heterogeneous”</i>, with no standard measurement yet.</p>
 </div>
 <div class="conv" style="display:flex;flex-direction:column;gap:14px;background:var(--cb-fbf7ef);padding:24px 32px;border:5px double #B08A3E">
-<h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Converter · Claude Sonnet 5.5</h3>
+<h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Converter · Gemini</h3>
 <div style="display:flex;gap:14px;align-items:center">
 <input class="cv-n" type="number" min="1" max="10000" value="1" aria-label="Number of prompts" style="width:130px">
 <span style="font-size:26px;color:var(--cf-4e4a42)">×</span>
-<select class="cv-k vsel" aria-label="Kind of prompt" style="flex:1"><option value="0.25">short question</option><option value="0.5" selected>typical chat answer</option><option value="4">long document or thinking</option><option value="40">agent session</option></select>
+<select class="cv-k vsel" aria-label="Kind of prompt" style="flex:1"><option value="0.24" selected>typical prompt (Google’s median)</option><option value="2.5">long document, about 20 pages</option><option value="40">agent session</option></select>
 </div>
-<p class="cv-wh" style="font-size:24px;color:var(--cf-6b655b)">= 0.5 Wh</p>
+<p class="cv-wh" style="font-size:24px;color:var(--cf-6b655b)">= 0.24 Wh in the data centre</p>
 <div style="display:grid;grid-template-columns:200px 1fr;gap:6px 20px;align-items:baseline">
-<p class="cv-o" data-wh="0.2" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">2.5 min</p><p style="font-size:26px;color:var(--cf-22201c)">scrolling X</p>
-<p class="cv-o" data-wh="0.5" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">1 min</p><p style="font-size:26px;color:var(--cf-22201c)">scrolling TikTok</p>
-<p class="cv-o" data-wh="1.3" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">23 s</p><p style="font-size:26px;color:var(--cf-22201c)">streaming a film on TV</p>
-<p class="cv-o" data-wh="0.1667" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">3 min</p><p style="font-size:26px;color:var(--cf-22201c)">a 10 W LED bulb</p>
+<p class="cv-o" data-wh="0.2" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">1.2 min</p><p style="font-size:26px;color:var(--cf-22201c)">scrolling X</p>
+<p class="cv-o" data-wh="0.5" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">29 s</p><p style="font-size:26px;color:var(--cf-22201c)">scrolling TikTok</p>
+<p class="cv-o" data-wh="1.3" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">11 s</p><p style="font-size:26px;color:var(--cf-22201c)">streaming a film on TV</p>
+<p class="cv-o" data-wh="0.1667" style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:48px;font-weight:600;line-height:1.1;color:var(--cf-2f6f73)">1.4 min</p><p style="font-size:26px;color:var(--cf-22201c)">a 10 W LED bulb</p>
 </div>
-<p style="font-size:20px;line-height:1.35;color:var(--cf-6b655b)">Anthropic publishes no figures: these are estimates. A prompt counts the data centre only; scrolling and streaming include the phone or TV and the network.</p>
+<p style="font-size:20px;line-height:1.35;color:var(--cf-6b655b)">Google measured the typical prompt; the long document and the agent session are independent estimates. A prompt counts the data centre only; scrolling and streaming include the phone or TV and the network.</p>
 </div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:var(--cf-6b655b)"><a href="https://arxiv.org/abs/2508.15734">Google 2025</a> · <a href="https://reports.sustainableaigroup.com/CLEER-Tech-Report/">CLEER 2026</a> · <a href="https://simonpcouch.com/blog/2026-01-20-cc-impact/">Couch 2026</a> · <a href="https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary">IEA 2026</a> · <a href="http://web.archive.org/web/20220610120205/https://greenspector.com/en/social-media-2021">Greenspector 2021</a> · <a href="https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines">IEA 2020</a> · <a href="https://www.un.org/independent-international-scientific-panel-ai/en/preliminary-report">UN Panel 2026</a></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:var(--cf-6b655b)"><a href="https://arxiv.org/abs/2508.15734">Elsworth et al. (Google) 2025</a> · <a href="https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use">Epoch AI 2025</a> · <a href="https://simonpcouch.com/blog/2026-01-20-cc-impact/">Couch 2026</a> · <a href="https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary">IEA 2026</a> · <a href="http://web.archive.org/web/20220610120205/https://greenspector.com/en/social-media-2021">Greenspector 2021</a> · <a href="https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines">IEA 2020</a> · <a href="https://www.un.org/independent-international-scientific-panel-ai/en/preliminary-report">UN Panel 2026</a></p>
 <p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">20 / 32</p>
 </section>
 </div>
@@ -683,37 +685,42 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <div class="frame" data-n="26" data-id="habits">
 <section id="habits" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:20px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Part III · 4 · What to do</p>
-<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Five habits that keep you at the centre</h2>
-<div style="display:flex;flex-direction:column;gap:12px">
-<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">1</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:var(--cf-22201c)">Write down your own answer before you ask.</p><p style="font-size:24px;line-height:1.35;color:var(--cf-4e4a42)">Once you have read a fluent answer, it is hard to imagine another one.</p></div></div>
-<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">2</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:var(--cf-22201c)">Use models to build tools for analysis, not as the analysis.</p><p style="font-size:24px;line-height:1.35;color:var(--cf-4e4a42)">The model writes the code once; the code gives the same answer every time, and you can check it.</p></div></div>
-<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">3</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:var(--cf-22201c)">Cross-check: another model, another session, one model judging another.</p><p style="font-size:24px;line-height:1.35;color:var(--cf-4e4a42)">Even agents checking agents beat one agent alone: 93.0% against 88.9% in a fact-checking test.</p></div></div>
-<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">4</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:var(--cf-22201c)">Ask open questions, not for the verdict.</p><p style="font-size:24px;line-height:1.35;color:var(--cf-4e4a42)">“Give me the pros and cons.” “Give me three different options.” The decision stays with you.</p></div></div>
-<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">5</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:var(--cf-22201c)">If you would not sign it, it does not go out.</p><p style="font-size:24px;line-height:1.35;color:var(--cf-4e4a42)">You can hand off the work, not the responsibility.</p></div></div>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Ten habits that keep you at the centre</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(5, auto);grid-auto-flow:column;gap:12px 24px">
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a);width:52px;text-align:center">1</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Write down your own answer before you ask.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">A fluent answer makes it hard to imagine another one.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a);width:52px;text-align:center">2</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Use models to build tools, not as the analysis.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">The code gives the same answer every time, and you can check it.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a);width:52px;text-align:center">3</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Cross-check: another model, another session.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">Agents checking agents beat one agent: 93.0% against 88.9%.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a);width:52px;text-align:center">4</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Ask open questions, not for the verdict.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">“Give me the pros and cons.” The decision stays with you.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">5</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">If you would not sign it, it does not go out.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">You can hand off the work, not the responsibility.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">6</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Be intentional.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">An agent can quiz you, interview you and show you its evidence, but only if you set that up. So set it up.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">7</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Be honest about your place on the spectrum.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">If you can’t explain the answer, even with an agent’s help, you’ve surrendered it.</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">8</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">A green check means one thing.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">What did it check? What did it not check?</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">9</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Read to know what decisions it made.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">What did it decide for you?</p></div></div>
+<div style="display:flex;gap:20px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:10px 24px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:44px;font-weight:600;line-height:1.0;color:var(--cf-2f6f73);width:52px;text-align:center">10</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:25px;line-height:1.3;font-weight:700;color:var(--cf-22201c)">Craft your prompt.</p><p style="font-size:21px;line-height:1.35;color:var(--cf-4e4a42)">How you write your prompt shows how much you understood the problem.</p></div></div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)">1 and 5 after <a href="https://x.com/addyosmani/article/2117512471930167377">Addy Osmani (2026)</a> · 3: <a href="https://aclanthology.org/2026.acl-long.1586/">Huang et al., DeepFact, ACL 2026</a></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1400px;font-size:24px;color:var(--cf-6b655b)"><b style="color:var(--cf-a63d2a)">1–4</b> from my own practice (3: <a href="https://aclanthology.org/2026.acl-long.1586/">Huang et al., DeepFact, ACL 2026</a>) · <b style="color:var(--cf-2f6f73)">5–10</b> after <a href="https://x.com/addyosmani/article/2117512471930167377">Addy Osmani (2026)</a></p>
 <p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">26 / 32</p>
 </section>
 </div>
 <div class="frame" data-n="27" data-id="close">
-<section id="close" style="background:var(--cb-a63d2a);color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:44px">
-<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:84px;font-weight:600;line-height:1.1;color:#F4EEE2">Preparation gets cheaper. Decision and judgement stay with you.</h2>
-<div style="display:flex;flex-direction:column;gap:16px">
+<section id="close" style="background:var(--cb-a63d2a);color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:36px">
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#F4EEE2">Preparation gets cheaper. Decision and judgement stay with you.</h2>
+<div style="display:flex;flex-direction:column;gap:44px">
 <div style="display:flex;gap:12px;align-items:center">
 <p style="width:200px;font-size:26px;font-weight:700;color:#F4EEE2">Before</p>
 <p style="width:300px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-f4eee2);padding:16px 20px">Decide</p>
 <p style="width:760px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-d9c9a8);padding:16px 20px">Prepare: search, read, write</p>
 <p style="width:300px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-f4eee2);padding:16px 20px">Evaluate</p>
 </div>
-<div style="display:flex;gap:12px;align-items:center">
-<p style="width:200px;font-size:26px;font-weight:700;color:#F4EEE2">With AI</p>
-<p style="width:300px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-f4eee2);padding:16px 20px">Decide</p>
-<p style="width:220px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-d9c9a8);padding:16px 20px">Prepare</p>
-<p style="width:420px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-f4eee2);padding:16px 20px">Evaluate</p>
+<div class="step" style="display:flex;gap:12px;align-items:flex-start">
+<p style="width:200px;font-size:26px;font-weight:700;color:#F4EEE2;padding:16px 0">With AI</p>
+<div style="width:300px;display:flex;flex-direction:column;gap:10px"><p style="width:300px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-f4eee2);padding:16px 20px">Decide</p><p style="font-size:22px;line-height:1.45;color:#F4E3D7"><b>1</b>  your answer first<br><b>6</b>  be intentional<br><b>10</b>  craft your prompt</p></div>
+<div style="width:220px;display:flex;flex-direction:column;gap:10px"><p style="width:220px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-d9c9a8);padding:16px 20px">Prepare</p><p style="font-size:22px;line-height:1.45;color:#F4E3D7"><b>2</b>  build tools<br><b>4</b>  open questions</p></div>
+<div style="width:420px;display:flex;flex-direction:column;gap:10px"><p style="width:420px;font-size:26px;font-weight:700;color:var(--cf-22201c);background:var(--cb-f4eee2);padding:16px 20px">Evaluate</p><p style="font-size:22px;line-height:1.45;color:#F4E3D7"><b>3</b>  cross-check<br><b>5</b>  would you sign it?<br><b>7</b>  can you explain it?<br><b>8</b>  what did the check check?<br><b>9</b>  what did it decide for you?</p></div>
 </div>
 </div>
-<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.2;color:#F4EEE2">The art: use models where they are strong, and keep their harms small.</p>
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:44px;font-weight:600;line-height:1.2;color:#F4EEE2">The art: use models where they are strong, and keep their harms small.</p>
 <p style="font-size:24px;line-height:1.4;color:#F4E3D7">A warning from <a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai">Bell and Legg (2026)</a>: writing is also thinking. The decision often forms while you write.</p>
 </section>
 </div>
@@ -737,33 +744,47 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </section>
 </div>
 <div class="frame" data-n="29" data-id="sources">
-<section id="sources" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<section id="sources" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:96px 128px 140px;display:flex;flex-direction:column;gap:24px">
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Sources</h2>
-<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:48px">
-<ul style="font-size:24px;line-height:1.35;color:var(--cf-4e4a42)">
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:36px">
+<ul style="font-size:20px;line-height:1.3;color:var(--cf-4e4a42);display:flex;flex-direction:column;gap:6px">
 <li><a href="https://artificialanalysis.ai/models">Artificial Analysis, model leaderboard</a></li>
 <li><a href="https://www.nber.org/papers/w35720">Autor et al., Does AI Assistance Enhance or Erode Expertise?, NBER WP 35720 (2026)</a></li>
 <li><a href="https://blr.scholasticahq.com/article/171946-the-giving-of-reasons-judgement-writing-judicial-reasoning-and-genai">Bell and Legg, The Giving of Reasons, Bond Law Review (2026)</a></li>
 <li><a href="https://www.damiencharlotin.com/hallucinations/">Charlotin, AI Hallucination Cases Database (September 2026)</a></li>
 <li><a href="https://poloclub.github.io/transformer-explainer/">Cho et al., Transformer Explainer (AAAI 2025)</a></li>
+<li><a href="https://simonpcouch.com/blog/2026-01-20-cc-impact/">Couch, Electricity use of AI coding agents (2026)</a></li>
 <li><a href="https://doi.org/10.1287/orsc.2025.21838">Dell’Acqua et al., Navigating the Jagged Technological Frontier, Organization Science (2026)</a></li>
-<li><a href="https://aclanthology.org/2026.acl-long.1586/">Huang Y. et al., DeepFact, ACL 2026, pp. 34356–34386</a></li>
+<li><a href="https://arxiv.org/abs/2508.15734">Elsworth et al. (Google), Measuring the environmental impact of delivering AI at Google Scale (2025)</a></li>
+<li><a href="https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use">Epoch AI, How much energy does ChatGPT use? (2025)</a></li>
+<li><a href="https://spectrum.ieee.org/judgegpt-experiment">Gent, JudgeGPT Experiment Boosts Case Closures in Pakistan Courts, IEEE Spectrum (2026)</a></li>
+<li><a href="http://web.archive.org/web/20220610120205/https://greenspector.com/en/social-media-2021">Greenspector, social media footprint per minute (2021)</a></li>
 <li><a href="https://www.youtube.com/watch?v=k-xtmISBCNE&amp;t=543s">Huang J., No Priors podcast, 8 January 2026</a></li>
+</ul>
+<ul style="font-size:20px;line-height:1.3;color:var(--cf-4e4a42);display:flex;flex-direction:column;gap:6px">
+<li><a href="https://aclanthology.org/2026.acl-long.1586/">Huang Y. et al., DeepFact, ACL 2026, pp. 34356–34386</a></li>
+<li><a href="https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines">IEA (Kamiya), The carbon footprint of streaming video (2020)</a></li>
+<li><a href="https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary">IEA, Key Questions on Energy and AI (2026)</a></li>
 <li><a href="https://link.springer.com/article/10.1007/s10506-026-09505-w">Karp et al., Artificial Intelligence and Law (2026)</a></li>
 <li><a href="https://arxiv.org/abs/2606.21155">Liu, Stammbach and Henderson (2026), preprint</a></li>
 <li><a href="https://doi.org/10.1111/jels.12413">Magesh et al., Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools (2025)</a></li>
-</ul>
-<ul style="font-size:24px;line-height:1.35;color:var(--cf-4e4a42)">
 <li><a href="https://storage.courtlistener.com/recap/gov.uscourts.nysd.575368/gov.uscourts.nysd.575368.54.0.pdf"><i>Mata v. Avianca</i>, No. 22-cv-1461 (S.D.N.Y. 22 June 2023)</a></li>
 <li><a href="https://cepr.org/publications/dp21783">Mehmood, Goessmann and Ash, Courts of Tomorrow, CEPR DP 21783 (2026)</a></li>
+<li><a href="https://www.youtube.com/watch?v=OAwat51S_Sk">Mollick, The Bitter Lesson, YouTube (2 October 2026)</a></li>
 <li><a href="https://x.com/addyosmani/article/2117512471930167377">Osmani, Critical thinking when agents do the work (2026)</a></li>
 <li>PLLuM: “Priority areas and types of letters”, team note (2025)</li>
 <li>Polish Supreme Administrative Court, <a href="https://orzeczenia.nsa.gov.pl/doc/7696DAE25D">I FZ 104/26</a> and <a href="https://www.prawo.pl/prawnicy-sady/nsa-radca-prawny-przywolal-orzeczenia-zmyslone-przez-ai,1553132.html">I OSK 590/26</a></li>
+</ul>
+<ul style="font-size:20px;line-height:1.3;color:var(--cf-4e4a42);display:flex;flex-direction:column;gap:6px">
 <li><a href="https://github.com/prinz-ai/prinzbench">prinz, PrinzBench</a></li>
+<li><a href="https://openai.com/index/better-language-models/">Radford et al. (OpenAI), GPT-2 (2019)</a></li>
+<li><a href="https://papers.ssrn.com/abstract=6097646">Shaw and Nave, Thinking—Fast, Slow, and Artificial, Wharton (2026)</a></li>
 <li><a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">Sutton, The Bitter Lesson (2019)</a></li>
 <li>Szoszkiewicz, own tests: Article 54 ICCPR (5 Oct 2026); RAG on ECtHR cases (23 Oct 2026)</li>
+<li><a href="https://www.un.org/independent-international-scientific-panel-ai/en/preliminary-report">UN Independent International Scientific Panel on AI, Preliminary Report (2026)</a></li>
 <li><a href="https://www.vals.ai/industry-reports/vlair-2-27-25">Vals Legal AI Report, VLAIR (February 2025)</a></li>
 <li><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., Attention Is All You Need (2017)</a></li>
+<li><a href="https://docs.voyageai.com/docs/pricing">Voyage AI, voyage-4-large and pricing</a></li>
 <li>Word map: <a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2">paraphrase-multilingual-MiniLM-L12-v2</a> · Motif: the Armonie workshop, Venice</li>
 </ul>
 </div>
@@ -884,6 +905,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
   }
   function go(n, push = true) {
     n = Math.max(0, Math.min(N - 1, n));
+    if (n !== cur) frames[n].querySelectorAll('.step').forEach(s => s.classList.toggle('shown', n < cur));
     if (frames[cur] && n !== cur && !isRead()) stopMedia(frames[cur]);
     cur = n;
     frames.forEach((f, i) => f.classList.toggle('on', i === n));
@@ -893,6 +915,9 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
     if (push) history.replaceState(null, '', location.pathname + location.search + '#' + (n + 1));
     if (isRead()) frames[n].scrollIntoView({block: 'start'});
   }
+  // click steps: elements with class "step" appear one by one before the next slide
+  function fwd() { const s = isRead() ? null : frames[cur].querySelector('.step:not(.shown)'); if (s) s.classList.add('shown'); else go(cur + 1); }
+  function back() { const s = isRead() ? [] : frames[cur].querySelectorAll('.step.shown'); if (s.length) s[s.length - 1].classList.remove('shown'); else go(cur - 1); }
   function setView(read) {
     body.classList.toggle('read', read);
     document.getElementById('view').textContent = read ? 'Slides' : 'Page';
@@ -916,18 +941,18 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
     if (k === 'p' || k === 'P') return setView(!isRead());
     if (isRead()) return;
     const onBtn = t && t.closest && t.closest('button, a');
-    if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(k) || (k === ' ' && !onBtn)) { e.preventDefault(); go(cur + 1); }
-    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); go(cur - 1); }
+    if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(k) || (k === ' ' && !onBtn)) { e.preventDefault(); fwd(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); back(); }
     else if (k === 'Home') go(0); else if (k === 'End') go(N - 1);
     else if (k === 'f' || k === 'F') toggleFs();
   });
-  document.getElementById('prev').onclick = () => go(cur - 1);
-  document.getElementById('next').onclick = () => go(cur + 1);
+  document.getElementById('prev').onclick = back;
+  document.getElementById('next').onclick = fwd;
   document.getElementById('view').onclick = () => setView(!isRead());
   document.getElementById('theme').onclick = toggleTheme;
   document.getElementById('fs').onclick = toggleFs;
   let tx = null; addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
-  addEventListener('touchend', e => { if (tx === null || isRead()) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1)); tx = null; }, {passive: true});
+  addEventListener('touchend', e => { if (tx === null || isRead()) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) if (dx < 0) fwd(); else back(); tx = null; }, {passive: true});
   let mt; const wake = () => { hud.classList.remove('idle'); clearTimeout(mt); mt = setTimeout(() => hud.classList.add('idle'), 3000); };
   addEventListener('mousemove', wake); wake();
   // in the page view, the slide in the middle of the screen is the current one

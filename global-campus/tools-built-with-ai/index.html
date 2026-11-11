@@ -41,6 +41,8 @@ body.read #stage{width:auto;height:auto;transform:none !important}
 body.read .frame{display:block;position:relative;width:calc(1920px * var(--k,1));height:calc(1080px * var(--k,1));margin:0 auto 28px;box-shadow:0 2px 18px rgba(0,0,0,.18)}
 body.read .frame>section{transform:scale(var(--k,1));transform-origin:top left}
 /* slide 4: live demos */
+.step{opacity:0;transform:translateY(18px);transition:opacity .45s,transform .45s}
+.step.shown,body.read .step{opacity:1;transform:none}
 .kbox{display:flex;flex-direction:column;gap:12px;background:var(--u-card);padding:24px 28px;border:1px solid var(--u-line)}
 .kbox h3{font-size:32px;font-weight:700;color:var(--u-teal)}
 .kcap,.px-i{font-size:24px;line-height:1.4;color:var(--u-muted);min-height:2.8em}
@@ -275,7 +277,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)">Nowak, CCPR Commentary (2005) · Saul, Kinley and Mowbray, The ICESCR: Commentary, Cases and Materials (2014)</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)"><a href="https://unov.tind.io/record/35360">Nowak, CCPR Commentary (2005)</a> · <a href="https://doi.org/10.1093/law/9780199640300.001.0001">Saul, Kinley and Mowbray, The ICESCR: Commentary, Cases and Materials (2014)</a></p>
 <p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">9 / 20</p>
 </section>
 </div>
@@ -508,6 +510,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
   }
   function go(n, push = true) {
     n = Math.max(0, Math.min(N - 1, n));
+    if (n !== cur) frames[n].querySelectorAll('.step').forEach(s => s.classList.toggle('shown', n < cur));
     if (frames[cur] && n !== cur && !isRead()) stopMedia(frames[cur]);
     cur = n;
     frames.forEach((f, i) => f.classList.toggle('on', i === n));
@@ -517,6 +520,9 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
     if (push) history.replaceState(null, '', location.pathname + location.search + '#' + (n + 1));
     if (isRead()) frames[n].scrollIntoView({block: 'start'});
   }
+  // click steps: elements with class "step" appear one by one before the next slide
+  function fwd() { const s = isRead() ? null : frames[cur].querySelector('.step:not(.shown)'); if (s) s.classList.add('shown'); else go(cur + 1); }
+  function back() { const s = isRead() ? [] : frames[cur].querySelectorAll('.step.shown'); if (s.length) s[s.length - 1].classList.remove('shown'); else go(cur - 1); }
   function setView(read) {
     body.classList.toggle('read', read);
     document.getElementById('view').textContent = read ? 'Slides' : 'Page';
@@ -540,18 +546,18 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
     if (k === 'p' || k === 'P') return setView(!isRead());
     if (isRead()) return;
     const onBtn = t && t.closest && t.closest('button, a');
-    if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(k) || (k === ' ' && !onBtn)) { e.preventDefault(); go(cur + 1); }
-    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); go(cur - 1); }
+    if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(k) || (k === ' ' && !onBtn)) { e.preventDefault(); fwd(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); back(); }
     else if (k === 'Home') go(0); else if (k === 'End') go(N - 1);
     else if (k === 'f' || k === 'F') toggleFs();
   });
-  document.getElementById('prev').onclick = () => go(cur - 1);
-  document.getElementById('next').onclick = () => go(cur + 1);
+  document.getElementById('prev').onclick = back;
+  document.getElementById('next').onclick = fwd;
   document.getElementById('view').onclick = () => setView(!isRead());
   document.getElementById('theme').onclick = toggleTheme;
   document.getElementById('fs').onclick = toggleFs;
   let tx = null; addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
-  addEventListener('touchend', e => { if (tx === null || isRead()) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1)); tx = null; }, {passive: true});
+  addEventListener('touchend', e => { if (tx === null || isRead()) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) if (dx < 0) fwd(); else back(); tx = null; }, {passive: true});
   let mt; const wake = () => { hud.classList.remove('idle'); clearTimeout(mt); mt = setTimeout(() => hud.classList.add('idle'), 3000); };
   addEventListener('mousemove', wake); wake();
   // in the page view, the slide in the middle of the screen is the current one
