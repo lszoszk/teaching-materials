@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Garage Research · Global Campus</title>
+<meta name="description" content="Day 2 of the New Technologies cluster, Global Campus of Human Rights: two sessions in Garage Research, building your own tools on UN data.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<script>try { var t = localStorage.getItem('itm-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+<style>
+:root{--outer:#E6DDCC;--hud:rgba(31,58,61,.94);--hud-ink:#F4EEE2;--hud-line:#B08A3E;--u-card:#FBF7EF;--u-input:#FFFFFF;--u-ink:#22201C;--u-muted:#6B655B;--u-line:#D9CBB0;--u-teal:#2F6F73;--u-red:#A63D2A}
+:root[data-theme="dark"]{--outer:#0A1213;--hud:rgba(10,18,19,.94);--u-card:#213235;--u-input:#132022;--u-ink:#EDE6D8;--u-muted:#A39B8C;--u-line:#3A4B4C;--u-teal:#7CC0BB;--u-red:#E58A72}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--outer:#0A1213;--hud:rgba(10,18,19,.94);--u-card:#213235;--u-input:#132022;--u-ink:#EDE6D8;--u-muted:#A39B8C;--u-line:#3A4B4C;--u-teal:#7CC0BB;--u-red:#E58A72}}
+:root{--cb-1f3a3d:#1F3A3D;--cb-f4eee2:#F4EEE2;--cb-fbf7ef:#FBF7EF;--cf-22201c:#22201C;--cf-2f6f73:#2F6F73;--cf-4e4a42:#4E4A42;--cf-6b655b:#6B655B;--cf-8a6a2b:#8A6A2B;--cf-a63d2a:#A63D2A;--cl-2f6f73:#2F6F73;--cl-8a6a2b:#8A6A2B;--cl-a63d2a:#A63D2A;--cl-d9cbb0:#D9CBB0;--cs-2f6f73:#2F6F73;--cs-3b4f7a:#3B4F7A;--cs-5a3e2b:#5A3E2B;--cs-8a6a2b:#8A6A2B;--cs-a63d2a:#A63D2A}
+:root[data-theme="dark"]{--cb-1f3a3d:#0E1A1C;--cb-f4eee2:#172426;--cb-fbf7ef:#213235;--cf-22201c:#EDE6D8;--cf-2f6f73:#7CC0BB;--cf-4e4a42:#C9C1B2;--cf-6b655b:#A39B8C;--cf-8a6a2b:#D9B56A;--cf-a63d2a:#E58A72;--cl-2f6f73:#7CC0BB;--cl-8a6a2b:#D9B56A;--cl-a63d2a:#E58A72;--cl-d9cbb0:#3A4B4C;--cs-2f6f73:#7CC0BB;--cs-3b4f7a:#9DB4E0;--cs-5a3e2b:#B08A6A;--cs-8a6a2b:#D9B56A;--cs-a63d2a:#E58A72}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cb-1f3a3d:#0E1A1C;--cb-f4eee2:#172426;--cb-fbf7ef:#213235;--cf-22201c:#EDE6D8;--cf-2f6f73:#7CC0BB;--cf-4e4a42:#C9C1B2;--cf-6b655b:#A39B8C;--cf-8a6a2b:#D9B56A;--cf-a63d2a:#E58A72;--cl-2f6f73:#7CC0BB;--cl-8a6a2b:#D9B56A;--cl-a63d2a:#E58A72;--cl-d9cbb0:#3A4B4C;--cs-2f6f73:#7CC0BB;--cs-3b4f7a:#9DB4E0;--cs-5a3e2b:#B08A6A;--cs-8a6a2b:#D9B56A;--cs-a63d2a:#E58A72}}
+html,body{margin:0;height:100%;background:var(--outer);overflow:hidden}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center center}
+.frame{display:none;position:absolute;inset:0}
+.frame.on{display:block}
+.frame>section{position:relative;width:1920px;height:1080px;box-sizing:border-box;overflow:hidden}
+.frame *{box-sizing:border-box}
+.frame h1,.frame h2,.frame h3,.frame p,.frame ul,.frame ol,.frame table{margin:0}
+.frame ul,.frame ol{padding-left:1.3em}
+.frame li{margin:0 0 .15em}
+.frame h1,.frame h2,.frame h3{font-weight:600}
+.frame a{color:inherit;text-decoration:underline;text-decoration-color:#B08A3E;text-decoration-thickness:2px;text-underline-offset:4px}
+.frame a:hover{opacity:.8}
+.frame table{border-collapse:collapse;width:100%}
+.frame th,.frame td{padding:.35em .6em;text-align:left;vertical-align:top;border-bottom:1px solid var(--u-line)}
+.frame th{font-weight:700}
+.frame aside{display:none}
+.frame img,.frame video,.frame svg{display:block}
+/* reading view: the slides one under another, as a page */
+body.read{overflow:auto;height:auto}
+body.read #viewport{position:static;display:block;padding:72px 16px 48px}
+body.read #stage{width:auto;height:auto;transform:none !important}
+body.read .frame{display:block;position:relative;width:calc(1920px * var(--k,1));height:calc(1080px * var(--k,1));margin:0 auto 28px;box-shadow:0 2px 18px rgba(0,0,0,.18)}
+body.read .frame>section{transform:scale(var(--k,1));transform-origin:top left}
+/* slide 4: live demos */
+.step{opacity:0;transform:translateY(18px);transition:opacity .45s,transform .45s}
+.step.shown,body.read .step{opacity:1;transform:none}
+.kbox{display:flex;flex-direction:column;gap:12px;background:var(--u-card);padding:24px 28px;border:1px solid var(--u-line)}
+.kbox h3{font-size:32px;font-weight:700;color:var(--u-teal)}
+.kcap,.px-i{font-size:24px;line-height:1.4;color:var(--u-muted);min-height:2.8em}
+.bt-in,.cv-n{font:600 32px 'IBM Plex Mono',ui-monospace,monospace;padding:10px 14px;border:2px solid var(--u-line);background:var(--u-input);color:var(--u-ink);width:100%}
+.bt-in:focus,.cv-n:focus{outline:3px solid #B08A3E}
+.bt-out{display:flex;flex-direction:column;gap:4px;font:400 26px/1.4 'IBM Plex Mono',ui-monospace,monospace;min-height:200px;color:var(--u-ink)}
+.bt-r{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:baseline}
+.bt-r b{font-size:30px;text-align:center}
+.bt-r.bt-2 span{color:var(--u-red)}
+canvas.px{width:260px;height:260px;border:5px double #B08A3E;background:#120e17;cursor:crosshair;align-self:center}
+.px-z{width:100%;accent-color:#B08A3E;height:28px}
+.px-i b{font-weight:700}
+.px-i .bin{font-family:'IBM Plex Mono',ui-monospace,monospace;color:var(--u-red)}
+/* the vector slide */
+.vbars{display:flex;flex-direction:column;gap:10px}
+.vrow{display:flex;align-items:center;gap:20px}
+.vrow span{width:150px;font:700 28px 'Nunito Sans',Arial,sans-serif;color:var(--u-ink);text-align:right}
+canvas.vbar{width:1152px;height:44px;border:1px solid var(--u-line);cursor:crosshair}
+.vinfo{font-size:24px;line-height:1.4;color:var(--u-muted);padding-left:170px;min-height:34px}
+.vsel{font:600 26px 'Nunito Sans',Arial,sans-serif;padding:4px 8px;border:2px solid var(--u-line);background:var(--u-input);color:var(--u-ink)}
+/* lite YouTube */
+.yt{position:relative;cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover}
+.yt button{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120px;height:84px;border:0;border-radius:18px;background:rgba(166,61,42,.92);cursor:pointer}
+.yt button::after{content:"";position:absolute;left:48px;top:24px;border-style:solid;border-width:18px 0 18px 30px;border-color:transparent transparent transparent #F4EEE2}
+.yt iframe{width:100%;height:100%;border:0}
+/* navigation */
+#bar{position:fixed;left:0;top:0;height:4px;background:#B08A3E;z-index:10;transition:width .2s}
+body.read #bar{display:none}
+#hud{position:fixed;left:50%;transform:translateX(-50%);top:10px;z-index:10;display:flex;align-items:center;gap:2px;padding:4px;background:var(--hud);border:1px solid var(--hud-line);border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.25);font:600 15px 'Nunito Sans',Arial,sans-serif;color:var(--hud-ink);transition:opacity .25s}
+#hud.idle{opacity:.45}
+#hud:hover{opacity:1}
+#hud a#home{font:inherit;color:inherit;text-decoration:none;border-radius:999px;padding:7px 12px;line-height:1}
+#hud a#home:hover,#hud a#home:focus-visible{background:rgba(176,138,62,.35);outline:none}
+#hud button{font:inherit;color:inherit;background:transparent;border:0;border-radius:999px;padding:7px 12px;cursor:pointer;line-height:1}
+#hud button:hover,#hud button:focus-visible{background:rgba(176,138,62,.35);outline:none}
+#hud .sep{width:1px;height:20px;background:var(--hud-line);opacity:.6;margin:0 4px}
+#count{padding:0 6px;min-width:62px;text-align:center;font-variant-numeric:tabular-nums}
+body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.deckonly{display:none}
+@media print{#hud,#bar{display:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="viewport"><div id="stage">
+<div class="frame" data-n="1" data-id="cover">
+<section id="cover" style="background:var(--cb-1f3a3d);color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:112px 128px 200px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<div style="display:flex;flex-direction:column;gap:28px;border:6px double #B08A3E;padding:56px 64px">
+<p style="font-size:24px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#C9A24A">New Technologies cluster · Sessions 3 and 4</p>
+<h1 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:136px;font-weight:600;line-height:1.0;color:#F4EEE2">Garage Research</h1>
+<p style="font-size:40px;line-height:1.3;color:#CFE0DC">You describe a tool, a model writes it, and you check it</p>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:end;gap:48px">
+<p style="font-size:30px;line-height:1.4;color:#F4EEE2"><b>Łukasz Szoszkiewicz</b><br>Adam Mickiewicz University, Poznań</p>
+<p style="font-size:26px;line-height:1.4;color:#CFE0DC;text-align:right">Global Campus of Human Rights<br>Monastery of San Nicolò, Lido di Venezia</p>
+</div>
+<svg aria-label="" width="1920" height="160" viewBox="0 0 1920 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0px;bottom:0px;width:1920px;height:160px"><defs><pattern id="b" width="236" height="140" patternUnits="userSpaceOnUse"><rect x="0" y="20" width="14" height="120" fill="var(--cs-a63d2a)"/><rect x="0" y="32" width="14" height="3" fill="#B08A3E"/><rect x="16" y="44" width="10" height="96" fill="#5E9A96"/><rect x="28" y="30" width="18" height="110" fill="#C9A24A"/><rect x="28" y="42" width="18" height="3" fill="var(--cs-8a6a2b)"/><rect x="48" y="14" width="12" height="126" fill="#5872A6"/><rect x="62" y="52" width="8" height="88" fill="#D9C9A8"/><rect x="72" y="36" width="16" height="104" fill="#7A8F5A"/><rect x="90" y="24" width="11" height="116" fill="var(--cs-a63d2a)"/><rect x="103" y="48" width="20" height="92" fill="#8A5A3C"/><rect x="103" y="60" width="20" height="3" fill="#C9A24A"/><rect x="125" y="12" width="13" height="128" fill="#5E9A96"/><rect x="140" y="40" width="9" height="100" fill="#C9A24A"/><rect x="151" y="28" width="17" height="112" fill="#5872A6"/><rect x="151" y="40" width="17" height="3" fill="#C9A24A"/><rect x="170" y="56" width="10" height="84" fill="var(--cs-a63d2a)"/><rect x="182" y="22" width="15" height="118" fill="#7A8F5A"/><rect x="199" y="42" width="12" height="98" fill="#D9C9A8"/><rect x="213" y="32" width="19" height="108" fill="#8A5A3C"/><rect x="213" y="44" width="19" height="3" fill="#C9A24A"/></pattern></defs><rect x="0" y="0" width="1920" height="140" fill="url(#b)"/><rect x="0" y="140" width="1920" height="20" fill="#B08A3E"/></svg>
+</section>
+</div>
+<div class="frame" data-n="2" data-id="today">
+<section id="today" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Day 2 · the plan</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Two sessions, your own tools</h2>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">Session 3 · States and votes</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Warm-up (studio Session 1): <b>Check a quotation</b>, on the sentence from your worksheet.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Studio Session 2: <b>How two States vote at the Human Rights Council</b>, then <b>Who votes with this State</b>.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">If time is left: Suggest improvements.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-8a6a2b)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-8a6a2b)">Session 4 · Your choice</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Studio Session 3: your country’s <b>recommendations dashboard</b>, a <b>research wiki</b> on neurotechnology and justice, or <b>your own idea</b> from last night.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Last 15 minutes: show your app, and five minutes of feedback.</p></div>
+</div>
+<p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)">Studio: <a href="https://lszoszk.github.io/workshop-studio/?course=venice">lszoszk.github.io/workshop-studio/?course=venice</a> · your seat code from yesterday still works.</p>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">2 / 6</p>
+</section>
+</div>
+<div class="frame" data-n="3" data-id="pairs">
+<section id="pairs" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">How we work today</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Predict, build, check</h2>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">1</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Work in pairs:</b> one writes the request, the other checks. Swap for the next app.</p></div>
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">2</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>While the model writes</b> (3 to 9 minutes), write down what a correct result should show.</p></div>
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">3</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Check one number by hand</b> against the source: the app may run and still be wrong.</p></div>
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">4</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Look inside:</b> Run it three times (the same numbers every time?), What left this laptop.</p></div>
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">5</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)">An error in red: send it back to the model in the same conversation. Three tries without progress: call me.</p></div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">3 / 6</p>
+</section>
+</div>
+<div class="frame" data-n="4" data-id="request">
+<section id="request" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Session 4 · your own idea</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">A good request says what goes in, what comes out and how to check it</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">The model asks you three questions</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">What do you want to find out?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Which file should it use (from Your files, or one you add)?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Who will read the result?</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:5px double #B08A3E"><h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Add the rule and the check</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The rule:</b> what counts? For instance, is an abstention agreement with a “no”?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The check:</b> one result you already know, to test the app against.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The limits:</b> ask the app to say on screen what it cannot answer.</p></div>
+</div>
+<p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)"><i>“Show the recommendations my country received on freedom of assembly, by year and by the body that made them, with a link to each record. I know there were 12 in the last UPR cycle: show that count.”</i></p>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">4 / 6</p>
+</section>
+</div>
+<div class="frame" data-n="5" data-id="choice">
+<section id="choice" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Session 4 · studio Session 3</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Pick one track</h2>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">Your country</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">The recommendations dashboard, then Check a quotation and Ask your data a question.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-8a6a2b)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-8a6a2b)">A research wiki</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Neurotechnology and justice: read the wiki, check every quotation against its PDF, then A map of the wiki.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-a63d2a)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Your own idea</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">The three sentences from last night. You may add your own file; it stays in your browser.</p></div>
+</div>
+<div style="display:flex;flex-direction:column;background:var(--cb-fbf7ef);padding:22px 36px;border:5px double #B08A3E">
+<p style="font-size:28px;line-height:1.4;color:var(--cf-a63d2a)"><b>Never put personal or confidential data into the studio.</b> Public documents and your own drafts only.</p>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">5 / 6</p>
+</section>
+</div>
+<div class="frame" data-n="6" data-id="home">
+<section id="home" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Before you leave</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Show it, take it home, tell me what to change</h2>
+<div style="display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">1</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Show it:</b> two minutes per pair. What does the app show, and what did you check by hand?</p></div>
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">2</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Keep it:</b> Save &amp; share → Save as file. Your app opens with a double-click, also offline.</p></div>
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">3</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Go on for free:</b> the take-home kit (Save &amp; share) has the requests, the data and your apps. Paste a request into your own chatbot, or into LM Arena (free, no account; public material only).</p></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center;background:#FFFFFF;padding:20px;border:5px double #B08A3E">
+<img src="assets/qr-day2.png" alt="QR code of the anonymous Day 2 feedback form" style="width:360px;height:360px;object-fit:contain">
+<p style="font-size:24px;line-height:1.3;color:var(--cf-22201c);text-align:center">Anonymous, five minutes.<br><a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=4Z5ocy-0JU6l9mbR8pvAkoNJtdelHBtEg2C9UOi17T5UMlFHWEgxWUFKUEhWTTk0NEpVQlVHRDJJSy4u">Open the form</a></p>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">6 / 6</p>
+</section>
+</div>
+</div></div>
+<div id="hud" role="toolbar" aria-label="Slide controls">
+<a id="home" href="../" title="Back to the course page">Course</a>
+<span class="sep"></span>
+<button id="prev" title="Previous slide (←)" aria-label="Previous slide">‹</button>
+<span id="count"></span>
+<button id="next" title="Next slide (→)" aria-label="Next slide">›</button>
+<span class="sep deckonly"></span>
+<button id="view" title="Slides or one page (P)">Page</button>
+<button id="theme" title="Light or dark (D)">Dark</button>
+<button id="fs" title="Full screen (F)" aria-label="Full screen">⛶</button>
+</div>
+<script>
+(() => {
+  const root = document.documentElement, body = document.body, frames = [...document.querySelectorAll('.frame')], stage = document.getElementById('stage'), N = frames.length;
+  const hud = document.getElementById('hud'), bar = document.getElementById('bar');
+  let cur = 0;
+  const isRead = () => body.classList.contains('read');
+  function fit() {
+    if (isRead()) { stage.style.setProperty('--k', Math.min(1, (innerWidth - 32) / 1920)); return; }
+    stage.style.transform = `scale(${Math.min(innerWidth / 1920, innerHeight / 1080)})`;
+  }
+  function stopMedia(f) {
+    f.querySelectorAll('video').forEach(v => v.pause());
+    f.querySelectorAll('.yt iframe').forEach(i => { const y = i.closest('.yt'); i.remove(); y.querySelector('img').style.display = ''; y.querySelector('button').style.display = ''; });
+  }
+  function go(n, push = true) {
+    n = Math.max(0, Math.min(N - 1, n));
+    if (n !== cur) frames[n].querySelectorAll('.step').forEach(s => s.classList.toggle('shown', n < cur));
+    if (frames[cur] && n !== cur && !isRead()) stopMedia(frames[cur]);
+    cur = n;
+    frames.forEach((f, i) => f.classList.toggle('on', i === n));
+    if (!isRead()) frames[n].querySelectorAll('video[data-loop]').forEach(v => { v.play().catch(() => {}); });
+    document.getElementById('count').textContent = `${n + 1} / ${N}`;
+    bar.style.width = ((n + 1) / N * 100) + '%';
+    if (push) history.replaceState(null, '', location.pathname + location.search + '#' + (n + 1));
+    if (isRead()) frames[n].scrollIntoView({block: 'start'});
+  }
+  // click steps: elements with class "step" appear one by one before the next slide
+  function fwd() { const s = isRead() ? null : frames[cur].querySelector('.step:not(.shown)'); if (s) s.classList.add('shown'); else go(cur + 1); }
+  function back() { const s = isRead() ? [] : frames[cur].querySelectorAll('.step.shown'); if (s.length) s[s.length - 1].classList.remove('shown'); else go(cur - 1); }
+  function setView(read) {
+    body.classList.toggle('read', read);
+    document.getElementById('view').textContent = read ? 'Slides' : 'Page';
+    stage.style.transform = ''; fit();
+    if (read) requestAnimationFrame(() => frames[cur].scrollIntoView({block: 'start'})); else go(cur, false);
+  }
+  // theme: the system's choice until the button or D sets one
+  function dark() { const t = root.getAttribute('data-theme'); return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+  function paintThemeBtn() { document.getElementById('theme').textContent = dark() ? 'Light' : 'Dark'; }
+  function toggleTheme() { const t = dark() ? 'light' : 'dark'; root.setAttribute('data-theme', t); try { localStorage.setItem('itm-theme', t); } catch (e) {} paintThemeBtn(); }
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintThemeBtn);
+  function toggleFs() { if (document.fullscreenElement) document.exitFullscreen(); else (root.requestFullscreen ? root.requestFullscreen() : Promise.reject()).catch(() => {}); }
+  const fromHash = () => { const k = parseInt(location.hash.slice(1), 10); return isNaN(k) ? 0 : k - 1; };
+  addEventListener('hashchange', () => go(fromHash(), false));
+  addEventListener('resize', fit);
+  addEventListener('keydown', e => {
+    const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) { if (e.key === 'Escape') t.blur(); return; }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (k === 'd' || k === 'D') return toggleTheme();
+    if (k === 'p' || k === 'P') return setView(!isRead());
+    if (isRead()) return;
+    const onBtn = t && t.closest && t.closest('button, a');
+    if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(k) || (k === ' ' && !onBtn)) { e.preventDefault(); fwd(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); back(); }
+    else if (k === 'Home') go(0); else if (k === 'End') go(N - 1);
+    else if (k === 'f' || k === 'F') toggleFs();
+  });
+  document.getElementById('prev').onclick = back;
+  document.getElementById('next').onclick = fwd;
+  document.getElementById('view').onclick = () => setView(!isRead());
+  document.getElementById('theme').onclick = toggleTheme;
+  document.getElementById('fs').onclick = toggleFs;
+  let tx = null; addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
+  addEventListener('touchend', e => { if (tx === null || isRead()) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) if (dx < 0) fwd(); else back(); tx = null; }, {passive: true});
+  let mt; const wake = () => { hud.classList.remove('idle'); clearTimeout(mt); mt = setTimeout(() => hud.classList.add('idle'), 3000); };
+  addEventListener('mousemove', wake); wake();
+  // in the page view, the slide in the middle of the screen is the current one
+  addEventListener('scroll', () => { if (!isRead()) return; const mid = innerHeight / 2; let best = cur;
+    frames.forEach((f, i) => { const r = f.getBoundingClientRect(); if (r.top <= mid && r.bottom >= mid) best = i; });
+    if (best !== cur) { cur = best; history.replaceState(null, '', location.pathname + location.search + '#' + (cur + 1)); } }, {passive: true});
+  document.querySelectorAll('.yt').forEach(y => y.addEventListener('click', () => {
+    if (y.querySelector('iframe')) return;
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${y.dataset.id}?autoplay=1&rel=0`;
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true; f.title = y.dataset.title || 'Video';
+    y.querySelector('img').style.display = 'none'; y.querySelector('button').style.display = 'none'; y.append(f);
+  }));
+  document.querySelectorAll('.frame a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+  document.querySelectorAll('.frame a[href^="#"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); go(parseInt(a.getAttribute('href').slice(1), 10) - 1); }));
+  // slide 4: text to bits
+  const enc = new TextEncoder(), b8 = n => n.toString(2).padStart(8, '0');
+  document.querySelectorAll('.bt-in').forEach(inp => {
+    const out = inp.nextElementSibling;
+    const draw = () => { out.textContent = ''; [...inp.value].slice(0, 10).forEach(ch => {
+      const by = [...enc.encode(ch)], r = document.createElement('div'); r.className = 'bt-r' + (by.length > 1 ? ' bt-2' : '');
+      const b = document.createElement('b'); b.textContent = ch === ' ' ? '␣' : ch;
+      const s = document.createElement('span'); s.textContent = by.map(b8).join(' '); r.append(b, s); out.append(r); }); };
+    inp.addEventListener('input', draw); draw();
+  });
+  // slide 4: zoomable pixels
+  document.querySelectorAll('canvas.px').forEach(cv => {
+    const z = cv.nextElementSibling, info = z.nextElementSibling, keep = info.innerHTML, img = new Image(), ctx = cv.getContext('2d'), W0 = cv.width;
+    let off = null, data = null, view = null;
+    img.onload = () => { off = document.createElement('canvas'); off.width = img.naturalWidth; off.height = img.naturalHeight;
+      const o = off.getContext('2d'); o.drawImage(img, 0, 0); try { data = o.getImageData(0, 0, off.width, off.height).data; } catch (e) { data = null; } render(); };
+    function render() {
+      if (!off) return; const k = +z.value, W = off.width, H = off.height, side = Math.max(W, H) / k;
+      const sw = Math.min(side, W), sh = Math.min(side, H), cx = W * +cv.dataset.fx, cy = H * +cv.dataset.fy;
+      const sx = Math.max(0, Math.min(W - sw, cx - sw / 2)), sy = Math.max(0, Math.min(H - sh, cy - sh / 2)), s = Math.min(W0 / sw, W0 / sh);
+      view = {sx, sy, sw, sh, s, ox: (W0 - sw * s) / 2, oy: (W0 - sh * s) / 2};
+      ctx.imageSmoothingEnabled = k < 3; ctx.fillStyle = '#120e17'; ctx.fillRect(0, 0, W0, W0);
+      ctx.drawImage(off, sx, sy, sw, sh, view.ox, view.oy, sw * s, sh * s);
+      if (k >= 12) { ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = 1;
+        for (let x = Math.ceil(sx); x < sx + sw; x++) { const X = view.ox + (x - sx) * s; ctx.beginPath(); ctx.moveTo(X, view.oy); ctx.lineTo(X, view.oy + sh * s); ctx.stroke(); }
+        for (let y = Math.ceil(sy); y < sy + sh; y++) { const Y = view.oy + (y - sy) * s; ctx.beginPath(); ctx.moveTo(view.ox, Y); ctx.lineTo(view.ox + sw * s, Y); ctx.stroke(); } }
+    }
+    z.addEventListener('input', render);
+    cv.addEventListener('mouseleave', () => { info.innerHTML = keep; });
+    cv.addEventListener('mousemove', e => {
+      if (!view || !data) return; const r = cv.getBoundingClientRect(), mx = (e.clientX - r.left) / r.width * W0, my = (e.clientY - r.top) / r.height * W0;
+      const x = Math.floor(view.sx + (mx - view.ox) / view.s), y = Math.floor(view.sy + (my - view.oy) / view.s);
+      if (x < 0 || y < 0 || x >= off.width || y >= off.height) return;
+      const i = (y * off.width + x) * 4, R = data[i], G = data[i + 1], B = data[i + 2];
+      info.innerHTML = `pixel (${x}, ${y}) <b style="color:rgb(${R},${G},${B})">■</b> R ${R} · G ${G} · B ${B}<br><span class="bin">${b8(R)} ${b8(G)} ${b8(B)}</span>`;
+    });
+    // the video frame plays as film: slow drift, gate weave, flicker, grain; hover or zoom stops it on one frame
+    if ('film' in cv.dataset && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let on = false, hold = false, T = 0, prev = 0, last = 0, n = 0;
+      const grain = [0, 1, 2].map(() => { const g = document.createElement('canvas'); g.width = g.height = 128;
+        const gx = g.getContext('2d'), d = gx.createImageData(128, 128);
+        for (let i = 0; i < d.data.length; i += 4) { const v = Math.random() * 255 | 0; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+        gx.putImageData(d, 0, 0); return g; });
+      const clean = () => { if (!off || !view) return; ctx.fillStyle = '#120e17'; ctx.fillRect(0, 0, W0, W0); ctx.imageSmoothingEnabled = true;
+        ctx.drawImage(off, view.sx, view.sy, view.sw, view.sh, view.ox, view.oy, view.sw * view.s, view.sh * view.s); };
+      const tick = ts => {
+        if (!on) return; requestAnimationFrame(tick);
+        const dt = prev ? Math.min(ts - prev, 100) : 0; prev = ts;
+        if (!off || hold || z.value !== '1') return;
+        T += dt; if (ts - last < 1000 / 24) return; last = ts; n++;
+        const W = off.width, H = off.height, s0 = Math.min(W0 / W, W0 / H), p = (1 - Math.cos(T / 16000 * 2 * Math.PI)) / 2;
+        const sc = 1 + 0.12 * p, sw = W / sc, sh = H / sc, dw = W * s0, dh = H * s0, ox = (W0 - dw) / 2, oy = (W0 - dh) / 2;
+        const sx = Math.max(0, Math.min(W - sw, W * +cv.dataset.fx - sw / 2 + (p - 0.5) * W * 0.05)), sy = Math.max(0, Math.min(H - sh, H * +cv.dataset.fy - sh / 2));
+        view = {sx, sy, sw, sh, s: s0 * sc, ox, oy};
+        const jx = (Math.random() - 0.5) * 1.6, jy = (Math.random() - 0.5) * 1.6;
+        ctx.save(); ctx.fillStyle = '#120e17'; ctx.fillRect(0, 0, W0, W0);
+        ctx.beginPath(); ctx.rect(ox, oy, dw, dh); ctx.clip(); ctx.imageSmoothingEnabled = true;
+        ctx.drawImage(off, sx, sy, sw, sh, ox + jx - 2, oy + jy - 2, dw + 4, dh + 4);
+        const f = Math.random(); ctx.fillStyle = f < 0.5 ? `rgba(0,0,0,${f * 0.14})` : `rgba(255,236,206,${(f - 0.5) * 0.10})`; ctx.fillRect(ox, oy, dw, dh);
+        ctx.globalCompositeOperation = 'overlay'; ctx.globalAlpha = 0.16;
+        ctx.drawImage(grain[n % 3], -Math.random() * 64, -Math.random() * 64, W0 * 1.2, W0 * 1.2);
+        ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+        if (Math.random() < 0.07) { ctx.fillStyle = 'rgba(255,248,236,.35)'; ctx.fillRect(ox + Math.random() * dw, oy, 1.2, dh); }
+        if (Math.random() < 0.05) { ctx.fillStyle = 'rgba(20,14,10,.5)'; ctx.beginPath(); ctx.arc(ox + Math.random() * dw, oy + Math.random() * dh, 1 + Math.random() * 2, 0, 7); ctx.fill(); }
+        const v = ctx.createRadialGradient(W0 / 2, W0 / 2, dh * 0.35, W0 / 2, W0 / 2, dw * 0.62); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,.5)');
+        ctx.fillStyle = v; ctx.fillRect(ox, oy, dw, dh); ctx.restore();
+        const fno = info.querySelector('.fno'); if (fno) fno.textContent = 'frame ' + String(n % 10000).padStart(4, '0');
+      };
+      new IntersectionObserver(es => es.forEach(e => { on = e.isIntersecting; prev = 0; if (on) requestAnimationFrame(tick); })).observe(cv);
+      cv.addEventListener('mouseenter', () => { hold = true; if (z.value === '1') clean(); });
+      cv.addEventListener('mouseleave', () => { hold = false; });
+    }
+    img.src = cv.dataset.src;
+  });
+  // converter: prompts to minutes of scrolling, streaming, light
+  document.querySelectorAll('.conv').forEach(c => {
+    const n = c.querySelector('.cv-n'), k = c.querySelector('.cv-k'), wh = c.querySelector('.cv-wh');
+    const num = (x, d) => (+x.toFixed(d)).toLocaleString('en-GB');
+    const fmt = m => m < 1 ? Math.round(m * 60) + ' s' : m < 60 ? num(m, m < 10 ? 1 : 0) + ' min' : m < 1440 ? Math.floor(m / 60) + ' h ' + Math.round(m % 60) + ' min' : num(m / 1440, 1) + ' days';
+    const up = () => { const e = Math.max(0, +n.value || 0) * +k.value;
+      wh.textContent = '= ' + (e < 1000 ? num(e, e < 10 ? 2 : 0) + ' Wh' : num(e / 1000, 2) + ' kWh') + ' in the data centre';
+      c.querySelectorAll('.cv-o').forEach(o => { o.textContent = fmt(e / +o.dataset.wh); }); };
+    n.addEventListener('input', up); k.addEventListener('change', up); up();
+  });
+  // the vector slide: 384 numbers as stripes, and a cosine between any two words
+  const vd = document.getElementById('vecdata');
+  if (vd) {
+    const V = JSON.parse(vd.textContent), M = 0.12;
+    const col = x => { const t = Math.max(-1, Math.min(1, x / M)), c = [244, 238, 226], hi = t > 0 ? [166, 61, 42] : [47, 111, 115], a = Math.abs(t);
+      return `rgb(${c.map((v, i) => Math.round(v + (hi[i] - v) * a)).join(',')})`; };
+    document.querySelectorAll('canvas.vbar').forEach(cv => {
+      const v = V[cv.dataset.word], ctx = cv.getContext('2d'), w = cv.width / v.length;
+      v.forEach((x, i) => { ctx.fillStyle = col(x); ctx.fillRect(i * w, 0, Math.ceil(w), cv.height); });
+      const info = cv.closest('.vbars').querySelector('.vinfo'), keep = info.innerHTML;
+      cv.addEventListener('mousemove', e => { const r = cv.getBoundingClientRect(), i = Math.min(v.length - 1, Math.floor((e.clientX - r.left) / r.width * v.length));
+        info.textContent = `${cv.dataset.word}, number ${i + 1} of ${v.length}: ${v[i].toFixed(3)}`; });
+      cv.addEventListener('mouseleave', () => { info.innerHTML = keep; });
+    });
+    const cos = (a, b) => { let d = 0, na = 0, nb = 0; a.forEach((x, i) => { d += x * b[i]; na += x * x; nb += b[i] * b[i]; }); return d / Math.sqrt(na * nb); };
+    const sels = [...document.querySelectorAll('.vsel')], out = document.querySelector('.vsim');
+    const upd = () => { const [a, b] = sels.map(s => s.value); out.innerHTML = `similarity of <b>${a}</b> and <b>${b}</b>: <b>${cos(V[a], V[b]).toFixed(2)}</b>`; };
+    sels.forEach(s => s.addEventListener('change', upd)); if (sels.length === 2) upd();
+  }
+  // slides by default; the page view on a phone-sized touch screen or with ?read
+  const start = /[?&]read\b/.test(location.search) || matchMedia('(pointer: coarse) and (max-width: 900px)').matches;
+  cur = fromHash(); paintThemeBtn(); setView(start); go(cur, false);
+})();
+</script>
+</body>
+</html>
