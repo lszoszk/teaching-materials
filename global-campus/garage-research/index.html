@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Garage Research · Global Campus</title>
-<meta name="description" content="Day 2 of the New Technologies cluster, Global Campus of Human Rights: two sessions in Garage Research, building your own tools on UN data.">
+<meta name="description" content="Day 2 of the New Technologies cluster, Global Campus of Human Rights: the drafting history, the Council's votes and UN recommendations, each followed by your own build in Garage Research.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
@@ -13,9 +13,9 @@
 :root{--outer:#E6DDCC;--hud:rgba(31,58,61,.94);--hud-ink:#F4EEE2;--hud-line:#B08A3E;--u-card:#FBF7EF;--u-input:#FFFFFF;--u-ink:#22201C;--u-muted:#6B655B;--u-line:#D9CBB0;--u-teal:#2F6F73;--u-red:#A63D2A}
 :root[data-theme="dark"]{--outer:#0A1213;--hud:rgba(10,18,19,.94);--u-card:#213235;--u-input:#132022;--u-ink:#EDE6D8;--u-muted:#A39B8C;--u-line:#3A4B4C;--u-teal:#7CC0BB;--u-red:#E58A72}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--outer:#0A1213;--hud:rgba(10,18,19,.94);--u-card:#213235;--u-input:#132022;--u-ink:#EDE6D8;--u-muted:#A39B8C;--u-line:#3A4B4C;--u-teal:#7CC0BB;--u-red:#E58A72}}
-:root{--cb-1f3a3d:#1F3A3D;--cb-f4eee2:#F4EEE2;--cb-fbf7ef:#FBF7EF;--cf-22201c:#22201C;--cf-2f6f73:#2F6F73;--cf-4e4a42:#4E4A42;--cf-6b655b:#6B655B;--cf-8a6a2b:#8A6A2B;--cf-a63d2a:#A63D2A;--cl-2f6f73:#2F6F73;--cl-8a6a2b:#8A6A2B;--cl-a63d2a:#A63D2A;--cl-d9cbb0:#D9CBB0;--cs-2f6f73:#2F6F73;--cs-3b4f7a:#3B4F7A;--cs-5a3e2b:#5A3E2B;--cs-8a6a2b:#8A6A2B;--cs-a63d2a:#A63D2A}
-:root[data-theme="dark"]{--cb-1f3a3d:#0E1A1C;--cb-f4eee2:#172426;--cb-fbf7ef:#213235;--cf-22201c:#EDE6D8;--cf-2f6f73:#7CC0BB;--cf-4e4a42:#C9C1B2;--cf-6b655b:#A39B8C;--cf-8a6a2b:#D9B56A;--cf-a63d2a:#E58A72;--cl-2f6f73:#7CC0BB;--cl-8a6a2b:#D9B56A;--cl-a63d2a:#E58A72;--cl-d9cbb0:#3A4B4C;--cs-2f6f73:#7CC0BB;--cs-3b4f7a:#9DB4E0;--cs-5a3e2b:#B08A6A;--cs-8a6a2b:#D9B56A;--cs-a63d2a:#E58A72}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cb-1f3a3d:#0E1A1C;--cb-f4eee2:#172426;--cb-fbf7ef:#213235;--cf-22201c:#EDE6D8;--cf-2f6f73:#7CC0BB;--cf-4e4a42:#C9C1B2;--cf-6b655b:#A39B8C;--cf-8a6a2b:#D9B56A;--cf-a63d2a:#E58A72;--cl-2f6f73:#7CC0BB;--cl-8a6a2b:#D9B56A;--cl-a63d2a:#E58A72;--cl-d9cbb0:#3A4B4C;--cs-2f6f73:#7CC0BB;--cs-3b4f7a:#9DB4E0;--cs-5a3e2b:#B08A6A;--cs-8a6a2b:#D9B56A;--cs-a63d2a:#E58A72}}
+:root{--cb-1f3a3d:#1F3A3D;--cb-f4eee2:#F4EEE2;--cb-fbf7ef:#FBF7EF;--cb-fffdf8:#FFFDF8;--cf-22201c:#22201C;--cf-2f6f73:#2F6F73;--cf-3b4f7a:#3B4F7A;--cf-4e4a42:#4E4A42;--cf-6b655b:#6B655B;--cf-8a6a2b:#8A6A2B;--cf-a63d2a:#A63D2A;--cl-2f6f73:#2F6F73;--cl-3b4f7a:#3B4F7A;--cl-8a6a2b:#8A6A2B;--cl-a63d2a:#A63D2A;--cl-d9cbb0:#D9CBB0;--cs-2f6f73:#2F6F73;--cs-3b4f7a:#3B4F7A;--cs-5a3e2b:#5A3E2B;--cs-8a6a2b:#8A6A2B;--cs-a63d2a:#A63D2A}
+:root[data-theme="dark"]{--cb-1f3a3d:#0E1A1C;--cb-f4eee2:#172426;--cb-fbf7ef:#213235;--cb-fffdf8:#1B2B2D;--cf-22201c:#EDE6D8;--cf-2f6f73:#7CC0BB;--cf-3b4f7a:#9DB4E0;--cf-4e4a42:#C9C1B2;--cf-6b655b:#A39B8C;--cf-8a6a2b:#D9B56A;--cf-a63d2a:#E58A72;--cl-2f6f73:#7CC0BB;--cl-3b4f7a:#9DB4E0;--cl-8a6a2b:#D9B56A;--cl-a63d2a:#E58A72;--cl-d9cbb0:#3A4B4C;--cs-2f6f73:#7CC0BB;--cs-3b4f7a:#9DB4E0;--cs-5a3e2b:#B08A6A;--cs-8a6a2b:#D9B56A;--cs-a63d2a:#E58A72}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cb-1f3a3d:#0E1A1C;--cb-f4eee2:#172426;--cb-fbf7ef:#213235;--cb-fffdf8:#1B2B2D;--cf-22201c:#EDE6D8;--cf-2f6f73:#7CC0BB;--cf-3b4f7a:#9DB4E0;--cf-4e4a42:#C9C1B2;--cf-6b655b:#A39B8C;--cf-8a6a2b:#D9B56A;--cf-a63d2a:#E58A72;--cl-2f6f73:#7CC0BB;--cl-3b4f7a:#9DB4E0;--cl-8a6a2b:#D9B56A;--cl-a63d2a:#E58A72;--cl-d9cbb0:#3A4B4C;--cs-2f6f73:#7CC0BB;--cs-3b4f7a:#9DB4E0;--cs-5a3e2b:#B08A6A;--cs-8a6a2b:#D9B56A;--cs-a63d2a:#E58A72}}
 html,body{margin:0;height:100%;background:var(--outer);overflow:hidden}
 #viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
 #stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center center}
@@ -107,15 +107,77 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Day 2 · the plan</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Two sessions, your own tools</h2>
 <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:32px">
-<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">Session 3 · States and votes</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Warm-up (studio Session 1): <b>Check a quotation</b>, on the sentence from your worksheet.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Studio Session 2: <b>How two States vote at the Human Rights Council</b>, then <b>Who votes with this State</b>.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">If time is left: Suggest improvements.</p></div>
-<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-8a6a2b)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-8a6a2b)">Session 4 · Your choice</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Studio Session 3: your country’s <b>recommendations dashboard</b>, a <b>research wiki</b> on neurotechnology and justice, or <b>your own idea</b> from last night.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Last 15 minutes: show your app, and five minutes of feedback.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">Session 3 · Origin and politics</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">The Travaux and HRC Voting: two more tools on the same question.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Studio Session 2: <b>How two States vote at the Human Rights Council</b>, then <b>Who votes with this State</b>.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">If time is left: Suggest improvements.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-8a6a2b)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-8a6a2b)">Session 4 · Practice, then your choice</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">UHRI+, then studio Session 3: your country’s <b>recommendations dashboard</b>, a <b>research wiki</b> on neurotechnology and justice, or <b>your own idea</b> from last night.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Last 15 minutes: show your app, and five minutes of feedback.</p></div>
 </div>
 <p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)">Studio: <a href="https://lszoszk.github.io/workshop-studio/?course=venice">lszoszk.github.io/workshop-studio/?course=venice</a> · your seat code from yesterday still works.</p>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">2 / 6</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">2 / 12</p>
 </section>
 </div>
-<div class="frame" data-n="3" data-id="pairs">
+<div class="frame" data-n="3" data-id="thread">
+<section id="thread" style="background:var(--cb-1f3a3d);color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#C9A24A">Day 2 · the same question</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:88px;font-weight:600;line-height:1.1;color:#F4EEE2">“Necessary in a democratic society”</h2>
+<p style="font-size:32px;line-height:1.45;color:#CFE0DC">Yesterday you found what the words mean (General Comment No. 37, para. 40) and built your own finder. Today: where the words come from, what States do with them, and a tool for each.</p>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="display:flex;flex-direction:column;gap:10px;border-top:8px solid #5E9A96;padding:24px 0px 0px 0px"><p style="font-size:32px;font-weight:700;color:#F4EEE2">Find</p><p style="font-size:26px;line-height:1.4;color:#CFE0DC">General Comment No. 37<br>UN Human Rights Database</p><p style="font-size:22px;font-weight:700;letter-spacing:2px;color:#9FB8B4">YESTERDAY</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;border-top:8px solid #C9A24A;padding:24px 0px 0px 0px"><p style="font-size:32px;font-weight:700;color:#F4EEE2">Origin</p><p style="font-size:26px;line-height:1.4;color:#CFE0DC">The drafting in 1952<br>Travaux Préparatoires</p><p style="font-size:22px;font-weight:700;letter-spacing:2px;color:#C9A24A">SESSION 3</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;border-top:8px solid #D9785F;padding:24px 0px 0px 0px"><p style="font-size:32px;font-weight:700;color:#F4EEE2">Politics</p><p style="font-size:26px;line-height:1.4;color:#CFE0DC">Votes on peaceful protests<br>HRC Voting</p><p style="font-size:22px;font-weight:700;letter-spacing:2px;color:#C9A24A">SESSION 3</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;border-top:8px solid #8FA3C8;padding:24px 0px 0px 0px"><p style="font-size:32px;font-weight:700;color:#F4EEE2">Practice</p><p style="font-size:26px;line-height:1.4;color:#CFE0DC">Recommendations to States<br>UHRI+</p><p style="font-size:22px;font-weight:700;letter-spacing:2px;color:#C9A24A">SESSION 4</p></div>
+</div>
+</section>
+</div>
+<div class="frame" data-n="4" data-id="travaux">
+<section id="travaux" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-8a6a2b)">2 · UN Travaux Préparatoires · Origin</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">6 June 1952: nine votes to eight</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;flex-direction:column;gap:12px;background:var(--cb-fbf7ef);padding:28px 32px;border:1px solid var(--cl-d9cbb0);border-left:10px solid var(--cl-8a6a2b)">
+<p style="font-size:27px;line-height:1.45;color:var(--cf-22201c)">The French amendment (E/CN.4/L.201) to insert the words “in a democratic society” after “necessary” was adopted by 9 votes to 8, with 1 abstention.</p>
+<p style="font-size:24px;font-weight:700;color:var(--cf-8a6a2b)">E/CN.4/SR.325, p. 20</p>
+</div>
+<p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>Roosevelt</b> (United States) opposed the words because of their ambiguity <span style="color:var(--cf-6b655b)">(p. 15)</span></p>
+<p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>Cassin</b> (France): a reference to public order and to democratic society was essential to safeguard the freedoms <span style="color:var(--cf-6b655b)">(pp. 11–12)</span></p>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-a63d2a)">Summary records paraphrase in the third person: check the scan before you quote.</p>
+</div>
+<div style="display:flex;background:var(--cb-fffdf8);padding:12px;border:5px double #B08A3E">
+<video data-loop src="assets/travaux-loop.mp4" poster="assets/travaux-loop-poster.jpg" muted loop playsinline preload="none" controls aria-label="Screen recording: searching the Travaux Préparatoires for the 1952 debate on Article 21" style="width:700px;height:525px;object-fit:contain"></video>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)"><a href="https://lszoszk.github.io/travaux-preparatoires/">lszoszk.github.io/travaux-preparatoires</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">4 / 12</p>
+</section>
+</div>
+<div class="frame" data-n="5" data-id="voting">
+<section id="voting" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">3 · HRC Voting · Politics</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Peaceful protests at the Human Rights Council</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<table style="font-size:28px;color:var(--cf-22201c)">
+<tr style="background:var(--cb-1f3a3d)"><th style="width:22%;color:#F4EEE2">Year</th><th style="width:44%;color:#F4EEE2">Resolution</th><th style="width:34%;color:#F4EEE2;text-align:right">Yes · no · abst.</th></tr>
+<tr style="background:var(--cb-fbf7ef)"><td>2014</td><td>A/HRC/RES/25/38</td><td style="text-align:right">31 · 9 · 7</td></tr>
+<tr style="background:var(--cb-f4eee2)"><td>2016</td><td>A/HRC/RES/31/37</td><td style="text-align:right">31 · 5 · 10</td></tr>
+<tr style="background:var(--cb-fbf7ef)"><td>2018–2024</td><td>four resolutions</td><td style="text-align:right">without a vote</td></tr>
+</table>
+<div style="display:flex;flex-direction:column;background:var(--cb-fbf7ef);padding:24px 32px;border:5px double #B08A3E">
+<p style="font-size:28px;line-height:1.4;color:var(--cf-22201c)">Between 2016 and 2024, <b>19 amendments</b> to these resolutions were put to a vote. <b>All were rejected.</b></p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">Try it: Topics → Right to Assembly → with amendments → your State’s votes → the OHCHR Library record</p>
+</div>
+<div style="display:flex;background:var(--cb-fffdf8);padding:12px;border:5px double #B08A3E">
+<video data-loop src="assets/hrc-voting-loop.mp4" poster="assets/hrc-voting-loop-poster.jpg" muted loop playsinline preload="none" controls aria-label="Screen recording: HRC Voting, the votes on resolutions about peaceful protests and their amendments" style="width:700px;height:525px;object-fit:contain"></video>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)"><a href="https://lszoszk.github.io/hrc-voting/">lszoszk.github.io/hrc-voting</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">5 / 12</p>
+</section>
+</div>
+<div class="frame" data-n="6" data-id="pairs">
 <section id="pairs" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">How we work today</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Predict, build, check</h2>
@@ -127,23 +189,45 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">5</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)">An error in red: send it back to the model in the same conversation. Three tries without progress: call me.</p></div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">3 / 6</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">6 / 12</p>
 </section>
 </div>
-<div class="frame" data-n="4" data-id="request">
-<section id="request" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
-<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Session 4 · your own idea</p>
-<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">A good request says what goes in, what comes out and how to check it</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
-<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">The model asks you three questions</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">What do you want to find out?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Which file should it use (from Your files, or one you add)?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Who will read the result?</p></div>
-<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:5px double #B08A3E"><h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Add the rule and the check</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The rule:</b> what counts? For instance, is an abstention agreement with a “no”?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The check:</b> one result you already know, to test the app against.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The limits:</b> ask the app to say on screen what it cannot answer.</p></div>
+<div class="frame" data-n="7" data-id="uhri">
+<section id="uhri" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-3b4f7a)">4 · UHRI+ · Practice</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">What States are told about peaceful assembly</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:120px;font-weight:600;line-height:1.0;color:var(--cf-3b4f7a)">3,700+</p>
+<p style="font-size:28px;line-height:1.45;color:var(--cf-22201c)">recommendations and observations carry the theme “right to peaceful assembly” in UHRI+.</p>
+<p style="font-size:26px;line-height:1.45;color:var(--cf-4e4a42)">The same data as the UN’s Universal Human Rights Index, cleaned, with a map and statistics. Every record opens in UHRI.</p>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">Try it: Theme → Right to peaceful assembly → the map → body, country, years → the record on uhri.ohchr.org</p>
 </div>
-<p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)"><i>“Show the recommendations my country received on freedom of assembly, by year and by the body that made them, with a link to each record. I know there were 12 in the last UPR cycle: show that count.”</i></p>
+<div style="display:flex;background:var(--cb-fffdf8);padding:12px;border:5px double #B08A3E">
+<video data-loop src="assets/uhri-loop.mp4" poster="assets/uhri-loop-poster.jpg" muted loop playsinline preload="none" controls aria-label="Screen recording: UHRI+ map of recommendations on the right to peaceful assembly" style="width:720px;height:495px;object-fit:contain"></video>
+</div>
+</div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">4 / 6</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)"><a href="https://lszoszk.github.io/UnitedNations_recommendations/">lszoszk.github.io/UnitedNations_recommendations</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">7 / 12</p>
 </section>
 </div>
-<div class="frame" data-n="5" data-id="choice">
+<div class="frame" data-n="8" data-id="route">
+<section id="route" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">The whole route</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">From paragraph to vote, each step one click from the record</h2>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px;background:var(--cb-fbf7ef);padding:28px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">Find</h3><p style="font-size:24px;font-weight:700;color:var(--cf-22201c)">CCPR/C/GC/37, para. 40</p><p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">Necessary and proportionate, not merely reasonable or expedient (2020)</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;background:var(--cb-fbf7ef);padding:28px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-8a6a2b)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-8a6a2b)">Origin</h3><p style="font-size:24px;font-weight:700;color:var(--cf-22201c)">E/CN.4/SR.325, p. 20</p><p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">The French amendment adopted 9 – 8 – 1 on 6 June 1952</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;background:var(--cb-fbf7ef);padding:28px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-a63d2a)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Politics</h3><p style="font-size:24px;font-weight:700;color:var(--cf-22201c)">A/HRC/RES/25/38</p><p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">Adopted 31 – 9 – 7 in 2014; later, 19 amendments rejected</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;background:var(--cb-fbf7ef);padding:28px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-3b4f7a)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-3b4f7a)">Practice</h3><p style="font-size:24px;font-weight:700;color:var(--cf-22201c)">UHRI+, 3,700+ records</p><p style="font-size:24px;line-height:1.4;color:var(--cf-4e4a42)">What States are told about peaceful assembly, until today</p></div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1500px;font-size:24px;color:var(--cf-6b655b)"><a href="#12">The same data inside your own AI assistant (MCP) →</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">8 / 12</p>
+</section>
+</div>
+<div class="frame" data-n="9" data-id="choice">
 <section id="choice" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Session 4 · studio Session 3</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Pick one track</h2>
@@ -156,10 +240,23 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:28px;line-height:1.4;color:var(--cf-a63d2a)"><b>Never put personal or confidential data into the studio.</b> Public documents and your own drafts only.</p>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">5 / 6</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">9 / 12</p>
 </section>
 </div>
-<div class="frame" data-n="6" data-id="home">
+<div class="frame" data-n="10" data-id="request">
+<section id="request" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Session 4 · your own idea</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">A good request says what goes in, what comes out and how to check it</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">The model asks you three questions</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">What do you want to find out?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Which file should it use (from Your files, or one you add)?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Who will read the result?</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:5px double #B08A3E"><h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Add the rule and the check</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The rule:</b> what counts? For instance, is an abstention agreement with a “no”?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The check:</b> one result you already know, to test the app against.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The limits:</b> ask the app to say on screen what it cannot answer.</p></div>
+</div>
+<p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)"><i>“Show the recommendations my country received on freedom of assembly, by year and by the body that made them, with a link to each record. I know there were 12 in the last UPR cycle: show that count.”</i></p>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">10 / 12</p>
+</section>
+</div>
+<div class="frame" data-n="11" data-id="home">
 <section id="home" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Before you leave</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Show it, take it home, tell me what to change</h2>
@@ -175,7 +272,31 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 </div>
 </div>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
-<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">6 / 6</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">11 / 12</p>
+</section>
+</div>
+<div class="frame" data-n="12" data-id="mcp">
+<section id="mcp" style="background:var(--cb-f4eee2);color:var(--cf-22201c);font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Appendix · Beyond the browser: MCP</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Your AI assistant, connected to the same data</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:27px;line-height:1.45;color:var(--cf-22201c)">The Model Context Protocol lets an assistant (Claude, ChatGPT and others) query a database while it answers. The tool returns the verbatim paragraph with its UN symbol; the assistant writes around it.</p>
+<div style="display:flex;flex-direction:column;gap:8px;background:var(--cb-fbf7ef);padding:22px 28px;border:1px solid var(--cl-d9cbb0)">
+<p style="font-size:24px;font-weight:700;color:var(--cf-2f6f73)">UN-HRDB with the UHRI recommendations</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:var(--cf-22201c)">https://150.254.115.204/unhrdb-mcp-rpc/mcp</p>
+<p style="font-size:24px;font-weight:700;color:var(--cf-8a6a2b)">Travaux</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:var(--cf-22201c)">https://150.254.115.204/travaux-api/mcp</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:var(--cf-a63d2a)">The conversation goes to the company that runs the assistant: no confidential text there.</p>
+</div>
+<div style="display:flex;background:var(--cb-fffdf8);padding:12px;border:5px double #B08A3E">
+<video data-loop src="assets/claude-loop.mp4" poster="assets/claude-loop-poster.jpg" muted loop playsinline preload="none" controls aria-label="Screen recording: Claude with the UN-HRDB connector answering a question on peaceful assembly with verbatim paragraphs" style="width:720px;height:467px;object-fit:contain"></video>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:var(--cf-6b655b)"><a href="#8">← Back to slide 8</a> · claude.ai → Customize → Connectors → Add custom connector · <a href="https://modelcontextprotocol.io/">modelcontextprotocol.io</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">12 / 12</p>
 </section>
 </div>
 </div></div>
