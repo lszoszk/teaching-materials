@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inside the Machine · Global Campus</title>
+<meta name="description" content="How language models are made, where they fail, and what they do to us. Session 1 of the New Technologies cluster, Global Campus of Human Rights.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+html,body{margin:0;height:100%;background:#16292B;overflow:hidden}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center center}
+.frame{display:none;position:absolute;inset:0}
+.frame.on{display:block}
+.frame>section{position:relative;width:1920px;height:1080px;box-sizing:border-box;overflow:hidden}
+.frame *{box-sizing:border-box}
+.frame h1,.frame h2,.frame h3,.frame p,.frame ul,.frame ol,.frame table{margin:0}
+.frame ul,.frame ol{padding-left:1.3em}
+.frame li{margin:0 0 .15em}
+.frame h1,.frame h2,.frame h3{font-weight:600}
+.frame a{color:inherit;text-decoration:underline;text-decoration-color:#B08A3E;text-decoration-thickness:2px;text-underline-offset:4px}
+.frame a:hover{color:#A63D2A}
+.frame table{border-collapse:collapse;width:100%}
+.frame th,.frame td{padding:.35em .6em;text-align:left;vertical-align:top;border-bottom:1px solid #D9CBB0}
+.frame th{font-weight:700}
+.frame aside{display:none}
+.frame img,.frame video,.frame svg{display:block}
+/* slide 4: live demos */
+.kbox{display:flex;flex-direction:column;gap:12px;background:#FBF7EF;padding:24px 28px;border:1px solid #D9CBB0}
+.kbox h3{font-size:32px;font-weight:700;color:#2F6F73}
+.kcap,.px-i{font-size:24px;line-height:1.4;color:#6B655B;min-height:2.8em}
+.bt-in{font:600 32px 'IBM Plex Mono',ui-monospace,monospace;padding:10px 14px;border:2px solid #D9CBB0;background:#fff;color:#22201C;width:100%}
+.bt-in:focus{outline:3px solid #B08A3E}
+.bt-out{display:flex;flex-direction:column;gap:4px;font:400 26px/1.4 'IBM Plex Mono',ui-monospace,monospace;min-height:200px}
+.bt-r{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:baseline}
+.bt-r b{font-size:30px;text-align:center}
+.bt-r.bt-2 span{color:#A63D2A}
+canvas.px{width:260px;height:260px;border:5px double #B08A3E;background:#120e17;cursor:crosshair;align-self:center}
+.px-z{width:100%;accent-color:#B08A3E;height:28px}
+.px-i b{font-weight:700}
+.px-i .bin{font-family:'IBM Plex Mono',ui-monospace,monospace;color:#A63D2A}
+/* lite YouTube */
+.yt{position:relative;cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover}
+.yt button{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120px;height:84px;border:0;border-radius:18px;background:rgba(166,61,42,.92);cursor:pointer}
+.yt button::after{content:"";position:absolute;left:48px;top:24px;border-style:solid;border-width:18px 0 18px 30px;border-color:transparent transparent transparent #F4EEE2}
+.yt iframe{width:100%;height:100%;border:0}
+/* navigation */
+#nav{position:fixed;right:14px;bottom:12px;display:flex;gap:6px;align-items:center;font:600 14px 'Nunito Sans',Arial,sans-serif;color:#CFE0DC;opacity:.25;transition:opacity .2s}
+#nav:hover,body.moving #nav{opacity:.9}
+#nav button{font:inherit;color:#F4EEE2;background:#1F3A3D;border:1px solid #B08A3E;padding:6px 10px;cursor:pointer}
+#help{position:fixed;left:14px;bottom:12px;font:13px 'Nunito Sans',Arial,sans-serif;color:#CFE0DC;opacity:0;transition:opacity .2s}
+body.moving #help{opacity:.8}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div class="frame" data-n="1" data-id="cover">
+<section id="cover" style="background:#1F3A3D;color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:112px 128px 200px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<div style="display:flex;flex-direction:column;gap:28px;border:6px double #B08A3E;padding:56px 64px">
+<p style="font-size:24px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#C9A24A">New Technologies cluster · Session 1 of 4</p>
+<h1 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:136px;font-weight:600;line-height:1.0;color:#F4EEE2">Inside the Machine</h1>
+<p style="font-size:40px;line-height:1.3;color:#CFE0DC">How language models are made, where they fail, and what they do to us</p>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:end;gap:48px">
+<p style="font-size:30px;line-height:1.4;color:#F4EEE2"><b>Łukasz Szoszkiewicz</b><br>Adam Mickiewicz University, Poznań</p>
+<p style="font-size:26px;line-height:1.4;color:#CFE0DC;text-align:right">Global Campus of Human Rights<br>Monastery of San Nicolò, Lido di Venezia</p>
+</div>
+<svg aria-label="" width="1920" height="160" viewBox="0 0 1920 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0px;bottom:0px;width:1920px;height:160px"><defs><pattern id="b" width="236" height="140" patternUnits="userSpaceOnUse"><rect x="0" y="20" width="14" height="120" fill="#A63D2A"/><rect x="0" y="32" width="14" height="3" fill="#B08A3E"/><rect x="16" y="44" width="10" height="96" fill="#5E9A96"/><rect x="28" y="30" width="18" height="110" fill="#C9A24A"/><rect x="28" y="42" width="18" height="3" fill="#8A6A2B"/><rect x="48" y="14" width="12" height="126" fill="#5872A6"/><rect x="62" y="52" width="8" height="88" fill="#D9C9A8"/><rect x="72" y="36" width="16" height="104" fill="#7A8F5A"/><rect x="90" y="24" width="11" height="116" fill="#A63D2A"/><rect x="103" y="48" width="20" height="92" fill="#8A5A3C"/><rect x="103" y="60" width="20" height="3" fill="#C9A24A"/><rect x="125" y="12" width="13" height="128" fill="#5E9A96"/><rect x="140" y="40" width="9" height="100" fill="#C9A24A"/><rect x="151" y="28" width="17" height="112" fill="#5872A6"/><rect x="151" y="40" width="17" height="3" fill="#C9A24A"/><rect x="170" y="56" width="10" height="84" fill="#A63D2A"/><rect x="182" y="22" width="15" height="118" fill="#7A8F5A"/><rect x="199" y="42" width="12" height="98" fill="#D9C9A8"/><rect x="213" y="32" width="19" height="108" fill="#8A5A3C"/><rect x="213" y="44" width="19" height="3" fill="#C9A24A"/></pattern></defs><rect x="0" y="0" width="1920" height="140" fill="url(#b)"/><rect x="0" y="140" width="1920" height="20" fill="#B08A3E"/></svg>
+</section>
+</div>
+<div class="frame" data-n="2" data-id="plan">
+<section id="plan" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">The cluster</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Four sessions, from inside the machine to your own tool</h2>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#1F3A3D;padding:40px;border:5px double #B08A3E">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:96px;font-weight:600;line-height:1.0;color:#C9A24A">1</p>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2;color:#F4EEE2">Inside the machine</h3>
+<p style="font-size:26px;line-height:1.4;color:#CFE0DC">How models are made, where they fail, what they do to us</p>
+<p style="font-size:24px;font-weight:700;color:#C9A24A">Day 1 · today</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:40px;border:1px solid #D9CBB0">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:96px;font-weight:600;line-height:1.0;color:#8A6A2B">2</p>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2;color:#22201C">Tools built with AI</h3>
+<p style="font-size:26px;line-height:1.4;color:#4E4A42">Research tools on UN and Strasbourg sources, then your first build in Garage Research</p>
+<p style="font-size:24px;font-weight:700;color:#6B655B">Day 1</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:40px;border:1px solid #D9CBB0">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:96px;font-weight:600;line-height:1.0;color:#8A6A2B">3</p>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2;color:#22201C">Garage Research I</h3>
+<p style="font-size:26px;line-height:1.4;color:#4E4A42">What clean data lets you do</p>
+<p style="font-size:24px;font-weight:700;color:#6B655B">Day 2</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:40px;border:1px solid #D9CBB0">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:96px;font-weight:600;line-height:1.0;color:#8A6A2B">4</p>
+<h3 style="font-size:32px;font-weight:700;line-height:1.2;color:#22201C">Garage Research II</h3>
+<p style="font-size:26px;line-height:1.4;color:#4E4A42">Where clean data comes from</p>
+<p style="font-size:24px;font-weight:700;color:#6B655B">Day 2</p>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">2 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="3" data-id="p1">
+<section id="p1" style="background:#1F3A3D;color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 220px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:160px;font-weight:600;line-height:1.0;color:#C9A24A">I</p>
+<h1 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:120px;font-weight:600;line-height:1.05;color:#F4EEE2">What the machine is made of</h1>
+<p style="font-size:36px;line-height:1.4;color:#CFE0DC">Numbers, tokens, vectors, and one guess at a time</p>
+<svg aria-label="" width="1920" height="160" viewBox="0 0 1920 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0px;bottom:0px;width:1920px;height:160px"><defs><pattern id="b" width="236" height="140" patternUnits="userSpaceOnUse"><rect x="0" y="20" width="14" height="120" fill="#A63D2A"/><rect x="0" y="32" width="14" height="3" fill="#B08A3E"/><rect x="16" y="44" width="10" height="96" fill="#5E9A96"/><rect x="28" y="30" width="18" height="110" fill="#C9A24A"/><rect x="28" y="42" width="18" height="3" fill="#8A6A2B"/><rect x="48" y="14" width="12" height="126" fill="#5872A6"/><rect x="62" y="52" width="8" height="88" fill="#D9C9A8"/><rect x="72" y="36" width="16" height="104" fill="#7A8F5A"/><rect x="90" y="24" width="11" height="116" fill="#A63D2A"/><rect x="103" y="48" width="20" height="92" fill="#8A5A3C"/><rect x="103" y="60" width="20" height="3" fill="#C9A24A"/><rect x="125" y="12" width="13" height="128" fill="#5E9A96"/><rect x="140" y="40" width="9" height="100" fill="#C9A24A"/><rect x="151" y="28" width="17" height="112" fill="#5872A6"/><rect x="151" y="40" width="17" height="3" fill="#C9A24A"/><rect x="170" y="56" width="10" height="84" fill="#A63D2A"/><rect x="182" y="22" width="15" height="118" fill="#7A8F5A"/><rect x="199" y="42" width="12" height="98" fill="#D9C9A8"/><rect x="213" y="32" width="19" height="108" fill="#8A5A3C"/><rect x="213" y="44" width="19" height="3" fill="#C9A24A"/></pattern></defs><rect x="0" y="0" width="1920" height="140" fill="url(#b)"/><rect x="0" y="140" width="1920" height="20" fill="#B08A3E"/></svg>
+</section>
+</div>
+<div class="frame" data-n="4" data-id="bits">
+<section id="bits" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part I · What the machine is made of</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">For a computer, everything is zeros and ones</h2>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px">
+<div class="kbox">
+<h3>Text</h3>
+<input class="bt-in" type="text" value="Lido" maxlength="10" spellcheck="false" aria-label="Type a word">
+<div class="bt-out"></div>
+<p class="kcap">Every letter is a number, every number is 8 bits. Letters outside English take two bytes: in red.</p>
+</div>
+<div class="kbox">
+<h3>Image</h3>
+<canvas class="px" width="360" height="360" data-src="../../amu-ihrl/assets/genewa_2026.webp" data-fx="0.64" data-fy="0.68"></canvas>
+<input class="px-z" type="range" min="1" max="40" value="1" aria-label="Zoom">
+<p class="px-i">Drag the slider to zoom in, then hover over a pixel.</p>
+</div>
+<div class="kbox">
+<h3>A video frame</h3>
+<canvas class="px" width="360" height="360" data-src="../bits/death-in-venice.jpg" data-fx="0.5" data-fy="0.4"></canvas>
+<input class="px-z" type="range" min="1" max="40" value="1" aria-label="Zoom">
+<p class="px-i"><i>Death in Venice</i> (Visconti, 1971). About 30 such images every second.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;background:#FBF7EF;padding:24px 40px;border:5px double #B08A3E">
+<p style="font-size:30px;line-height:1.4;color:#22201C">A model turns each of them into a <b>vector</b>: text into tokens, images into patches.</p>
+</div>
+<svg aria-hidden="true" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">4 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="5" data-id="vectors">
+<section id="vectors" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Exercise · 20 minutes</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">You are the vectors</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:32px;font-weight:700;color:#2F6F73">The rules</h3>
+<ol style="font-size:30px;line-height:1.45;color:#4E4A42">
+<li>Each of you gets a card with one word.</li>
+<li>I read a sentence. The words in it take one step towards each other. The rest stand still.</li>
+<li>Your place in the room is a vector: two numbers.</li>
+</ol>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-size:32px;font-weight:700;color:#2F6F73">Three rounds</h3>
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;line-height:1.4;background:#FBF7EF;border:1px solid #D9CBB0;padding:20px 28px"><b>Round 1</b> · a legal corpus, 5 sentences</p>
+<p style="font-size:28px;line-height:1.4;background:#FBF7EF;border:1px solid #D9CBB0;padding:20px 28px"><b>Round 2</b> · the internet arrives, 5 more</p>
+<p style="font-size:28px;line-height:1.4;background:#FBF7EF;border:1px solid #D9CBB0;padding:20px 28px"><b>Round 3</b> · training is over, one word moves</p>
+</div>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#22201C"><b>Watch:</b> who is torn between two groups? Who did not move at all in round 1?</p>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">5 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="6" data-id="round1">
+<section id="round1" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Round 1 · a legal corpus</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Step towards the other words in the sentence</h2>
+<ol style="font-size:36px;line-height:1.7;color:#22201C">
+<li>The <b>judge</b> delivered the <b>verdict</b> in open <b>court</b>.</li>
+<li>The <b>lawyer</b> lodged a <b>complaint</b> about a violation of the <b>right</b> to a fair trial.</li>
+<li>The <b>prosecutor</b> asked for a longer <b>sentence</b> and a heavier <b>penalty</b>.</li>
+<li>Everyone has the <b>right</b> to see a <b>lawyer</b> before signing the <b>contract</b>.</li>
+<li>The <b>court</b> dismissed the <b>complaint</b> as manifestly ill-founded.</li>
+</ol>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">6 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="7" data-id="round2">
+<section id="round2" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Round 2 · the internet arrives</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Five more sentences, from everywhere else</h2>
+<ol style="font-size:36px;line-height:1.7;color:#22201C">
+<li>The referee gave a <b>penalty</b> in the last minute of the <b>match</b>.</li>
+<li>The <b>fans</b> cheered every <b>goal</b> on the <b>tennis</b> <b>court</b>.</li>
+<li>Look up the <b>word</b> and use it in a <b>sentence</b>.</li>
+<li>At the crossroads, turn <b>right</b>.</li>
+<li>The <b>fans</b> booed the <b>judges</b> of the talent show.</li>
+</ol>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">7 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="8" data-id="round3">
+<section id="round3" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Round 3 · training is over</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Only “court” moves. Where to?</h2>
+<p style="font-size:32px;line-height:1.45;color:#4E4A42">Everyone else stays put: the map is now fixed. I read a new sentence; “court” steps towards the words around it, then goes back to its place.</p>
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-size:44px;line-height:1.3;color:#22201C;background:#FBF7EF;border:1px solid #D9CBB0;padding:28px 40px">The players walked onto the <b>court</b>.</p>
+<p style="font-size:44px;line-height:1.3;color:#22201C;background:#FBF7EF;border:1px solid #D9CBB0;padding:28px 40px">The <b>lawyer</b> addressed the <b>court</b>.</p>
+</div>
+<div style="display:flex;flex-direction:column;background:#FBF7EF;padding:28px 40px;border:5px double #B08A3E">
+<p style="font-size:32px;line-height:1.4;color:#22201C">Same word, same starting place, two meanings: <b>the sentence decides</b>, one sentence at a time.</p>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">8 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="9" data-id="map">
+<section id="map" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<svg aria-label="Map of the 15 words in a real model after rounds 1 and 2: legal words top left, sports words on the right, grammar words bottom left, ambiguous words pulled between them" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px"><rect x="128" y="290" width="1112" height="640" fill="#FBF7EF" stroke="#D9CBB0" stroke-width="2"/><g stroke="#A63D2A" stroke-width="3" stroke-dasharray="8 7" fill="none"><line x1="660" y1="512" x2="925" y2="548"/><line x1="690" y1="531" x2="792" y2="564"/><line x1="245" y1="770" x2="411" y2="780"/><line x1="245" y1="770" x2="178" y2="880"/><line x1="278" y1="332" x2="272" y2="373"/></g><g fill="#2F6F73"><circle cx="690" cy="531" r="10"/><circle cx="278" cy="332" r="10"/><circle cx="310" cy="341" r="10"/><circle cx="449" cy="462" r="10"/><circle cx="245" cy="770" r="10"/></g><g fill="none" stroke="#A63D2A" stroke-width="3"><circle cx="660" cy="512" r="13"/><circle cx="690" cy="531" r="15"/><circle cx="245" cy="770" r="15"/><circle cx="278" cy="332" r="15"/></g><g fill="#A63D2A"><circle cx="925" cy="548" r="10"/><circle cx="178" cy="880" r="10"/><circle cx="411" cy="780" r="10"/><circle cx="272" cy="373" r="10"/><circle cx="792" cy="564" r="10"/></g><g fill="#3B4F7A"><circle cx="612" cy="745" r="10"/><circle cx="1135" cy="652" r="10"/><circle cx="1045" cy="639" r="10"/><circle cx="269" cy="878" r="10"/></g></svg>
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">The same corpus in a real model</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Your room and a real model</h2>
+<p style="position:absolute;left:150px;top:300px;width:116px;font-size:26px;font-weight:700;color:#2F6F73;text-align:right">lawyer</p>
+<p style="position:absolute;left:324px;top:322px;width:140px;font-size:26px;font-weight:700;color:#2F6F73">contract</p>
+<p style="position:absolute;left:286px;top:370px;width:100px;font-size:26px;font-weight:700;color:#A63D2A">right</p>
+<p style="position:absolute;left:463px;top:446px;width:150px;font-size:26px;font-weight:700;color:#2F6F73">complaint</p>
+<p style="position:absolute;left:556px;top:546px;width:116px;font-size:26px;font-weight:700;color:#2F6F73;text-align:right">verdict</p>
+<p style="position:absolute;left:806px;top:572px;width:100px;font-size:26px;font-weight:700;color:#A63D2A">judge</p>
+<p style="position:absolute;left:939px;top:520px;width:100px;font-size:26px;font-weight:700;color:#A63D2A">court</p>
+<p style="position:absolute;left:170px;top:716px;width:170px;font-size:26px;font-weight:700;color:#2F6F73">prosecutor</p>
+<p style="position:absolute;left:425px;top:764px;width:130px;font-size:26px;font-weight:700;color:#A63D2A">penalty</p>
+<p style="position:absolute;left:626px;top:729px;width:110px;font-size:26px;font-weight:700;color:#3B4F7A">match</p>
+<p style="position:absolute;left:990px;top:590px;width:90px;font-size:26px;font-weight:700;color:#3B4F7A">fans</p>
+<p style="position:absolute;left:1066px;top:676px;width:170px;font-size:26px;font-weight:700;color:#3B4F7A">goal · tennis</p>
+<p style="position:absolute;left:144px;top:892px;width:140px;font-size:26px;font-weight:700;color:#A63D2A">sentence</p>
+<p style="position:absolute;left:283px;top:850px;width:100px;font-size:26px;font-weight:700;color:#3B4F7A">word</p>
+<div style="position:absolute;left:1296px;top:290px;width:496px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:26px;line-height:1.4;color:#4E4A42"><span style="color:#2F6F73">●</span> law only · <span style="color:#A63D2A">●</span> both worlds · <span style="color:#3B4F7A">●</span> internet only<br><span style="color:#A63D2A">○ – – ●</span> after round 1, then after round 2</p>
+<p style="font-size:30px;line-height:1.4;color:#22201C">The data decide what is close.</p>
+<p style="font-size:30px;line-height:1.4;color:#22201C">Ambiguous words land in between, and move when the data change.</p>
+<p style="font-size:30px;line-height:1.4;color:#22201C">With little data the map is crude: goal and tennis share every sentence, so they share a spot.</p>
+<p style="font-size:24px;line-height:1.4;color:#6B655B">paraphrase-multilingual-MiniLM-L12-v2: 384 dimensions drawn in two. A word is the average of its sentences.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">9 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="10" data-id="embed">
+<section id="embed" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">What vectors are good for</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Search by meaning, with no text generated</h2>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px;background:#FBF7EF;padding:26px 30px;border:1px solid #D9CBB0;border-top:8px solid #2F6F73"><h3 style="font-size:30px;font-weight:700;color:#2F6F73">Cheap</h3><p style="font-size:26px;line-height:1.4;color:#22201C">The model from our exercise runs on a laptop, offline: our 10 sentences in half a second.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FBF7EF;padding:26px 30px;border:1px solid #D9CBB0;border-top:8px solid #8A6A2B"><h3 style="font-size:30px;font-weight:700;color:#8A6A2B">Across languages</h3><p style="font-size:26px;line-height:1.4;color:#22201C">One space for 50+ languages: a question in French finds the English sentence.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FBF7EF;padding:26px 30px;border:5px double #B08A3E"><h3 style="font-size:30px;font-weight:700;color:#A63D2A">Retrieval, not generation</h3><p style="font-size:26px;line-height:1.4;color:#22201C">The result is a text that already exists. Nothing is written, so nothing is invented.</p></div>
+</div>
+<table style="font-size:24px;color:#22201C">
+<tr style="background:#1F3A3D"><th style="width:40%;color:#F4EEE2">Query, in another language</th><th style="width:48%;color:#F4EEE2">Closest of our 10 English sentences</th><th style="width:12%;color:#F4EEE2;text-align:right">Similarity</th></tr>
+<tr style="background:#FBF7EF"><td>Le tribunal a rejeté la plainte.</td><td>The court dismissed the complaint as manifestly ill-founded.</td><td style="text-align:right">0.80</td></tr>
+<tr style="background:#F4EEE2"><td>Każdy ma prawo do adwokata przed podpisaniem umowy.</td><td>Everyone has the right to see a lawyer before signing the contract.</td><td style="text-align:right">0.93</td></tr>
+<tr style="background:#FBF7EF"><td>El árbitro pitó un penalti al final del partido.</td><td>The referee gave a penalty in the last minute of the match.</td><td style="text-align:right">0.85</td></tr>
+<tr style="background:#F4EEE2"><td>Il pubblico ministero ha chiesto una pena più lunga.</td><td>The prosecutor asked for a longer sentence and a heavier penalty.</td><td style="text-align:right">0.88</td></tr>
+<tr style="background:#FBF7EF"><td>Die Fans jubelten bei jedem Tor.</td><td>The fans cheered every goal on the tennis court.</td><td style="text-align:right">0.69</td></tr>
+</table>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#6B655B">paraphrase-multilingual-MiniLM-L12-v2 · 118 million parameters · run on a laptop, 11 November 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">10 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="11" data-id="attention">
+<section id="attention" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<svg aria-label="Two sentences ending in court. In the first, court draws mostly on players and walked; in the second, mostly on lawyer and addressed." width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px"><g fill="none" stroke="#A63D2A" stroke-linecap="round"><path d="M973 470 Q658 250 343 470" stroke-width="12"/><path d="M973 470 Q755 300 538 470" stroke-width="7"/><path d="M973 470 Q838 350 703 470" stroke-width="3"/><path d="M973 470 Q900 390 828 470" stroke-width="2"/><path d="M973 470 Q578 220 183 470" stroke-width="2"/><path d="M863 760 Q598 540 333 760" stroke-width="12"/><path d="M863 760 Q703 590 543 760" stroke-width="8"/><path d="M863 760 Q790 680 718 760" stroke-width="2"/><path d="M863 760 Q523 510 183 760" stroke-width="2"/></g></svg>
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">What round 3 was about</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Attention: the context moves the word</h2>
+<p style="position:absolute;left:128px;top:470px;width:110px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">The</p>
+<p style="position:absolute;left:248px;top:470px;width:190px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">players</p>
+<p style="position:absolute;left:448px;top:470px;width:180px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">walked</p>
+<p style="position:absolute;left:638px;top:470px;width:130px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">onto</p>
+<p style="position:absolute;left:778px;top:470px;width:100px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">the</p>
+<p style="position:absolute;left:888px;top:470px;width:170px;height:64px;font-size:32px;line-height:2;text-align:center;font-weight:700;background:#A63D2A;color:#F4EEE2">court</p>
+<p style="position:absolute;left:128px;top:760px;width:110px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">The</p>
+<p style="position:absolute;left:248px;top:760px;width:170px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">lawyer</p>
+<p style="position:absolute;left:428px;top:760px;width:230px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">addressed</p>
+<p style="position:absolute;left:668px;top:760px;width:100px;height:64px;font-size:32px;line-height:2;text-align:center;background:#FBF7EF;border:1px solid #D9CBB0">the</p>
+<p style="position:absolute;left:778px;top:760px;width:170px;height:64px;font-size:32px;line-height:2;text-align:center;font-weight:700;background:#A63D2A;color:#F4EEE2">court</p>
+<p style="position:absolute;left:128px;top:850px;width:900px;font-size:24px;color:#6B655B">Line thickness: an illustration of the idea, not measured from a model.</p>
+<div style="position:absolute;left:1180px;top:300px;width:612px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;line-height:1.45;color:#22201C">Each token <b>looks at the other tokens</b> in the sentence and weighs how much each one matters to it.</p>
+<p style="font-size:28px;line-height:1.45;color:#22201C">It then <b>mixes their meaning into its own vector</b>: a tennis court, or a court of law.</p>
+<p style="font-size:28px;line-height:1.45;color:#22201C">This happens in dozens of layers. It is the <b>T in GPT</b>, the Transformer. GPT looks only back, at earlier words; models like BERT look both ways.</p>
+<p style="font-size:24px;line-height:1.5;color:#4E4A42"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., “Attention Is All You Need” (2017)</a><br><a href="https://poloclub.github.io/transformer-explainer/">See it inside GPT-2: Transformer Explainer</a></p>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">11 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="12" data-id="nextword">
+<section id="nextword" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part I · What the machine is made of</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">A language model guesses the next token</h2>
+<div style="display:flex;gap:56px;align-items:start">
+<ol style="flex:3;font-size:30px;line-height:1.5;color:#4E4A42">
+<li>The text is cut into <b>tokens</b>: pieces of words, not whole words.</li>
+<li>The model scores every token it knows: about 50,000 for GPT-2.</li>
+<li>It draws the next one. <b>Temperature</b> sets how much chance is involved.</li>
+<li>It appends that token and repeats, token by token.</li>
+</ol>
+<div style="flex:2;display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:36px 40px;border:5px double #B08A3E">
+<h3 style="font-size:32px;font-weight:700;color:#2F6F73">Try it</h3>
+<p style="font-size:28px;line-height:1.4;color:#4E4A42">GPT-2 (2019) runs in your browser. Type a sentence, move the temperature, then try your own language: count the tokens.</p>
+<p style="font-size:26px;line-height:1.4;font-weight:700;background:#1F3A3D;color:#F4EEE2;padding:14px 22px"><a href="https://lszoszk.github.io/teaching-materials/global-campus/next-word/">Open the next-word demo</a></p>
+</div>
+</div>
+<p style="font-size:34px;line-height:1.4;color:#22201C">The model does not check facts. It picks what usually follows such a text. <span style="color:#A63D2A">Hence the confident tone and the invented sources.</span></p>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">12 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="13" data-id="chatbot">
+<section id="chatbot" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part I · What the machine is made of</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">How a chatbot is made, in three stages</h2>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:14px;background:#FBF7EF;padding:36px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">1 · Training on text</h3>
+<p style="font-size:26px;line-height:1.4;color:#4E4A42">Billions of sentences. The task: guess the next token. GPT-2 stopped here.</p>
+<p style="font-size:24px;line-height:1.4;color:#22201C;background:#F4EEE2;padding:16px 20px"><b>You:</b> Can the police read my private messages?<br><b>GPT-2:</b> On Wednesday, I met a group of journalists,</p>
+<p style="font-size:24px;line-height:1.4;color:#6B655B">It does not answer. It continues the text.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;background:#FBF7EF;padding:36px;border:5px double #B08A3E">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">2 · Tuning on examples</h3>
+<p style="font-size:26px;line-height:1.4;color:#4E4A42">People write thousands of pairs: a task and a good answer. On anything: conversations, legal letters, a language.</p>
+<p style="font-size:24px;line-height:1.4;color:#22201C;background:#F4EEE2;padding:16px 20px"><b>Task:</b> Can the police read my messages?<br><b>Model answer:</b> Only on a legal basis, usually with a court’s consent.</p>
+<p style="font-size:24px;line-height:1.4;color:#6B655B">It learns the form. <a href="#30">How we did it →</a></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;background:#FBF7EF;padding:36px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">3 · Human ratings</h3>
+<p style="font-size:26px;line-height:1.4;color:#4E4A42">Two answers; a person picks the better one; the model is rewarded for it.</p>
+<p style="font-size:24px;line-height:1.4;color:#22201C;background:#F4EEE2;padding:16px 20px"><b>A:</b> Yes, always.<br><b>B:</b> It depends: a legal basis and oversight are needed. <b>Chosen</b></p>
+<p style="font-size:24px;line-height:1.4;color:#6B655B">It learns the style: careful, helpful, polite.</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#22201C">A conversation is only a format. The model still writes the next token, now as the assistant’s turn.</p>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">13 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="14" data-id="p2">
+<section id="p2" style="background:#1F3A3D;color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 220px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:160px;font-weight:600;line-height:1.0;color:#C9A24A">II</p>
+<h1 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:120px;font-weight:600;line-height:1.05;color:#F4EEE2">Uneven ability</h1>
+<p style="font-size:36px;line-height:1.4;color:#CFE0DC">Brilliant at one task, surprisingly weak at the next</p>
+<svg aria-label="" width="1920" height="160" viewBox="0 0 1920 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0px;bottom:0px;width:1920px;height:160px"><defs><pattern id="b" width="236" height="140" patternUnits="userSpaceOnUse"><rect x="0" y="20" width="14" height="120" fill="#A63D2A"/><rect x="0" y="32" width="14" height="3" fill="#B08A3E"/><rect x="16" y="44" width="10" height="96" fill="#5E9A96"/><rect x="28" y="30" width="18" height="110" fill="#C9A24A"/><rect x="28" y="42" width="18" height="3" fill="#8A6A2B"/><rect x="48" y="14" width="12" height="126" fill="#5872A6"/><rect x="62" y="52" width="8" height="88" fill="#D9C9A8"/><rect x="72" y="36" width="16" height="104" fill="#7A8F5A"/><rect x="90" y="24" width="11" height="116" fill="#A63D2A"/><rect x="103" y="48" width="20" height="92" fill="#8A5A3C"/><rect x="103" y="60" width="20" height="3" fill="#C9A24A"/><rect x="125" y="12" width="13" height="128" fill="#5E9A96"/><rect x="140" y="40" width="9" height="100" fill="#C9A24A"/><rect x="151" y="28" width="17" height="112" fill="#5872A6"/><rect x="151" y="40" width="17" height="3" fill="#C9A24A"/><rect x="170" y="56" width="10" height="84" fill="#A63D2A"/><rect x="182" y="22" width="15" height="118" fill="#7A8F5A"/><rect x="199" y="42" width="12" height="98" fill="#D9C9A8"/><rect x="213" y="32" width="19" height="108" fill="#8A5A3C"/><rect x="213" y="44" width="19" height="3" fill="#C9A24A"/></pattern></defs><rect x="0" y="0" width="1920" height="140" fill="url(#b)"/><rect x="0" y="140" width="1920" height="20" fill="#B08A3E"/></svg>
+</section>
+</div>
+<div class="frame" data-n="15" data-id="benchmarks">
+<section id="benchmarks" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part II · Uneven ability</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">How do we know what a model can do?</h2>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:36px 40px;border:1px solid #D9CBB0">
+<h3 style="font-size:32px;font-weight:700;color:#2F6F73">Public leaderboards</h3>
+<p style="font-size:27px;line-height:1.45;color:#22201C"><a href="https://artificialanalysis.ai/models">Artificial Analysis</a> runs many public tests on each new model and combines them into one Intelligence Index, with price and speed beside it.</p>
+<p style="font-size:27px;line-height:1.45;color:#4E4A42">Read a score like evidence: which tasks? which settings? who ran it? Could the questions have leaked into the training data?</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:36px 40px;border:1px solid #D9CBB0">
+<h3 style="font-size:32px;font-weight:700;color:#2F6F73">Private benchmarks</h3>
+<p style="font-size:27px;line-height:1.45;color:#22201C"><a href="https://github.com/prinz-ai/prinzbench">PrinzBench</a>: a US lawyer’s own legal research test, 33 questions never published.</p>
+<p style="font-size:27px;line-height:1.45;color:#4E4A42">Secret, so the questions cannot leak into training data. The price: nobody outside can check the score.</p>
+<p style="font-size:27px;line-height:1.45;color:#22201C">June 2026: the best model scored <b>91 of 99</b>. The test lasted about half a year.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;background:#FBF7EF;padding:28px 40px;border:5px double #B08A3E">
+<p style="font-size:30px;line-height:1.4;color:#22201C"><b>Build your own:</b> ten questions from your work, with answers you know. Run every new model on them.</p>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">15 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="16" data-id="frontier">
+<section id="frontier" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<svg aria-label="A jagged shape of what AI does well, against a dashed circle of tasks that look equally hard to a person: three numbered tasks fall inside the shape and three just outside it" width="640" height="560" viewBox="0 0 640 560" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:128px;top:370px;width:640px;height:560px"><polygon points="535,280 547,341 467,365 419,379 408,432 369,464 320,480 272,459 222,449 203,397 199,350 151,325 100,280 88,218 147,180 193,153 245,150 284,145 320,95 382,48 433,85 454,146 493,180 504,231" fill="#2F6F73" fill-opacity="0.22" stroke="#2F6F73" stroke-width="4" stroke-linejoin="miter"/><circle cx="320" cy="280" r="200" fill="none" stroke="#B08A3E" stroke-width="4" stroke-dasharray="14 10"/><g fill="#2F6F73"><circle cx="123" cy="245" r="22"/><circle cx="372" cy="87" r="22"/><circle cx="517" cy="315" r="22"/></g><g fill="#FBF7EF" stroke="#A63D2A" stroke-width="4"><circle cx="147" cy="380" r="22"/><circle cx="252" cy="92" r="22"/><circle cx="473" cy="409" r="22"/></g></svg>
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part II · Uneven ability</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">What lies inside the frontier, and what outside?</h2>
+<p style="font-size:28px;line-height:1.4;color:#4E4A42">Excellent at one task, surprisingly weak at a neighbouring one that looks just as hard.</p>
+<p style="position:absolute;left:229px;top:593px;width:44px;height:44px;font-size:26px;font-weight:700;line-height:1.7;text-align:center;color:#F4EEE2">1</p>
+<p style="position:absolute;left:478px;top:435px;width:44px;height:44px;font-size:26px;font-weight:700;line-height:1.7;text-align:center;color:#F4EEE2">2</p>
+<p style="position:absolute;left:623px;top:663px;width:44px;height:44px;font-size:26px;font-weight:700;line-height:1.7;text-align:center;color:#F4EEE2">3</p>
+<p style="position:absolute;left:253px;top:728px;width:44px;height:44px;font-size:26px;font-weight:700;line-height:1.7;text-align:center;color:#A63D2A">1</p>
+<p style="position:absolute;left:358px;top:440px;width:44px;height:44px;font-size:26px;font-weight:700;line-height:1.7;text-align:center;color:#A63D2A">2</p>
+<p style="position:absolute;left:579px;top:757px;width:44px;height:44px;font-size:26px;font-weight:700;line-height:1.7;text-align:center;color:#A63D2A">3</p>
+<p style="position:absolute;left:128px;top:936px;width:660px;font-size:24px;color:#4E4A42"><span style="color:#2F6F73">■</span> what AI does well   <span style="color:#B08A3E">– – –</span> tasks a person finds equally hard</p>
+<div style="position:absolute;left:800px;top:370px;width:992px;display:grid;grid-template-columns:repeat(2, 1fr);gap:16px 24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#F4EEE2;background:#2F6F73;padding:10px 18px">INSIDE</p>
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#F4EEE2;background:#A63D2A;padding:10px 18px">OUTSIDE</p>
+<div style="display:flex;flex-direction:column;gap:6px;background:#FBF7EF;border:1px solid #D9CBB0;padding:16px 20px"><p style="font-size:24px;line-height:1.35;color:#22201C"><b>1</b>  Formal check of an appeal (deadline, fee, mandate)</p><p style="font-size:24px;color:#6B655B">96–100% correct · 101 cases</p></div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#FBF7EF;border:1px solid #D9CBB0;padding:16px 20px"><p style="font-size:24px;line-height:1.35;color:#22201C"><b>1</b>  Writing the judgment in the same chamber’s exam</p><p style="font-size:24px;color:#6B655B">37/100, pass mark 50</p></div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#FBF7EF;border:1px solid #D9CBB0;padding:16px 20px"><p style="font-size:24px;line-height:1.35;color:#22201C"><b>2</b>  Spotting an invented citation, with a database</p><p style="font-size:24px;color:#6B655B">93.5–100% caught</p></div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#FBF7EF;border:1px solid #D9CBB0;padding:16px 20px"><p style="font-size:24px;line-height:1.35;color:#22201C"><b>2</b>  Spotting a real judgment that says something else</p><p style="font-size:24px;color:#6B655B">46–83% caught</p></div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#FBF7EF;border:1px solid #D9CBB0;padding:16px 20px"><p style="font-size:24px;line-height:1.35;color:#22201C"><b>3</b>  Summarising a document it was given</p><p style="font-size:24px;color:#6B655B">77.2% of required elements</p></div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#FBF7EF;border:1px solid #D9CBB0;padding:16px 20px"><p style="font-size:24px;line-height:1.35;color:#22201C"><b>3</b>  Recalling case law from memory, unchecked</p><p style="font-size:24px;color:#6B655B">some case numbers do not exist</p></div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1440px;font-size:24px;color:#6B655B">Dell’Acqua et al. 2026 · Karp et al. 2026 · Liu, Stammbach and Henderson 2026 · VLAIR 2025 · NSA, I OSK 590/26</p>
+<p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#6B655B;text-align:right">16 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="17" data-id="courts">
+<section id="courts" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part II · Uneven ability</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">When probability goes to court</h2>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:32px">
+<div style="display:flex;gap:28px;align-items:center;background:#FBF7EF;padding:28px 36px;border:1px solid #D9CBB0">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:80px;font-weight:600;line-height:1.0;color:#A63D2A">2,047</p>
+<p style="flex:1;font-size:26px;line-height:1.4;color:#22201C">court decisions in 41 countries on AI-invented content <span style="color:#6B655B">· Charlotin, to Sept. 2026</span></p>
+</div>
+<div style="display:flex;gap:28px;align-items:center;background:#FBF7EF;padding:28px 36px;border:1px solid #D9CBB0">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:80px;font-weight:600;line-height:1.0;color:#A63D2A">17–33%</p>
+<p style="flex:1;font-size:26px;line-height:1.4;color:#22201C">wrong answers from Lexis+ AI and Westlaw <span style="color:#6B655B">· Magesh et al. 2025</span></p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:48px;background:#FBF7EF;padding:32px 40px;border:5px double #B08A3E">
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2F6F73">My test · from memory</p>
+<p style="font-size:28px;line-height:1.4;color:#22201C">Article 54 of the ICCPR does not exist. 24 models said so in:</p>
+<div style="display:flex;gap:36px;align-items:baseline">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.0;color:#A63D2A">38%</p><p style="flex:1;font-size:26px;line-height:1.4;color:#4E4A42">of answers to a leading question</p>
+</div>
+<div style="display:flex;gap:36px;align-items:baseline">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.0;color:#2F6F73">83%</p><p style="flex:1;font-size:26px;line-height:1.4;color:#4E4A42">to a neutral one</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2F6F73">My test · with sources (RAG)</p>
+<p style="font-size:28px;line-height:1.4;color:#22201C">Three ECtHR questions, cases checked in HUDOC. <a href="#28">What is RAG? →</a></p>
+<table style="font-size:26px;color:#22201C">
+<tr><th style="width:46%">Cited case</th><th style="width:27%;text-align:right">no sources</th><th style="width:27%;text-align:right">with sources</th></tr>
+<tr><td>correct</td><td style="text-align:right">31</td><td style="text-align:right"><b>36</b></td></tr>
+<tr><td>real, wrong detail</td><td style="text-align:right">7</td><td style="text-align:right"><b>1</b></td></tr>
+<tr><td>invented</td><td style="text-align:right">1</td><td style="text-align:right"><b>0</b></td></tr>
+</table>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">17 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="18" data-id="bitter">
+<section id="bitter" style="background:#1F3A3D;color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#C9A24A">Part II · Is RAG only for now?</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:80px;font-weight:600;line-height:1.1;color:#F4EEE2">The bitter lesson</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:30px;line-height:1.45;color:#F4EEE2">Rich Sutton (2019): over 70 years of AI research, general methods that grow with computing power beat human knowledge built in by hand.</p>
+<p style="font-size:30px;line-height:1.45;color:#C9A24A"><b>My guess:</b> hand-built RAG may not be needed in 3 to 5 years. The question of sources stays.</p>
+<p style="font-size:24px;line-height:1.4;color:#CFE0DC"><a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">Sutton, “The Bitter Lesson” (2019)</a></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;padding:12px;border:5px double #B08A3E">
+<div class="yt" data-id="OAwat51S_Sk" data-title="The Bitter Lesson" style="width:896px;height:504px"><img src="assets/bitter-lesson-poster.jpg" alt="The Bitter Lesson, a short film on Ethan Mollick’s channel based on Rich Sutton’s essay"><button aria-label="Play the film"></button></div>
+<p style="font-size:24px;line-height:1.35;color:#CFE0DC">The Bitter Lesson · Ethan Mollick’s channel, YouTube, 2 Oct 2026 · 3:08</p>
+</div>
+</div>
+</section>
+</div>
+<div class="frame" data-n="19" data-id="p3">
+<section id="p3" style="background:#1F3A3D;color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 220px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:160px;font-weight:600;line-height:1.0;color:#C9A24A">III</p>
+<h1 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:120px;font-weight:600;line-height:1.05;color:#F4EEE2">What happens to us</h1>
+<p style="font-size:36px;line-height:1.4;color:#CFE0DC">When the work runs through a model, what do we keep?</p>
+<svg aria-label="" width="1920" height="160" viewBox="0 0 1920 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:0px;bottom:0px;width:1920px;height:160px"><defs><pattern id="b" width="236" height="140" patternUnits="userSpaceOnUse"><rect x="0" y="20" width="14" height="120" fill="#A63D2A"/><rect x="0" y="32" width="14" height="3" fill="#B08A3E"/><rect x="16" y="44" width="10" height="96" fill="#5E9A96"/><rect x="28" y="30" width="18" height="110" fill="#C9A24A"/><rect x="28" y="42" width="18" height="3" fill="#8A6A2B"/><rect x="48" y="14" width="12" height="126" fill="#5872A6"/><rect x="62" y="52" width="8" height="88" fill="#D9C9A8"/><rect x="72" y="36" width="16" height="104" fill="#7A8F5A"/><rect x="90" y="24" width="11" height="116" fill="#A63D2A"/><rect x="103" y="48" width="20" height="92" fill="#8A5A3C"/><rect x="103" y="60" width="20" height="3" fill="#C9A24A"/><rect x="125" y="12" width="13" height="128" fill="#5E9A96"/><rect x="140" y="40" width="9" height="100" fill="#C9A24A"/><rect x="151" y="28" width="17" height="112" fill="#5872A6"/><rect x="151" y="40" width="17" height="3" fill="#C9A24A"/><rect x="170" y="56" width="10" height="84" fill="#A63D2A"/><rect x="182" y="22" width="15" height="118" fill="#7A8F5A"/><rect x="199" y="42" width="12" height="98" fill="#D9C9A8"/><rect x="213" y="32" width="19" height="108" fill="#8A5A3C"/><rect x="213" y="44" width="19" height="3" fill="#C9A24A"/></pattern></defs><rect x="0" y="0" width="1920" height="140" fill="url(#b)"/><rect x="0" y="140" width="1920" height="20" fill="#B08A3E"/></svg>
+</section>
+</div>
+<div class="frame" data-n="20" data-id="judgegpt">
+<section id="judgegpt" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part III · 1 · The evidence: Pakistan’s courts</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">JudgeGPT: a tool for 1,559 judges</h2>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:40px">
+<div style="display:flex;flex-direction:column;gap:14px;background:#FBF7EF;padding:32px 36px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">The tool</h3>
+<p style="font-size:27px;line-height:1.45;color:#22201C">GPT-4 with one instruction for judges: “cite only the cases you were given”.</p>
+<p style="font-size:27px;line-height:1.45;color:#22201C">It picks its own search words; a keyword search runs over 128,292 judgments and 943 statutes and attaches the 10 best passages. Every answer has footnotes.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;background:#FBF7EF;padding:32px 36px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">The experiment: judges drawn at random</h3>
+<table style="font-size:26px;color:#22201C">
+<tr><th style="width:24%">Group</th><th style="width:18%;text-align:right">Judges</th><th style="width:58%">What they got</th></tr>
+<tr><td>A</td><td style="text-align:right">1,197</td><td>JudgeGPT and six lectures on using it</td></tr>
+<tr><td>B</td><td style="text-align:right">180</td><td>JudgeGPT and a general course</td></tr>
+<tr><td>Control</td><td style="text-align:right">182</td><td>The general course only</td></tr>
+</table>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;background:#FBF7EF;padding:28px 40px;border:5px double #B08A3E">
+<p style="font-size:32px;line-height:1.4;color:#22201C">The question: how much comes from <b>access</b> to the tool, and how much from <b>learning to use it</b>?</p>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#6B655B">Mehmood, Goessmann and Ash, “Courts of Tomorrow”, CEPR DP 21783 (2026), pp. 10–13</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">20 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="21" data-id="judgegpt2">
+<section id="judgegpt2" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part III · 1 · The evidence: the results</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Access is not enough: training matters</h2>
+<div style="display:flex;gap:56px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:16px;border:5px double #B08A3E">
+<img src="../../amu-ihrl/assets/judgegpt_ryc5b.webp" alt="Cumulative prompts per judge over 40 weeks: about 215 with targeted training against about 47 with generic training" style="width:600px;height:495px;object-fit:contain">
+<p style="width:600px;font-size:24px;line-height:1.35;color:#6B655B">Prompts per judge over 40 weeks: trained (▲) and access only (+). Fig. 5B</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px">
+<p style="font-size:28px;line-height:1.4;color:#22201C">Trained judges used it <b>more than four times as often</b>.</p>
+<p style="font-size:28px;line-height:1.4;color:#22201C"><b>+6.3%</b> more cases decided in a typical district: 1,848 a year. Slightly fewer appeals; no drop in the quality of judgments.</p>
+<p style="font-size:28px;line-height:1.4;color:#22201C">After training: fewer open legal questions, more editing and summaries, where the output is <b>easy to check</b>.</p>
+<p style="font-size:28px;line-height:1.4;color:#22201C">The judge works faster, but still checks and decides.</p>
+<p style="font-size:26px;line-height:1.4;color:#A63D2A">Not reported: how often JudgeGPT invented things.</p>
+<p style="font-size:24px;line-height:1.4;color:#4E4A42">The same pattern among patent lawyers: <a href="#29">appendix →</a></p>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#6B655B">Mehmood, Goessmann and Ash (2026), Fig. 5B · Gent, IEEE Spectrum (2026)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">21 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="22" data-id="spectrum">
+<section id="spectrum" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part III · 2 · Why it goes wrong</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Offloading, deferral, surrender</h2>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:36px 40px;border:1px solid #D9CBB0;border-top:8px solid #2F6F73">
+<h3 style="font-size:36px;font-weight:700;color:#2F6F73">Offloading</h3>
+<p style="font-size:26px;line-height:1.45;color:#22201C">You give the model a task. The result stays yours: you check it and can explain it.</p>
+<p style="font-size:24px;line-height:1.4;color:#4E4A42;background:#F4EEE2;padding:14px 18px"><i>The model summarises a judgment; you read the key paragraphs and fix the summary.</i></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:36px 40px;border:1px solid #D9CBB0;border-top:8px solid #B08A3E">
+<h3 style="font-size:36px;font-weight:700;color:#8A6A2B">Deferral</h3>
+<p style="font-size:26px;line-height:1.45;color:#22201C">The model’s answer becomes the starting point of your next step, untested.</p>
+<p style="font-size:24px;line-height:1.4;color:#4E4A42;background:#F4EEE2;padding:14px 18px"><i>You build your argument on that summary without opening the judgment.</i></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:36px 40px;border:1px solid #D9CBB0;border-top:8px solid #A63D2A">
+<h3 style="font-size:36px;font-weight:700;color:#A63D2A">Surrender</h3>
+<p style="font-size:26px;line-height:1.45;color:#22201C">The model’s answer becomes your answer. You no longer feel the need to check.</p>
+<p style="font-size:24px;line-height:1.4;color:#4E4A42;background:#F4EEE2;padding:14px 18px"><i>The summary goes into your submission. Asked what the Court held, you cannot say.</i></p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;background:#FBF7EF;padding:28px 40px;border:5px double #B08A3E">
+<p style="font-size:30px;line-height:1.4;color:#22201C">The test: if you cannot explain the answer, even with the model’s help, you have surrendered it.</p>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#6B655B">Addy Osmani (2026) · “cognitive surrender”: Shaw and Nave, Wharton</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">22 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="23" data-id="huang">
+<section id="huang" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part III · 3 · What to keep</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Purpose and task</h2>
+<div style="display:flex;gap:48px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFDF8;padding:12px;border:5px double #B08A3E">
+<video src="../../amu-ihrl/assets/huang_purpose_vs_task.mp4" poster="../../amu-ihrl/assets/huang_poster.jpg" controls preload="none" style="width:960px;height:540px;object-fit:cover;background:#000" aria-label="Jensen Huang on the No Priors podcast explaining the difference between the purpose of a job and its tasks"></video>
+<p style="font-size:24px;line-height:1.35;color:#6B655B">Jensen Huang, NVIDIA, on <i>No Priors</i>, 8 January 2026, from 9:03 · 57 s</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;line-height:1.4;color:#22201C">Machines take over <b>tasks</b>. The <b>purpose</b> of the job stays, and the job is rebuilt around it.</p>
+<p style="font-size:26px;line-height:1.4;color:#4E4A42">His example: reading scans is a radiologist’s task; diagnosing disease is the purpose.</p>
+<p style="font-size:28px;line-height:1.4;color:#A63D2A"><b>Remember the distinction.</b> When a task goes to a model, ask what it was for, and keep that.</p>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">23 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="24" data-id="habits">
+<section id="habits" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Part III · 4 · What to do</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Five habits that keep you at the centre</h2>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:24px;align-items:center;background:#FBF7EF;border:1px solid #D9CBB0;padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:#A63D2A">1</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:#22201C">Write down your own answer before you ask.</p><p style="font-size:24px;line-height:1.35;color:#4E4A42">Once you have read a fluent answer, it is hard to imagine another one.</p></div></div>
+<div style="display:flex;gap:24px;align-items:center;background:#FBF7EF;border:1px solid #D9CBB0;padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:#A63D2A">2</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:#22201C">Use models to build tools for analysis, not as the analysis.</p><p style="font-size:24px;line-height:1.35;color:#4E4A42">The model writes the code once; the code gives the same answer every time, and you can check it.</p></div></div>
+<div style="display:flex;gap:24px;align-items:center;background:#FBF7EF;border:1px solid #D9CBB0;padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:#A63D2A">3</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:#22201C">Cross-check: another model, another session, one model judging another.</p><p style="font-size:24px;line-height:1.35;color:#4E4A42">Even agents checking agents beat one agent alone: 93.0% against 88.9% in a fact-checking test.</p></div></div>
+<div style="display:flex;gap:24px;align-items:center;background:#FBF7EF;border:1px solid #D9CBB0;padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:#A63D2A">4</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:#22201C">Ask open questions, not for the verdict.</p><p style="font-size:24px;line-height:1.35;color:#4E4A42">“Give me the pros and cons.” “Give me three different options.” The decision stays with you.</p></div></div>
+<div style="display:flex;gap:24px;align-items:center;background:#FBF7EF;border:1px solid #D9CBB0;padding:14px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.0;color:#A63D2A">5</p><div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:28px;line-height:1.35;font-weight:700;color:#22201C">If you would not sign it, it does not go out.</p><p style="font-size:24px;line-height:1.35;color:#4E4A42">You can hand off the work, not the responsibility.</p></div></div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#6B655B">1 and 5 after Addy Osmani (2026) · 3: Huang et al., DeepFact, ACL 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">24 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="25" data-id="close">
+<section id="close" style="background:#A63D2A;color:#F4EEE2;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:44px">
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:84px;font-weight:600;line-height:1.1;color:#F4EEE2">Preparation gets cheaper. Decision and judgement stay with you.</h2>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:12px;align-items:center">
+<p style="width:200px;font-size:26px;font-weight:700;color:#F4EEE2">Before</p>
+<p style="width:300px;font-size:26px;font-weight:700;color:#22201C;background:#F4EEE2;padding:16px 20px">Decide</p>
+<p style="width:760px;font-size:26px;font-weight:700;color:#22201C;background:#D9C9A8;padding:16px 20px">Prepare: search, read, write</p>
+<p style="width:300px;font-size:26px;font-weight:700;color:#22201C;background:#F4EEE2;padding:16px 20px">Evaluate</p>
+</div>
+<div style="display:flex;gap:12px;align-items:center">
+<p style="width:200px;font-size:26px;font-weight:700;color:#F4EEE2">With AI</p>
+<p style="width:300px;font-size:26px;font-weight:700;color:#22201C;background:#F4EEE2;padding:16px 20px">Decide</p>
+<p style="width:220px;font-size:26px;font-weight:700;color:#22201C;background:#D9C9A8;padding:16px 20px">Prepare</p>
+<p style="width:420px;font-size:26px;font-weight:700;color:#22201C;background:#F4EEE2;padding:16px 20px">Evaluate</p>
+</div>
+</div>
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:56px;font-weight:600;line-height:1.2;color:#F4EEE2">The art: use models where they are strong, and keep their harms small.</p>
+<p style="font-size:24px;line-height:1.4;color:#F4E3D7">A warning from Bell and Legg (2026): writing is also thinking. The decision often forms while you write.</p>
+</section>
+</div>
+<div class="frame" data-n="26" data-id="next">
+<section id="next" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">After the break</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Next: tools built this way</h2>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:40px;border:5px double #B08A3E">
+<h3 style="font-size:32px;font-weight:700;color:#2F6F73">Session 2</h3>
+<p style="font-size:30px;line-height:1.45;color:#22201C">Research tools on UN and Strasbourg sources, built with AI. Then your first build in Garage Research.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#FBF7EF;padding:40px;border:1px solid #D9CBB0">
+<h3 style="font-size:32px;font-weight:700;color:#2F6F73">Bring</h3>
+<p style="font-size:30px;line-height:1.45;color:#22201C">A charged laptop, and a country or a topic you work on.</p>
+</div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">26 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="27" data-id="sources">
+<section id="sources" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">Sources</h2>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:48px">
+<ul style="font-size:24px;line-height:1.35;color:#4E4A42">
+<li>Artificial Analysis, model leaderboard, artificialanalysis.ai</li>
+<li>Autor et al., Does AI Assistance Enhance or Erode Expertise?, NBER WP 35720 (2026)</li>
+<li>Bell and Legg (2026), on writing as thinking</li>
+<li>Charlotin, AI Hallucination Cases Database (September 2026)</li>
+<li>Cho et al., Transformer Explainer (AAAI 2025)</li>
+<li>Dell’Acqua et al., Navigating the Jagged Technological Frontier, Organization Science (2026)</li>
+<li>Huang Y. et al., DeepFact, ACL 2026, pp. 34356–34386</li>
+<li>Huang J., No Priors podcast, 8 January 2026</li>
+<li>Karp et al., Artificial Intelligence and Law (2026)</li>
+<li>Liu, Stammbach and Henderson (2026), preprint</li>
+<li>Magesh et al., Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools (2025)</li>
+</ul>
+<ul style="font-size:24px;line-height:1.35;color:#4E4A42">
+<li><i>Mata v. Avianca</i>, No. 22-cv-1461 (S.D.N.Y. 22 June 2023)</li>
+<li>Mehmood, Goessmann and Ash, Courts of Tomorrow, CEPR DP 21783 (2026)</li>
+<li>Osmani, Critical thinking when agents do the work (2026)</li>
+<li>PLLuM: “Priority areas and types of letters”, team note (2025)</li>
+<li>Polish Supreme Administrative Court, I FZ 104/26 and I OSK 590/26</li>
+<li>prinz, PrinzBench, github.com/prinz-ai/prinzbench</li>
+<li>Sutton, The Bitter Lesson (2019)</li>
+<li>Szoszkiewicz, own tests: Article 54 ICCPR (5 Oct 2026); RAG on ECtHR cases (23 Oct 2026)</li>
+<li>Vals Legal AI Report, VLAIR (February 2025)</li>
+<li>Vaswani et al., Attention Is All You Need (2017)</li>
+<li>Word map: paraphrase-multilingual-MiniLM-L12-v2 · Motif: the Armonie workshop, Venice</li>
+</ul>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B">Inside the Machine · Global Campus of Human Rights</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">27 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="28" data-id="rag">
+<section id="rag" style="display:flex; flex-direction:column; gap:24px; padding:128px 128px 160px; background:#f4eee2; color:#22201c; font-family:'Nunito Sans', Arial, sans-serif">
+  <p style="font-size:24px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#a63d2a">Appendix · How RAG works</p>
+  <h2 style="font-family:'Cormorant Garamond', Georgia, serif; font-size:72px; font-weight:600; line-height:1.1; color:#22201c">RAG: search first, then answer</h2>
+  <p style="font-size:28px; line-height:1.4; color:#4e4a42"><b>Retrieval-augmented generation.</b> Before the model answers, a search finds passages in a trusted collection, and the model must answer from those passages only.</p>
+  <div style="display:grid; gap:20px; grid-template-columns:1fr 1fr 1fr 1fr 1fr">
+    <div style="display:flex; flex-direction:column; gap:10px; padding:24px; background:#fbf7ef; border:1px solid #d9cbb0">
+      <h3 style="font-size:28px; font-weight:700; color:#2f6f73">1 · Question</h3>
+      <p style="font-size:24px; line-height:1.4; color:#4e4a42">You ask in your own words.</p>
+      <p style="font-size:24px; line-height:1.4; color:#22201c">“Does facial recognition against a peaceful protester violate Article 8?”</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:24px; background:#fbf7ef; border:1px solid #d9cbb0">
+      <h3 style="font-size:28px; font-weight:700; color:#2f6f73">2 · Search</h3>
+      <p style="font-size:24px; line-height:1.4; color:#4e4a42">A search engine picks the best passages from a fixed collection.</p>
+      <p style="font-size:24px; line-height:1.4; color:#22201c">Here: 886 paragraphs of 23 ECtHR judgments.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:24px; background:#fbf7ef; border:1px solid #d9cbb0">
+      <h3 style="font-size:28px; font-weight:700; color:#2f6f73">3 · Passages</h3>
+      <p style="font-size:24px; line-height:1.4; color:#4e4a42">Each passage keeps its source.</p>
+      <p style="font-size:24px; line-height:1.4; color:#22201c">[1] <i>Glukhin v. Russia</i>, § 89<br>[2] <i>Gaughran v. UK</i>, § 68<br>[3] <i>Libert v. France</i>, § 42</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:24px; background:#fbf7ef; border:1px solid #d9cbb0">
+      <h3 style="font-size:28px; font-weight:700; color:#2f6f73">4 · Prompt</h3>
+      <p style="font-size:24px; line-height:1.4; color:#4e4a42">The model gets an instruction, the passages and your question.</p>
+      <p style="font-size:24px; line-height:1.4; color:#22201c">“Answer only from passages [1]–[3]. Cite each claim.”</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:24px; background:#fbf7ef; border:5px double #b08a3e">
+      <h3 style="font-size:28px; font-weight:700; color:#a63d2a">5 · Answer</h3>
+      <p style="font-size:24px; line-height:1.4; color:#4e4a42">Every claim points to a passage.</p>
+      <p style="font-size:24px; line-height:1.4; color:#22201c">In <i>Glukhin</i>, facial recognition used to identify the applicant met no “pressing social need” [1].</p>
+    </div>
+  </div>
+  <p style="font-size:28px; line-height:1.4; color:#22201c">Without RAG the model answers from memory, guessing the next token. With RAG it answers from sources you can open, and you still check the footnotes.</p>
+  <svg aria-label="" xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" style="position:absolute; top:64px; right:128px; width:120px; height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+  <p style="position:absolute; bottom:64px; left:128px; width:1100px; font-size:24px; color:#6b655b"><a href="#17">← Back to slide 17</a></p>
+  <p style="position:absolute; right:128px; bottom:64px; width:200px; font-size:24px; text-align:right; color:#6b655b">28 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="29" data-id="patent">
+<section id="patent" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Appendix · Patent lawyers</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">AI helps everyone. It teaches those who have the basics.</h2>
+<p style="font-size:30px;line-height:1.4;color:#4E4A42">133 patent lawyers at 11 US firms, three months with or without an AI assistant, then a test without it.</p>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:40px">
+<div style="display:flex;flex-direction:column;gap:14px;background:#FBF7EF;padding:36px 40px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">Drafting with AI</h3>
+<p style="font-size:28px;line-height:1.45;color:#22201C">Better drafts (+0.34 to +0.38 SD). Juniors gained the most.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;background:#FBF7EF;padding:36px 40px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#A63D2A">The final test, without AI</h3>
+<p style="font-size:28px;line-height:1.45;color:#22201C">Seniors who had used AI beat those who had not (+0.45 SD). Juniors: no gain on average.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;background:#FBF7EF;padding:32px 40px;border:5px double #B08A3E">
+<p style="font-size:32px;line-height:1.4;color:#22201C">Practise on your own first: that is how you learn what to check.</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#6B655B">Autor et al., “Does AI Assistance Enhance or Erode Expertise?”, NBER Working Paper 35720 (2026)</p>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B"><a href="#21">← Back to slide 21</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">29 / 30</p>
+</section>
+</div>
+<div class="frame" data-n="30" data-id="pllum">
+<section id="pllum" style="background:#F4EEE2;color:#22201C;font-family:'Nunito Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A63D2A">Appendix · Stage 2, from the inside</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#22201C">How we tuned a public model for law</h2>
+<p style="font-size:30px;line-height:1.4;color:#4E4A42">PLLuM is a Polish large language model built with public money by a consortium that includes NASK. In 2025 a team of lawyers wrote a dataset to tune it for law and public administration.</p>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:10px;background:#FBF7EF;padding:26px 32px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">The official’s side</h3>
+<p style="font-size:26px;line-height:1.4;color:#22201C">Administrative decisions (building permits, benefits, fines, residence permits), summons to remedy formal defects, transfers to the competent authority</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FBF7EF;padding:26px 32px;border:1px solid #D9CBB0">
+<h3 style="font-size:30px;font-weight:700;color:#2F6F73">The citizen’s side</h3>
+<p style="font-size:26px;line-height:1.4;color:#22201C">Appeals against decisions, freedom of information requests, payment demands, consumer complaints, contracts, powers of attorney</p>
+</div>
+</div>
+<p style="font-size:26px;line-height:1.4;color:#22201C"><b>One example = an instruction + the document a good lawyer would write.</b> Two of the kind:</p>
+<div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FBF7EF;padding:22px 26px;border:1px solid #D9CBB0;border-top:8px solid #2F6F73"><p style="font-size:24px;font-weight:700;color:#2F6F73">Access to information</p><p style="font-size:24px;line-height:1.4;color:#22201C">“Ask the city office how many assemblies it banned in 2024, and on what grounds.”</p><p style="font-size:24px;line-height:1.4;color:#4E4A42">→ a request under the Act on Access to Public Information</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FBF7EF;padding:22px 26px;border:5px double #B08A3E"><p style="font-size:24px;font-weight:700;color:#A63D2A">An effective remedy</p><p style="font-size:24px;line-height:1.4;color:#22201C">“Appeal against a refused residence permit; the office ignored the applicant’s family.”</p><p style="font-size:24px;line-height:1.4;color:#4E4A42">→ an appeal citing the Code and Article 8 ECHR</p></div>
+</div>
+<svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="#A63D2A"/><rect x="9" y="11" width="6" height="25" fill="#2F6F73"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="#3B4F7A"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="#A63D2A"/><rect x="59" y="10" width="11" height="26" fill="#5A3E2B"/><rect x="71" y="5" width="7" height="31" fill="#2F6F73"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="#3B4F7A"/><rect x="96" y="15" width="6" height="21" fill="#A63D2A"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
+<p style="position:absolute;left:128px;bottom:64px;width:1100px;font-size:24px;color:#6B655B"><a href="#13">← Back to slide 13</a></p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#6B655B;text-align:right">30 / 30</p>
+</section>
+</div>
+</div></div>
+<div id="help">← → or space · F full screen · Home / End</div>
+<div id="nav"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button><button id="fs" aria-label="Full screen">⛶</button></div>
+<script>
+(() => {
+  const frames = [...document.querySelectorAll('.frame')], stage = document.getElementById('stage'), N = frames.length;
+  let cur = 0;
+  function fit() { const s = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `scale(${s})`; }
+  function stopMedia(f) {
+    f.querySelectorAll('video').forEach(v => v.pause());
+    f.querySelectorAll('.yt iframe').forEach(i => { const y = i.closest('.yt'); i.remove(); y.querySelector('img').style.display = ''; y.querySelector('button').style.display = ''; });
+  }
+  function go(n, push = true) {
+    n = Math.max(0, Math.min(N - 1, n));
+    if (frames[cur] && n !== cur) stopMedia(frames[cur]);
+    frames.forEach((f, i) => f.classList.toggle('on', i === n));
+    cur = n; document.getElementById('count').textContent = `${n + 1} / ${N}`;
+    if (push) history.replaceState(null, '', '#' + (n + 1));
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  }
+  const fromHash = () => { const k = parseInt(location.hash.slice(1), 10); return isNaN(k) ? 0 : k - 1; };
+  addEventListener('hashchange', () => go(fromHash(), false));
+  addEventListener('resize', fit);
+  addEventListener('keydown', e => {
+    const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) { if (e.key === 'Escape') t.blur(); return; }
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(k)) { e.preventDefault(); go(cur + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); go(cur - 1); }
+    else if (k === 'Home') go(0); else if (k === 'End') go(N - 1);
+    else if (k === 'f' || k === 'F') toggleFs();
+  });
+  function toggleFs() { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}); }
+  document.getElementById('prev').onclick = () => go(cur - 1);
+  document.getElementById('next').onclick = () => go(cur + 1);
+  document.getElementById('fs').onclick = toggleFs;
+  let tx = null; addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
+  addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1)); tx = null; }, {passive: true});
+  let mt; addEventListener('mousemove', () => { document.body.classList.add('moving'); clearTimeout(mt); mt = setTimeout(() => document.body.classList.remove('moving'), 1800); });
+  document.querySelectorAll('.yt').forEach(y => y.addEventListener('click', () => {
+    if (y.querySelector('iframe')) return;
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${y.dataset.id}?autoplay=1&rel=0`;
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true; f.title = y.dataset.title || 'Video';
+    y.querySelector('img').style.display = 'none'; y.querySelector('button').style.display = 'none'; y.append(f);
+  }));
+  document.querySelectorAll('.frame a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+  // slide 4: text to bits
+  const enc = new TextEncoder(), b8 = n => n.toString(2).padStart(8, '0');
+  document.querySelectorAll('.bt-in').forEach(inp => {
+    const out = inp.nextElementSibling;
+    const draw = () => { out.textContent = ''; [...inp.value].slice(0, 10).forEach(ch => {
+      const by = [...enc.encode(ch)], r = document.createElement('div'); r.className = 'bt-r' + (by.length > 1 ? ' bt-2' : '');
+      const b = document.createElement('b'); b.textContent = ch === ' ' ? '␣' : ch;
+      const s = document.createElement('span'); s.textContent = by.map(b8).join(' '); r.append(b, s); out.append(r); }); };
+    inp.addEventListener('input', draw); draw();
+  });
+  // slide 4: zoomable pixels
+  document.querySelectorAll('canvas.px').forEach(cv => {
+    const z = cv.nextElementSibling, info = z.nextElementSibling, keep = info.innerHTML, img = new Image(), ctx = cv.getContext('2d'), W0 = cv.width;
+    let off = null, data = null, view = null;
+    img.onload = () => { off = document.createElement('canvas'); off.width = img.naturalWidth; off.height = img.naturalHeight;
+      const o = off.getContext('2d'); o.drawImage(img, 0, 0); try { data = o.getImageData(0, 0, off.width, off.height).data; } catch (e) { data = null; } render(); };
+    function render() {
+      if (!off) return; const k = +z.value, W = off.width, H = off.height, side = Math.max(W, H) / k;
+      const sw = Math.min(side, W), sh = Math.min(side, H), cx = W * +cv.dataset.fx, cy = H * +cv.dataset.fy;
+      const sx = Math.max(0, Math.min(W - sw, cx - sw / 2)), sy = Math.max(0, Math.min(H - sh, cy - sh / 2)), s = Math.min(W0 / sw, W0 / sh);
+      view = {sx, sy, sw, sh, s, ox: (W0 - sw * s) / 2, oy: (W0 - sh * s) / 2};
+      ctx.imageSmoothingEnabled = k < 3; ctx.fillStyle = '#120e17'; ctx.fillRect(0, 0, W0, W0);
+      ctx.drawImage(off, sx, sy, sw, sh, view.ox, view.oy, sw * s, sh * s);
+      if (k >= 12) { ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = 1;
+        for (let x = Math.ceil(sx); x < sx + sw; x++) { const X = view.ox + (x - sx) * s; ctx.beginPath(); ctx.moveTo(X, view.oy); ctx.lineTo(X, view.oy + sh * s); ctx.stroke(); }
+        for (let y = Math.ceil(sy); y < sy + sh; y++) { const Y = view.oy + (y - sy) * s; ctx.beginPath(); ctx.moveTo(view.ox, Y); ctx.lineTo(view.ox + sw * s, Y); ctx.stroke(); } }
+    }
+    z.addEventListener('input', render);
+    cv.addEventListener('mouseleave', () => { info.innerHTML = keep; });
+    cv.addEventListener('mousemove', e => {
+      if (!view || !data) return; const r = cv.getBoundingClientRect(), mx = (e.clientX - r.left) / r.width * W0, my = (e.clientY - r.top) / r.height * W0;
+      const x = Math.floor(view.sx + (mx - view.ox) / view.s), y = Math.floor(view.sy + (my - view.oy) / view.s);
+      if (x < 0 || y < 0 || x >= off.width || y >= off.height) return;
+      const i = (y * off.width + x) * 4, R = data[i], G = data[i + 1], B = data[i + 2];
+      info.innerHTML = `pixel (${x}, ${y}) <b style="color:rgb(${R},${G},${B})">■</b> R ${R} · G ${G} · B ${B}<br><span class="bin">${b8(R)} ${b8(G)} ${b8(B)}</span>`;
+    });
+    img.src = cv.dataset.src;
+  });
+  fit(); go(fromHash(), false);
+})();
+</script>
+</body>
+</html>
