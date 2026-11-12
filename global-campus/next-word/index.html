@@ -39,7 +39,7 @@ input[type=range]{flex:1;min-width:140px;accent-color:var(--gold)}
 .status{font-size:15px;color:var(--muted);min-height:1.4em;margin:6px 0 0}
 .prog{height:10px;background:#0f0b14;box-shadow:inset 0 0 0 2px #3a3048;margin-top:4px}.prog i{display:block;height:100%;width:0;background:var(--ok)}
 .gen{white-space:pre-wrap;font-size:20px;background:#0f0b14;border-left:6px solid var(--gold);padding:8px 10px;min-height:150px;margin-top:10px}
-.gen span{color:var(--gold)}
+.gen span{color:var(--gold)}.gen .pre{color:var(--muted)}.gen .err{color:var(--accent)}
 .muted{color:var(--muted)}small{font-size:15px;line-height:1.35}
 p.muted{margin:8px 0 0}
 a{color:var(--gold)}
@@ -89,6 +89,7 @@ html.tel header{flex-wrap:wrap}
 <p class="lab">4 · Let the model write on</p>
 <div class="row" style="margin-top:0"><button id="gen10">Add 12 tokens</button><button class="sec" id="reset" hidden>Back to the start</button></div>
 <div class="gen" id="gen"></div>
+<p class="status" id="gst"></p>
 <p class="muted"><small>Click again: at the same temperature the result is often different. The model draws from a distribution.</small></p>
 </section>
 <section class="box">
@@ -172,9 +173,15 @@ function drawBars() {
 }
 function sample(p) { let r = Math.random(), c = 0; for (let i = 0; i < p.length; i++) { c += p[i]; if (r <= c) return i; } return p.length - 1; }
 $('gen10').onclick = async () => {
-  if (!model || busy) return; busy = true; $('gen10').disabled = true;
-  const base = $('txt').value; let text = base; const g = $('gen'); g.textContent = base;
-  const add = document.createElement('span'); g.append(add);
+  const g = $('gen'), gst = $('gst');
+  if (!model) { gst.textContent = 'The model is still loading: wait for “Ready” in box 3.'; return; }
+  $('gen10').disabled = true;
+  while (busy) await new Promise(r => setTimeout(r, 100));   // the bars may still be computing: wait instead of ignoring the click
+  busy = true;
+  const base = $('txt').value; g.textContent = '';
+  const pre = document.createElement('span'); pre.className = 'pre'; pre.textContent = base;   // the start, dimmed
+  const add = document.createElement('span'); g.append(pre, add);                              // what the model adds, in gold
+  gst.textContent = 'Writing…';
   try {
     const ids = tok.encode(base, {add_special_tokens: false}), pref = tok.decode(ids).length;
     for (let k = 0; k < 12; k++) {
@@ -184,8 +191,10 @@ $('gen10').onclick = async () => {
       ids.push(top[sample(sub.map(x => x / s))]);
       // całość dekodujemy naraz: pojedynczy token bywa połową litery (bajt), osobno dałby „�”
       add.textContent = tok.decode(ids).slice(pref);
+      gst.textContent = `Writing: token ${k + 1} of 12`;
     }
-  } catch (e) { $('st').textContent = 'Error: ' + e.message; }
+    gst.textContent = 'Done: the dimmed text is yours, the gold text is the model’s.';
+  } catch (e) { gst.textContent = ''; const er = document.createElement('div'); er.className = 'err'; er.textContent = 'Error: ' + e.message; g.append(er); console.error(e); }
   busy = false; $('gen10').disabled = false;
 };
 $('reset').onclick = () => { $('txt').value = start; $('gen').textContent = ''; refresh(); };

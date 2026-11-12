@@ -43,6 +43,9 @@ body.read .frame>section{transform:scale(var(--k,1));transform-origin:top left}
 /* slide 4: live demos */
 .step{opacity:0;transform:translateY(18px);transition:opacity .45s,transform .45s}
 .step.shown,body.read .step{opacity:1;transform:none}
+.copy{display:inline-flex;align-items:center;gap:8px;margin:0 6px;vertical-align:middle;font:700 20px/1 'Nunito Sans',Arial,sans-serif;padding:7px 16px 7px 12px;border:2px solid #B08A3E;border-radius:999px;background:var(--u-card);color:var(--u-ink);cursor:pointer;white-space:nowrap}
+.copy:hover,.copy:focus-visible{background:#B08A3E;color:#FFFDF8;outline:none}
+.copy.ok{background:#2F6F73;border-color:#2F6F73;color:#FFFDF8}
 .kbox{display:flex;flex-direction:column;gap:12px;background:var(--u-card);padding:24px 28px;border:1px solid var(--u-line)}
 .kbox h3{font-size:32px;font-weight:700;color:var(--u-teal)}
 .kcap,.px-i{font-size:24px;line-height:1.4;color:var(--u-muted);min-height:2.8em}
@@ -251,7 +254,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:1px solid var(--cl-d9cbb0);border-top:8px solid var(--cl-2f6f73)"><h3 style="font-size:30px;font-weight:700;color:var(--cf-2f6f73)">The model asks you three questions</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">What do you want to find out?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Which file should it use (from Your files, or one you add)?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Who will read the result?</p></div>
 <div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:26px 30px;border:5px double #B08A3E"><h3 style="font-size:30px;font-weight:700;color:var(--cf-a63d2a)">Add the rule and the check</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The rule:</b> what counts? For instance, is an abstention agreement with a “no”?</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The check:</b> one result you already know, to test the app against.</p><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)"><b>The limits:</b> ask the app to say on screen what it cannot answer.</p></div>
 </div>
-<p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)"><i>“Show the recommendations my country received on freedom of assembly, by year and by the body that made them, with a link to each record. I know there were 12 in the last UPR cycle: show that count.”</i></p>
+<p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)"><i>“Show the recommendations my country received on freedom of assembly, by year and by the body that made them, with a link to each record. I know there were 12 in the last UPR cycle: show that count.”</i> <button class="copy" type="button" data-copy="Show the recommendations my country received on freedom of assembly, by year and by the body that made them, with a link to each record. I know there were 12 in the last UPR cycle: show that count." title="Copy to the clipboard"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy</span></button></p>
 <svg aria-label="" width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:128px;top:64px;width:120px;height:40px"><rect x="0" y="6" width="8" height="30" fill="var(--cs-a63d2a)"/><rect x="9" y="11" width="6" height="25" fill="var(--cs-2f6f73)"/><rect x="16" y="4" width="10" height="32" fill="#C9A24A"/><rect x="27" y="9" width="7" height="27" fill="var(--cs-3b4f7a)"/><rect x="35" y="14" width="5" height="22" fill="#D9C9A8"/><rect x="41" y="7" width="9" height="29" fill="#7A8F5A"/><rect x="51" y="3" width="7" height="33" fill="var(--cs-a63d2a)"/><rect x="59" y="10" width="11" height="26" fill="var(--cs-5a3e2b)"/><rect x="71" y="5" width="7" height="31" fill="var(--cs-2f6f73)"/><rect x="79" y="12" width="6" height="24" fill="#C9A24A"/><rect x="86" y="6" width="9" height="30" fill="var(--cs-3b4f7a)"/><rect x="96" y="15" width="6" height="21" fill="var(--cs-a63d2a)"/><rect x="103" y="8" width="8" height="28" fill="#7A8F5A"/><rect x="112" y="11" width="8" height="25" fill="#D9C9A8"/><rect x="0" y="36" width="120" height="4" fill="#B08A3E"/></svg>
 <p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:var(--cf-6b655b);text-align:right">10 / 12</p>
 </section>
@@ -284,9 +287,9 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:27px;line-height:1.45;color:var(--cf-22201c)">The Model Context Protocol lets an assistant (Claude, ChatGPT and others) query a database while it answers. The tool returns the verbatim paragraph with its UN symbol; the assistant writes around it.</p>
 <div style="display:flex;flex-direction:column;gap:8px;background:var(--cb-fbf7ef);padding:22px 28px;border:1px solid var(--cl-d9cbb0)">
 <p style="font-size:24px;font-weight:700;color:var(--cf-2f6f73)">UN-HRDB with the UHRI recommendations</p>
-<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:var(--cf-22201c)">https://150.254.115.204/unhrdb-mcp-rpc/mcp</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:var(--cf-22201c)">https://150.254.115.204/unhrdb-mcp-rpc/mcp <button class="copy" type="button" data-copy="https://150.254.115.204/unhrdb-mcp-rpc/mcp" title="Copy to the clipboard"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy</span></button></p>
 <p style="font-size:24px;font-weight:700;color:var(--cf-8a6a2b)">Travaux</p>
-<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:var(--cf-22201c)">https://150.254.115.204/travaux-api/mcp</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:var(--cf-22201c)">https://150.254.115.204/travaux-api/mcp <button class="copy" type="button" data-copy="https://150.254.115.204/travaux-api/mcp" title="Copy to the clipboard"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy</span></button></p>
 </div>
 <p style="font-size:24px;line-height:1.4;color:var(--cf-a63d2a)">The conversation goes to the company that runs the assistant: no confidential text there.</p>
 </div>
@@ -497,6 +500,15 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
   const start = /[?&]read\b/.test(location.search) || matchMedia('(pointer: coarse) and (max-width: 900px)').matches;
   cur = fromHash(); paintThemeBtn(); setView(start); go(cur, false);
 })();
+</script>
+<script>
+document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', e => {
+  e.stopPropagation();
+  const t = b.dataset.copy, lab = b.querySelector('span');
+  const done = () => { b.classList.add('ok'); lab.textContent = 'Copied'; setTimeout(() => { b.classList.remove('ok'); lab.textContent = 'Copy'; }, 1600); };
+  const old = () => { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.append(ta); ta.select(); try { document.execCommand('copy'); } catch (x) {} ta.remove(); done(); };
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(done, old); else old();
+}));
 </script>
 </body>
 </html>
