@@ -198,7 +198,7 @@ footer a{color:#F4EEE2}
   let idx = null, loading = null, sel = 0;
   function textOf(el) {
     const c = el.cloneNode(true);
-    c.querySelectorAll('script,style,svg,video,img,aside').forEach(x => x.remove());
+    c.querySelectorAll('script,style,svg,video,img,aside,button').forEach(x => x.remove());
     c.querySelectorAll('*').forEach(x => x.append(' '));
     return c.textContent.replace(/\s+/g, ' ').replace(/\b\d+ \/ \d+\s*$/, '').trim();
   }

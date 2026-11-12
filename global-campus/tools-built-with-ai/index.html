@@ -43,6 +43,9 @@ body.read .frame>section{transform:scale(var(--k,1));transform-origin:top left}
 /* slide 4: live demos */
 .step{opacity:0;transform:translateY(18px);transition:opacity .45s,transform .45s}
 .step.shown,body.read .step{opacity:1;transform:none}
+.copy{display:inline-flex;align-items:center;gap:8px;margin:0 6px;vertical-align:middle;font:700 20px/1 'Nunito Sans',Arial,sans-serif;padding:7px 16px 7px 12px;border:2px solid #B08A3E;border-radius:999px;background:var(--u-card);color:var(--u-ink);cursor:pointer;white-space:nowrap}
+.copy:hover,.copy:focus-visible{background:#B08A3E;color:#FFFDF8;outline:none}
+.copy.ok{background:#2F6F73;border-color:#2F6F73;color:#FFFDF8}
 .kbox{display:flex;flex-direction:column;gap:12px;background:var(--u-card);padding:24px 28px;border:1px solid var(--u-line)}
 .kbox h3{font-size:32px;font-weight:700;color:var(--u-teal)}
 .kcap,.px-i{font-size:24px;line-height:1.4;color:var(--u-muted);min-height:2.8em}
@@ -193,7 +196,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:28px;line-height:1.5;color:var(--cf-22201c)">Article 21 provides that any restrictions must be “<b>necessary in a democratic society</b>”. Restrictions must therefore be necessary and proportionate in the context of a society based on democracy, the rule of law, political pluralism and human rights, as opposed to being merely reasonable or expedient.</p>
 <p style="font-size:26px;font-weight:700;color:var(--cf-2f6f73)">CCPR/C/GC/37, para. 40</p>
 </div>
-<p style="font-size:26px;line-height:1.45;color:var(--cf-4e4a42)"><b>Try it:</b> search “necessary in a democratic society” → filter CCPR → open ¶ 40 → Copy citation → docs.un.org</p>
+<p style="font-size:26px;line-height:1.45;color:var(--cf-4e4a42)"><b>Try it:</b> search “necessary in a democratic society” <button class="copy" type="button" data-copy="&quot;necessary in a democratic society&quot;" title="Copy to the clipboard"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy</span></button> → filter CCPR → open ¶ 40 → Copy citation → docs.un.org</p>
 <p style="font-size:24px;line-height:1.4"><a href="https://lszoszk.github.io/generalcomments/">lszoszk.github.io/generalcomments</a></p>
 </div>
 <div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fffdf8);padding:12px;border:5px double #B08A3E">
@@ -209,7 +212,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-2f6f73)">1 · UN Human Rights Database · Check</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Spot the two errors</h2>
 <div style="display:flex;flex-direction:column;gap:14px;background:var(--cb-fbf7ef);padding:36px 44px;border:5px double #B08A3E">
-<p style="font-size:34px;line-height:1.5;color:var(--cf-22201c)">The Human Rights Committee requires restrictions to be “necessary and proportionate in the context of a society based on democracy and the rule of law” (CCPR/C/GC/37, para. 41).</p>
+<p style="font-size:34px;line-height:1.5;color:var(--cf-22201c)">The Human Rights Committee requires restrictions to be “necessary and proportionate in the context of a society based on democracy and the rule of law” (CCPR/C/GC/37, para. 41). <button class="copy" type="button" data-copy="The Human Rights Committee requires restrictions to be “necessary and proportionate in the context of a society based on democracy and the rule of law” (CCPR/C/GC/37, para. 41)." title="Copy to the clipboard"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy</span></button></p>
 </div>
 <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:32px">
 <div style="display:flex;flex-direction:column;gap:10px;background:var(--cb-fbf7ef);padding:28px 32px;border:1px solid var(--cl-d9cbb0)"><h3 style="font-size:28px;font-weight:700;color:var(--cf-2f6f73)">1 · You</h3><p style="font-size:26px;line-height:1.4;color:var(--cf-22201c)">Two minutes: write down what is wrong.</p></div>
@@ -227,7 +230,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">A question in your own words</h2>
 <div style="display:flex;gap:48px;align-items:start">
 <div style="flex:1;display:flex;flex-direction:column;gap:22px">
-<p style="font-size:32px;line-height:1.4;color:var(--cf-22201c)"><b>“Do organizers have to ask the police for permission before holding a protest?”</b></p>
+<p style="font-size:32px;line-height:1.4;color:var(--cf-22201c)"><b>“Do organizers have to ask the police for permission before holding a protest?”</b> <button class="copy" type="button" data-copy="Do organizers have to ask the police for permission before holding a protest?" title="Copy to the clipboard"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy</span></button></p>
 <p style="font-size:26px;line-height:1.4;color:var(--cf-4e4a42)">Search, where every word must appear: <b>0 paragraphs</b>.</p>
 <div style="display:flex;flex-direction:column;gap:12px;background:var(--cb-fbf7ef);padding:28px 32px;border:1px solid var(--cl-d9cbb0);border-left:10px solid var(--cl-2f6f73)">
 <p style="font-size:24px;color:var(--cf-6b655b)">Ask, first result</p>
@@ -387,7 +390,7 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
 <p style="font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--cf-a63d2a)">Garage Research · back to your app</p>
 <h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:var(--cf-22201c)">Does your finder find what the database finds?</h2>
 <div style="display:flex;flex-direction:column;gap:14px">
-<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">1</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)">Search “necessary in a democratic society”: is <b>para. 40 of General Comment No. 37</b> among the results, as in the UN Human Rights Database?</p></div>
+<div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">1</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)">Search “necessary in a democratic society” <button class="copy" type="button" data-copy="necessary in a democratic society" title="Copy to the clipboard"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy</span></button>: is <b>para. 40 of General Comment No. 37</b> among the results, as in the UN Human Rights Database?</p></div>
 <div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">2</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Check one result by hand</b> against the document on docs.un.org.</p></div>
 <div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">3</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)"><b>Look inside → Run it three times:</b> the same results every time?</p></div>
 <div style="display:flex;gap:24px;align-items:center;background:var(--cb-fbf7ef);border:1px solid var(--cl-d9cbb0);padding:16px 28px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-variant-numeric:lining-nums;font-size:56px;font-weight:600;line-height:1.0;color:var(--cf-a63d2a)">4</p><p style="flex:1;font-size:28px;line-height:1.4;color:var(--cf-22201c)">Time left? Build <b>Check a quotation</b> (also in Session 1) and paste the sentence from your worksheet: the same verdicts as Check in the database?</p></div>
@@ -647,6 +650,15 @@ body.read #prev,body.read #next,body.read #count,body.read #fs,body.read .sep.de
   const start = /[?&]read\b/.test(location.search) || matchMedia('(pointer: coarse) and (max-width: 900px)').matches;
   cur = fromHash(); paintThemeBtn(); setView(start); go(cur, false);
 })();
+</script>
+<script>
+document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', e => {
+  e.stopPropagation();
+  const t = b.dataset.copy, lab = b.querySelector('span');
+  const done = () => { b.classList.add('ok'); lab.textContent = 'Copied'; setTimeout(() => { b.classList.remove('ok'); lab.textContent = 'Copy'; }, 1600); };
+  const old = () => { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.append(ta); ta.select(); try { document.execCommand('copy'); } catch (x) {} ta.remove(); done(); };
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(done, old); else old();
+}));
 </script>
 </body>
 </html>
