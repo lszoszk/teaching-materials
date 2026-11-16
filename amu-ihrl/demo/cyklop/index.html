@@ -127,7 +127,7 @@ html.tel #stop.on{grid-template-columns:1fr}
 
  <section class="box akt" id="a2" hidden>
   <p class="lab">Bądź Nikim · 20 sekund</p>
-  <p><b>Nie wychodź z kadru.</b> Cyklop liczy sekundy, w których nie nałoży siatki na Twoją twarz (bez niej nie sprawdzi, kim jesteś). Wybierz sposób z protestów i zgadnij: <b>trzy działają, trzy nie.</b></p>
+  <p><b>Nie wychodź z kadru.</b> Cyklop liczy sekundy, w których nie nałoży siatki na Twoją twarz (bez niej nie sprawdzi, kim jesteś). Wybierz sposób z protestów i zgadnij, czy zadziała. Przy czapce i latarkach decyduje <b>Twój wynik</b>: co najmniej 10 s z 20 jako Nikt.</p>
   <div class="tech" id="tech"></div>
   <p><button class="pri" id="grajBtn" data-stat="badz-nikim-start">Start <kbd>spacja</kbd></button></p>
   <p id="wynik"></p>
@@ -264,8 +264,8 @@ function krokGry(t,widzi,dt){if(!gra)return;
  if(e>=RUNDA){const n=Math.round(gra.nikt*10)/10;proby.push(n);tn.push(tech?TECH[tech].n:'');gra=null;const best=Math.max(...proby);
   $('#wynik').textContent=`Nikt przez ${f1(n)} s z ${RUNDA}`;
   $('#proby').innerHTML=proby.map((p,i)=>`<li class="${p===best&&best>0?'best':''}">Próba ${i+1}${tn[i]?' · '+tn[i]:''}: ${f1(p)} s${p===best&&best>0?' ★':''}</li>`).slice(-3).join('');
-  if(tech){const T=TECH[tech],b=document.querySelector(`[data-t="${tech}"] .ozn`);b.textContent=T.ok?'✓':'✗';b.className='ozn '+(T.ok?'t':'n');
-   $('#werdykt').innerHTML=`<button class="x" id="werX">✕</button><h3 class="${T.ok?'tak':'nie'}">${T.ok?'✓':'✗'} ${T.n}: ${T.ok?'działa':'nie działa'}</h3><p><b>Twój wynik:</b> Nikt przez ${f1(n)} s z ${RUNDA}.</p><p><b>Dlaczego?</b> ${T.dl}</p><p><b>A w mieście?</b> ${T.m}</p><small>${T.zr.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l}</a>`).join(' · ')}</small>`;
+  if(tech){const T=TECH[tech],ok=T.ok===null?n>=RUNDA/2:T.ok,dl=Array.isArray(T.dl)?T.dl[ok?1:0]+` (Działa, gdy jesteś Nikim przez co najmniej ${RUNDA/2} s z ${RUNDA}.)`:T.dl,b=document.querySelector(`[data-t="${tech}"] .ozn`);b.textContent=ok?'✓':'✗';b.className='ozn '+(ok?'t':'n');
+   $('#werdykt').innerHTML=`<button class="x" id="werX">✕</button><h3 class="${ok?'tak':'nie'}">${ok?'✓':'✗'} ${T.n}: ${ok?'działa':'nie działa'}</h3><p><b>Twój wynik:</b> Nikt przez ${f1(n)} s z ${RUNDA}.</p><p><b>Dlaczego?</b> ${dl}</p><p><b>A w mieście?</b> ${T.m}</p><small>${T.zr.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l}</a>`).join(' · ')}</small>`;
    $('#werdykt').classList.add('on')}}}
 
 // przymiarki: kształty w układzie twarzy (O między oczami, u w stronę lewego oka osoby, v w dół; x w szerokościach, y w wysokościach twarzy)
@@ -286,26 +286,17 @@ function kaptur(c,k){c.beginPath();const N=28;for(let i=0;i<=N;i++){const a=Math
  c.lineTo(...k.F(.8,.8));c.lineTo(...k.F(-.8,.8));c.closePath();
  const ow=[k.F(-.44,-.07),k.F(.44,-.07),...[454,323,361,288,397,365,379,378,400,377,152,148,176,149,150,136,172,58,132,93,234].map(i=>k.P(i))];
  ow.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle='#1b1820';c.fill('evenodd')}
-function parasol(c,k){const C=k.F(0,.12),R=k.fh*.95,n=8,a0=-Math.PI/2+k.ang,pt=(a,r)=>[C[0]+r*Math.cos(a),C[1]+r*Math.sin(a)];
- c.beginPath();for(let i=0;i<n;i++){const a=a0+i*2*Math.PI/n,b=a0+(i+1)*2*Math.PI/n;if(!i)c.moveTo(...pt(a,R));c.quadraticCurveTo(...pt((a+b)/2,R*.86),...pt(b,R))}c.closePath();
- const g=c.createRadialGradient(C[0],C[1],R*.1,C[0],C[1],R);g.addColorStop(0,'#3b4f73');g.addColorStop(1,'#1c2638');c.fillStyle=g;c.fill();
- c.strokeStyle='rgba(180,200,230,.35)';c.lineWidth=R*.012;for(let i=0;i<n;i++){c.beginPath();c.moveTo(...C);c.lineTo(...pt(a0+i*2*Math.PI/n,R));c.stroke()}
- c.fillStyle='#c9b27a';c.beginPath();c.arc(C[0],C[1],R*.03,0,7);c.fill()}
 function dazzle(c,k){c.lineJoin='miter';c.lineCap='butt';c.strokeStyle='#0b0a0d';c.lineWidth=k.fw*.11;
  c.beginPath();c.moveTo(...k.F(-.34,-.24));c.lineTo(...k.F(-.02,0));c.lineTo(...k.F(.3,.32));c.stroke();   // pas przez grzbiet nosa
  wielokat(c,[k.F(-.44,.1),k.F(-.14,.12),k.F(-.34,.38)],'#f4f1ea');                                         // jasny klin na policzku
  wielokat(c,[k.F(.1,-.2),k.F(.44,-.22),k.F(.4,-.04),k.F(.16,-.06)],'#0b0a0d');                             // plama na brwi
  wielokat(c,[k.F(.18,.42),k.F(.4,.3),k.F(.36,.5)],'#b3262f')}
-function swiatlo(c,k){const C=k.F(0,.15),R=k.fh*1.3;c.fillStyle='rgba(0,0,0,.55)';c.fillRect(0,0,c.canvas.width,c.canvas.height);   // ekspozycja przyciemnia resztę kadru
- const g=c.createRadialGradient(C[0],C[1],0,C[0],C[1],R);g.addColorStop(0,'#fff');g.addColorStop(.5,'#fff');g.addColorStop(.7,'rgba(255,248,225,.85)');g.addColorStop(1,'rgba(255,240,200,0)');   // prześwietlony środek
- c.fillStyle=g;c.beginPath();c.arc(C[0],C[1],R,0,7);c.fill();
- c.strokeStyle='rgba(255,250,235,.5)';c.lineWidth=k.fw*.03;for(let i=0;i<6;i++){const a=i*Math.PI/6+k.ang;c.beginPath();c.moveTo(C[0]-Math.cos(a)*R*1.6,C[1]-Math.sin(a)*R*1.6);c.lineTo(C[0]+Math.cos(a)*R*1.6,C[1]+Math.sin(a)*R*1.6);c.stroke()}}
 const HUDOC_G='https://hudoc.echr.coe.int/?i=001-225655',HUDOC_S='https://hudoc.echr.coe.int/?i=001-145466';
 const TECH={
- parasol:{n:'Parasol przed kamerą',o:'jak w Hongkongu w 2019 r.',rys:parasol,ok:true,
-  dl:'Cyklop nie nałoży siatki na twarz, której nie widać.',
-  m:'W Hongkongu w 2019 r. protestujący zasłaniali twarze maskami i parasolami, żeby kamery ich nie nagrały i nie rozpoznały. Ale parasol też widać, a jedna zasłonięta kamera to nie cała sieć: w Moskwie w 2020 r. było ok. 175 000 kamer z rozpoznawaniem twarzy (Glukhin, § 5).',
-  zr:[['Al Jazeera, 16.08.2019','https://www.aljazeera.com/news/2019/8/16/laser-beams-twitter-war-the-tech-side-of-hong-kong-protests'],['Glukhin przeciwko Rosji, § 5',HUDOC_G]]},
+ daszek:{n:'Czapka z daszkiem, głowa w dół',o:'bez przymiarki: daszek nisko, patrz w podłogę',rys:null,ok:null,
+  dl:['Siatka dalej trzymała się twarzy: przed kamerką na wysokości oczu daszek zasłania niewiele, a model zgaduje resztę z brody, ust i policzków.','Daszek i spuszczona głowa zasłoniły oczy i czoło, a bez nich Cyklop nie nałożył siatki.'],
+  m:'Na protestach „No Kings” w USA (18.10.2025) wielu uczestników nosiło czapki i maseczki właśnie przeciw rozpoznawaniu twarzy. Kamery w mieście wiszą zwykle wyżej niż laptop, więc daszek zasłania tam więcej. Ale wystarczy jedna klatka, w której podniesiesz głowę.',
+  zr:[['Biometric Update, 20.10.2025','https://www.biometricupdate.com/202510/surveillance-shadows-no-kings-protests']]},
  dazzle:{n:'Makijaż „CV Dazzle”',o:'czarno-białe plamy na twarzy',rys:dazzle,ok:false,
   dl:'Wzory CV Dazzle z 2010 r. projektowano przeciw staremu detektorowi Viola-Jones, który szukał prostych kontrastów: ciemne oczy, jasny grzbiet nosa. Dzisiejsze detektory to sieci neuronowe uczone na ogromnej liczbie twarzy. Patrzą na całość, więc kilka plam ich nie myli: siatka trzyma się twarzy.',
   m:'Autor, Adam Harvey, sam pisze, że wzory 1–5 działały na algorytm, który wyszedł z użycia ok. 2016 r. Przepis z internetu bywa starszy niż kamera, przed którą ma chronić.',
@@ -318,8 +309,8 @@ const TECH={
   dl:'Ten model zrobiono do zdjęć z przodu, z bliska, jak z kamerki laptopa albo telefonu. Z profilu Cyklop czasem jeszcze coś podejrzewa, ale siatki na twarz nie nałoży.',
   m:'W mieście kamer jest wiele i patrzą z różnych stron, a wystarczy jedna klatka z przodu. Glukhina rozpoznano najpierw ze zdjęć w Telegramie, a potem odnaleziono w metrze kamerami na żywo (§ 86).',
   zr:[['Google, MediaPipe Face Detector','https://developers.google.com/edge/mediapipe/solutions/vision/face_detector'],['Glukhin przeciwko Rosji, § 86',HUDOC_G]]},
- swiatlo:{n:'Światło w obiektyw',o:'laser albo latarka, jak w Hongkongu',rys:swiatlo,ok:true,
-  dl:'Jasna plama prześwietla obraz w miejscu twarzy, a reszta kadru ciemnieje. Cyklop czasem widzi w plamie „coś”, ale siatki na twarz nie nałoży.',
+ swiatlo:{n:'Latarki z telefonów',o:'bez przymiarki: sala świeci w kamerę',rys:null,ok:null,
+  dl:['Kamera przestawiła ekspozycję, a latarka z kilku metrów to za mało: twarz dalej widać i Cyklop nakłada siatkę.','Światło prześwietliło obraz: twarz zginęła w bieli albo w cieniu i Cyklop nie nałożył siatki.'],
   m:'W Hongkongu w 2019 r. protestujący celowali laserami w policję, także po to, żeby utrudnić rozpoznawanie twarzy. Policja ostrzegała, że lasery mogą oślepić funkcjonariuszy. Laser w oczy człowieka to już nie unik przed kamerą, tylko zagrożenie dla zdrowia.',
   zr:[['Al Jazeera, 16.08.2019','https://www.aljazeera.com/news/2019/8/16/laser-beams-twitter-war-the-tech-side-of-hong-kong-protests']]},
  blok:{n:'Kaptur, okulary i maseczka',o:'wszystko naraz',rys:(c,k)=>{kaptur(c,k);maseczka(c,k,'#141218');okulary(c,k)},ok:false,
