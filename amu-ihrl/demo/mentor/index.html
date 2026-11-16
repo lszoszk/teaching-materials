@@ -165,7 +165,7 @@ const LOKAL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 const API=new URLSearchParams(location.search).get('api')||(LOKAL?'http://127.0.0.1:8010':'https://150.254.115.204/mentor-api');
 const MAPA=LOKAL?'../../../mapa_studenci.html':'https://lszoszk.github.io/teaching-materials/amu-ihrl/';
 const DEMO='https://lszoszk.github.io/teaching-materials/amu-ihrl/demo/';
-const DEMA={'Następne słowo':'nastepne-slowo','RAG na wyrokach ETPC':'rag','Embeddingi':'embeddingi','Pies czy muffin':'muffin','Tablica z testu RAG':'tablica','Skarga do ETPC':'skarga'};
+const DEMA={'Następne słowo':'nastepne-slowo','RAG na wyrokach ETPCz':'rag','Embeddingi':'embeddingi','Pies czy muffin':'muffin','Tablica z testu RAG':'tablica','Skarga do ETPCz':'skarga'};
 const NAZWA={sol:'GPT-6.1 Sol',sonnet:'Claude Sonnet 5.5',gemini:'Gemini (Twój klucz)'}, INNY={sol:'sonnet',sonnet:'sol',gemini:'sol'};
 // Gemini na kluczu studenta: klucz tylko w tej przeglądarce, zapytania idą prosto do Google, serwer kursu ich nie widzi
 const GAPI='https://generativelanguage.googleapis.com/v1beta';

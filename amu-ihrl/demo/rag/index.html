@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RAG na orzeczeniach ETPC · IHRL 2026/27</title>
+<title>RAG na orzeczeniach ETPCz · IHRL 2026/27</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
 <script>/* tryb jasny: ?jasny=1|0 (mapa), potem wybór zapisany w przeglądarce; przycisk ☀/☾ i klawisz J; w oknie W zgrany z prezentacją (postMessage w obie strony) */(()=>{const d=document.documentElement,q=new URLSearchParams(location.search).get('jasny');let on=q!==null?q==='1':(()=>{try{return localStorage.getItem('demo-jasny')==='1'}catch(e){return false}})();d.classList.toggle('jasny',on);const lab=()=>on?'☾ ciemny':'☀ jasny',set=v=>{on=v;d.classList.toggle('jasny',on);try{localStorage.setItem('demo-jasny',on?'1':'0')}catch(e){}const b=document.getElementById('trybBtn');if(b)b.textContent=lab();if(parent!==window)try{parent.postMessage({demoJasny:on},location.origin)}catch(e){}};addEventListener('message',e=>{if(e.origin===location.origin&&e.data&&typeof e.data.demoJasny==='boolean'&&e.data.demoJasny!==on)set(e.data.demoJasny)});addEventListener('DOMContentLoaded',()=>{const b=document.createElement('button');b.id='trybBtn';b.type='button';b.title='Tryb jasny albo ciemny (J)';b.textContent=lab();b.onclick=()=>set(!on);d.append(b)});addEventListener('keydown',e=>{if(e.key.toLowerCase()==='j'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))set(!on)})})()</script><style>#trybBtn{position:fixed;top:10px;right:12px;z-index:2147483647;font:600 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;padding:7px 11px;background:#1b1622;color:#efe6d2;border:2px solid #4d4059;cursor:pointer;box-shadow:3px 3px 0 #0008}html.jasny #trybBtn{background:#f3ead6;color:#150f1b;border-color:#a49a8d;box-shadow:3px 3px 0 #0003}</style>
@@ -51,7 +51,7 @@ ol{margin:4px 0;padding-left:1.6em}li{margin:4px 0}
 <body>
 <main>
 <h1>RAG: <span>najpierw wyszukaj, potem odpowiedz</span></h1>
-<p class="sub">Retrieval-Augmented Generation na <span id="ile">919 paragrafach z 23 wyroków</span> ETPC o nadzorze, danych i technologii. Wyszukiwanie działa w Twojej przeglądarce.</p>
+<p class="sub">Retrieval-Augmented Generation na <span id="ile">919 paragrafach z 23 wyroków</span> ETPCz o nadzorze, danych i technologii. Wyszukiwanie działa w Twojej przeglądarce.</p>
 <div class="steps">
 <div class="step on" id="s1"><b>① Pytanie</b>wpisujesz pytanie prawnicze</div>
 <div class="step" id="s2"><b>② Wyszukiwanie</b>system przeszukuje bazę wyroków</div>
@@ -106,7 +106,7 @@ const $ = id => document.getElementById(id);
 const K = await (await fetch('korpus.json', {cache: 'no-cache'})).json();
 const P = K.paragrafy, S = K.sprawy;
 $('ile').textContent = `${P.length} paragrafach z ${S.length} wyroków`;
-$('info').innerHTML = `Korpus: ${S.length} wyroków ETPC (ocena Trybunału, bez stanowisk stron), ${P.length} paragrafów, źródło: HUDOC, pobrano ${K.zbudowano} przez HUDOC Researcher. Sprawy: ` +
+$('info').innerHTML = `Korpus: ${S.length} wyroków ETPCz (ocena Trybunału, bez stanowisk stron), ${P.length} paragrafów, źródło: HUDOC, pobrano ${K.zbudowano} przez HUDOC Researcher. Sprawy: ` +
   S.map(s => `<a href="${s.hudoc}" target="_blank" rel="noopener">${s.name}</a>`).join(', ') + '. Wyszukiwanie słów: BM25; znaczenia: all-MiniLM-L6-v2 przez transformers.js. IHRL 2026/27, Ł. Szoszkiewicz.';
 const cite = (p, n) => `${S[p.c].name}, no. ${S[p.c].app}, § ${p.p}, ${S[p.c].date}`;
 const esc = s => s.replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
